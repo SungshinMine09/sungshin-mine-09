@@ -1,9 +1,9 @@
 // -----------------## essential setting ##---------------------
 const express = require("express"),
   app = express(),
-  layouts = require("express-ejs-layouts");
-
-const homeRouter = require("./routes/homeRoutes"),
+  layouts = require("express-ejs-layouts"),
+  homeController = require("./controllers/homeController"),
+  homeRouter = require("./routes/homeRoutes"),
   errorRouter = require("./routes/errorRoutes");
 
 app.set("port", process.env.PORT || 80);
@@ -35,3 +35,7 @@ app.use("/", homeRouter);
 app.listen(app.get("port"), () => {
   console.log(`Server running at http://localhost:${app.get("port")}`);
 });
+
+app.get("/index", homeController.index);
+app.get("/totalGonggu", homeController.totalGonggu);
+app.get("/suyoStat", homeController.suyoStat);
