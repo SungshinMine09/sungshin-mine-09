@@ -1,0 +1,46 @@
+* {
+  font-family: "Tilt Neon", cursive;
+}
+
+.resultbox {
+  /* display: flex; */
+  width: 1035px;
+  height: 400px;
+  overflow-y: scroll;
+  /* background-color: lightyellow; */
+
+  /* margin: 75px auto 0 auto; */
+  padding-left: 80px;
+  padding-top: 10px;
+}
+
+table {
+  table-layout: auto;
+  width: 445px;
+  height: 130px;
+  border: 1px solid black;
+
+  text-align: center;
+}
+
+thead {
+  background-color: rgb(233, 233, 233);
+}
+
+td {
+  border: 1px solid black;
+  /* border-bottom-color: black; */
+}
+
+.Question {
+  /* display: inline-block; */
+  font-size: 20px;
+}
+
+.Question p {
+  display: inline-block;
+  font-size: 24px;
+}
+
+.Q2-table {
+}

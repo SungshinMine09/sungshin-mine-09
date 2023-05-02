@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/CreateBuyingPage.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tilt+Neon&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div class="container">
+      <div class="left">
+        <div class="title"><p>공구방 시작하기</p></div>
+        <div class="smallText">수정이들과 함께하고 싶은 공동구매를 직접 열어보세요!</div>
+        <div class="questionText">① 공동구매의 제목을 알려주세요.</div>
+        <div class="smallText">이 이름이 곧 공구방의 이름이 될 거예요!</div>
+        <div>
+          <label for="inputName"></label>
+          <input type="text" id="inputName"></input>
+        </div>
+        <div class="questionText">② 공동구매할 상품의 가격을 알려주세요.</div>
+        <div>
+          <label for="inputCost"></label>
+          <p>1개당
+            <input type="number" id="inputCost"></input>
+            원
+          </p>
+        </div>
+        <div class="questionText">③ 공동구매할 상품의 최소 수요 수량과 주문받을 최대 수량을 알려주세요.</div>
+        <div>
+          <label for="inputMinQty">
+            <p>최소 수요 수량: 
+              <input type="number" id="inputMinQty"></input>
+              개
+            </p>
+          </label>
+          <label for="inputMaxQty">
+            <p>최대 수량: 
+              <input type="number" id="inputMaxQty"></input>
+              개
+            </p>
+          </label>
+        </div>
+      </div>
+      <div class="verticalLine"/>
+      <div class="right">
+        <div class="questionText">④ 공동구매할 상품에 대해 소개해주세요.</div>
+        <div class="smallText">참여자들에게 나의 공동구매를 어필해보세요!</div>
+        <div>
+          <label for="inputIntroduce"></label>
+          <input type="text" id="inputIntroduce"></input>
+        </div>
+        <div>
+          <button class="createBtn">공동구매 시작하기</button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
