@@ -1,0 +1,115 @@
+* {
+  font-family: "Tilt Neon", cursive;
+}
+
+.container {
+  margin: 0 auto;
+  /* width: auto;
+  min-width: 1000px; */
+}
+
+.left {
+  width: 50%;
+  height: 100%;
+  float: left;
+  padding-left: 30px;
+}
+.verticalLine {
+  height: 600px;
+  border-right: 1px solid #000000;
+  position: absolute;
+  right: 50%;
+  margin-top: 40px;
+}
+
+.right {
+  margin-left: 50%;
+  height: 100%;
+  position: absolute;
+  padding-left: 30px;
+}
+
+.title {
+  width: 300px;
+  height: 54px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  background-color: rgb(239, 220, 255);
+  font-weight: bold;
+}
+
+.title p {
+  font-size: 36px;
+  color: rgb(119, 35, 155);
+}
+
+.smallText {
+  width: 400px;
+  height: 20px;
+
+  margin-top: 5px;
+  font-size: 16px;
+}
+
+.questionText {
+  width: 400px;
+
+  font-size: 24px;
+  margin-top: 45px;
+}
+
+#inputName {
+  width: 400px;
+  height: 60px;
+
+  font-size: 14px;
+}
+
+#inputCost {
+  width: 150px;
+  height: 40px;
+
+  font-size: 14px;
+}
+
+#inputMinQty {
+  width: 150px;
+  height: 40px;
+
+  font-size: 14px;
+}
+
+#inputMaxQty {
+  width: 150px;
+  height: 40px;
+
+  font-size: 14px;
+}
+
+#inputIntroduce {
+  width: 500px;
+  height: 400px;
+
+  font-size: 14px;
+}
+
+.createBtn {
+  width: 192px;
+  height: 32px;
+
+  font-size: 15px;
+  font-weight: bold;
+
+  background-color: rgb(119, 35, 155);
+  color: rgb(239, 220, 255);
+  border-radius: 4px;
+  border-style: none;
+
+  position: absolute;
+  margin-top: 20px;
+  left: 30%;
+}
