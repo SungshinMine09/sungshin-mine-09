@@ -122,7 +122,7 @@ footer nav ul li button{
   height: 400px;
   padding: 40px;
   position: relative;
-  left: 400px;
+  left: 250px;
   top: 300px;
 }
 
@@ -204,7 +204,7 @@ a.change_id_pw_btn {
   height: 410px;
   padding: 40px;
   position: relative;
-  left: 400px;
+  left: 250px;
   top: 300px;
 }
 
@@ -360,7 +360,7 @@ a.gotoJoinpage2_btn {
   height: 540px;
   padding: 40px;
   position: relative;
-  left: 400px;
+  left: 250px;
   top: 300px;
   margin: 30px;
   margin-bottom: 0px;
@@ -629,7 +629,7 @@ a.Join_complete_btn {
   height: 350px;
   padding: 40px;
   position: relative;
-  left: 400px;
+  left: 250px;
   top: 300px;
 }
 
