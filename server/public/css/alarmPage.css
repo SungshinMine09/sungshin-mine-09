@@ -3,11 +3,26 @@
     background-color: rgb(239, 220, 255);
 }
 
+h1 {
+    font-size: 36px;
+    color: rgb(119, 35, 155);
+    font-weight: bold;
+}
+
+h2 {
+    font-size: 24px;
+    font-weight: bold;
+}
+
 ul {
     width: 1024px;
     height: 480px;
     overflow: scroll;
     overflow-x: hidden;
+}
+
+li {
+    border-bottom: rgb(200, 200, 200) 2px solid;
 }
 
 main>div:first-child {
@@ -19,6 +34,10 @@ li>div:first-child {
     border-radius: 100%;
     margin: 20px 20px 30px 10px;
     overflow: hidden;
+}
+
+li:first-child {
+    border-top: rgb(200, 200, 200) 2px solid;
 }
 
 img {

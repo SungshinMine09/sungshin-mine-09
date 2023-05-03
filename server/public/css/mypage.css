@@ -2,6 +2,17 @@ main>div {
     width: 1119px;
 }
 
+h1 {
+    font-size: 36px;
+    color: rgb(119, 35, 155);
+    font-weight: bold;
+}
+
+h2 {
+    font-size: 24px;
+    font-weight: bold;
+}
+
 #myPageTitleBox {
     width: 197px; height: 54px;
     background-color: rgb(239, 220, 255);
@@ -66,6 +77,11 @@ img {
 
 li {
     height: 96px;
+    border-bottom: rgb(200, 200, 200) 2px solid;
+}
+
+li:first-child {
+    border-top: rgb(200, 200, 200) 2px solid;
 }
 
 .productInfo {
