@@ -676,3 +676,61 @@ a.gotoHomepage_btn {
   text-decoration: none;
   border-radius: 5px;
 }
+
+/*마이페이지, 알림페이지, 채팅*/
+
+.fontSize14 {
+    font-size: 14px;
+}
+
+.fontSize15 {
+    font-size: 15px;
+}
+
+.fontSize16 {
+    font-size: 16px;
+}
+
+.fontSize18 {
+    font-size: 18px;
+}
+
+.flex {
+    display: flex;
+}
+
+.center {
+    align-items: center;
+    justify-content: center;
+}
+
+.flexDirectionColumn {
+    flex-direction: column;
+}
+
+.marginTop20 {
+    margin-top: 20px;
+}
+
+.marginTop30 {
+    margin-top: 30px;
+}
+
+.marginLeft10 {
+    margin-left: 10px;
+}
+
+.marginRight30 {
+    margin-right: 30px;
+}
+
+main > div:first-child {
+    margin: auto;
+}
+
+
+
+
+
+
+
