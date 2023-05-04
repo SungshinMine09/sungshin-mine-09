@@ -134,6 +134,34 @@ footer nav ul li button {
   font-size: 18px;
 }
 
+.fontSize24 {
+  font-size: 24px;
+}
+
+.fontSize36 {
+  font-size: 36px;
+}
+
+.fontBold {
+  font-weight: bold;
+}
+
+.textCenter {
+  text-align: center;
+}
+
+.BackgroundColorGray {
+  background-color: rgb(233, 233, 233);
+}
+
+.BackgroundColorPurple {
+  background-color: rgb(142, 68, 173);
+}
+
+.ColorLightPurple {
+  color: rgb(239, 220, 255);
+}
+
 .flex {
   display: flex;
 }

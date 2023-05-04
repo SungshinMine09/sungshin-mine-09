@@ -9,5 +9,5 @@ module.exports = {
 
   suyoStat: (req, res) => {
     res.render("suyoStat");
-  }
+  },
 };
