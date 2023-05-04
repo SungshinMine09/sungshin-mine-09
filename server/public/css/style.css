@@ -194,15 +194,3 @@ footer nav ul li button {
 main > div:first-child {
   margin: auto;
 }
-
-/*
-a {
-  text-decoration: none;
-}
-
-/* 버튼 디폴트 스타일 */
-button {
-  border: none;
-  border-radius: 4px;
-}
-*/

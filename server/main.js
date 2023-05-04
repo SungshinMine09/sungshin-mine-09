@@ -22,9 +22,6 @@ app.use(express.json());
 app.use("/", homeRouter);
 app.use("/totalGonggu", homeRouter);
 app.use("/suyoStat", homeRouter);
-app.get("/room/detail", (req, res) => {
-  res.render("room/detail");
-});
 
 /* ##가이드
 1. 코드 흐름: main.js -> routes -> controller -> ...
