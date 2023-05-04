@@ -20,6 +20,8 @@ app.use(express.json());
 
 // ------------------------## route ##---------------------------
 app.use("/", homeRouter);
+app.use("/totalGonggu", homeRouter);
+app.use("/suyoStat", homeRouter);
 app.get("/room/detail", (req, res) => {
   res.render("room/detail");
 });

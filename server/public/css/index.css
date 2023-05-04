@@ -1,0 +1,80 @@
+/*********************************************/
+/**************** index 페이지 ***************/
+/*********************************************/
+
+/* 홈페이지 배너 부분 */
+.hompagebanner{
+  text-align: center;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  width: 1200px;
+  margin: auto;
+}
+.hompagebanner div {
+  width: 1037px;
+  height: 223px;
+  margin: auto;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  overflow: hidden;
+}
+.hompagebanner div img {
+  width: 100%;
+  height: 100%;
+  margin: auto;
+  object-fit: cover;
+}
+
+
+/* ✨NEW 공동구매✨ */ /* 🔥수정이들의 HOT픽🔥 */
+.newhot_button {
+  width: 1200px;
+  margin: auto;
+  margin-bottom: 30px;
+}
+.newhot_button ul {
+  width:1039px;
+  margin:auto;
+  padding: 0px;
+  list-style: none;
+}
+.newhot_button ul li {
+  display: inline-block;
+  width: 516px;
+}
+.newhot_button ul li button {
+  font-size: 16px; 
+  font-weight: bold;
+  color: rgb(255, 255, 255);
+  text-align: center; 
+  line-height: 2.5em; 
+  border-radius: 4px; 
+  background-color: rgb(190, 153, 250); 
+  border: 0px;
+}
+
+
+.item {
+  width: 1200px;
+  margin: auto;
+}
+.item div {
+  width: 1039px;
+  margin: auto;
+
+}
+.item div div {
+  width:516px; 
+  margin: 0px;
+  display: inline-block;
+}
+.item div div div {
+  width:49%
+}
+.item div div div a img {
+  width: 250px;
+  height: 250px
+}
+.item div div div a p {
+  text-align: center;
+}

@@ -1,0 +1,80 @@
+/* 로그인 화면 */
+.Login_Wrapper {
+  width: 400px;
+  height: 400px;
+  padding: 40px;
+  position: relative;
+  left: 250px;
+  top: 300px;
+}
+
+.Login_Title {
+  font-size: 38px;
+  color: rgb(119, 35, 155);
+  position: relative;
+  left: 250px;
+  padding-bottom: 25px;
+}
+
+#LoginForm > input {
+  width: 320px;
+  height: 70px;
+  position: relative;
+  left: 140px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  border-color: rgb(189, 189, 189);
+  text-align: center;
+  font-size: 16px;
+}
+
+#LoginForm > input::placeholder {
+  padding-left: 0px;
+}
+
+#LoginForm > input[type="submit"] {
+  background-color: rgb(190, 153, 250);
+  color: white;
+  width: 100px;
+  height: 40px;
+  position: relative;
+  left: 190px;
+  margin-top: 15px;
+  border-radius: 5px;
+  border-color: transparent;
+}
+
+a.gotoJoinpage1_btn {
+  background-color: rgb(190, 153, 250);
+  color: white;
+  width: 80px;
+  height: 40px;
+  position: relative;
+  left: 320px;
+  bottom: 55px;
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 5px;
+  border-color: rgb(190, 153, 250);
+  justify-content: center;
+  font-size: 16px;
+  text-decoration: none;
+}
+
+a.change_id_pw_btn {
+  background-color: rgb(219, 217, 217);
+  color: black;
+  font-size: 12px;
+  width: 220px;
+  height: 25px;
+  position: relative;
+  left: 200px;
+  bottom: 20px;
+  padding-left: 50px;
+  padding-right: 50px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  text-decoration: none;
+  border-radius: 5px;
+}
