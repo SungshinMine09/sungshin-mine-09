@@ -2,25 +2,26 @@
   font-family: "Tilt Neon";
 }
 
-html, body {
+html,
+body {
   width: 1200px;
   height: 900px;
   margin: 0 auto;
 }
 
 /********** header **********/
-.container{
-  top:0;
+.container {
+  top: 0;
   z-index: 1;
   width: 1200px;
   margin: auto;
 }
 /* ✨성신마인 09번지🔮 */
-.container h1{
+.container h1 {
   text-align: center;
   padding-top: 30px;
 }
-.container h1 button{
+.container h1 button {
   font-size: 36px;
   font-weight: bold;
   text-align: center;
@@ -32,14 +33,15 @@ html, body {
   text-align: center;
   padding-bottom: 10px;
 }
-.container h3 button{
+.container h3 button {
   font-size: 16px;
   text-align: center;
   background: transparent;
   border: 0;
 }
 
-.container button { /* 기본적으로 버튼은 배경:투명 & 테두리 없음 */
+.container button {
+  /* 기본적으로 버튼은 배경:투명 & 테두리 없음 */
   border: 0;
   background-color: transparent;
 }
@@ -50,34 +52,33 @@ html, body {
   border-top: 1px solid grey;
   border-bottom: 1px solid grey;
 }
-.container nav ul{
+.container nav ul {
   list-style: none;
   padding-left: 30px;
   padding-right: 30px;
 }
-.container nav ul li{
-  padding-left: 10px; 
+.container nav ul li {
+  padding-left: 10px;
   padding-right: 10px;
   display: inline-block;
 }
-.container nav ul li button{
+.container nav ul li button {
   font-size: 20px;
   font-weight: bold;
-  line-height: 2.5em; 
+  line-height: 2.5em;
 }
 .navbutton {
   float: right;
 }
 .navbutton button {
-  line-height: 2.5em; 
-  border-radius: 4px; 
-  font-size: 16px; 
-  text-align: center; 
+  line-height: 2.5em;
+  border-radius: 4px;
+  font-size: 16px;
+  text-align: center;
   font-weight: bold;
   color: rgb(142, 68, 173);
-  background-color: rgb(239, 220, 255); 
+  background-color: rgb(239, 220, 255);
 }
-
 
 /********** footer **********/
 footer {
@@ -97,640 +98,71 @@ footer nav ul {
   padding-right: 30px;
   width: 1059px;
 }
-footer nav ul li{
-  padding-left: 10px; 
+footer nav ul li {
+  padding-left: 10px;
   padding-right: 10px;
   display: inline-block;
 }
-footer nav ul li button{
+footer nav ul li button {
   font-size: 15px;
   font-weight: bold;
   border: 0px;
   background-color: transparent;
 }
 .contact {
-  float: right; 
-  text-align:right; 
+  float: right;
+  text-align: right;
   font-size: 15px;
   font-weight: bold;
   padding-right: 20px;
 }
 
-/* 로그인 화면 */
-.Login_Wrapper {
-  width: 400px;
-  height: 400px;
-  padding: 40px;
-  position: relative;
-  left: 250px;
-  top: 300px;
-}
-
-.Login_Title {
-  font-size: 38px;
-  color: rgb(119, 35, 155);
-  position: relative;
-  left: 250px;
-  padding-bottom: 25px;
-}
-
-#LoginForm > input {
-  width: 320px;
-  height: 70px;
-  position: relative;
-  left: 140px;
-  margin-bottom: 15px;
-  border-radius: 5px;
-  border-color: rgb(189, 189, 189);
-  text-align: center;
-  font-size: 16px;
-}
-
-#LoginForm > input::placeholder {
-  padding-left: 0px;
-}
-
-#LoginForm > input[type="submit"] {
-  background-color: rgb(190, 153, 250);
-  color: white;
-  width: 100px;
-  height: 40px;
-  position: relative;
-  left: 190px;
-  margin-top: 15px;
-  border-radius: 5px;
-  border-color: transparent;
-}
-
-a.gotoJoinpage1_btn {
-  background-color: rgb(190, 153, 250);
-  color: white;
-  width: 80px;
-  height: 40px;
-  position: relative;
-  left: 320px;
-  bottom: 55px;
-  padding-left: 20px;
-  display: flex;
-  flex-direction: column;
-  border-radius: 5px;
-  border-color: rgb(190, 153, 250);   
-  justify-content: center;
-  font-size: 16px;
-  text-decoration: none;
-}
-
-a.change_id_pw_btn {
-  background-color: rgb(219, 217, 217);
-  color: black ;
-  font-size: 12px;
-  width: 220px;
-  height: 25px;
-  position: relative;
-  left: 200px;
-  bottom: 20px;
-  padding-left: 50px;
-  padding-right: 50px;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  text-decoration: none;
-  border-radius: 5px;
-}
-
-
-/* 회원가입 화면1 - 이메일 인증 */
-.id_box {
-  width: 550px;
-  height: 410px;
-  padding: 40px;
-  position: relative;
-  left: 250px;
-  top: 300px;
-}
-
-#id_box > .Join_Title {
-  font-size: 38px;
-  color: rgb(119, 35, 155);
-  position: relative;
-  left: 250px;
-  padding-bottom: 25px;
-}
-
-#id_box > .Join_Step {
-  font-size: 16px;
-  position: relative;
-  left: 165px;
-  bottom: 30px;
-}
-
-.school_id_label {
-  background-color: rgb(190, 153, 250);
-  color: white;
-  width: 40px;
-  height: 20px;
-  position: relative;
-  left: 100px;
-  bottom: 0px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  padding-left: 30px;
-  padding-right: 30px;
-  border-radius: 5px;
-  border-color: rgb(190, 153, 250);   
-  justify-content: center;
-  font-size: 16px;
-}
-
-#email_label {
-  font-size: 17px;
-  position: relative;
-  left: 310px;
-}
-
-#JoinForm1 > input[type="text"] {
-  width: 165px;
-  height: 40px;
-  margin-bottom: 15px;
-  text-align: center;
-  font-size: 16px;
-  border-radius: 5px;
-  border-color: rgb(189, 189, 189);
-}
-
-/*#JoinForm1 > input[id="email_IDnumber"] {
-  border-radius: 5px;
-  border-color: rgb(189, 189, 189);
-}
-
-#JoinForm1 > input[id="email_domain"] {
-  display: flex;
-  flex-direction: row;
-  border-color: transparent;
-  background: transparent;
-}*/
-
-#JoinForm1 > input::placeholder {
-  padding-left: 0px;
-}
-
-#JoinForm1 > input[type="submit"] {
-  background-color:  rgb(119, 35, 155);
-  color: rgb(239, 220, 255);
-  width: 130px;
-  height: 40px;
-  position: relative;
-  left: 150px;
-  bottom: 0px;
-  margin-top: 15px;
-  padding-left: 10px;
-  padding-right: 10px;
-  border-radius: 5px;
-  border-color: transparent;
-  font-size: 16px;
-}
-
-.code_label {
-  background-color: rgb(190, 153, 250);
-  color: white;
-  width: 40px;
-  height: 20px;
-  position: relative;
-  left: 100px;
-  top: 30px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  padding-left: 15px;
-  padding-right: 15px;
-  border-radius: 5px;
-  border-color: rgb(190, 153, 250);   
-  justify-content: center;
-  font-size: 16px;
-}
-
-#JoinForm2 > input {
-  width: 165px;
-  height: 40px;
-  position: relative;
-  left: 125px;
-  top: 30px;
-  margin-bottom: 15px;
-  border-radius: 5px;
-  border-color: rgb(189, 189, 189);
-  text-align: center;
-  font-size: 16px;   
-}
-
-#JoinForm2 > input::placeholder {
-  padding-left: 0px;
-}
-
-#JoinForm2 > input[type="submit"] {
-  background-color:  rgb(119, 35, 155);
-  color: rgb(239, 220, 255);
-  width: 60px;
-  height: 40px;
-  position: relative;
-  left: 150px;
-  top: 30px;
-  margin-top: 15px;
-  border-radius: 5px;
-  border-color: transparent;
-}
-a.gotoJoinpage2_btn {
-  background-color: rgb(239, 220, 255);
-  color:  rgb(119, 35, 155);
-  font-size: 16px;
-  width: 190px;
-  height: 30px;
-  position: relative;
-  left: 200px;
-  top: 100px;
-  padding-left: 50px;
-  padding-right: 50px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  text-decoration: none;
-  border-radius: 5px;
-}
-
-
-/* 회원가입 화면2 - 정보입력 */
-.info_box {
-  width: 515px;
-  height: 540px;
-  padding: 40px;
-  position: relative;
-  left: 250px;
-  top: 300px;
-  margin: 30px;
-  margin-bottom: 0px;
-}
-
-#info_box > .Join_Title {
-  font-size: 38px;
-  color: rgb(119, 35, 155);
-  position: relative;
-  left: 250px;
-  padding-bottom: 25px;
-}
-
-#info_box > .Join_Step {
-  font-size: 16px;
-  position: relative;
-  bottom: 0px;
-  left: 165px;
-  bottom: 30px;
-}
-
-.id_label {
-  background-color: rgb(190, 153, 250);
-  color: white;
-  width: 40px;
-  height: 20px;
-  position: relative;
-  left: 95px;
-  top: 31px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  padding-left: 35px;
-  padding-right: 35px;
-  border-radius: 5px;
-  border-color: rgb(190, 153, 250);   
-  justify-content: center;
-  font-size: 16px;
-}
-
-.id_requireInfo {
-  font-size: 13px;
-  color: red;
-  display: flex;
-  flex-direction: row;
-  position: relative;
-  left: 230px;
-  top: 50px;
-}
-
-.IDduplicateCheckBtn {
-  background-color:  rgb(119, 35, 155);
-  color: rgb(239, 220, 255);
-  font-size: 15px;
-  width: 90px;
-  height: 40px;
-  position: relative;
-  left: 420px;
-  bottom: 100px;
-  margin-top: 15px;
-  border-radius: 5px;
-  border-color: transparent;
-}
-
-.pw_label {
-  background-color: rgb(190, 153, 250);
-  color: white;
-  width: 40px;
-  height: 20px;
-  position: relative;
-  left: 0px;
-  top: 20px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  padding-left: 30px;
-  padding-right: 30px;
-  border-radius: 5px;
-  border-color: rgb(190, 153, 250);   
-  justify-content: center;
-  font-size: 16px;
-}
-
-.pw_requireInfo {
-  font-size: 13px;
-  color: red;
-  display: flex;
-  flex-direction: row;
-  position: relative;
-  top: 30px;
-  left: 230px;
-}
-
-.pw_confirm_label {
-  background-color: rgb(190, 153, 250);
-  color: white;
-  width: 100px;
-  height: 20px;
-  position: relative;
-  left: 95px;
-  bottom: 0px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  padding-left: 15px;
-  padding-right: 15px;
-  border-radius: 5px;
-  border-color: rgb(190, 153, 250);   
-  justify-content: center;
-  font-size: 15px;
-}
-
-.pwCheckBtn {
-  background-color:  rgb(119, 35, 155);
-  color: rgb(239, 220, 255);
-  font-size: 15px;
-  width: 60px;
-  height: 40px;
-  position: relative;
-  left: 420px;
-  bottom: 115px;
-  margin-top: 15px;
-  border-radius: 5px;
-  border-color: transparent;
-}
-
-.phone_number {
-  background-color: rgb(190, 153, 250);
-  color: white;
-  width: 40px;
-  height: 20px;
-  position: relative;
-  left: 30px;
-  bottom: 20px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  padding-left: 30px;
-  padding-right: 30px;
-  border-radius: 5px;
-  border-color: rgb(190, 153, 250);   
-  justify-content: center;
-  font-size: 16px;
-}
-
-#JoinForm3 > input[id="ID"] {
-  width: 165px;
-  height: 35px;
-  position: relative;
-  left: 230px;
-  bottom: 30px;
-  display: flex;
-  flex-direction: column;
-  margin-top: 15px;
-  margin-bottom: 15px;
-  border-radius: 5px;
-  border-color: rgb(189, 189, 189);
-  text-align: center;
-  font-size: 16px;   
-}
-
-#JoinForm3 > input[id="password"] {
-  width: 165px;
-  height: 35px;
-  position: relative;
-  left: 230px;
-  bottom: 52px;
-  display: flex;
-  flex-direction: column;
-  margin-top: 15px;
-  margin-bottom: 15px;
-  border-radius: 5px;
-  border-color: rgb(189, 189, 189);
-  text-align: center;
-  font-size: 16px;   
-}
-
-#JoinForm3 > input[id="confirm_pw"] {
-  width: 165px;
-  height: 35px;
-  position: relative;
-  left: 230px;
-  bottom: 45px;
-  display: flex;
-  flex-direction: column;
-  margin-top: 15px;
-  margin-bottom: 15px;
-  border-radius: 5px;
-  border-color: rgb(189, 189, 189);
-  text-align: center;
-  font-size: 16px;   
-}
-
-#JoinForm3 > input[id="phone"] {
-  width: 165px;
-  height: 35px;
-  position: relative;
-  left: 230px;
-  bottom: 75px;
-  display: flex;
-  flex-direction: column;
-  margin-top: 15px;
-  margin-bottom: 15px;
-  border-radius: 5px;
-  border-color: rgb(189, 189, 189);
-  text-align: center;
-  font-size: 16px;   
-}
-
-#JoinForm3 > input::placeholder {
-  padding-left: 0px;
-}
-
-#JoinForm3 > input[type="submit"] {
-  background-color: rgb(239, 220, 255);
-  color: rgb(119, 35, 155);
-  justify-content: center;
-  width: 170px;
-  height: 30px;
-  position: relative;
-  left: 230px;
-  bottom: 60px;
-  padding-left: 50px;
-  padding-right: 50px;
-  padding-top: 5px;
-  padding-bottom: 10px;
-  margin-top: 15px;
-  border-radius: 5px;
-  border-color: transparent;
-}
-
-a.Join_cancel_btn {
-  background-color: rgb(224, 224, 224);
-  color: black;
-  font-size: 16px;
-  width: 190px;
-  height: 30px;
-  position: relative;
-  left: 150px;
-  bottom: 40px;
-  padding-left: 65px;
-  padding-right: 65px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  text-decoration: none;
-  border-radius: 5px;
-}
-
-a.Join_complete_btn {
-  background-color: rgb(119, 35, 155);
-  color:  rgb(239, 220, 255);
-  font-size: 16px;
-  width: 190px;
-  height: 30px;
-  position: relative;
-  left: 150px;
-  bottom: 40px;
-  padding-left: 40px;
-  padding-right: 40px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  text-decoration: none;
-  border-radius: 5px;
-}
-
-
-/* 회원가입 화면3 - 가입완료 */
-.Join_Complete_Wrapper {
-  width: 500px;
-  height: 350px;
-  padding: 40px;
-  position: relative;
-  left: 250px;
-  top: 300px;
-}
-
-.Join_Complete_Wrapper > .Join_Title {
-  font-size: 38px;
-  color: rgb(119, 35, 155);
-  position: relative;
-  left: 250px;
-  padding-bottom: 25px;
-}
-
-.Join_Complete_Wrapper > .Join_Step {
-  font-size: 16px;
-  position: relative;
-  bottom: 0px;
-  left: 165px;
-  bottom: 30px;
-}
-
-.Join_complete_msg {
-  position: relative;
-  left: 150px;
-}
-
-.Join_complete_msg2 {
-  position: relative;
-  left: 115px;
-  top: 0px;
-}
-
-a.gotoHomepage_btn {
-  background-color: rgb(239, 220, 255);
-  color:  rgb(119, 35, 155);
-  font-size: 16px;
-  width: 200px;
-  height: 45px;
-  position: relative;
-  left: 240px;
-  top: 100px;
-  padding-left: 50px;
-  padding-right: 50px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  text-decoration: none;
-  border-radius: 5px;
-}
-
-/*마이페이지, 알림페이지, 채팅*/
-
+/***** 마이페이지, 알림페이지, 채팅 ******/
 .fontSize14 {
-    font-size: 14px;
+  font-size: 14px;
 }
 
 .fontSize15 {
-    font-size: 15px;
+  font-size: 15px;
 }
 
 .fontSize16 {
-    font-size: 16px;
+  font-size: 16px;
 }
 
 .fontSize18 {
-    font-size: 18px;
+  font-size: 18px;
 }
 
 .flex {
-    display: flex;
+  display: flex;
 }
 
 .center {
-    align-items: center;
-    justify-content: center;
+  align-items: center;
+  justify-content: center;
 }
 
 .flexDirectionColumn {
-    flex-direction: column;
+  flex-direction: column;
 }
 
 .marginTop20 {
-    margin-top: 20px;
+  margin-top: 20px;
 }
 
 .marginTop30 {
-    margin-top: 30px;
+  margin-top: 30px;
 }
 
 .marginLeft10 {
-    margin-left: 10px;
+  margin-left: 10px;
 }
 
 .marginRight30 {
-    margin-right: 30px;
+  margin-right: 30px;
 }
 
 main > div:first-child {
-    margin: auto;
+  margin: auto;
 }
-
-
-
-
-
-
-
