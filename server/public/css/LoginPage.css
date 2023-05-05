@@ -5,7 +5,7 @@
   padding: 40px;
   position: relative;
   left: 250px;
-  top: 300px;
+  top: 0px;
 }
 
 .Login_Title {
@@ -51,7 +51,7 @@ a.gotoJoinpage1_btn {
   height: 40px;
   position: relative;
   left: 320px;
-  bottom: 55px;
+  bottom: 70px;
   padding-left: 20px;
   display: flex;
   flex-direction: column;

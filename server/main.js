@@ -22,6 +22,10 @@ app.use(express.json());
 app.use("/", homeRouter);
 app.use("/totalGonggu", homeRouter);
 app.use("/suyoStat", homeRouter);
+app.use("/LoginPage", homeRouter);
+app.use("/JoinPage_1", homeRouter);
+app.use("/JoinPage_2", homeRouter);
+app.use("/JoinPage_3", homeRouter);
 
 /* ##가이드
 1. 코드 흐름: main.js -> routes -> controller -> ...

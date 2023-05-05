@@ -5,7 +5,7 @@
   padding: 40px;
   position: relative;
   left: 250px;
-  top: 300px;
+  top: 0px;
 }
 
 #id_box > .Join_Title {
@@ -144,7 +144,7 @@ a.gotoJoinpage2_btn {
   height: 30px;
   position: relative;
   left: 200px;
-  top: 100px;
+  top: 50px;
   padding-left: 50px;
   padding-right: 50px;
   padding-top: 10px;
