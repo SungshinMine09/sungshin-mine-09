@@ -20,6 +20,7 @@ app.use(express.json());
 
 // ------------------------## route ##---------------------------
 app.use("/", homeRouter);
+app.use("/index", homeRouter);
 app.use("/totalGonggu", homeRouter);
 app.use("/suyoStat", homeRouter);
 app.use("/LoginPage", homeRouter);
