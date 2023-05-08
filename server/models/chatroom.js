@@ -1,13 +1,12 @@
 const { sequelize, Sequelize } = require(".");
 
 module.exports = (sequelize, Sequelize) => {
-  const form_user = sequelize.define(
-    "form_user",
+  const chatroom = sequelize.define(
+    "chatroom",
     {
-      user_id: {
+      id: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        unique: true,
         primaryKey: true,
       },
       cobuying_room_id: {
@@ -15,11 +14,19 @@ module.exports = (sequelize, Sequelize) => {
         allowNull: false,
         primaryKey: true,
       },
+      host_id: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+      },
+      guest_id: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+      },
     },
     {
-      tableName: "form_user",
-      timestamp: false,
+      tableName: "chatroom",
+      timestamps: false,
     }
   );
-  return form_user;
+  return chatroom;
 };

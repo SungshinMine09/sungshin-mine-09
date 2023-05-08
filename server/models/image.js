@@ -1,25 +1,29 @@
 const { sequelize, Sequelize } = require(".");
 
 module.exports = (sequelize, Sequelize) => {
-  const form_user = sequelize.define(
-    "form_user",
+  const image = sequelize.define(
+    "image",
     {
-      user_id: {
+      id: {
         type: Sequelize.INTEGER,
         allowNull: false,
+        primaryKey: true,
+        autoIncrement: true,
         unique: true,
-        primaryKey: true,
       },
-      cobuying_room_id: {
+      url: {
+        tpye: Sequelize.STRING(300),
+        allowNull: false,
+      },
+      product_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        primaryKey: true,
       },
     },
     {
-      tableName: "form_user",
+      tableName: "image",
       timestamp: false,
     }
   );
-  return form_user;
+  return image;
 };

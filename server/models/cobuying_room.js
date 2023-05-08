@@ -20,9 +20,8 @@ module.exports = (sequelize, Sequelize) => {
         allowNull: false,
       },
       status: {
-        type: Sequelize.STRING(10),
-        allowNull: false,
         type: DataTypes.ENUM["demand, deposit, ready, delivery, complete"],
+        allowNull: false,
         defaultValue: "demand",
         comment: "수요조사, 입금중, 준비중, 배송중, 공동구매 완료만 허용",
       },

@@ -1,13 +1,18 @@
 const { sequelize, Sequelize } = require(".");
 
 module.exports = (sequelize, Sequelize) => {
-  const form_user = sequelize.define(
-    "form_user",
+  const answer_user_list = sequelize.define(
+    "answer_user_list",
     {
-      user_id: {
+      question_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
+        primaryKey: true,
         unique: true,
+      },
+      deposit_form_id: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
         primaryKey: true,
       },
       cobuying_room_id: {
@@ -15,11 +20,15 @@ module.exports = (sequelize, Sequelize) => {
         allowNull: false,
         primaryKey: true,
       },
+      user_id: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+      },
     },
     {
-      tableName: "form_user",
+      tableName: "answer_user_list",
       timestamp: false,
     }
   );
-  return form_user;
+  return answer_user_list;
 };
