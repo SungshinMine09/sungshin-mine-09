@@ -6,7 +6,7 @@ module.exports = (sequelize, Sequelize) => {
       type: Sequelize.INTEGER,
       allowNull: false,
       primaryKey: true,
-      autoIncrement: true,
+      // autoIncrement: true,
     },
     receiver_id: {
       type: Sequelize.INTEGER,
