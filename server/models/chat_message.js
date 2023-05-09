@@ -21,14 +21,14 @@ module.exports = (sequelize, Sequelize) => {
         type: Sequelize.STRING(500),
         allowNull: false,
       },
-      created_at: {
-        type: Sequelize.DATE,
-        allowNull: false,
-      },
+      // created_at: {
+      //   type: Sequelize.DATE,
+      //   allowNull: false,
+      // },
     },
     {
       tableName: "chat_message",
-      timestamps: false,
+      timestamps: true, //createAt활성화
     }
   );
   return chat_message;

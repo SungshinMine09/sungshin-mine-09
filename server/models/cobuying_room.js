@@ -1,5 +1,4 @@
 module.exports = (sequelize, Sequelize) => {
-  // foreign Key: (user):id
   const cobuying_room = sequelize.define(
     "cobuying_room",
     {
@@ -8,11 +7,6 @@ module.exports = (sequelize, Sequelize) => {
         // allowNull: false,
         primaryKey: true,
         autoIncrement: true,
-        unique: true,
-      },
-      host_id: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
         unique: true,
       },
       title: {

@@ -18,10 +18,10 @@ module.exports = (sequelize, Sequelize) => {
         type: Sequelize.STRING(500),
         allowNull: false,
       },
-      created_at: {
-        type: Sequelize.DATE,
-        allowNull: false,
-      },
+      // created_at: {
+      //   type: Sequelize.DATE,
+      //   allowNull: false,
+      // },
       end_at: {
         type: Sequelize.DATE,
         allowNull: false,
@@ -29,7 +29,7 @@ module.exports = (sequelize, Sequelize) => {
     },
     {
       tableName: "deposit_form",
-      timestamp: false,
+      timestamp: true,
     }
   );
   return deposit_form;
