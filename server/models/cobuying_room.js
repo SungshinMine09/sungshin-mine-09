@@ -19,7 +19,7 @@ module.exports = (sequelize, Sequelize) => {
         defaultValue: "demand",
         comment: "수요조사, 입금중, 준비중, 배송중, 공동구매 완료만 허용",
       },
-      descripton: {
+      description: {
         type: Sequelize.STRING(1000),
         allowNull: false,
       },

@@ -24,6 +24,13 @@ module.exports = (sequelize, Sequelize) => {
         allowNull: false,
         primaryKey: true,
       },
+      user_id: {
+        type: Sequelize.STRING(20), // VARCHAR(20)
+        allowNull: false,
+        unique: true,
+        comment: "로그인 아이디",
+        primaryKey: true,
+      },
     },
     {
       tableName: "answer",

@@ -4,7 +4,8 @@ module.exports = (sequelize, Sequelize) => {
     {
       id: {
         type: Sequelize.INTEGER,
-        allowNull: false,
+        // allowNull: false,
+        autoIncreament: true,
         primaryKey: true,
       },
       chatroom_id: {

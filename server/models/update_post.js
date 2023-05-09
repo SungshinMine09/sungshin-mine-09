@@ -6,7 +6,8 @@ module.exports = (sequelize, Sequelize) => {
     {
       id: {
         type: Sequelize.INTEGER,
-        allowNull: false,
+        // allowNull: false,
+        autoIncrement: true,
         primaryKey: true,
       },
       cobuying_id: {

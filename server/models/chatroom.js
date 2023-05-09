@@ -6,8 +6,10 @@ module.exports = (sequelize, Sequelize) => {
     {
       id: {
         type: Sequelize.INTEGER,
-        allowNull: false,
+        // allowNull: false,
         primaryKey: true,
+        Comment: "채팅방 번호",
+        autoIncrement: true,
       },
       cobuying_room_id: {
         type: Sequelize.INTEGER,
