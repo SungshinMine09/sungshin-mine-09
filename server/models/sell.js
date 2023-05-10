@@ -42,7 +42,13 @@ module.exports = (sequelize, Sequelize) => {
         defaultValue: 0,
         validate: {
           min: 0,
-          max: max_quantity,
+          isLessThanMaxQuantity(value) {
+            if (value > this.max_quantity) {
+              throw new Error(
+                `Current quantity (${value}) cannot be greater than max quantity (${this.max_quantity})`
+              );
+            }
+          },
         },
       },
       current_demand: {
@@ -66,5 +72,5 @@ module.exports = (sequelize, Sequelize) => {
       timestamp: false,
     }
   );
-  return "sell";
+  return sell;
 };

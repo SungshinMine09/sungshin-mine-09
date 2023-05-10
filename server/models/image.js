@@ -1,4 +1,4 @@
-const { sequelize, Sequelize } = require(".");
+// const { sequelize, Sequelize } = require(".");
 
 module.exports = (sequelize, Sequelize) => {
   const image = sequelize.define(
@@ -12,7 +12,7 @@ module.exports = (sequelize, Sequelize) => {
         unique: true,
       },
       url: {
-        tpye: Sequelize.STRING(300),
+        type: Sequelize.STRING(300),
         allowNull: false,
       },
       product_id: {

@@ -1,4 +1,4 @@
-const { sequelize, Sequelize } = require(".");
+// const { sequelize, Sequelize } = require(".");
 
 module.exports = (sequelize, Sequelize) => {
   const notification = sequelize.define(
@@ -32,7 +32,7 @@ module.exports = (sequelize, Sequelize) => {
       //   allowNull: false,
       // },
       type2: {
-        type: DataTypes.ENUM["sell, deposit_form, update_post, chat"],
+        type: Sequelize.ENUM("sell, deposit_form, update_post, chat"),
         allowNull: false,
         comment: "판매, 입금폼, 새소식, 채팅만 허용",
       },

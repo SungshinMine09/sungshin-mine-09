@@ -1,4 +1,4 @@
-const { sequelize, Sequelize } = require(".");
+// const { sequelize, Sequelize } = require(".");
 
 module.exports = (sequelize, Sequelize) => {
   const answer = sequelize.define(

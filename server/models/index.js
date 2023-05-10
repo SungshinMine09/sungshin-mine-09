@@ -76,6 +76,7 @@ db.image.belongsTo(db.product, {
 });
 /* form_user & notification */
 // N:M 공동구매에 참여한 회원(form_user)는 여러개의 알림을 수신할 수 있다.
+// 실행시키면 알아서 trough 테이블이 만들어짐 -> 실제로 생기면 체크해보기
 db.user.belongsToMany(db.notification, {
   through: "receive",
 });
@@ -192,4 +193,10 @@ db.chat_message.belongsTo(db.chatroom, {
   foreignKey: "chatroom_id",
   sourceKe: "id",
 });
+
+// sequelize
+//   .sync({ force: true })
+//   .then(() => console.log("Database OK"))
+//   .catch((error) => console.error(error));
+
 module.exports = db;

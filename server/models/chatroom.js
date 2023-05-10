@@ -1,5 +1,5 @@
-const { sequelize, Sequelize } = require(".");
-
+// const { sequelize, Sequelize } = require(".");
+//
 module.exports = (sequelize, Sequelize) => {
   const chatroom = sequelize.define(
     "chatroom",
