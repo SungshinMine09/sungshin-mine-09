@@ -17,7 +17,6 @@ module.exports = (sequelize, Sequelize) => {
       price: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        defaultValue: 0,
         validate: {
           min: 0,
         },
