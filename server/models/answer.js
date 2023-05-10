@@ -35,6 +35,8 @@ module.exports = (sequelize, Sequelize) => {
     {
       tableName: "answer",
       timestamps: false,
+      charset: 'utf8',
+      collate: 'utf8_general_ci'
     }
   );
   return answer;
