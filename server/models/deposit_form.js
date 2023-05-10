@@ -30,6 +30,8 @@ module.exports = (sequelize, Sequelize) => {
     {
       tableName: "deposit_form",
       timestamp: true,
+      charset: 'utf8',
+      collate: 'utf8_general_ci'
     }
   );
   return deposit_form;
