@@ -18,7 +18,7 @@ module.exports = (sequelize, Sequelize) => {
         comment: "로그인 아이디",
       },
       password: {
-        type: Sequelize.STRING(20),
+        type: Sequelize.STRING(100),
         allowNull: false,
       },
       student_number: {
