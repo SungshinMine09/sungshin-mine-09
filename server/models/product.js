@@ -15,6 +15,8 @@ module.exports = (sequelize, Sequelize) => {
     {
       tableName: "product",
       timestamp: false,
+      charset: 'utf8',
+      collate: 'utf8_general_ci',
     }
   );
   return product;
