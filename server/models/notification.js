@@ -44,6 +44,8 @@ module.exports = (sequelize, Sequelize) => {
     {
       timestamps: true,
       tableName: "notifications",
+      charset: 'utf8',
+      collate: 'utf8_general_ci'
     }
   );
   return notification;
