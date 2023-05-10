@@ -31,6 +31,8 @@ module.exports = (sequelize, Sequelize) => {
     {
       tableName: "update_post",
       timestamp: false,
+      charset: 'utf8',
+      collate: 'utf8_general_ci'
     }
   );
   return update_post;
