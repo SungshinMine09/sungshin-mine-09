@@ -3,8 +3,10 @@ const express = require("express"),
   app = express(),
   layouts = require("express-ejs-layouts");
 
-const homeRouter = require("./routes/homeRoutes"),
-  errorRouter = require("./routes/errorRoutes");
+const homeRouter = require("./routes/homeRoutes");
+const userRouter = require("./routes/userRoutes");
+const CoBuyRoomRouter = require("./routes/CoBuyRoomRoutes");
+const errorRouter = require("./routes/errorRoutes");
 
 app.set("port", process.env.PORT || 80);
 app.set("view engine", "ejs");
@@ -21,12 +23,10 @@ app.use(express.json());
 // ------------------------## route ##---------------------------
 app.use("/", homeRouter);
 app.use("/index", homeRouter);
-app.use("/totalGonggu", homeRouter);
-app.use("/suyoStat", homeRouter);
-app.use("/LoginPage", homeRouter);
-app.use("/JoinPage_1", homeRouter);
-app.use("/JoinPage_2", homeRouter);
-app.use("/JoinPage_3", homeRouter);
+
+app.use("/user", userRouter);
+
+app.use("/CoBuyRoom", CoBuyRoomRouter);
 
 /* ##가이드
 1. 코드 흐름: main.js -> routes -> controller -> ...
