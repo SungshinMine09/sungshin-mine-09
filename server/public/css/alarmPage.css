@@ -1,13 +1,24 @@
 #alarmTitleBox {
     width: 151px; height: 54px;
     background-color: rgb(239, 220, 255);
+    margin-top: 42px;
+    color: rgb(119, 35, 155);
 }
 
-ul {
+#alarmPageUl{
     width: 1024px;
-    height: 480px;
+    height: 520px;
     overflow: scroll;
     overflow-x: hidden;
+    padding: 0;
+}
+
+#alarmPageUl li:first-child {
+    border-top: rgb(200, 200, 200) 2px solid;
+}
+
+#alarmPageUl li {
+    border-bottom: rgb(200, 200, 200) 2px solid; 
 }
 
 main>div:first-child {

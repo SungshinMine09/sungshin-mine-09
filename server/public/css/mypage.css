@@ -6,6 +6,7 @@ h1 {
     font-size: 36px;
     color: rgb(119, 35, 155);
     font-weight: bold;
+    margin: 42px 0 0 0;
 }
 
 h2 {
@@ -75,12 +76,16 @@ img {
     margin: 18px 20px 18px 12px;
 }
 
-li {
-    height: 96px;
-    border-bottom: rgb(200, 200, 200) 2px solid;
+.ulBoxes ul {
+    padding-left: 0;
 }
 
-li:first-child {
+.myPageLi {
+    height: 96px;
+    border-bottom: rgb(200, 200, 200) 2px solid; 
+}
+
+.myPageLi:first-child {
     border-top: rgb(200, 200, 200) 2px solid;
 }
 

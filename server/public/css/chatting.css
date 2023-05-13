@@ -3,7 +3,7 @@ main>div:first-child {
 }
 
 #chattingBox{
-    height: 342px; 
+    height: 272px; 
     overflow: scroll;
     overflow-x: hidden;
     background-color: rgb(240, 240, 240);
