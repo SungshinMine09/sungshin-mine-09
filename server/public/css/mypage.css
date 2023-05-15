@@ -114,17 +114,13 @@ input[type=radio] {
     box-shadow: none;
 }
 
-.ulBoxes > ul {
+.ulBoxes > div {
     display: none;
 }
 
-#participation:checked ~ div .ulBoxes ul:nth-child(1),
-#host:checked ~ div .ulBoxes ul:nth-child(2) {
+#participation:checked ~ div .ulBoxes div:nth-child(1),
+#host:checked ~ div .ulBoxes div:nth-child(2) {
     display: block;
-}
-
-#twoButtonsBox {
-    overflow: hidden;
 }
 
 #moreButton {
