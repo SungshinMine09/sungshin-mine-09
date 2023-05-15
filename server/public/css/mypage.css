@@ -118,8 +118,8 @@ input[type=radio] {
     display: none;
 }
 
-#participation:checked ~ div .ulBoxes div:nth-child(1),
-#host:checked ~ div .ulBoxes div:nth-child(2) {
+#participation:checked ~ .ulBoxes div:nth-child(1),
+#host:checked ~ .ulBoxes div:nth-child(2) {
     display: block;
 }
 
