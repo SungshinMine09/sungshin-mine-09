@@ -6,9 +6,10 @@ module.exports = (sequelize, Sequelize) => {
     {
       id: {
         type: Sequelize.INTEGER,
-        allowNull: false,
-        unique: true,
+        autoIncrement: true,
+        // unique: true,
         primaryKey: true,
+        allowNULL: true,
         comment: "DB에서 사용할 아이디",
       },
       login_id: {
