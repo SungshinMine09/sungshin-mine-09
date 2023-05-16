@@ -5,7 +5,7 @@ module.exports = (sequelize, Sequelize) => {
       id: {
         type: Sequelize.INTEGER,
         // allowNull: false,
-        autoIncreament: true,
+        autoIncrement: true,
         primaryKey: true,
       },
       chatroom_id: {
@@ -30,8 +30,8 @@ module.exports = (sequelize, Sequelize) => {
     {
       tableName: "chat_message",
       timestamps: true, //createAt활성화
-      charset: 'utf8',
-      collate: 'utf8_general_ci'
+      charset: "utf8",
+      collate: "utf8_general_ci",
     }
   );
   return chat_message;

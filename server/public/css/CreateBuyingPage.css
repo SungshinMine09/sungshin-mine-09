@@ -4,28 +4,34 @@
 
 .container {
   margin: 0 auto;
-  /* width: auto;
-  min-width: 1000px; */
+}
+
+.wrapper {
+  display: flex;
 }
 
 .left {
-  width: 50%;
-  height: 100%;
+  width: 48%;
+  /* height: 800px; */
+  /* position: absolute; */
   float: left;
   padding-left: 30px;
 }
+
 .verticalLine {
   height: 600px;
   border-right: 1px solid #000000;
   position: absolute;
-  right: 50%;
+  /* display: flex; */
+  left: 48%;
   margin-top: 40px;
 }
 
 .right {
-  margin-left: 50%;
-  height: 100%;
-  position: absolute;
+  /* margin-left: 48%; */
+  /* height: 800px; */
+  /* float: right;
+  position: absolute; */
   padding-left: 30px;
 }
 
@@ -33,7 +39,6 @@
   width: 300px;
   height: 54px;
 
-  display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
@@ -97,19 +102,21 @@
   font-size: 14px;
 }
 
-.createBtn {
+#createBtn {
+  overflow: auto;
   width: 192px;
   height: 32px;
 
   font-size: 15px;
   font-weight: bold;
 
-  background-color: rgb(119, 35, 155);
+  background-color: rgba(119, 35, 155, 1);
   color: rgb(239, 220, 255);
   border-radius: 4px;
   border-style: none;
 
-  position: absolute;
+  /* position: absolute; */
+  margin-left: 30%;
   margin-top: 20px;
   left: 30%;
 }
