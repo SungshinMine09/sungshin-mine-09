@@ -2,6 +2,12 @@ module.exports = {
     totalGonggu: (req, res) => {
       res.render("CoBuyRoom/totalGonggu");
     },
+    ingSuyo: (req, res) => {
+      res.render("CoBuyRoom/ingSuyo");
+    },
+    soonEnd: (req, res) => {
+      res.render("CoBuyRoom/soonEnd");
+    },
     suyoStat: (req, res) => {
       res.render("CoBuyRoom/suyoStat");
     },

@@ -2,6 +2,8 @@ const router = require("express").Router(),
   CoBuyRoomController = require("../controllers/CoBuyRoomController");
 
 router.get("/totalGonggu", CoBuyRoomController.totalGonggu);
+router.get("/ingSuyo", CoBuyRoomController.ingSuyo);
+router.get("/soonEnd", CoBuyRoomController.soonEnd);
 router.get("/suyoStat", CoBuyRoomController.suyoStat);
 router.get("/newPost", CoBuyRoomController.newPost);
 router.get("/detail", CoBuyRoomController.detail);
