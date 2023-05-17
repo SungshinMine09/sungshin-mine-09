@@ -1,14 +1,14 @@
 module.exports = {
-  makeForm: (req, res) => {
-    res.render("CoBuyForm/MakeFormPage");
+  depositFormMaker: (req, res) => {
+    res.render("CoBuyForm/depositForm");
   },
   depositFormSubmit: (req, res) => {
-    res.render("CoBuyForm/DepositFormSubmitPage");
+    res.render("CoBuyForm/depositFormSubmit");
   },
   showAccount: (req, res) => {
-    res.render("CoBuyForm/ShowAccountPage");
+    res.render("CoBuyForm/showAccount");
   },
   depositFormResult: (req, res) => {
-    res.render("CoBuyForm/DepositFormResultPage");
+    res.render("CoBuyForm/depositFormResult");
   },
 };
