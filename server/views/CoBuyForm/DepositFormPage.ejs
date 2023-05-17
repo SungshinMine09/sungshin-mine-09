@@ -4,10 +4,13 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/css/DepositForm.css" />
+    <link rel="stylesheet" href="/css/MakeForm.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Tilt+Neon&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Tilt+Neon&display=swap"
+      rel="stylesheet"
+    />
     <title>Document</title>
   </head>
   <body>
@@ -24,36 +27,17 @@
           <li class="adminBtn">입금폼 통계</li>
         </ul>
       </nav>
+      <div class="show"></div>
       <div class="formUnit">
         <div class="form-left">
           <button class="plusBtn">+</button>
         </div>
         <div class="form-right">
           <div class="formType">
-            <select name="formtypes">
-              <option value="long-text">주관식</option>
-              <option value="one">단일 선택형</option>
-            </select>
             <div>
-              <label for="formQuestion" />
-              <input type="text" id="formQuestion" />
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="formUnit">
-        <div class="form-left">
-          <button class="minusBtn">-</button>
-        </div>
-        <div class="form-right">
-          <div class="formType">
-            <select name="formtypes">
-              <option value="long-text">주관식</option>
-              <option value="one">단일 선택형</option>
-            </select>
-            <div>
-              <label for="formQuestion" />
-              <input type="text" id="formQuestion" />
+              <form class="question-form">
+                <input type="text" id="question-form" />
+              </form>
             </div>
           </div>
         </div>

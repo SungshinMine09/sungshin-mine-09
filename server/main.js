@@ -3,6 +3,25 @@ const express = require("express"),
   app = express(),
   layouts = require("express-ejs-layouts");
 
+const db = require("./models");
+const { sequelize } = require("./models");
+
+async function createAndLogUser() {
+  const user = await db.user.create({
+    login_id: "twenty",
+    password: "twenty",
+    student_number: "20202020",
+    phone_number: "010-7641-4328",
+  });
+  console.log(user);
+}
+
+db.sequelize
+  .sync({ force: true })
+  .then(() => console.log("Database OK"))
+  .then(createAndLogUser)
+  .catch((error) => console.error(error));
+
 const homeRouter = require("./routes/homeRoutes");
 const userRouter = require("./routes/userRoutes");
 const CoBuyRoomRouter = require("./routes/CoBuyRoomRoutes");

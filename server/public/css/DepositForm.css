@@ -93,6 +93,7 @@
 }
 
 .formUnit {
+  bottom: 0;
   width: 1120px;
   height: 95px;
   margin-top: 30px;
@@ -127,7 +128,7 @@
   height: 42px;
 }
 
-#formQuestion {
+#question-form {
   margin: 8px auto;
   width: 864px;
   height: 40px;
