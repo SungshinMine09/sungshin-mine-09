@@ -25,6 +25,7 @@ db.sequelize
 const homeRouter = require("./routes/homeRoutes");
 const userRouter = require("./routes/userRoutes");
 const CoBuyRoomRouter = require("./routes/CoBuyRoomRoutes");
+const formRouter = require("./routes/CoBuyFormRoutes");
 const errorRouter = require("./routes/errorRoutes");
 
 app.set("port", process.env.PORT || 80);
@@ -47,6 +48,7 @@ app.use("/user", userRouter);
 
 app.use("/CoBuyRoom", CoBuyRoomRouter);
 
+app.use("/form", formRouter);
 /* ##가이드
 1. 코드 흐름: main.js -> routes -> controller -> ...
 2. 코드 통일을 위해 router 반드시 거칠 것! main에서 controller 직접 사용하지 말 것!(불가피한 경우, 팀과 논의)
