@@ -14,10 +14,34 @@ module.exports = {
       }
     },
     ingSuyo: async (req, res) => {
-      res.render("CoBuyRoom/ingSuyo");
+      try {
+        data = await CoBuyRoom.findAll({
+          where: {
+            state: 'demand'
+          }
+        });
+        console.log(data);
+        res.render("CoBuyRoom/ingSuyo", {cobuyrooms: data});
+      } catch {
+        res.status(500).send({
+          message: err.message
+        });
+      }
     },
-    soonEnd: (req, res) => {
-      res.render("CoBuyRoom/soonEnd");
+    soonEnd: async (req, res) => {
+      try {
+        data = await CoBuyRoom.findAll({
+          where: {
+            state: 'deposit'
+          }
+        });
+        console.log(data);
+        res.render("CoBuyRoom/soonEnd", {cobuyrooms: data});
+      } catch {
+        res.status(500).send({
+          message: err.message
+        });
+      }
     },
     suyoStat: (req, res) => {
       res.render("CoBuyRoom/suyoStat");

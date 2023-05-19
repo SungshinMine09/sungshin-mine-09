@@ -25,34 +25,14 @@
     <div class="product_list">
       <div>
 
+        <% Array.from(cobuyrooms).forEach( cobuyroom => { %>
         <div>
           <a>
             <img class="product_img">
-            <p>남색 학잠</p>
+            <p><%= cobuyroom.title %></p>
           </a>
-        </div>
-
-        <div>
-          <a>
-            <img class="product_img">
-            <p>라즈베리 학잠</p>
-          </a>
-        </div>
-
-        <div>
-          <a>
-            <img class="product_img">
-            <p>컴퓨터공학과 과잠</p>
-          </a>
-        </div>
-
-        <div>
-          <a>
-            <img class="product_img">
-            <p>뽀룡이 학잠</p>
-          </a>
-        </div>
-        
+        </div>   
+        <% }); %>  
         
       </div>
     </div>
