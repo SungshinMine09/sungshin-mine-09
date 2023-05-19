@@ -1,8 +1,15 @@
 // -----------------## essential setting ##---------------------
 const express = require("express"),
+  db = require("./models/index"),
+  { sequelize } = require("./models"),
   app = express(),
   layouts = require("express-ejs-layouts");
 
+  db.sequelize
+  .sync() // 테이블이 없으면 테이블 생성, 있으면 nothing
+  .then(() => console.log("Database OK"))
+  .catch((error) => console.error(error));
+  
 const homeRouter = require("./routes/homeRoutes");
 const userRouter = require("./routes/userRoutes");
 const CoBuyRoomRouter = require("./routes/CoBuyRoomRoutes");

@@ -1,6 +1,17 @@
+const db = require("../models/index"),
+  Product = db.product;
+
 module.exports = {
-    totalGonggu: (req, res) => {
-      res.render("CoBuyRoom/totalGonggu");
+    totalGonggu: async (req, res) => {
+      try {
+        data = await Product.findAll();
+        console.log(data);
+        res.render("CoBuyRoom/totalGonggu", {products: data});
+      } catch {
+        res.status(500).send({
+          message: err.message
+        });
+      }
     },
     ingSuyo: (req, res) => {
       res.render("CoBuyRoom/ingSuyo");

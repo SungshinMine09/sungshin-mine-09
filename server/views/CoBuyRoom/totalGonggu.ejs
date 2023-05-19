@@ -25,34 +25,14 @@
     <div class="product_list">
       <div>
 
+        <% Object.keys(products).forEach( p => { %>
         <div>
           <a>
             <img class="product_img">
-            <p>남색 학잠</p>
+            <p><%= p.name %></p>
           </a>
         </div>
-
-        <div>
-          <a>
-            <img class="product_img">
-            <p>라즈베리 학잠</p>
-          </a>
-        </div>
-
-        <div>
-          <a>
-            <img class="product_img">
-            <p>컴퓨터공학과 과잠</p>
-          </a>
-        </div>
-
-        <div>
-          <a>
-            <img class="product_img">
-            <p>뽀룡이 학잠</p>
-          </a>
-        </div>
-        
+        <% }); %>
         
       </div>
     </div>
