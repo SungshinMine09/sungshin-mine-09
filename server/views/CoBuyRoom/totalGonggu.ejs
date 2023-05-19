@@ -25,11 +25,11 @@
     <div class="product_list">
       <div>
 
-        <% Object.keys(products).forEach( p => { %>
+        <% Array.from(products).forEach( product => { %>
         <div>
           <a>
             <img class="product_img">
-            <p><%= p.name %></p>
+            <p><%= product.name %></p>
           </a>
         </div>
         <% }); %>
