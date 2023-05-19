@@ -5,9 +5,10 @@ module.exports = {
     totalGonggu: async (req, res) => {
       try {
         data = await CoBuyRoom.findAll();
+        cntTotal = await CoBuyRoom.count();
         console.log(data);
-        res.render("CoBuyRoom/totalGonggu", {cobuyrooms: data});
-      } catch {
+        res.render("CoBuyRoom/totalGonggu", {cobuyrooms: data, count: cntTotal});
+      } catch(error) {
         res.status(500).send({
           message: err.message
         });
@@ -20,9 +21,14 @@ module.exports = {
             state: 'demand'
           }
         });
+        cntingSuyo = await CoBuyRoom.count({
+          where: {
+            state: 'demand'
+          }
+        });
         console.log(data);
-        res.render("CoBuyRoom/ingSuyo", {cobuyrooms: data});
-      } catch {
+        res.render("CoBuyRoom/ingSuyo", {cobuyrooms: data, count: cntingSuyo});
+      } catch(error) {
         res.status(500).send({
           message: err.message
         });
@@ -35,9 +41,14 @@ module.exports = {
             state: 'deposit'
           }
         });
+        cntsoonEnd = await CoBuyRoom.count({
+          where: {
+            state: 'deposit'
+          }
+        });
         console.log(data);
-        res.render("CoBuyRoom/soonEnd", {cobuyrooms: data});
-      } catch {
+        res.render("CoBuyRoom/soonEnd", {cobuyrooms: data, count: cntsoonEnd});
+      } catch(error) {
         res.status(500).send({
           message: err.message
         });
@@ -49,8 +60,17 @@ module.exports = {
     newPost: (req, res) => {
         res.render("CoBuyRoom/newpost");
       },
-    detail: (req, res) => {
-        res.render("CoBuyRoom/detail");
+    detail: async (req, res) => {
+        let CobuyroomID = req.params.id;
+        try {
+          let cobuyroom = await CoBuyRoom.findByPk(CobuyroomID);
+          res.render("CoBuyRoom/detail", {
+            cobuyroom: cobuyroom
+          });
+        } catch(error) {
+          console.log(`Error fetching cobuyroom by ID: ${error.message}`);
+          next(error);
+        };
       },
     createNewPost: (req, res) => {
         res.render("CoBuyRoom/createPost");
