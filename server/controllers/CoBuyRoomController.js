@@ -1,19 +1,19 @@
 const db = require("../models/index"),
-  Product = db.product;
+  CoBuyRoom = db.cobuying_room;
 
 module.exports = {
     totalGonggu: async (req, res) => {
       try {
-        data = await Product.findAll();
+        data = await CoBuyRoom.findAll();
         console.log(data);
-        res.render("CoBuyRoom/totalGonggu", {products: data});
+        res.render("CoBuyRoom/totalGonggu", {cobuyrooms: data});
       } catch {
         res.status(500).send({
           message: err.message
         });
       }
     },
-    ingSuyo: (req, res) => {
+    ingSuyo: async (req, res) => {
       res.render("CoBuyRoom/ingSuyo");
     },
     soonEnd: (req, res) => {
