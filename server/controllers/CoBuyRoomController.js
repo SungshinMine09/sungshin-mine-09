@@ -1,5 +1,8 @@
 const db = require("../models/index"),
-  CoBuyRoom = db.cobuying_room;
+  CoBuyRoom = db.cobuying_room, 
+  Sell = db.sell,
+  Product = db.product,
+  Image = db.image;
 
 module.exports = {
     totalGonggu: async (req, res) => {
@@ -61,11 +64,23 @@ module.exports = {
         res.render("CoBuyRoom/newpost");
       },
     detail: async (req, res) => {
-        let CobuyroomID = req.params.id;
         try {
-          let cobuyroom = await CoBuyRoom.findByPk(CobuyroomID);
+          CobuyroomID = req.params.id;
+          cobuyroom = await CoBuyRoom.findByPk(CobuyroomID);
+          sell = await Sell.findOne({
+            where: {
+              cobuying_room_id: CobuyroomID
+            }
+          })
+          product = await Product.findOne({
+            where: {
+              id: sell.product_id
+            }
+          })
           res.render("CoBuyRoom/detail", {
-            cobuyroom: cobuyroom
+            cobuyroom: cobuyroom,
+            sell: sell,
+            product: product
           });
         } catch(error) {
           console.log(`Error fetching cobuyroom by ID: ${error.message}`);

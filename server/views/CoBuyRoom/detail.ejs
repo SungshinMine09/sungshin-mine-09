@@ -38,8 +38,8 @@
         <img src="/images/temp.jpg" class="product_img" width="406" height="314">
           <br>
           <div>
-            <span class="fontSize18">과잠 1개당&nbsp;&nbsp;&nbsp;</span>
-            <span class="fontSize36 fontBold">43000원</span> <br>
+            <span class="fontSize18"><%= product.name %> 1개당&nbsp;&nbsp;&nbsp;</span>
+            <span class="fontSize36 fontBold"> <%= sell.price %>원 </span> <br>
           <button class="wantBtn BackgroundColorPurple ColorLightPurple" type="button">
           살래요👍</button> <br>
           
@@ -52,11 +52,7 @@
       <div class="product_detail">
         <p class="fontSize24 fontBold">상품 소개</p>
         <div class="product_content">
-          품에 안고 그들에게 밝은 길을 찾아 주며 그들을 행복스럽고 평화스러운 곳으로 인도하겠다는 커다란 이상을 품었기 때문이다
-          <br>
-          없는 사막이다 보이는 끝까지 찾아다녀도 목숨이 있는 때까지 방황하여도 보이는 것은 거친 모래뿐일 것이다 이상의 꽃이 없으면 쓸쓸한 인간에 남는 것은 영락과 부패 뿐이다 낙원을 장식하는 천자만홍이 어디 있으며 인생을 풍부하게 하는 온갖 과실이 어디 있으랴? 이상! 우리의 청춘이 가장 많이 품고
-          <br>
-          끝까지 찾아다녀도 목숨이 있는 때까지 방황하여도 보이는 것은 거친 모래뿐일 것이다 이상의 꽃이 없으면 쓸쓸한 인간에 남는 것은 영락과 부패 뿐이다 낙원을 장식하는 천자만홍이 어디 있으며 인생을 풍부하게
+          <%= cobuyroom.description %>
         </div>
         <div class="textCenter">
           <button class="createDepositFormBtn" type="button">입금폼 작성하기</button>
