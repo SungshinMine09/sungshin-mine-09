@@ -2,11 +2,10 @@ module.exports = (sequelize, Sequelize) => {
   const sell = sequelize.define(
     "sell",
     {
-      product_id: {
+      id: {
         type: Sequelize.INTEGER,
-        allowNull: false,
+        autoIncrement: true,
         primaryKey: true,
-        // autoIncrement: true,
         unique: true,
       },
       cobuying_room_id: {
@@ -27,6 +26,7 @@ module.exports = (sequelize, Sequelize) => {
         validate: {
           min: 1,
         },
+        // comment: "최소 주문 수량 / min_demand와 같다",
       },
       max_quantity: {
         type: Sequelize.INTEGER,
@@ -34,10 +34,10 @@ module.exports = (sequelize, Sequelize) => {
         validate: {
           min: 1,
         },
+        comment: "최대 주문 수량",
       },
       current_quantity: {
         type: Sequelize.INTEGER,
-        allowNull: false,
         defaultValue: 0,
         validate: {
           min: 0,
@@ -49,22 +49,21 @@ module.exports = (sequelize, Sequelize) => {
             }
           },
         },
+        // comment: "현재 주문 수량",
       },
       current_demand: {
         type: Sequelize.INTEGER,
-        allowNull: false,
-        validate: {
-          min: 1,
-        },
+        defaultValue: 0,
+        // comment: "현재 수요조사 인원",
       },
       min_demand: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        defaultValue: 0,
         validate: {
           min: 0,
         },
       },
+      // comment: "수요조사 최소 인원",
     },
     {
       tableName: "sell",

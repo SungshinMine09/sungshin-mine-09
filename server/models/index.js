@@ -57,21 +57,21 @@ db.sell.belongsTo(db.cobuying_room, {
 /* sell & product */
 // 1:1 하나의 상품에 대해 하나의 판매를 진행할 수 있다
 db.product.hasOne(db.sell, {
-  foreignKey: "product_id",
+  foreignKey: "id",
   sourceKey: "id",
 });
 db.sell.belongsTo(db.product, {
-  foreignKey: "product_id",
+  foreignKey: "id",
   sourceKey: "id",
 });
 /* product & image */
-// 1:N 하나의 상품에 대해 여러개의 이미지를 업로드 할 수 있다
-db.product.hasMany(db.image, {
-  foreignKey: "product_id",
+// 1:1 하나의 상품에 대해 여러개의 이미지를 업로드 할 수 있다
+db.product.hasOne(db.image, {
+  foreignKey: "id",
   sourceKey: "id",
 });
 db.image.belongsTo(db.product, {
-  foreignKey: "product_id",
+  foreignKey: "id",
   sourceKey: "id",
 });
 /* form_user & notification */

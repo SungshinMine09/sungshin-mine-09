@@ -6,24 +6,25 @@
   margin: 0 auto;
 }
 
-.wrapper {
+#roomForm {
   display: flex;
+  justify-content: center;
 }
 
 .left {
-  width: 48%;
+  width: 43%;
   /* height: 800px; */
   /* position: absolute; */
   float: left;
-  padding-left: 30px;
+  /* padding-left: 30px; */
 }
 
 .verticalLine {
   height: 600px;
   border-right: 1px solid #000000;
-  position: absolute;
+  /* left: 48%; */
+  /* position: absolute; */
   /* display: flex; */
-  left: 48%;
   margin-top: 40px;
 }
 
@@ -49,6 +50,7 @@
 
 .title p {
   font-size: 36px;
+  padding-top: 5px;
   color: rgb(119, 35, 155);
 }
 
@@ -98,8 +100,28 @@
 #inputIntroduce {
   width: 500px;
   height: 400px;
-
+  word-break: break-word;
   font-size: 14px;
+}
+
+.custom-inputImage {
+  margin-top: 10px;
+  margin-bottom: 10px;
+
+  font-size: 15px;
+}
+
+#inputImage::file-selector-button {
+  margin-right: 15px;
+  
+  border: none;
+  background: rgb(239, 220, 255);
+  color: rgba(119, 35, 155, 1);
+  
+  height: 25px;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 4px;
 }
 
 #createBtn {
@@ -112,11 +134,11 @@
 
   background-color: rgba(119, 35, 155, 1);
   color: rgb(239, 220, 255);
-  border-radius: 4px;
+  border-radius: 10px;
   border-style: none;
 
   /* position: absolute; */
-  margin-left: 30%;
-  margin-top: 20px;
-  left: 30%;
+  margin-left: 64%;
+  margin-top: -100px;
+  /* left: 30%; */
 }

@@ -5,6 +5,10 @@ const express = require("express"),
 
 const db = require("./models");
 const { sequelize } = require("./models");
+const bodyParser = require("body-parser");
+const morgan = require("morgan"); // npm i morgan
+
+app.use(morgan("dev")); // log every request to the console
 
 async function createAndLogUser() {
   const user = await db.user.create({
@@ -34,7 +38,8 @@ app.set("view engine", "ejs");
 app.use(express.static("public"));
 app.use(layouts);
 app.use(
-  express.urlencoded({
+  // express.urlencoded({
+  bodyParser.urlencoded({
     extended: false,
   })
 );
