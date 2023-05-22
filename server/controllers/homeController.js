@@ -11,7 +11,7 @@ module.exports = {
       hotGonggus = await CoBuyRoom.findAll({
         order: [ ['createdAt', 'DESC' ] ],
         limit: 2
-      })
+      });
       res.render("home/index", {newGonggus: newGonggus});
     } catch(error) {
       res.status(500).send({

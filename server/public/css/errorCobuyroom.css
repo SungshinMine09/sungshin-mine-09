@@ -1,0 +1,31 @@
+/* 홈페이지 배너 부분 */
+.errorCobuyroom{
+  text-align: center;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  width: 1200px;
+  margin: auto;
+}
+.errorCobuyroom div {
+  width: 500px;
+  height: 300px;
+  margin: auto;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  overflow: hidden;
+}
+.errorCobuyroom input {
+  width: 200px;
+  height: 51px;
+  border-radius: 4px;
+  font-size: 16px;
+  color: rgb(64, 64, 64);
+  background-color: rgb(233, 233, 233);
+  border: 0px;
+}
+.errorCobuyroom div img {
+  width: 100%;
+  height: 100%;
+  margin: auto;
+  object-fit: cover;
+}

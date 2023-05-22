@@ -83,8 +83,7 @@ module.exports = {
             product: product
           });
         } catch(error) {
-          console.log(`Error fetching cobuyroom by ID: ${error.message}`);
-          next(error);
+          res.render("CoBuyRoom/errorCobuyroom");
         };
       },
     createNewPost: (req, res) => {
