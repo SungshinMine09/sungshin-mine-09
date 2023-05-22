@@ -4,9 +4,10 @@ const router = require("express").Router(),
 router.get("/totalGonggu", CoBuyRoomController.totalGonggu);
 router.get("/ingSuyo", CoBuyRoomController.ingSuyo);
 router.get("/soonEnd", CoBuyRoomController.soonEnd);
+router.get("/totalGonggu/:id", CoBuyRoomController.detail); // 공구방 상세페이지
 router.get("/suyoStat", CoBuyRoomController.suyoStat);
 router.get("/newPost", CoBuyRoomController.newPost);
-router.get("/detail", CoBuyRoomController.detail);
+router.get("/detail", CoBuyRoomController.detail); // (테스트용) detail의 정확한 경로는 /totalGonggu/:id이므로 나중에 지우기
 router.get("/createNewPost", CoBuyRoomController.createNewPost);
 router.get("/createCoBuyRoom", CoBuyRoomController.createCoBuyRoom);
 router.get("/chatting", CoBuyRoomController.chatting);
