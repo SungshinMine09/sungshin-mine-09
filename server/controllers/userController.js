@@ -1,3 +1,6 @@
+const db=require("../models/index"),
+    Notification = db.notification;
+
 module.exports = {
     Login: (req, res) => {
       res.render("user/LoginPage");
@@ -14,8 +17,46 @@ module.exports = {
     myPage: (req, res) => {
       res.render("user/mypage");
     },
-    alarmPage: (req, res) => {
-      res.render("user/alarmPage");
+    alarmPage: async(req, res) => {
+      try {
+        data=await Notification.findAll();
+        console.log(data);
+        res.render("user/alarmPage", {notifications: data});
+      } catch {
+        res.status(500).send({
+          message: err.message
+        });
+      }  
+    },
+    coBuyRoomAlarm: async(req, res) => {
+      try {
+        data = await Notification.findAll({
+          where: {
+            type2: ['sell', 'deposit_form', 'update_post']
+          }
+        });
+        console.log(data);
+        res.render("user/coBuyRoomAlarm", {notifications: data});
+      } catch {
+        res.status(500).send({
+          message: err.message
+        });
+      }
+    },
+    chattingAlarm: async(req, res) => {
+      try {
+        data = await Notification.findAll({
+          where: {
+            type2: 'chat'
+          }
+        });
+        console.log(data);
+        res.render("user/chattingAlarm", {notifications: data});
+      } catch {
+        res.status(500).send({
+          message: err.message
+        });
+      }
     },
   };
   
