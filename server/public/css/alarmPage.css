@@ -55,4 +55,8 @@ img {
     -webkit-box-orient: vertical;
 }
 
+h2 {
+    cursor: pointer;
+}
+
 
