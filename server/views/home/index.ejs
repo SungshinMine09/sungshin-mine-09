@@ -27,33 +27,27 @@
     <div class="item">
       <div>
         <div>
+
+          <% Array.from(newGonggus).forEach( newGonggu => { %>
           <div>
-            <a>
+            <a href="<%= `/CoBuyRoom/totalGonggu/${newGonggu.id}` %>" style="text-decoration: none;">
               <img />
-              <p>라즈베리 학잠</p>
+              <p> <%= newGonggu.title %> </p>
             </a>
           </div>
-          <div>
-            <a>
-              <img />
-              <p>컴퓨터공학과 과잠</p>
-            </a>
-          </div>
+          <% }); %>
+          
         </div>
 
         <div>
+
           <div>
             <a>
               <img />
               <p>남색 학잠</p>
             </a>
           </div>
-          <div>
-            <a>
-              <img />
-              <p>뽀룡이 학잠</p>
-            </a>
-          </div>
+          
         </div>
       </div>
     </div>
