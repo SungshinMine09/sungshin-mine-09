@@ -30,7 +30,8 @@
 .newhot_button {
   width: 1200px;
   margin: auto;
-  margin-bottom: 30px;
+  margin-top: 30px;
+  margin-bottom: 20px;
 }
 .newhot_button ul {
   width:1039px;
