@@ -81,8 +81,12 @@ body {
 }
 
 /********** footer **********/
+#wrap {
+  min-height: calc(100% - 72px); /* footer 높이를 빼준다. */
+}
 footer {
   width: 1200px;
+  height: 72px;
   margin: auto;
 }
 footer nav {

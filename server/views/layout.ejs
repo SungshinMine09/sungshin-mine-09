@@ -13,31 +13,33 @@
   </head>
 
   <body>
-    <header class="container">
-      <h1><button>✨성신마인 09번지🔮</button></h1>
-      <h3><button>💜 수정이들만을 위한 공동구매 웹서비스 💜</button></h3>
-      <nav>
-        <ul>
-          <li><button onClick="location.href='/index'" style='cursor:pointer'>홈</button></li>
-          <li>
-            <button onClick="location.href='/CoBuyRoom/totalGonggu'" style='cursor:pointer'>공구방</button>
-          </li>
-          <li><button style='cursor:pointer'>FAQ</button></li>
-          <li class="navbutton">
-            <button onClick="location.href='/user/Login'" style='cursor:pointer'>로그인/회원가입</button>
-          </li>
-        </ul>
-      </nav>
-    </header>
-    <%- body %>
+    <div id="wrap">
+      <header class="container">
+        <h1><button>✨성신마인 09번지🔮</button></h1>
+        <h3><button>💜 수정이들만을 위한 공동구매 웹서비스 💜</button></h3>
+        <nav>
+          <ul>
+            <li><button onClick="location.href='/index'" style='cursor:pointer'>홈</button></li>
+            <li>
+              <button onClick="location.href='/CoBuyRoom/totalGonggu'" style='cursor:pointer'>공구방</button>
+            </li>
+            <li><button style='cursor:pointer'>FAQ</button></li>
+            <li class="navbutton">
+              <button onClick="location.href='/user/Login'" style='cursor:pointer'>로그인/회원가입</button>
+            </li>
+          </ul>
+        </nav>
+      </header>
+      <%- body %>
+    </div>
   </body>
 
   <footer>
     <nav>
       <ul>
-        <li><button>공지사항</button></li>
-        <li><button>이용안내</button></li>
-        <li><button>정책</button></li>
+        <li><button style='cursor:pointer'>공지사항</button></li>
+        <li><button style='cursor:pointer'>이용안내</button></li>
+        <li><button style='cursor:pointer'>정책</button></li>
         <li class="contact">문의 (10:00 ~ 17:00)<br />📞 000 - 0000 - 0000</li>
       </ul>
     </nav>
