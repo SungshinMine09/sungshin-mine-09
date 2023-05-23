@@ -8,15 +8,11 @@ module.exports = {
         order: [ ['createdAt', 'DESC'] ],
         limit: 2
       });
-      hotGonggus = await CoBuyRoom.findAll({
-        order: [ ['createdAt', 'DESC' ] ],
-        limit: 2
-      });
-      res.render("home/index", {newGonggus: newGonggus});
+      hotGonggus = await db.sequelize.query('select distinct a.*, count(`id`) as count from cobuying_room as a left join demand_user as b on a.`id`=b.`cobuying_room_id` group by a.`id` order by `count` DESC limit 2;');
+      console.log(hotGonggus); 
+      res.render("home/index", {newGonggus: newGonggus, hotGonggus: hotGonggus[0]});
     } catch(error) {
-      res.status(500).send({
-        message: err.message
-      });
+      console.log(error);
     }
   },
 };

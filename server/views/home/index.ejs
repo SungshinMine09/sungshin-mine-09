@@ -46,12 +46,14 @@
 
         <div>
 
+          <% Array.from(hotGonggus).forEach( hotGonggu => { %>
           <div>
-            <a>
+            <a href="<%= `/CoBuyRoom/totalGonggu/${hotGonggu.id}` %>" style="text-decoration: none;">
               <img />
-              <p>남색 학잠</p>
+              <p> <%= hotGonggu.title %> </p>
             </a>
           </div>
+          <% }); %>
           
         </div>
       </div>
