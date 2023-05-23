@@ -1,14 +1,12 @@
-// const { sequelize, Sequelize } = require(".");
-
 module.exports = (sequelize, Sequelize) => {
   const deposit_form = sequelize.define(
     "deposit_form",
     {
-      id: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        primaryKey: true,
-      },
+      // id: {
+      //   type: Sequelize.INTEGER,
+      //   allowNull: false,
+      //   primaryKey: true,
+      // },
       cobuying_room_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
@@ -16,12 +14,17 @@ module.exports = (sequelize, Sequelize) => {
       },
       descriription: {
         type: Sequelize.STRING(500),
-        allowNull: false,
+        // allowNull: false,
       },
-      // created_at: {
-      //   type: Sequelize.DATE,
-      //   allowNull: false,
-      // },
+      questions: {
+        type: Sequelize.STRING,
+        get: function () {
+          return JSON.parse(this.getDataValue("questions"));
+        },
+        set: function (value) {
+          return this.setDataValue("questions", value);
+        },
+      },
       end_at: {
         type: Sequelize.DATE,
         allowNull: false,
@@ -30,8 +33,8 @@ module.exports = (sequelize, Sequelize) => {
     {
       tableName: "deposit_form",
       timestamp: true,
-      charset: 'utf8',
-      collate: 'utf8_general_ci'
+      charset: "utf8",
+      collate: "utf8_general_ci",
     }
   );
   return deposit_form;

@@ -20,7 +20,8 @@ module.exports = {
     res.render("CoBuyRoom/suyoStat");
   },
   newPost: (req, res) => {
-    res.render("CoBuyRoom/newpost");
+    const newRoomId = req.params.room_id;
+    res.render(`CoBuyRoom/newpost`, { room_id: newRoomId });
   },
   detail: (req, res) => {
     res.render("CoBuyRoom/detail");
@@ -60,11 +61,12 @@ module.exports = {
         url: req.file.path,
         product_id: newProduct.id,
       });
+      req.url = `/CoBuyRoom/${newRoom.id}/newPost`;
+      res.redirect(req.url);
     } catch (error) {
       console.log(error);
+      res.redirect("/");
     }
-
-    res.redirect("/CoBuyRoom/newpost");
   },
 
   chatting: (req, res) => {

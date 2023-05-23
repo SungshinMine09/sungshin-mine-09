@@ -1,8 +1,11 @@
 const router = require("express").Router(),
   CoBuyFormController = require("../controllers/CoBuyFormController");
 
-router.get("/depositFormMaker", CoBuyFormController.depositFormMaker);
-router.post("/depositFormMaker", CoBuyFormController.depositFormMake);
+router.get("/:room_id/depositFormMaker", CoBuyFormController.depositFormMaker);
+router.post("/:room_id/depositFormMaker", CoBuyFormController.depositFormMake);
+// router.post("/depositFormMaker", CoBuyFormController.addQuestion);
+
+// router.post("/depositFormMaker", CoBuyFormController.depositFormMake);
 
 router.get("/depositFormSubmit", CoBuyFormController.depositFormSubmit);
 router.get("/showAccount", CoBuyFormController.showAccount);

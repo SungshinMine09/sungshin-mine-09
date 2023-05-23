@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/css/MakeForm.css" />
+    <link rel="stylesheet" href="/css/depositFormMaker.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -35,13 +35,18 @@
         <div class="form-right">
           <div class="formType">
             <div>
-              <form class="question-form">
-                <input type="text" id="question-form" />
+              <form
+                class="question-form"
+                action="http://localhost:80/CoBuyForm/depositFormMaker"
+                method="post"
+              >
+                <input type="text" id="question-form" name="question" />
               </form>
             </div>
           </div>
         </div>
       </div>
+      <!-- <button>submit</button> -->
     </div>
   </body>
 </html>

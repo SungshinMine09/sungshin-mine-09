@@ -7,7 +7,10 @@
     <link rel="stylesheet" href="/css/room.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&display=swap"
+      rel="stylesheet"
+    />
   </head>
 
   <body>
@@ -24,12 +27,30 @@
           <ul>
             <li><button class="message_type_button">새소식</button></li>
             <li><button class="message_type_button">채팅</button></li>
-            <li style="float: right"><button class="grey_s_button" style="margin-left: 5px">수요조사 통계</button></li>
-            <li style="float: right"><button class="grey_s_button" style="margin-left: 5px">입금폼 양식 작성</button></li>
-            <li style="float: right"><button class="grey_s_button" style="margin-left: 5px">입금폼 통계</button></li>
+            <li style="float: right">
+              <button class="grey_s_button" style="margin-left: 5px">
+                수요조사 통계
+              </button>
+            </li>
+            <li style="float: right">
+              <button
+                class="grey_s_button"
+                style="margin-left: 5px"
+                onclick="location.href='/CoBuyForm/<%= room_id %>/depositFormMaker'"
+              >
+                입금폼 양식 작성
+              </button>
+            </li>
+            <li style="float: right">
+              <button class="grey_s_button" style="margin-left: 5px">
+                입금폼 통계
+              </button>
+            </li>
           </ul>
           <ul>
-            <li><button class="light_purple_s_button">새소식 글쓰기</button></li>
+            <li>
+              <button class="light_purple_s_button">새소식 글쓰기</button>
+            </li>
           </ul>
         </nav>
       </div>

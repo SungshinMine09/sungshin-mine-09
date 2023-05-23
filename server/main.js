@@ -1,10 +1,10 @@
 // -----------------## essential setting ##---------------------
 const express = require("express"),
+  db = require("./models/index"),
+  { sequelize } = require("./models"),
   app = express(),
   layouts = require("express-ejs-layouts");
 
-const db = require("./models");
-const { sequelize } = require("./models");
 const bodyParser = require("body-parser");
 const morgan = require("morgan"); // npm i morgan
 
@@ -53,7 +53,7 @@ app.use("/user", userRouter);
 
 app.use("/CoBuyRoom", CoBuyRoomRouter);
 
-app.use("/form", formRouter);
+app.use("/CoBuyForm", formRouter);
 /* ##가이드
 1. 코드 흐름: main.js -> routes -> controller -> ...
 2. 코드 통일을 위해 router 반드시 거칠 것! main에서 controller 직접 사용하지 말 것!(불가피한 경우, 팀과 논의)
