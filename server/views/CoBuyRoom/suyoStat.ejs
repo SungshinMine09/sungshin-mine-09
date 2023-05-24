@@ -12,13 +12,14 @@
 
   <body>
     
-
+    <% Array.from(suyoStats).forEach( suyoStat => { %>
     <div class="gonggu_header">
       <div>
-        <p>💻컴퓨터공학과 과잠💻</p>
+        <p><%= suyoStat.title %></p>
         <button class="gonggu_delete_button">공동구매방 삭제하기</button>
       </div>
     </div>
+    <% }); %>
 
     <div class="gonggu_nav">
       <div>
@@ -37,31 +38,23 @@
       </div>
     </div>
 
-
     <div class="gonggu_suyo_stat">
 
+      <% Array.from(suyoStats).forEach( suyoStat => { %>
       <div class="image_text">
         <img>
-        <p>🎉수요조사 최소인원 달성🎉</p>
+        <% if (suyoStat.current_demand >= suyoStat.min_demand)  { %>
+          <p>🎉수요조사 최소인원 달성🎉</p>
+        <% } %>
       </div>
 
       <div>
         <ul>
-          <li>컴퓨터공학과 과잠</li>
-          <li><p>💜</p> <p style="color: rgb(142, 68, 173);">18명</p> <p style="font-size: 16px;"> / 12명</p> <p>💜</p></li>
+          <li><%= suyoStat.name %></li>
+          <li><p>💜</p> <p style="color: rgb(142, 68, 173);"><%= suyoStat.current_demand%></p> <p style="font-size: 16px;"> / <%= suyoStat.min_demand %></p> <p>💜</p></li>
         </ul>
       </div>
-    </div>
-   
+      <% }); %>
 
-    <div>
-      <div>
-
-      </div>
-    </div>
-    
-
-    
-
-  
+    </div>  
 </html>

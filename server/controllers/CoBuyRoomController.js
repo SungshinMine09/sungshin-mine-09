@@ -12,9 +12,7 @@ module.exports = {
         console.log(data);
         res.render("CoBuyRoom/totalGonggu", {cobuyrooms: data, count: cntTotal});
       } catch(error) {
-        res.status(500).send({
-          message: err.message
-        });
+        console.log(error);
       }
     },
     ingSuyo: async (req, res) => {
@@ -32,9 +30,7 @@ module.exports = {
         console.log(data);
         res.render("CoBuyRoom/ingSuyo", {cobuyrooms: data, count: cntingSuyo});
       } catch(error) {
-        res.status(500).send({
-          message: err.message
-        });
+        console.log(error);
       }
     },
     soonEnd: async (req, res) => {
@@ -52,13 +48,21 @@ module.exports = {
         console.log(data);
         res.render("CoBuyRoom/soonEnd", {cobuyrooms: data, count: cntsoonEnd});
       } catch(error) {
-        res.status(500).send({
-          message: err.message
-        });
+        console.log(error);
       }
     },
-    suyoStat: (req, res) => {
-      res.render("CoBuyRoom/suyoStat");
+    suyoStat: async (req, res) => {
+      try {
+        CobuyroomID = req.params.id
+        suyoStats = await db.sequelize.query('SELECT A.*, B.`name` FROM (SELECT A.`product_id`, A.`cobuying_room_id`, B.`title`, A.`current_demand`, A.`min_demand` FROM sell AS A LEFT JOIN cobuying_room AS B ON A.`cobuying_room_id`=B.`id`) AS A LEFT JOIN product AS B ON A.`product_id`=B.`id`;');
+        suyoStat = suyoStats[0].filter(it => it.cobuying_room_id == CobuyroomID);
+        productImages = await db.sequelize.query('SELECT A.cobuying_room_id, B.* FROM sell AS A LEFT JOIN image AS B ON A.product_id=B.product_id;');
+        productImage = productImages[0].filter(it => it.cobuying_room_id == CobuyroomID);
+        console.log(productImage);
+        res.render("CoBuyRoom/suyoStat", {suyoStats: suyoStat});
+      } catch(error) {
+        console.log(error);
+      }
     },
     newPost: (req, res) => {
         res.render("CoBuyRoom/newpost");
