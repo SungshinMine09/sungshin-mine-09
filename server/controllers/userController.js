@@ -1,3 +1,5 @@
+const notification = require("../models/notification");
+
 const db=require("../models/index"),
     Notification = db.notification;
 
@@ -19,43 +21,45 @@ module.exports = {
     },
     alarmPage: async(req, res) => {
       try {
-        data=await Notification.findAll();
-        console.log(data);
-        res.render("user/alarmPage", {notifications: data});
-      } catch {
-        res.status(500).send({
-          message: err.message
-        });
-      }  
-    },
-    coBuyRoomAlarm: async(req, res) => {
-      try {
-        data = await Notification.findAll({
+        //demandUserData=await DemandUser.findAll();
+        notificationData=await Notification.findAll({
           where: {
-            type2: ['sell', 'deposit_form', 'update_post']
+            receiver_id: 2  // 여기 '2' 자리에 user_id에 관한 게 들어가면 될 듯(아....마...도...?)
           }
         });
-        console.log(data);
-        res.render("user/coBuyRoomAlarm", {notifications: data});
-      } catch {
-        res.status(500).send({
-          message: err.message
+        // console.log(notificationData);
+        res.render("user/alarmPage", {notifications: notificationData});
+     } catch(error) {
+       console.log(error);
+     }  
+   },
+
+    coBuyRoomAlarm: async(req, res) => {
+      try {
+        notificationData2=await Notification.findAll({
+          where: {
+            receiver_id: 2,   // 여기 '2' 자리에 user_id에 관한 게 들어가면 될 듯
+            type2: ['sell', 'deposit_form', 'update_post']  
+          }
         });
+        console.log(notificationData2);
+        res.render("user/coBuyRoomAlarm", {notifications: notificationData2});
+      } catch(error) {
+        console.log(error);
       }
     },
     chattingAlarm: async(req, res) => {
       try {
-        data = await Notification.findAll({
+        notificationData3 = await Notification.findAll({
           where: {
+            receiver_id: 2,   // 여기 '2' 자리에 user_id에 관한 게 들어가면 될 듯
             type2: 'chat'
           }
         });
         console.log(data);
-        res.render("user/chattingAlarm", {notifications: data});
-      } catch {
-        res.status(500).send({
-          message: err.message
-        });
+        res.render("user/chattingAlarm", {notifications: notificationData3});
+      } catch(error) {
+        console.log(error);
       }
     },
   };
