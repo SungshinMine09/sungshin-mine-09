@@ -55,7 +55,7 @@ module.exports = {
       try {
         CobuyroomID = req.params.id
         suyoStats = await db.sequelize.query('SELECT A.*, B.`name` FROM (SELECT A.`product_id`, A.`cobuying_room_id`, B.`title`, A.`current_demand`, A.`min_demand` FROM sell AS A LEFT JOIN cobuying_room AS B ON A.`cobuying_room_id`=B.`id`) AS A LEFT JOIN product AS B ON A.`product_id`=B.`id`;');
-        let suyoStat = suyoStats[0].filter(it => it.cobuying_room_id == CobuyroomID);
+        suyoStat = suyoStats[0].filter(it => it.cobuying_room_id == CobuyroomID);
         console.log(suyoStat);
         res.render("CoBuyRoom/suyoStat", {suyoStats: suyoStat});
       } catch(error) {
