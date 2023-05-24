@@ -40,12 +40,14 @@
 
     <div class="gonggu_suyo_stat">
 
+      <% Array.from(suyoStats).forEach( suyoStat => { %>
       <div class="image_text">
         <img>
-        <p>🎉수요조사 최소인원 달성🎉</p>
+        <% if (suyoStat.current_demand >= suyoStat.min_demand)  { %>
+          <p>🎉수요조사 최소인원 달성🎉</p>
+        <% } %>
       </div>
 
-      <% Array.from(suyoStats).forEach( suyoStat => { %>
       <div>
         <ul>
           <li><%= suyoStat.name %></li>
