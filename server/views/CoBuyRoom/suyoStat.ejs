@@ -42,7 +42,7 @@
 
       <% Array.from(suyoStats).forEach( suyoStat => { %>
       <div class="image_text">
-        <img>
+        <img src="<%= `${suyoStat.real_url}` %>"/>
         <% if (suyoStat.current_demand >= suyoStat.min_demand)  { %>
           <p>🎉수요조사 최소인원 달성🎉</p>
         <% } %>

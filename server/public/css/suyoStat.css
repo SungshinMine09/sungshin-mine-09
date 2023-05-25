@@ -89,10 +89,12 @@
 
 .image_text {
   position: relative;
+  overflow: hidden;
 }
 .image_text img{
   width: 337px;
   height: 230px;
+  object-fit: cover;
 }
 .image_text p{
   position: absolute;

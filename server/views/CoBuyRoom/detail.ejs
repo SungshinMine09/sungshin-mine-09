@@ -13,7 +13,7 @@
   <body>
     <div class="gonggu_header">
       <div>
-        <p> <%= cobuyroom.title %> </p>
+        <p> <%= detail.title %> </p>
         <button class="gonggu_delete_button">공동구매방 삭제하기</button>
       </div>
     </div>
@@ -32,19 +32,19 @@
           </nav>
         </div>
       </div>
-      
+      <% Array.from(details).forEach( detail => { %>
       <div class="room_detail">
-      <div class="overview">
-        <img src="/images/temp.jpg" class="product_img" width="406" height="314">
+        <div class="overview">
+          <img src="<%= `${detail.real_url}` %>" class="product_img" width="406" height="314">
           <br>
           <div>
-            <span class="fontSize18"><%= product.name %> 1개당&nbsp;&nbsp;&nbsp;</span>
-            <span class="fontSize36 fontBold"> <%= sell.price %>원 </span> <br>
+            <span class="fontSize18"><%= detail.name %> 1개당&nbsp;&nbsp;&nbsp;</span>
+            <span class="fontSize36 fontBold"> <%= detail.price %>원 </span> <br>
           <button class="wantBtn BackgroundColorPurple ColorLightPurple" type="button">
           살래요👍</button> <br>
           
           <span class="fontSize15">
-          현재 50명의 수정이들이 이 제품을 갖고 싶어해요!
+          현재 <%=detail.current_demand%>명의 수정이들이 이 제품을 갖고 싶어해요!
           </span>
         </div>
       </div>
@@ -52,7 +52,7 @@
       <div class="product_detail">
         <p class="fontSize24 fontBold">상품 소개</p>
         <div class="product_content">
-          <%= cobuyroom.description %>
+          <%= detail.description %>
         </div>
         <div class="textCenter">
           <button class="createDepositFormBtn" type="button">입금폼 작성하기</button>
@@ -60,5 +60,6 @@
           <span class="fontSize15">입금폼 제출 마감일까지 2일 남았어요!</span>
         </div>
       </div>
+      <% }); %>
   </body>
 </html>

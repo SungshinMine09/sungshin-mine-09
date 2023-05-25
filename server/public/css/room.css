@@ -87,6 +87,10 @@ button {
   display: inline-block;
 }
 
+.overview img {
+  object-fit: cover;
+}
+
 .room_detail .product_detail {
   width: 400px;
   font-size: 16px;

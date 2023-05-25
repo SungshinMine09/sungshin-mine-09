@@ -35,7 +35,6 @@ module.exports = {
             state: 'deposit'
           }
         });
-        console.log(soonEnds);
         res.render("CoBuyRoom/soonEnd", {soonEnds: soonEnds[0], count: cntsoonEnd});
       } catch(error) {
         console.log(error);
@@ -44,11 +43,8 @@ module.exports = {
     suyoStat: async (req, res) => {
       try {
         CobuyroomID = req.params.id
-        suyoStats = await db.sequelize.query('SELECT A.*, B.`name` FROM (SELECT A.`product_id`, A.`cobuying_room_id`, B.`title`, A.`current_demand`, A.`min_demand` FROM sell AS A LEFT JOIN cobuying_room AS B ON A.`cobuying_room_id`=B.`id`) AS A LEFT JOIN product AS B ON A.`product_id`=B.`id`;');
+        suyoStats = await db.sequelize.query('SELECT A.*, B.*, replace(B.url, "../public", "") AS real_url FROM (SELECT A.*, B.`name` FROM (SELECT A.`product_id`, A.`cobuying_room_id`, B.`title`, A.`current_demand`, A.`min_demand` FROM sell AS A LEFT JOIN cobuying_room AS B ON A.`cobuying_room_id`=B.`id`) AS A LEFT JOIN product AS B ON A.`product_id`=B.`id`) AS A LEFT JOIN image AS B ON A.product_id=B.product_id;');
         suyoStat = suyoStats[0].filter(it => it.cobuying_room_id == CobuyroomID);
-        productImages = await db.sequelize.query('SELECT A.cobuying_room_id, B.* FROM sell AS A LEFT JOIN image AS B ON A.product_id=B.product_id;');
-        productImage = productImages[0].filter(it => it.cobuying_room_id == CobuyroomID);
-        console.log(productImage);
         res.render("CoBuyRoom/suyoStat", {suyoStats: suyoStat});
       } catch(error) {
         console.log(error);
@@ -60,22 +56,10 @@ module.exports = {
     detail: async (req, res) => {
         try {
           CobuyroomID = req.params.id;
-          cobuyroom = await CoBuyRoom.findByPk(CobuyroomID);
-          sell = await Sell.findOne({
-            where: {
-              cobuying_room_id: CobuyroomID
-            }
-          })
-          product = await Product.findOne({
-            where: {
-              id: sell.product_id
-            }
-          })
-          res.render("CoBuyRoom/detail", {
-            cobuyroom: cobuyroom,
-            sell: sell,
-            product: product
-          });
+          details = await db.sequelize.query('SELECT A.*, B.*, replace(B.url, "../public", "") AS real_url FROM (SELECT A.*, B.name FROM (SELECT A.product_id, A.cobuying_room_id, A.price, A.current_demand, B.description, B.title FROM sell AS A LEFT JOIN cobuying_room AS B ON A.cobuying_room_id=B.id) AS A LEFT JOIN product AS B ON A.product_id=B.id) AS A LEFT JOIN image AS B ON A.product_id=B.product_id;');
+          detail = details[0].filter(it => it.cobuying_room_id == CobuyroomID);
+          console.log(detail);
+          res.render("CoBuyRoom/detail", {details: detail});
         } catch(error) {
           res.render("CoBuyRoom/errorCobuyroom");
         };
