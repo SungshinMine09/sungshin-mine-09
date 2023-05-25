@@ -70,11 +70,13 @@
   display: inline-block;
 }
 .item div div div {
-  width:49%
+  width:49%;
+  overflow: hidden;
 }
 .item div div div a img {
   width: 250px;
-  height: 250px
+  height: 250px;
+  object-fit: cover;
 }
 .item div div div a p {
   text-align: center;
