@@ -25,11 +25,11 @@
     <div class="product_list">
       <div>
 
-        <% Array.from(cobuyrooms).forEach( cobuyroom => { %>
+        <% Array.from(ingSuyos).forEach( ingSuyo => { %>
         <div>
-          <a href="<%= `/CoBuyRoom/totalGonggu/${cobuyroom.id}` %>" style="text-decoration: none;">
-            <img class="product_img">
-            <p><%= cobuyroom.title %></p>
+          <a href="<%= `/CoBuyRoom/totalGonggu/${ingSuyo.id}` %>" style="text-decoration: none;">
+            <img class="product_img" src="<%= `${ingSuyo.real_url}` %>">
+            <p><%= ingSuyo.title %></p>
           </a>
         </div>   
         <% }); %>  

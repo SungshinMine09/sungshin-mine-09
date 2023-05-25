@@ -58,10 +58,12 @@
   margin-right: 7.5px;
   display: inline-block;
   justify-content: space-between;
+  overflow: hidden;
 }
 .product_img {
   width: 240px;
   height: 240px;
+  object-fit: cover;
 }
 .product_list div div a p {
   width: 240px;

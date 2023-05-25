@@ -7,46 +7,36 @@ const db = require("../models/index"),
 module.exports = {
     totalGonggu: async (req, res) => {
       try {
-        data = await CoBuyRoom.findAll();
+        totalGonggus = await db.sequelize.query('SELECT A.*, B.id, B.url, replace(B.url, "../public", "") AS real_url, b.createdAt, b.updatedAt FROM (SELECT A.*, B.name FROM (SELECT A.product_id, A.cobuying_room_id, B.title, A.current_demand FROM sell AS A LEFT JOIN cobuying_room AS B ON A.cobuying_room_id=B.id) AS A LEFT JOIN product AS B ON A.product_id=B.id) AS A LEFT JOIN image AS B ON A.product_id=B.product_id;');
         cntTotal = await CoBuyRoom.count();
-        console.log(data);
-        res.render("CoBuyRoom/totalGonggu", {cobuyrooms: data, count: cntTotal});
+        res.render("CoBuyRoom/totalGonggu", {totalGonggus: totalGonggus[0], count: cntTotal});
       } catch(error) {
         console.log(error);
       }
     },
     ingSuyo: async (req, res) => {
       try {
-        data = await CoBuyRoom.findAll({
-          where: {
-            state: 'demand'
-          }
-        });
+        ingSuyos = await db.sequelize.query('SELECT A.*, B.id, B.url, replace(B.url, "../public", "") AS real_url, b.createdAt, b.updatedAt FROM (SELECT A.*, B.name FROM (SELECT A.product_id, A.cobuying_room_id, B.title, A.current_demand FROM sell AS A LEFT JOIN cobuying_room AS B ON A.cobuying_room_id=B.id WHERE B.state="demand") AS A LEFT JOIN product AS B ON A.product_id=B.id) AS A LEFT JOIN image AS B ON A.product_id=B.product_id;');
         cntingSuyo = await CoBuyRoom.count({
           where: {
             state: 'demand'
           }
         });
-        console.log(data);
-        res.render("CoBuyRoom/ingSuyo", {cobuyrooms: data, count: cntingSuyo});
+        res.render("CoBuyRoom/ingSuyo", {ingSuyos: ingSuyos[0], count: cntingSuyo});
       } catch(error) {
         console.log(error);
       }
     },
     soonEnd: async (req, res) => {
       try {
-        data = await CoBuyRoom.findAll({
-          where: {
-            state: 'deposit'
-          }
-        });
+        soonEnds = await db.sequelize.query('SELECT A.*, B.id, B.url, replace(B.url, "../public", "") AS real_url, b.createdAt, b.updatedAt FROM (SELECT A.*, B.name FROM (SELECT A.product_id, A.cobuying_room_id, B.title, A.current_demand FROM sell AS A LEFT JOIN cobuying_room AS B ON A.cobuying_room_id=B.id WHERE B.state="deposit") AS A LEFT JOIN product AS B ON A.product_id=B.id) AS A LEFT JOIN image AS B ON A.product_id=B.product_id;');
         cntsoonEnd = await CoBuyRoom.count({
           where: {
             state: 'deposit'
           }
         });
-        console.log(data);
-        res.render("CoBuyRoom/soonEnd", {cobuyrooms: data, count: cntsoonEnd});
+        console.log(soonEnds);
+        res.render("CoBuyRoom/soonEnd", {soonEnds: soonEnds[0], count: cntsoonEnd});
       } catch(error) {
         console.log(error);
       }
