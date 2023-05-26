@@ -5,7 +5,8 @@
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node main.js"
+    "start": "node main.js",
+    "dev": "nodemon main.js"
   },
   "repository": {
     "type": "git",
@@ -27,5 +28,8 @@
     "mysql2": "^3.3.0",
     "sequelize": "^6.31.1",
     "sequelize-cli": "^6.6.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
   }
 }

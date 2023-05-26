@@ -1,105 +1,140 @@
-main>div:first-child {
-    width: 1102px;
+main > div:first-child {
+  width: 1102px;
 }
 
-#chattingBox{
-    height: 272px; 
-    overflow: scroll;
-    overflow-x: hidden;
-    background-color: rgb(240, 240, 240);
-    padding: 30px 40px 40px 40px;
-    box-shadow: 5px 5px 5px rgb(220, 220, 220);
+.gonggu_header {
+  width: 1200px;
+  margin: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.gonggu_header div {
+  width: 1119px;
+  height: 117px;
+  margin: auto;
+  background-color: rgb(239, 220, 255);
+  font-size: 28px;
+  color: rgb(142, 68, 173);
+  font-weight: bold;
+  text-align: center;
+}
+.gonggu_header div p {
+  padding-top: 39.7px;
+  margin: 0px;
+}
+.gonggu_delete_button {
+  float: right;
+  margin-right: 10px;
+  width: 134px;
+  height: 26px;
+  border-radius: 4px;
+  font-size: 12px;
+  color: rgb(64, 64, 64);
+  background-color: rgb(233, 233, 233);
+  border: 0px;
 }
 
-#chattingBox>div>div:first-child {
-    width: 60px; height: 60px;
-    border-radius: 100%;
-    overflow: hidden;
+#chattingBox {
+  height: 272px;
+  overflow: scroll;
+  overflow-x: hidden;
+  background-color: rgb(240, 240, 240);
+  padding: 30px 40px 40px 40px;
+  box-shadow: 5px 5px 5px rgb(220, 220, 220);
+}
+
+#chattingBox > div > div:first-child {
+  width: 60px;
+  height: 60px;
+  border-radius: 100%;
+  overflow: hidden;
 }
 
 img {
-    width: 100%; height: 100%;
-    object-fit: cover;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .messageBox {
-    position:relative;
-    display: inline-block;
-    max-width: 800px;
-    padding: 14px;
-    margin-top: 15px;
-    border-radius: 5px;
-    line-height: 24px;
+  position: relative;
+  display: inline-block;
+  max-width: 800px;
+  padding: 14px;
+  margin-top: 15px;
+  border-radius: 5px;
+  line-height: 24px;
 }
 
-.messageBox::before{
-    position: absolute;
-    display:block;
-    top:0;
-    font-size: 1.5rem;
+.messageBox::before {
+  position: absolute;
+  display: block;
+  top: 0;
+  font-size: 1.5rem;
 }
 
-.chattingFromYou .messageBox{
-    margin-left: 20px;
-    background-color: rgb(255, 255, 255);
+.chattingFromYou .messageBox {
+  margin-left: 20px;
+  background-color: rgb(255, 255, 255);
 }
 
-.chattingFromYou .messageBox::before{
-    left:-15px;
-    content:"◀";
-    color: rgb(255, 255, 255);
+.chattingFromYou .messageBox::before {
+  left: -15px;
+  content: "◀";
+  color: rgb(255, 255, 255);
 }
 
 .chattingFromYou .date {
-    margin-left: 20px;
+  margin-left: 20px;
 }
 
-.chattingFromMe{
-    flex-direction: row-reverse;
+.chattingFromMe {
+  flex-direction: row-reverse;
 }
 
-.chattingFromMe .messageBox{
-    margin-right: 20px;
-    background-color: rgb(0, 126, 255);
-    color: white;
+.chattingFromMe .messageBox {
+  margin-right: 20px;
+  background-color: rgb(0, 126, 255);
+  color: white;
 }
 
-.chattingFromMe .messageBox::before{
-    right:-15px;
-    content:"▶";
-    color: rgb(0, 126, 255);
+.chattingFromMe .messageBox::before {
+  right: -15px;
+  content: "▶";
+  color: rgb(0, 126, 255);
 }
 
 .chattingFromMe .date {
-    text-align: right;
-    margin-right: 20px;
+  text-align: right;
+  margin-right: 20px;
 }
 
 .date {
-    color: rgb(127, 140, 141);
+  color: rgb(127, 140, 141);
 }
 
 #message {
-    width: 960px;
-    height: 67px;
-    border: 1px solid rgb(220, 220, 220);
-    color: rgb(94, 94, 94);
-    padding-left: 15px;
+  width: 960px;
+  height: 67px;
+  border: 1px solid rgb(220, 220, 220);
+  color: rgb(94, 94, 94);
+  padding-left: 15px;
 }
 
 #message:focus {
-    outline: none;
+  outline: none;
 }
 
 #sendButton {
-    width:118px; height: 67px;
-    background-color: rgb(239, 220, 255);
-    color: rgb(142, 68, 173);
-    font-size: 20px;
-    font-weight:bold;
-    border: transparent;
+  width: 118px;
+  height: 67px;
+  background-color: rgb(239, 220, 255);
+  color: rgb(142, 68, 173);
+  font-size: 20px;
+  font-weight: bold;
+  border: transparent;
 }
 
-form>input {
-    border-radius: 5px;
+form > input {
+  border-radius: 5px;
 }

@@ -5,11 +5,11 @@ const express = require("express"),
   app = express(),
   layouts = require("express-ejs-layouts");
 
-  db.sequelize
+db.sequelize
   .sync() // 테이블이 없으면 테이블 생성, 있으면 nothing
   .then(() => console.log("Database OK"))
   .catch((error) => console.error(error));
-  
+
 const homeRouter = require("./routes/homeRoutes");
 const userRouter = require("./routes/userRoutes");
 const CoBuyRoomRouter = require("./routes/CoBuyRoomRoutes");

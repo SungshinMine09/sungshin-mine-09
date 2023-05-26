@@ -14,7 +14,7 @@ module.exports = (sequelize, Sequelize) => {
         allowNull: false,
         primaryKey: true,
       },
-      descriription: {
+      description: {
         type: Sequelize.STRING(500),
         allowNull: false,
       },
@@ -30,8 +30,8 @@ module.exports = (sequelize, Sequelize) => {
     {
       tableName: "deposit_form",
       timestamp: true,
-      charset: 'utf8',
-      collate: 'utf8_general_ci'
+      charset: "utf8",
+      collate: "utf8_general_ci",
     }
   );
   return deposit_form;
