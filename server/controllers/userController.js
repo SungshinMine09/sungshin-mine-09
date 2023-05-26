@@ -21,14 +21,11 @@ module.exports = {
     },
     alarmPage: async(req, res) => {
       try {
-        //demandUserData=await DemandUser.findAll();
-        notificationData=await Notification.findAll({
-          where: {
-            receiver_id: 2  // 여기 '2' 자리에 user_id에 관한 게 들어가면 될 듯(아....마...도...?)
-          }
-        });
-        // console.log(notificationData);
-        res.render("user/alarmPage", {notifications: notificationData});
+        notificationsJoinCobuyingRooms1 = await db.sequelize.query(
+          'SELECT * FROM notifications as a JOIN cobuying_room as b ON a.`cobuying_room_id`=b.`id` WHERE receiver_id=2 or host_id=2;'
+        );
+        notificationsJoinCobuyingRoom1 = notificationsJoinCobuyingRooms1[0];
+        res.render("user/alarmPage", {notifications: notificationsJoinCobuyingRoom1});
      } catch(error) {
        console.log(error);
      }  
@@ -36,28 +33,23 @@ module.exports = {
 
     coBuyRoomAlarm: async(req, res) => {
       try {
-        notificationData2=await Notification.findAll({
-          where: {
-            receiver_id: 2,   // 여기 '2' 자리에 user_id에 관한 게 들어가면 될 듯
-            type2: ['sell', 'deposit_form', 'update_post']  
-          }
-        });
-        console.log(notificationData2);
-        res.render("user/coBuyRoomAlarm", {notifications: notificationData2});
+        notificationsJoinCobuyingRooms2 = await db.sequelize.query(
+          "SELECT * FROM notifications as a JOIN cobuying_room as b ON a.`cobuying_room_id`=b.`id` WHERE (receiver_id=2 or host_id=2) and type2 != 'chat';"
+        );
+        notificationsJoinCobuyingRoom2 = notificationsJoinCobuyingRooms2[0];
+        res.render("user/coBuyRoomAlarm", {coBuyRoomNotifications: notificationsJoinCobuyingRoom2});
       } catch(error) {
         console.log(error);
       }
     },
+    
     chattingAlarm: async(req, res) => {
       try {
-        notificationData3 = await Notification.findAll({
-          where: {
-            receiver_id: 2,   // 여기 '2' 자리에 user_id에 관한 게 들어가면 될 듯
-            type2: 'chat'
-          }
-        });
-        console.log(data);
-        res.render("user/chattingAlarm", {notifications: notificationData3});
+        notificationsJoinCobuyingRooms3 = await db.sequelize.query(
+          "SELECT * FROM notifications as a JOIN cobuying_room as b ON a.`cobuying_room_id`=b.`id` WHERE (receiver_id=2 or host_id=2) and type2 = 'chat';"
+        );
+        notificationsJoinCobuyingRoom3 = notificationsJoinCobuyingRooms3[0];
+        res.render("user/chattingAlarm", {chattingNotifications: notificationsJoinCobuyingRoom3});
       } catch(error) {
         console.log(error);
       }
