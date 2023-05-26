@@ -89,6 +89,16 @@ module.exports = {
         next(error);
       });
   },
+  deleteCoBuyRoom: async (req, res, next) => {
+    const coBuyingRoomID = req.params.id;
+    //
+    // await CoBuyingRoom.destroy({
+    //   where: {
+    //     id: coBuyingRoomID,
+    //   },
+    // });
+    res.render("home/index");
+  },
   redirectView: (req, res, next) => {
     let redirectPath = res.locals.redirect;
     if (redirectPath !== undefined) res.redirect(redirectPath);

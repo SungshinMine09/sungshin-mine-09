@@ -1,6 +1,9 @@
+const homeController = require("../controllers/homeController");
+
 const router = require("express").Router(),
   CoBuyRoomController = require("../controllers/CoBuyRoomController"),
-  CoBuyRoomDetailController = require("../controllers/coBuyRoomDetailController"); // 상의 후 다현님 코드와 합치거나 할 것
+  CoBuyRoomDetailController = require("../controllers/coBuyRoomDetailController"), // 상의 후 다현님 코드와 합치거나 할 것
+  HomeController = require("../controllers/homeController");
 
 router.get("/totalGonggu", CoBuyRoomController.totalGonggu);
 router.get("/ingSuyo", CoBuyRoomController.ingSuyo);
@@ -22,9 +25,10 @@ router.get("/:id/newpost", CoBuyRoomDetailController.newpost);
 router.get("/:id/chatting", CoBuyRoomDetailController.chatting);
 
 router.get("/:id/updateCurrentDemand", CoBuyRoomDetailController.updateCurrentDemand, CoBuyRoomDetailController.redirectView);
+router.get("/:id/deleteCoBuyRoom", CoBuyRoomDetailController.deleteCoBuyRoom);
 
 router.get("/:id/CoBuyForm/depositResult", CoBuyRoomDetailController.depositResult);
 router.get("/:id/CoBuyForm/fillDepositForm", CoBuyRoomDetailController.fillDepositForm);
-// router.get("/:id/CoBuyForm/submitDepositForm", CoBuyRoomDetailController.submitDepositForm);
+router.get("/:id/CoBuyForm/submitDepositForm", CoBuyRoomDetailController.submitDepositForm);
 
 module.exports = router;
