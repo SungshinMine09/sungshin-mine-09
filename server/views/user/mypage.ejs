@@ -63,6 +63,27 @@
                                 <span class="purpleLetters">(5)</span>
                             </div>
                             <ul>
+                                <% Array.from(myParticipations).forEach(myParticipation => {
+                                    <li class="flex myPageLi">
+                                        <div><img src="imageExample.png" width="60px" height="60px"></div>
+                                        <div class="productInfo">
+                                            <div class="fontSize14">공동구매번호 000000</div>
+                                            <div class="productName"><%= myParticipation.title %></div>
+                                            <div class="statusLetters fontSize14">상태: 
+                                                <%if (myParticipation.state) == 'demand' %>
+                                                <span>수요조사 중</span>
+                                                <%if (myParticipation.state) == 'deposit'>
+                                                <span>입금 중(입금폼 제출 마감일 <%= %>)</span>
+                                                <%if (myParticipation.state) == 'delivery'%>
+                                                <span>배송 중</span>
+                                            </div>
+                                        </div>
+                                    </li>
+
+
+                                }) %>
+
+
                                 <li class="flex myPageLi">
                                     <div><img src="imageExample.png" width="60px" height="60px"></div>
                                     <div class="productInfo">
