@@ -27,7 +27,7 @@
 
         <% Array.from(ingSuyos).forEach( ingSuyo => { %>
         <div>
-          <a href="<%= `/CoBuyRoom/totalGonggu/${ingSuyo.id}` %>" style="text-decoration: none;">
+          <a href="<%= `/CoBuyRoom/${ingSuyo.id}` %>" style="text-decoration: none;">
             <img class="product_img" src="<%= `${ingSuyo.real_url}` %>">
             <p><%= ingSuyo.title %></p>
           </a>
