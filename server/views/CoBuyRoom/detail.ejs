@@ -11,6 +11,7 @@
   </head>
 
   <body>
+    <% Array.from(details).forEach( detail => { %>
     <div class="gonggu_header">
       <div>
         <p> <%= detail.title %> </p>
@@ -32,7 +33,7 @@
           </nav>
         </div>
       </div>
-      <% Array.from(details).forEach( detail => { %>
+      
       <div class="room_detail">
         <div class="overview">
           <img src="<%= `${detail.real_url}` %>" class="product_img" width="406" height="314">
@@ -60,6 +61,6 @@
           <span class="fontSize15">입금폼 제출 마감일까지 2일 남았어요!</span>
         </div>
       </div>
-      <% }); %>
+    <% }); %>
   </body>
 </html>
