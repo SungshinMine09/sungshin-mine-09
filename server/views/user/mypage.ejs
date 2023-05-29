@@ -67,7 +67,26 @@
                                     <li class="flex myPageLi">
                                         <div><img src="imageExample.png" width="60px" height="60px"></div>
                                         <div class="productInfo">
-                                            <div class="fontSize14">공동구매번호 000000</div>
+                                            <div class="fontSize14">공동구매번호 
+                                                <%if (myParticipation.cobuying_room_id >=0 & myParticipation.cobuying_room_id< 10) {%>
+                                                    <span>00000<%=myParticipation.cobuying_room_id%></span>
+                                                <%}%>
+                                                <%if (myParticipation.cobuying_room_id >=10 & myParticipation.cobuying_room_id < 100) {%>
+                                                    <span>0000<%=myParticipation.cobuying_room_id%></span>
+                                                <%}%>
+                                                <%if (myParticipation.cobuying_room_id >=100 & myParticipation.cobuying_room_id < 1000) {%>
+                                                    <span>000<%=myParticipation.cobuying_room_id%></span>
+                                                <%}%>
+                                                <%if (myParticipation.cobuying_room_id >=1000 & myParticipation.cobuying_room_id < 10000) {%>
+                                                    <span>00<%=myParticipation.cobuying_room_id%></span>
+                                                <%}%>
+                                                <%if (myParticipation.cobuying_room_id >=10000 & myParticipation.cobuying_room_id < 100000) {%>
+                                                    <span>0<%=myParticipation.cobuying_room_id%></span>
+                                                <%}%> 
+                                                <%if (myParticipation.cobuying_room_id >=100000 & myParticipation.cobuying_room_id < 1000000) {%>
+                                                    <span><%=myParticipation.cobuying_room_id%></span>
+                                                <%}%> 
+                                            </div>
                                             <div class="productName"><%= myParticipation.title %></div>
                                             <div class="statusLetters fontSize14">
                                                 <span>상태: </span>
@@ -102,7 +121,26 @@
                                     <li class="flex myPageLi">
                                         <div><img src="imageExample.png" width="60px" height="60px"></div>
                                         <div class="productInfo">
-                                            <div class="fontSize14">공동구매번호 000000</div>
+                                            <div class="fontSize14">공동구매번호 
+                                                <%if (myHost.cobuying_room_id >=0 & myHost.cobuying_room_id< 10) {%>
+                                                    <span>00000<%=myHost.cobuying_room_id%></span>
+                                                <%}%>
+                                                <%if (myHost.cobuying_room_id >=10 & myHost.cobuying_room_id < 100) {%>
+                                                    <span>0000<%=myHost.cobuying_room_id%></span>
+                                                <%}%>
+                                                <%if (myHost.cobuying_room_id >=100 & myHost.cobuying_room_id < 1000) {%>
+                                                    <span>000<%=myHost.cobuying_room_id%></span>
+                                                <%}%>
+                                                <%if (myHost.cobuying_room_id >=1000 & myHost.cobuying_room_id < 10000) {%>
+                                                    <span>00<%=myHost.cobuying_room_id%></span>
+                                                <%}%>
+                                                <%if (myHost.cobuying_room_id >=10000 & myHost.cobuying_room_id < 100000) {%>
+                                                    <span>0<%=myHost.cobuying_room_id%></span>
+                                                <%}%> 
+                                                <%if (myHost.cobuying_room_id >=100000 & myHost.cobuying_room_id < 1000000) {%>
+                                                    <span><%=myHost.cobuying_room_id%></span>
+                                                <%}%> 
+                                            </div>
                                             <div class="productName"><%= myHost.title %></div>
                                             <div class="statusLetters fontSize14">
                                                 <span>상태: </span>

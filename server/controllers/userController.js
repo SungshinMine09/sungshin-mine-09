@@ -20,7 +20,7 @@ module.exports = {
         //console.log(myParticipations);
         numOfMyParticipations = myParticipations.length;
 
-        myHosts = await db.sequelize.query("SELECT a.id, a.title, a.state, a.description, a.host_id, date_format(b.end_at, '%y-%m-%d') AS 'end_at' FROM cobuying_room AS a LEFT JOIN deposit_form AS b ON (a.`id` = b.`cobuying_room_id`) WHERE a.host_id = 2;");
+        myHosts = await db.sequelize.query("SELECT a.id as cobuying_room_id, a.title, a.state, a.description, a.host_id, date_format(b.end_at, '%y-%m-%d') AS 'end_at' FROM cobuying_room AS a LEFT JOIN deposit_form AS b ON (a.`id` = b.`cobuying_room_id`) WHERE a.host_id = 2;");
         myHosts=myHosts[0];
         //console.log(myHost);
         numOfMyHosts = myHosts.length;
