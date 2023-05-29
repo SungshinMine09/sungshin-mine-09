@@ -25,17 +25,17 @@
 }
 
 .accountBanner {
-  margin: 20px auto;
-  padding-top: 10px;
+  margin: 15px auto;
+
   width: 1024px;
   height: 100px;
-  background-color: rgb(250, 250, 250);
   box-shadow: rgba(0, 0, 0, 0.19) 0px 10pxs 20px,
     rgba(0, 0, 0, 0.23) 0px 6px 6px;
 
+  padding-top: 10px;
   white-space: nowrap;
-  justify-content: center;
   text-align: center;
+  align-items: center;
 }
 
 .accountBanner label {

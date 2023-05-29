@@ -1,6 +1,6 @@
 const db = require("../models/");
 const { sequelize } = require("../models");
-const answer = require("../models/answer");
+const CoBuyRoom = db.cobuying_room;
 const DepositForm = db.deposit_form;
 const Answer = db.answer;
 
@@ -9,7 +9,6 @@ const initForm = async (req, res) => {
   try {
     await DepositForm.create({
       id: newFormId,
-      description: "위 계좌에 입금해주세요🙏",
       next_questions_num: 3,
       questions: {
         1: "배송 받을 장소를 선택해주세요(현장수령/택배배송)",
@@ -28,7 +27,13 @@ module.exports = {
     const deposit_form = await DepositForm.findOne({
       where: { id: req.params.room_id },
     });
-    res.render("CoBuyForm/depositFormMaker", { deposit_form: deposit_form });
+    const cobuyroom = await CoBuyRoom.findOne({
+      where: { id: req.params.room_id },
+    });
+    res.render("CoBuyForm/depositFormMaker", {
+      deposit_form: deposit_form,
+      cobuying_room: cobuyroom,
+    });
   },
   //post
   add: async (req, res) => {

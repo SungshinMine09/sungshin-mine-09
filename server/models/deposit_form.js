@@ -18,6 +18,7 @@ module.exports = (sequelize, Sequelize) => {
       },
       next_questions_num: {
         type: Sequelize.INTEGER,
+        defaultValue: 1,
       },
       questions: {
         type: Sequelize.JSON,

@@ -15,7 +15,7 @@
   </head>
   <body>
     <div class="container">
-      <div class="banner"><p>💻컴퓨터공학과 과잠💻</p></div>
+      <div class="banner"><p><%= cobuying_room.title %></p></div>
       <nav class="navs">
         <ul class="nav-left">
           <li class="pageBtn">새소식</li>
@@ -27,29 +27,30 @@
           <li class="adminBtn">입금폼 통계</li>
         </ul>
       </nav>
-      <form
-        class="accountBanner"
-        id="accountForm"
-        action="/CoBuyForm/<%= deposit_form.id %>/saveAccount"
-        method="post"
-      >
-        <label for="inputAccount">표시될 계좌를 입력해주세요</label>
-        <input
-          type="text"
-          id="inputAccount"
-          name="account"
-          placeholder="<%= deposit_form.account %>"
-          required
-        />
-        <button
-          type="submit"
-          id="accountSaveBtn"
-          form="accountForm"
-          style="font-size: 20px"
+      <div class="accountBanner">
+        <form
+          id="accountForm"
+          action="/CoBuyForm/<%= deposit_form.id %>/saveAccount"
+          method="post"
         >
-          제출
-        </button>
-      </form>
+          <label for="inputAccount">표시될 계좌를 입력해주세요</label>
+          <input
+            type="text"
+            id="inputAccount"
+            name="account"
+            placeholder="<%= deposit_form.account %>"
+            required
+          />
+          <button
+            type="submit"
+            id="accountSaveBtn"
+            form="accountForm"
+            style="font-size: 20px"
+          >
+            제출
+          </button>
+        </form>
+      </div>
       <div class="show">
         <% for(var key in deposit_form.questions) { %>
         <div style="margin-top: 10px">
