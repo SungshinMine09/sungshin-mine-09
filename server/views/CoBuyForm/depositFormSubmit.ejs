@@ -27,24 +27,28 @@
           <li class="adminBtn">입금폼 양식 작성</li>
           <li class="adminBtn">입금폼 통계</li>
         </ul>
-        <div class="resultbox">
-          <div>
-            <div class="Question">
-              <p>Q1.</p>
-              학번을 입력해주세요 (예시: 20211234)
-            </div>
-          </div>
-          <label for="Answer"></label>
-          <input type="text" id="Answer" />
-          <div class="Question">
-            <p>Q2.</p>
-            이름을 입력해주세요 (예시: 김수룡)
-          </div>
-          <label for="Answer"></label>
-          <input type="text" id="Answer" />
-        </div>
-        <button class="submitBtn">제출</button>
       </nav>
+      <!-- TODO: get current USER -->
+      <form
+        id="answersForm"
+        action="/CoBuyForm/<%= deposit_form.id %>/submit/twenty"
+        method="post"
+      >
+        <div class="form_container">
+          <% for(var key in deposit_form.questions) { %>
+          <div class="Question">
+            <p><%= key %>. <%= deposit_form.questions[key] %></p>
+          </div>
+          <label for="<%= key %>"></label>
+          <input
+            type="text"
+            name="<%= key %>"
+            style="width: 700px; height: 32px; font-size: 20px"
+          />
+          <% } %>
+        </div>
+        <button id="submitBtn" type="submit" form="answersForm">제출</button>
+      </form>
     </div>
   </body>
 </html>

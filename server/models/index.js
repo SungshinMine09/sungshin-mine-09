@@ -133,7 +133,7 @@ db.deposit_form.belongsTo(db.cobuying_room, {
 // 1:N 하나의 form에 대해 여러개의 답변이 존재한다
 db.deposit_form.hasMany(db.answer, {
   sourceKey: "id",
-  foreignKey: "form_id",
+  foreignKey: "id",
 });
 // db.question.hasMany(db.answer, {
 //   foreignKey: "deposit_form_id",
@@ -145,7 +145,7 @@ db.deposit_form.hasMany(db.answer, {
 // });
 db.answer.belongsTo(db.deposit_form, {
   sourceKey: "id",
-  foreignKey: "form_id",
+  foreignKey: "id",
 });
 // db.answer.belongsTo(db.question, {
 //   foreignKey: "deposit_form_id",
@@ -158,11 +158,11 @@ db.answer.belongsTo(db.deposit_form, {
 /* form_user(user_id:cobuying_room_id) & deposit_form */
 // 1:N 하나의 입금폼에 여러명의 사용자가 응답한다.
 db.deposit_form.hasMany(db.form_user, {
-  foreignKey: "form_id",
+  foreignKey: "id",
   sourceKey: "id",
 });
 db.form_user.belongsTo(db.deposit_form, {
-  foreignKey: "form_id",
+  foreignKey: "id",
   sourceKey: "id",
 });
 /* cobuying_room & chatroom */

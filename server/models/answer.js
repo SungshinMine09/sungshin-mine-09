@@ -4,21 +4,6 @@ module.exports = (sequelize, Sequelize) => {
   const answer = sequelize.define(
     "answer",
     {
-      // answer: {
-      //   type: Sequelize.STRING(255),
-      //   allowNull: false,
-      //   primaryKey: true,
-      // },
-      // question_id: {
-      //   type: Sequelize.INTEGER,
-      //   allowNull: false,
-      //   primaryKey: true,
-      // },
-      // deposit_form_id: {
-      //   type: Sequelize.INTEGER,
-      //   allowNull: false,
-      //   primaryKey: true,
-      // },
       user_id: {
         type: Sequelize.STRING(20), // VARCHAR(20)
         allowNull: false,
@@ -30,12 +15,13 @@ module.exports = (sequelize, Sequelize) => {
         type: Sequelize.INTEGER,
         allowNull: false,
         primaryKey: true,
+        comment: "폼 아이디(공동구매방 아이디)",
       },
       answers: {
         type: Sequelize.JSON,
         validate: {
           isValidFormat(value) {
-            if (typeof value !== object) {
+            if (typeof value !== "object") {
               throw new Error("❌ INVALID answer format on save");
             }
           },

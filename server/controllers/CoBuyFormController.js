@@ -1,13 +1,15 @@
 const db = require("../models/");
 const { sequelize } = require("../models");
+const answer = require("../models/answer");
 const DepositForm = db.deposit_form;
+const Answer = db.answer;
 
 const initForm = async (req, res) => {
   const newFormId = req.params.room_id;
   try {
     await DepositForm.create({
       id: newFormId,
-      description: "입금폼 작성 후 다음 화면에서 보이는 계좌에 입금해주세요🙏",
+      description: "위 계좌에 입금해주세요🙏",
       next_questions_num: 3,
       questions: {
         1: "배송 받을 장소를 선택해주세요(현장수령/택배배송)",
@@ -29,8 +31,6 @@ module.exports = {
     res.render("CoBuyForm/depositFormMaker", { deposit_form: deposit_form });
   },
   //post
-  depositFormMake: async (req, res) => {},
-  //post
   add: async (req, res) => {
     const form_id = req.params.form_id;
     try {
@@ -43,7 +43,6 @@ module.exports = {
         const new_key = deposit_form
           .getDataValue("next_questions_num")
           .toString();
-        // const old_questions = deposit_form.getDataValue("questions");
 
         const new_questions = {
           ...deposit_form.questions,
@@ -66,7 +65,6 @@ module.exports = {
     const form_id = req.params.form_id;
     const key = req.query.key;
     const value = req.body.value;
-    console.log(`key: ${key} value: ${value} form_id: ${form_id}`);
     try {
       const deposit_form = await DepositForm.findOne({
         where: { id: form_id },
@@ -89,6 +87,7 @@ module.exports = {
       console.log(error);
     }
   },
+
   delete: async (req, res) => {
     const form_id = req.params.form_id;
     const key = req.query.key;
@@ -96,18 +95,29 @@ module.exports = {
       const deposit_form = await DepositForm.findOne({
         where: { id: form_id },
       });
-      const new_questions = {
-        ...deposit_form.questions,
-      };
-      delete new_questions[key];
-      deposit_form.setDataValue("questions", new_questions);
+
+      let new_questions = {};
+
+      const new_next_questions_num = deposit_form.next_questions_num - 1;
+      console.log(`new_next_questions_num: ${new_next_questions_num}`);
+      for (let i = 1, j = 1; i < deposit_form.next_questions_num; i++) {
+        if (i != Number(key)) {
+          new_questions[j] = deposit_form.questions[i];
+          j++;
+        }
+      }
+      await deposit_form.update({ questions: new_questions });
+      deposit_form.setDataValue("next_questions_num", new_next_questions_num);
       await deposit_form.save();
-      res.render("CoBuyForm/depositFormMaker", { deposit_form: deposit_form });
+      return res.render("CoBuyForm/depositFormMaker", {
+        deposit_form: deposit_form,
+      });
     } catch (error) {
       console.log(error);
+      return res.status(500).send("❌ DELETE error");
     }
-    res.render(`CoBuyRoom/${form_id}/newPost`);
   },
+
   //post
   saveAccount: async (req, res) => {
     const account = req.body.account;
@@ -125,13 +135,73 @@ module.exports = {
       res.render("/");
     }
   },
-  depositFormSubmit: (req, res) => {
-    res.render("CoBuyForm/depositFormSubmit");
+  writeForm: async (req, res) => {
+    const form_id = req.params.form_id;
+    try {
+      const deposit_form = await DepositForm.findOne({
+        where: { id: form_id },
+      });
+      res.render("CoBuyForm/depositFormSubmit", { deposit_form: deposit_form });
+    } catch (error) {
+      console.log(error);
+      res.redirect(`/CoBuyRoom/${form_id}/newPost`);
+    }
   },
-  showAccount: (req, res) => {
-    res.render("CoBuyForm/showAccount");
+  // TODO: get current USER
+  submit: async (req, res) => {
+    const form_id = req.params.form_id;
+    const user_id = req.params.user_id;
+    const answerJSON = req.body;
+
+    try {
+      const deposit_form = await DepositForm.findOne({
+        where: { id: form_id },
+      });
+      let new_answer;
+      if (deposit_form && answerJSON) {
+        new_answer = await Answer.create({
+          user_id: user_id,
+          id: form_id,
+          answers: answerJSON,
+        });
+        res.redirect(`/CoBuyForm/${form_id}/showAccount`);
+      }
+    } catch (error) {
+      console.log(error);
+      res.redirect(`/CoBuyRoom/${form_id}/newPost`);
+    }
   },
-  depositFormResult: (req, res) => {
-    res.render("CoBuyForm/depositFormResult");
+  showAccount: async (req, res) => {
+    const form_id = req.params.form_id;
+    try {
+      const deposit_form = await DepositForm.findOne({
+        where: { id: form_id },
+      });
+      res.render("CoBuyForm/showAccount", { deposit_form: deposit_form });
+    } catch (error) {
+      console.log(error);
+      res.redirect(`/CoBuyRoom/${form_id}/newPost`);
+    }
+  },
+  depositFormResult: async (req, res) => {
+    const form_id = req.params.form_id;
+
+    try {
+      const deposit_form = await DepositForm.findOne({
+        where: { id: form_id },
+      });
+      const answers = await Answer.findAll({
+        where: {
+          id: form_id,
+        },
+      });
+      console.log(answers);
+      res.render("CoBuyForm/depositFormResult", {
+        deposit_form: deposit_form,
+        answers: answers,
+      });
+    } catch (error) {
+      console.log(error);
+    }
   },
 };

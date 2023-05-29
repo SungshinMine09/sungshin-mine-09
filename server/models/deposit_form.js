@@ -13,7 +13,7 @@ module.exports = (sequelize, Sequelize) => {
         primaryKey: true,
       },
       description: {
-        type: Sequelize.TEXT,
+        type: Sequelize.STRING,
         // allowNull: false,
       },
       next_questions_num: {

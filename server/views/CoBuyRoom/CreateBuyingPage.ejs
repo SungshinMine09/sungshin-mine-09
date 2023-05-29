@@ -17,7 +17,7 @@
     <div class="container">
       <form
         id="roomForm"
-        action="http://localhost:80/CoBuyRoom/createCoBuyRoom"
+        action="/CoBuyRoom/createCoBuyRoom"
         method="post"
         enctype="multipart/form-data"
       >
@@ -79,7 +79,13 @@
             참여자들에게 나의 공동구매를 어필해보세요!
           </div>
           <div class="custom-inputImage">
-            <input type="file" name="roomImg" id="inputImage" accept='image/*' required>
+            <input
+              type="file"
+              name="roomImg"
+              id="inputImage"
+              accept="image/*"
+              required
+            />
           </div>
           <div>
             <label for="inputIntroduce"></label>

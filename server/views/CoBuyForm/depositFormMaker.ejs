@@ -30,7 +30,7 @@
       <form
         class="accountBanner"
         id="accountForm"
-        action="http://localhost:80/CoBuyForm/<%= deposit_form.id %>/saveAccount"
+        action="/CoBuyForm/<%= deposit_form.id %>/saveAccount"
         method="post"
       >
         <label for="inputAccount">표시될 계좌를 입력해주세요</label>
@@ -52,11 +52,11 @@
       </form>
       <div class="show">
         <% for(var key in deposit_form.questions) { %>
-        <form
-          action="/CoBuyForm/<%= deposit_form.id %>/edit?key=<%= key %>"
-          method="POST"
-        >
-          <div style="margin-top: 10px">
+        <div style="margin-top: 10px">
+          <form
+            action="/CoBuyForm/<%= deposit_form.id %>/edit?key=<%= key %>"
+            method="POST"
+          >
             <span style="padding-left: 20px"><%= key %>.</span>
             <input
               id="newQuestion"
@@ -65,14 +65,15 @@
             />
 
             <button id="edit" type="submit">수정</button>
-            <button
-              id="delete"
-              onclick="location.href='/CoBuyForm/<%= deposit_form.id %>/delete?key=<%= key %>'"
-            >
-              삭제
-            </button>
-          </div>
-        </form>
+          </form>
+          <form
+            action="/CoBuyForm/<%= deposit_form.id %>/delete?key=<%= key %>"
+            method="POST"
+            id="deleteForm"
+          >
+            <button type="submit" form="deleteForm">삭제</button>
+          </form>
+        </div>
         <% } %>
       </div>
       <div class="formUnit">
