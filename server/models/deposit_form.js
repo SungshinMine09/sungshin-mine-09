@@ -7,34 +7,56 @@ module.exports = (sequelize, Sequelize) => {
       //   allowNull: false,
       //   primaryKey: true,
       // },
-      cobuying_room_id: {
+      id: {
         type: Sequelize.INTEGER,
         allowNull: false,
         primaryKey: true,
       },
-      descriription: {
-        type: Sequelize.STRING(500),
+      description: {
+        type: Sequelize.TEXT,
         // allowNull: false,
       },
+      next_questions_num: {
+        type: Sequelize.INTEGER,
+      },
       questions: {
+        type: Sequelize.JSON,
+      },
+      account: {
         type: Sequelize.STRING,
+        comment: "판매자 계좌",
+      },
+      created_at: {
+        type: Sequelize.DATE,
+        defaultValue: new Date(),
         get: function () {
-          return JSON.parse(this.getDataValue("questions"));
-        },
-        set: function (value) {
-          return this.setDataValue("questions", value);
+          return moment(this.getDataValue("created_at")).format(
+            "DD/MM/YYYY h:mm:ss"
+          );
         },
       },
       end_at: {
         type: Sequelize.DATE,
-        allowNull: false,
+        defaultValue: new Date(Date.now() + 14 * 24 * 60 * 60 * 1000),
+        get: function () {
+          return moment(this.getDataValue("end_at")).format(
+            "DD/MM/YYYY h:mm:ss"
+          );
+        },
       },
     },
     {
       tableName: "deposit_form",
-      timestamp: true,
-      charset: "utf8",
-      collate: "utf8_general_ci",
+      timestamp: false,
+      // If don't want createdAt
+      createdAt: false,
+
+      // If don't want updatedAt
+      updatedAt: false,
+      charset: "utf8mb4",
+      collate: "utf8mb4_unicode_ci",
+      // charset: "utf8",
+      // collate: "utf8_unicode_ci",
     }
   );
   return deposit_form;

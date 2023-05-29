@@ -26,7 +26,7 @@ module.exports = (sequelize, Sequelize) => {
         comment: "로그인 아이디",
         primaryKey: true,
       },
-      cobuying_room_id: {
+      id: {
         type: Sequelize.INTEGER,
         allowNull: false,
         primaryKey: true,
@@ -38,15 +38,15 @@ module.exports = (sequelize, Sequelize) => {
             if (typeof value !== object) {
               throw new Error("❌ INVALID answer format on save");
             }
-          }
-        }
+          },
+        },
       },
     },
     {
       tableName: "answer",
       timestamps: false,
-      charset: 'utf8',
-      collate: 'utf8_general_ci'
+      charset: "utf8",
+      collate: "utf8_general_ci",
     }
   );
   return answer;

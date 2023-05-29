@@ -10,7 +10,7 @@ module.exports = (sequelize, Sequelize) => {
         unique: true,
         primaryKey: true,
       },
-      cobuying_room_id: {
+      form_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
         primaryKey: true,

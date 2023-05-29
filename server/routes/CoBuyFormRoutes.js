@@ -3,7 +3,10 @@ const router = require("express").Router(),
 
 router.get("/:room_id/depositFormMaker", CoBuyFormController.depositFormMaker);
 router.post("/:room_id/depositFormMaker", CoBuyFormController.depositFormMake);
-// router.post("/depositFormMaker", CoBuyFormController.addQuestion);
+router.post("/:form_id/edit", CoBuyFormController.edit);
+router.post("/:form_id/add", CoBuyFormController.add);
+router.get("/:form_id/delete", CoBuyFormController.delete);
+router.post("/:room_id/saveAccount", CoBuyFormController.saveAccount);
 
 // router.post("/depositFormMaker", CoBuyFormController.depositFormMake);
 

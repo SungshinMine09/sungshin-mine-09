@@ -113,11 +113,11 @@
 
 #inputImage::file-selector-button {
   margin-right: 15px;
-  
+
   border: none;
   background: rgb(239, 220, 255);
   color: rgba(119, 35, 155, 1);
-  
+
   height: 25px;
   font-weight: bold;
   cursor: pointer;

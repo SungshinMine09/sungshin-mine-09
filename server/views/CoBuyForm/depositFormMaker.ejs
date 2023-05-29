@@ -27,26 +27,82 @@
           <li class="adminBtn">입금폼 통계</li>
         </ul>
       </nav>
-      <div class="show"></div>
-      <div class="formUnit">
-        <div class="form-left">
-          <button class="plusBtn">+</button>
-        </div>
-        <div class="form-right">
-          <div class="formType">
-            <div>
-              <form
-                class="question-form"
-                action="http://localhost:80/CoBuyForm/depositFormMaker"
-                method="post"
-              >
-                <input type="text" id="question-form" name="question" />
-              </form>
-            </div>
+      <form
+        class="accountBanner"
+        id="accountForm"
+        action="http://localhost:80/CoBuyForm/<%= deposit_form.id %>/saveAccount"
+        method="post"
+      >
+        <label for="inputAccount">표시될 계좌를 입력해주세요</label>
+        <input
+          type="text"
+          id="inputAccount"
+          name="account"
+          placeholder="<%= deposit_form.account %>"
+          required
+        />
+        <button
+          type="submit"
+          id="accountSaveBtn"
+          form="accountForm"
+          style="font-size: 20px"
+        >
+          제출
+        </button>
+      </form>
+      <div class="show">
+        <% for(var key in deposit_form.questions) { %>
+        <form
+          action="/CoBuyForm/<%= deposit_form.id %>/edit?key=<%= key %>"
+          method="POST"
+        >
+          <div style="margin-top: 10px">
+            <span style="padding-left: 20px"><%= key %>.</span>
+            <input
+              id="newQuestion"
+              placeholder="<%= deposit_form.questions[key] %>"
+              name="value"
+            />
+
+            <button id="edit" type="submit">수정</button>
+            <button
+              id="delete"
+              onclick="location.href='/CoBuyForm/<%= deposit_form.id %>/delete?key=<%= key %>'"
+            >
+              삭제
+            </button>
           </div>
+        </form>
+        <% } %>
+      </div>
+      <div class="formUnit">
+        <div class="formContainer">
+          <form
+            id="question-form"
+            action="/CoBuyForm/<%= deposit_form.id %>/add"
+            method="post"
+          >
+            <input
+              type="text"
+              id="question-input"
+              name="question"
+              placeholder="질문을 입력해주세요"
+              required
+            />
+            <button type="submit" class="plusBtn" form="question-form">
+              +
+            </button>
+          </form>
         </div>
       </div>
-      <!-- <button>submit</button> -->
+      <div style="text-align: center">
+        <button
+          id="completeBtn"
+          onclick="location.href='/CoBuyRoom/<%= deposit_form.id %>/newPost'"
+        >
+          입금폼 작성완료
+        </button>
+      </div>
     </div>
   </body>
 </html>

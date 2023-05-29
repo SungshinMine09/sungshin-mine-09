@@ -24,15 +24,87 @@
   color: rgb(119, 35, 155);
 }
 
+.accountBanner {
+  margin: 20px auto;
+  padding-top: 10px;
+  width: 1024px;
+  height: 100px;
+  background-color: rgb(250, 250, 250);
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10pxs 20px,
+    rgba(0, 0, 0, 0.23) 0px 6px 6px;
+
+  white-space: nowrap;
+  justify-content: center;
+  text-align: center;
+}
+
+.accountBanner label {
+  position: absolute;
+  font-size: 25px;
+  padding-left: 100px;
+}
+
+#inputAccount {
+  width: 500px;
+  height: 40px;
+  font-size: 20px;
+  border: 0;
+  border-radius: 15px;
+  outline: none;
+  padding-left: 10px;
+  background-color: rgb(233, 233, 233);
+  margin-top: 50px;
+  vertical-align: middle;
+}
+
+.accountBanner button {
+  margin-top: 50px;
+  vertical-align: middle;
+  height: 40px;
+  font-size: 25px;
+}
+/* 문항 게시 */
+.show {
+  margin: 0 auto;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-right: 10px;
+  width: 1024px;
+  background-color: rgb(250, 250, 250);
+  font-size: 20px;
+}
+
+#newQuestion {
+  height: 40px;
+  width: 800px;
+
+  font-size: 15px;
+  background-color: #fcfcfc;
+  border: 0;
+  border-bottom: 2px solid lightgrey;
+  padding: 10px;
+}
+
+#edit {
+  /* float: right; */
+  border: 2px solid lightgrey;
+  width: 50px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+#delete {
+  /* float: right; */
+  border: 2px solid lightgrey;
+  width: 50px;
+  /* margin-right: 40px; */
+}
+
 .navs {
   width: 1120px;
   height: 51px;
 
-  /* display: block; */
-  /* background-color: azure; */
   color: black;
-
-  /* margin-bottom: 65px; */
   margin: auto;
 }
 
@@ -73,13 +145,13 @@
 }
 
 .plusBtn {
-  margin-top: 8px;
+  /* margin-top: 20px; */
   width: 30px;
   height: 30px;
   background-color: rgb(233, 233, 233);
   cursor: ponter;
   border: none;
-
+  vertical-align: middle;
   font-size: 28px;
 }
 
@@ -94,43 +166,42 @@
 }
 
 .formUnit {
-  bottom: 0;
   width: 1120px;
   height: 95px;
   margin-top: 30px;
-  margin-left: auto;
-  margin-right: auto;
-  display: flex;
-  /* display: inline-block; */
+  margin: 0 auto;
 }
 
-.form-left {
-  align-items: flex-start;
-  height: 100%;
-  width: 60px;
-  /* background-color: grey; */
-  display: flex;
-  justify-content: center;
-  margin-left: 40px;
+.formContainer {
+  text-align: center;
+  margin: 0 auto;
 }
 
-.form-right {
-  align-items: flex-end;
-  height: 100%;
-  width: 980px;
-}
-
-.formType {
-  width: 100%;
-}
-
-.formType select {
-  width: 870px;
-  height: 42px;
-}
-
-#question-form {
-  margin: 8px auto;
+#question-input {
+  /* margin: 8px auto; */
   width: 864px;
   height: 40px;
+  padding-left: 10px;
+  font-size: 20px;
+  border: 0;
+  border-radius: 15px;
+  outline: none;
+  padding-left: 10px;
+  background-color: rgb(233, 233, 233);
+  margin-top: 15px;
+  vertical-align: middle;
+}
+
+#completeBtn {
+  width: 192px;
+  height: 40px;
+
+  font-size: 15px;
+  font-weight: bold;
+
+  left: 50%;
+  background-color: rgba(119, 35, 155, 1);
+  color: rgb(239, 220, 255);
+  border-radius: 10px;
+  border-style: none;
 }

@@ -104,11 +104,11 @@ db.update_post.belongsTo(db.cobuying_room, {
 /* cobuying_room & deposit_form */
 // 1:1 하나의 공동구매방에 대해 하나의 입금폼이 존재한다
 db.cobuying_room.hasOne(db.deposit_form, {
-  foreignKey: "cobuying_room_id",
+  foreignKey: "id",
   sourceKey: "id",
 });
 db.deposit_form.belongsTo(db.cobuying_room, {
-  foreignKey: "cobuying_room_id",
+  foreignKey: "id",
   sourceKey: "id",
 });
 // /* deposit_form & question */
@@ -132,8 +132,8 @@ db.deposit_form.belongsTo(db.cobuying_room, {
 /* deposit_form & answer */
 // 1:N 하나의 form에 대해 여러개의 답변이 존재한다
 db.deposit_form.hasMany(db.answer, {
-  foreignKey: "cobuying_room_id",
-  sourceKey: "cobuying_room_id",
+  sourceKey: "id",
+  foreignKey: "form_id",
 });
 // db.question.hasMany(db.answer, {
 //   foreignKey: "deposit_form_id",
@@ -144,8 +144,8 @@ db.deposit_form.hasMany(db.answer, {
 //   sourceKey: "id",
 // });
 db.answer.belongsTo(db.deposit_form, {
-  foreignKey: "cobuying_room_id",
-  sourceKey: "cobuying_room_id",
+  sourceKey: "id",
+  foreignKey: "form_id",
 });
 // db.answer.belongsTo(db.question, {
 //   foreignKey: "deposit_form_id",
@@ -158,12 +158,12 @@ db.answer.belongsTo(db.deposit_form, {
 /* form_user(user_id:cobuying_room_id) & deposit_form */
 // 1:N 하나의 입금폼에 여러명의 사용자가 응답한다.
 db.deposit_form.hasMany(db.form_user, {
-  foreignKey: "cobuying_room_id",
-  sourceKey: "cobuying_room_id",
+  foreignKey: "form_id",
+  sourceKey: "id",
 });
 db.form_user.belongsTo(db.deposit_form, {
-  foreignKey: "cobuying_room_id",
-  sourceKey: "cobuying_room_id",
+  foreignKey: "form_id",
+  sourceKey: "id",
 });
 /* cobuying_room & chatroom */
 // 1:N 하나의 공동구매에 대해 여러개의 채팅방이 생성된다
