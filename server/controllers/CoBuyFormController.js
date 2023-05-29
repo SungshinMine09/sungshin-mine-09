@@ -27,12 +27,16 @@ module.exports = {
     const deposit_form = await DepositForm.findOne({
       where: { id: req.params.room_id },
     });
-    const cobuyroom = await CoBuyRoom.findOne({
+    const cobuying_room = await CoBuyRoom.findOne({
       where: { id: req.params.room_id },
     });
+    if (!cobuying_room) {
+      res.render("CoBuyRoom/createCoBuyRoom");
+    }
+    console.log(`room:::${cobuying_room.id}`);
     res.render("CoBuyForm/depositFormMaker", {
       deposit_form: deposit_form,
-      cobuying_room: cobuyroom,
+      cobuying_room: cobuying_room,
     });
   },
   //post
@@ -42,7 +46,12 @@ module.exports = {
       const deposit_form = await DepositForm.findOne({
         where: { id: form_id },
       });
-
+      const cobuying_room = await CoBuyRoom.findOne({
+        where: { id: form_id },
+      });
+      if (!cobuying_room) {
+        res.render("CoBuyRoom/createCoBuyRoom");
+      }
       const new_value = req.body.question;
       if (deposit_form && new_value) {
         const new_key = deposit_form
@@ -59,7 +68,10 @@ module.exports = {
         deposit_form.setDataValue("next_questions_num", Number(new_key) + 1);
         await deposit_form.save();
       }
-      res.render("CoBuyForm/depositFormMaker", { deposit_form: deposit_form });
+      res.render("CoBuyForm/depositFormMaker", {
+        deposit_form: deposit_form,
+        cobuying_room: cobuying_room,
+      });
     } catch (error) {
       console.log(error);
       res.redirect("/");
@@ -74,6 +86,12 @@ module.exports = {
       const deposit_form = await DepositForm.findOne({
         where: { id: form_id },
       });
+      const cobuying_room = await CoBuyRoom.findOne({
+        where: { id: form_id },
+      });
+      if (!cobuying_room) {
+        res.render("CoBuyRoom/createCoBuyRoom");
+      }
       if (!value) {
         res.render("CoBuyForm/depositFormMaker", {
           deposit_form: deposit_form,
@@ -87,6 +105,7 @@ module.exports = {
       await deposit_form.save();
       res.render("CoBuyForm/depositFormMaker", {
         deposit_form: deposit_form,
+        cobuying_room: cobuying_room,
       });
     } catch (error) {
       console.log(error);
@@ -100,7 +119,12 @@ module.exports = {
       const deposit_form = await DepositForm.findOne({
         where: { id: form_id },
       });
-
+      const cobuying_room = await CoBuyRoom.findOne({
+        where: { id: form_id },
+      });
+      if (!cobuying_room) {
+        res.render("CoBuyRoom/createCoBuyRoom");
+      }
       let new_questions = {};
 
       const new_next_questions_num = deposit_form.next_questions_num - 1;
@@ -109,6 +133,8 @@ module.exports = {
         if (i != Number(key)) {
           new_questions[j] = deposit_form.questions[i];
           j++;
+        } else {
+          console.log(`i === key: ${i}`);
         }
       }
       await deposit_form.update({ questions: new_questions });
@@ -116,6 +142,7 @@ module.exports = {
       await deposit_form.save();
       return res.render("CoBuyForm/depositFormMaker", {
         deposit_form: deposit_form,
+        cobuying_room: cobuying_room,
       });
     } catch (error) {
       console.log(error);
@@ -133,8 +160,17 @@ module.exports = {
       if (currentForm && account) {
         await currentForm.update({ account: account });
       }
+      const cobuying_room = await CoBuyRoom.findOne({
+        where: { id: req.params.room_id },
+      });
+      if (!cobuying_room) {
+        res.render("CoBuyRoom/createCoBuyRoom");
+      }
       console.log(currentForm);
-      res.render("CoBuyForm/depositFormMaker", { deposit_form: currentForm });
+      res.render("CoBuyForm/depositFormMaker", {
+        deposit_form: currentForm,
+        cobuying_room: cobuying_room,
+      });
     } catch (error) {
       console.log(error);
       res.render("/");
@@ -146,7 +182,16 @@ module.exports = {
       const deposit_form = await DepositForm.findOne({
         where: { id: form_id },
       });
-      res.render("CoBuyForm/depositFormSubmit", { deposit_form: deposit_form });
+      const cobuying_room = await CoBuyRoom.findOne({
+        where: { id: form_id },
+      });
+      if (!cobuying_room) {
+        res.render("CoBuyRoom/createCoBuyRoom");
+      }
+      res.render("CoBuyForm/depositFormSubmit", {
+        deposit_form: deposit_form,
+        cobuying_room: cobuying_room,
+      });
     } catch (error) {
       console.log(error);
       res.redirect(`/CoBuyRoom/${form_id}/newPost`);
