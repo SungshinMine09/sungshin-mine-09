@@ -84,7 +84,9 @@
   border-bottom: 2px solid lightgrey;
   padding: 10px;
 }
-
+form {
+  display: inline;
+}
 #edit {
   /* float: right; */
   border: 2px solid lightgrey;
@@ -94,7 +96,6 @@
 }
 
 #delete {
-  /* float: right; */
   border: 2px solid lightgrey;
   width: 50px;
   /* margin-right: 40px; */
