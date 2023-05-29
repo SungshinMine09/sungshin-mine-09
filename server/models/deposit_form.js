@@ -14,7 +14,7 @@ module.exports = (sequelize, Sequelize) => {
       },
       description: {
         type: Sequelize.STRING,
-        // allowNull: false,
+        defaultValue: "위 계좌에 입금해주세요🙏",
       },
       next_questions_num: {
         type: Sequelize.INTEGER,
