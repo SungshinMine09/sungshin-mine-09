@@ -88,7 +88,6 @@ module.exports = {
     } catch (error) {
       console.log(error);
     }
-    res.render("/");
   },
   delete: async (req, res) => {
     const form_id = req.params.form_id;
@@ -123,7 +122,7 @@ module.exports = {
       res.render("CoBuyForm/depositFormMaker", { deposit_form: currentForm });
     } catch (error) {
       console.log(error);
-      res.redirect("/");
+      res.render("/");
     }
   },
   depositFormSubmit: (req, res) => {
