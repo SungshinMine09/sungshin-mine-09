@@ -190,11 +190,13 @@ module.exports = {
   },
   depositFormResult: async (req, res) => {
     const form_id = req.params.form_id;
-
     try {
       const deposit_form = await DepositForm.findOne({
         where: { id: form_id },
       });
+      if (!deposit_form) {
+        res.render(`CoBuyForm/${form_id}/depositFormMaker`);
+      }
       const answers = await Answer.findAll({
         where: {
           id: form_id,
