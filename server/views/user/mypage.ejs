@@ -12,10 +12,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Tilt+Neon&display=swap" rel="stylesheet" />
 </head>
 <body>
-    <!--header 부분-->
-    <header></header>
-
-    <!--마이페이지 부분-->
     <main>
         <div>
             <div id="myPageTitleBox">
@@ -24,29 +20,37 @@
             <div class="flex marginLeft10">
                 <div class="flexDirectionColumn" id="leftContainer">
                     <h2>계정 설정</h2>
-                    <div class="marginTop30">
-                        <div class="purpleLetters fontSize18">이메일</div>
-                        <div class="fontSize16">20190913@sungshin.ac.kr</div>
-                        <div class="purpleLetters fontSize15" id="certifiedEmail">인증된 이메일입니다.</div>
-                    </div>
-                    <div class="marginTop30">
-                        <div class="purpleLetters fontSize18">아이디</div>
-                        <div class="fontSize16">linason7</div>
-                    </div>
-                    <div class="marginTop30">
-                        <div class="flex">
-                            <span class="purpleLetters marginRight30 fontSize18">비밀번호</span>
-                            <button class="fontSize15 grayButton changeButton center flex">변경</button>
-                        </div>
-                        <div class="fontSize16">*********</div>
-                    </div>
-                    <div class="marginTop30">
-                        <div class="flex">
-                            <span class="purpleLetters marginRight30 fontSize18">전화번호</span>
-                            <button class="fontSize15 grayButton changeButton center flex">변경</button>
-                        </div>
-                        <div class="fontSize16">010-0000-0000</div>
-                    </div>
+                    <% Array.from(userInfos).forEach(userInfo => { %>
+                        <%if (userInfo.id == 2) {%>
+                            <div class="marginTop30">
+                                <div class="purpleLetters fontSize18">이메일</div>
+                                <div class="fontSize16"><%=userInfo.student_number%>@sungshin.ac.kr</div>
+                                <div class="purpleLetters fontSize15" id="certifiedEmail">인증된 이메일입니다.</div>
+                            </div>
+                            <div class="marginTop30">
+                                <div class="purpleLetters fontSize18">아이디</div>
+                                <div class="fontSize16"><%=userInfo.login_id%></div>
+                            </div>
+                            <div class="marginTop30">
+                                <div class="flex">
+                                    <span class="purpleLetters marginRight30 fontSize18">비밀번호</span>
+                                    <button class="fontSize15 grayButton changeButton center flex">변경</button>
+                                </div>
+                                <div class="fontSize16">
+                                    <% for (var i = 0; i < userInfo.password.length; i++) { %>
+                                        <span>*</span>
+                                    <%}%>
+                                </div>
+                            </div>
+                            <div class="marginTop30">
+                                <div class="flex">
+                                    <span class="purpleLetters marginRight30 fontSize18">전화번호</span>
+                                    <button class="fontSize15 grayButton changeButton center flex">변경</button>
+                                </div>
+                                <div class="fontSize16"><%=userInfo.phone_number%></div>
+                            </div>
+                        <%}%>
+                    <%})%>
                 </div>
                 <div id="rightContainer">
                     <h2>공동구매 현황</h2>
@@ -166,7 +170,9 @@
                             </ul>
                         </div>   
                     </div>
-                    <div id="moreButton" class="fontSize16 center flex">더보기</div>
+                    <div id="moreButton" class="fontSize16 center flex">
+                        더보기
+                    </div>
                 </div>
             </div>
         </div>
