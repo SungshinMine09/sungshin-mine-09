@@ -3,7 +3,8 @@ const homeController = require("../controllers/homeController");
 const router = require("express").Router(),
   CoBuyRoomController = require("../controllers/CoBuyRoomController"),
   CoBuyRoomDetailController = require("../controllers/coBuyRoomDetailController"), // 상의 후 다현님 코드와 합치거나 할 것
-  HomeController = require("../controllers/homeController");
+  NewpostController = require("../controllers/newpostController"),
+  CreatePostController = require("../controllers/createPostController");
 
 router.get("/totalGonggu", CoBuyRoomController.totalGonggu);
 router.get("/ingSuyo", CoBuyRoomController.ingSuyo);
@@ -20,8 +21,8 @@ router.get("/CoBuyForm/submitDepositForm", CoBuyRoomController.submitDepositForm
 router.get("/CoBuyForm/showAccount", CoBuyRoomController.showAccount);
 router.get("/CoBuyForm/depositResult", CoBuyRoomController.depositResult);
 
+// 상세페이지
 router.get("/:id/detail", CoBuyRoomDetailController.index, CoBuyRoomDetailController.indexView); // 상의후 다현님 코드와 합치거나 할 것
-router.get("/:id/newpost", CoBuyRoomDetailController.newpost);
 router.get("/:id/chatting", CoBuyRoomDetailController.chatting);
 
 router.get("/:id/updateCurrentDemand", CoBuyRoomDetailController.updateCurrentDemand, CoBuyRoomDetailController.redirectView);
@@ -30,5 +31,12 @@ router.get("/:id/deleteCoBuyRoom", CoBuyRoomDetailController.deleteCoBuyRoom);
 router.get("/:id/CoBuyForm/depositResult", CoBuyRoomDetailController.depositResult);
 router.get("/:id/CoBuyForm/fillDepositForm", CoBuyRoomDetailController.fillDepositForm);
 router.get("/:id/CoBuyForm/submitDepositForm", CoBuyRoomDetailController.submitDepositForm);
+
+// newpost
+router.get("/:id/newpost", NewpostController.index, NewpostController.indexView);
+
+// createPost
+router.get("/:id/createPost", CreatePostController.index, CreatePostController.indexView);
+router.post("/:id/createPost/create", CreatePostController.createPost, CreatePostController.redirectView);
 
 module.exports = router;

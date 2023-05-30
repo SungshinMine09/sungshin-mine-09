@@ -1,5 +1,3 @@
-const cobuying_room = require("../models/cobuying_room");
-
 const db = require("../models/index"),
   CoBuyingRoom = db.cobuying_room,
   Sell = db.sell,

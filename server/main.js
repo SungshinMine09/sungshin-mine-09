@@ -6,7 +6,7 @@ const express = require("express"),
   layouts = require("express-ejs-layouts");
 
 db.sequelize
-  .sync() // 테이블이 없으면 테이블 생성, 있으면 nothing
+  .sync() // 테이블이 없으면 테이블 생성, 있으면 nothing { alter: true }
   .then(() => console.log("Database OK"))
   .catch((error) => console.error(error));
 
@@ -34,6 +34,11 @@ app.use("/index", homeRouter);
 app.use("/user", userRouter);
 
 app.use("/CoBuyRoom", CoBuyRoomRouter);
+
+//등록되지 않은 path에 대한 페이지 오류
+app.all("*", function (req, res) {
+  res.status(404).send("<h3>ERROR 404 - 페이지를 찾을 수 없습니다.</h3>");
+});
 
 /* ##가이드
 1. 코드 흐름: main.js -> routes -> controller -> ...

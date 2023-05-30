@@ -13,8 +13,7 @@
   <body>
     <div class="gonggu_header">
       <div>
-        <p>💻컴퓨터공학과 과잠💻</p>
-        <button class="gonggu_delete_button">공동구매방 삭제하기</button>
+        <p><%= cobuyroom.title %></p>
       </div>
     </div>
 
@@ -29,22 +28,24 @@
             <li style="float: right"><button class="grey_s_button" style="margin-left: 5px">입금폼 통계</button></li>
           </ul>
           <ul>
-            <li><button class="light_purple_s_button">새소식 글쓰기</button></li>
+            <li><button class="light_purple_s_button" style="cursor: pointer" onclick="location.href='/CoBuyRoom/<%= cobuyroom.id %>/createPost'">새소식 글쓰기</button></li>
           </ul>
         </nav>
       </div>
     </div>
 
     <div class="post_board">
+      <% newposts.forEach(post => { %>
       <div class="post">
         <div class="post_header">
-          <span class="title">업체 미팅 결과</span>
-          <span class="created_at">2023.11.11 00:00:00</span>
+          <span class="title"><%= post.title %></span>
+          <span class="created_at"><%= post.createdAt %></span>
         </div>
         <div class="post_body">
-          <p class="post_text">안녕하세요 여러분. 뽀롱이 학잠 총대입니다!</p>
+          <div class="post_text"><%- post.content %></div>
         </div>
       </div>
+      <% }); %>
     </div>
   </body>
 </html>
