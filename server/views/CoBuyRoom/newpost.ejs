@@ -11,7 +11,7 @@
   </head>
 
   <body>
-    <div class="gonggu_header">
+    <div class="gonggu_header" style="cursor: pointer" onclick="location.href='/CoBuyRoom/<%= cobuyroom.id %>/detail';">
       <div>
         <p><%= cobuyroom.title %></p>
       </div>
@@ -35,7 +35,9 @@
     </div>
 
     <div class="post_board">
-      <% newposts.forEach(post => { %>
+      <% if(newposts.length==0) { %>
+      <div class="no_content">아직 새로운 소식이 없어요!</div>
+      <% } %> <% newposts.forEach(post => { %>
       <div class="post">
         <div class="post_header">
           <span class="title"><%= post.title %></span>

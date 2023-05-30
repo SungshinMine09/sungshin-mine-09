@@ -3,7 +3,8 @@ const express = require("express"),
   db = require("./models/index"),
   { sequelize } = require("./models"),
   app = express(),
-  layouts = require("express-ejs-layouts");
+  layouts = require("express-ejs-layouts"),
+  socketIO = require("socket.io");
 
 db.sequelize
   .sync() // 테이블이 없으면 테이블 생성, 있으면 nothing { alter: true }
@@ -51,6 +52,29 @@ app.all("*", function (req, res) {
 
 // --------------------------------------------------------------
 
-app.listen(app.get("port"), () => {
+const server = app.listen(app.get("port"), () => {
   console.log(`Server running at http://localhost:${app.get("port")}`);
+});
+
+// socket 서버 실행
+const io = socketIO(server, { path: "/socket.io" });
+io.on("connection", function (socket) {
+  // 새로운 유저 접속을 서버에게 알림
+  socket.on("newUser", function () {
+    // socket.name = name;
+    console.log("유저 접속");
+  });
+
+  // 클라이언트가 서버로 메세지 전송
+  socket.on("message", function (data) {
+    data.name = socket.name;
+    console.log(data);
+
+    socket.broadcast.emit("update", data);
+  });
+
+  // user connection lost
+  socket.on("disconnect", function () {
+    console.log(socket.name, "접속 종료");
+  });
 });

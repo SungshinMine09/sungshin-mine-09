@@ -4,7 +4,8 @@ const router = require("express").Router(),
   CoBuyRoomController = require("../controllers/CoBuyRoomController"),
   CoBuyRoomDetailController = require("../controllers/coBuyRoomDetailController"), // 상의 후 다현님 코드와 합치거나 할 것
   NewpostController = require("../controllers/newpostController"),
-  CreatePostController = require("../controllers/createPostController");
+  CreatePostController = require("../controllers/createPostController"),
+  ChatController = require("../controllers/chatController");
 
 router.get("/totalGonggu", CoBuyRoomController.totalGonggu);
 router.get("/ingSuyo", CoBuyRoomController.ingSuyo);
@@ -38,5 +39,8 @@ router.get("/:id/newpost", NewpostController.index, NewpostController.indexView)
 // createPost
 router.get("/:id/createPost", CreatePostController.index, CreatePostController.indexView);
 router.post("/:id/createPost/create", CreatePostController.createPost, CreatePostController.redirectView);
+
+// chatting
+router.get("/:id/chat/:chatId", ChatController.index, ChatController.indexView);
 
 module.exports = router;

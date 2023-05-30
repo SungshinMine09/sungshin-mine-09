@@ -28,7 +28,9 @@
     "http-status-codes": "^2.2.0",
     "mysql2": "^3.3.0",
     "sequelize": "^6.31.1",
-    "sequelize-cli": "^6.6.0"
+    "sequelize-cli": "^6.6.0",
+    "socket.io": "^4.6.1",
+    "soket.io": "^0.0.1-security"
   },
   "devDependencies": {
     "nodemon": "^2.0.22"

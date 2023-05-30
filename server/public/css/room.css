@@ -116,6 +116,16 @@ button {
 /* -------------------------------------------------------------------- */
 
 /* --------------------------newpost.ejs--------------------------------- */
+.no_content {
+  font-weight: bold;
+  font-size: 18px;
+  margin: auto;
+  width: 1100px;
+  height: 150px;
+  line-height: 150px;
+  text-align: center;
+}
+
 .post_board {
   margin: auto;
   width: 1100px;

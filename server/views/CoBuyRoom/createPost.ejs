@@ -11,7 +11,7 @@
   </head>
 
   <body>
-    <div class="gonggu_header">
+    <div class="gonggu_header" style="cursor: pointer" onclick="location.href='/CoBuyRoom/<%= cobuyroomID %>/detail';">
       <div>
         <p>💻컴퓨터공학과 과잠💻</p>
         <button class="gonggu_delete_button">공동구매방 삭제하기</button>
@@ -37,8 +37,8 @@
 
     <div class="post_form">
       <form action="./createPost/create" method="post">
-        <input class="post_title" type="text" name="title" placeholder="새소식 제목을 입력해주세요." /> <br />
-        <textarea class="post_content" name="content" placeholder="새소식 글 내용을 입력해주세요."></textarea><br />
+        <input class="post_title" type="text" name="title" maxlength="20" placeholder="새소식 제목을 입력해주세요." /> <br />
+        <textarea class="post_content" name="content" maxlength="1000" placeholder="새소식 글 내용을 입력해주세요."></textarea><br />
         <input value="업로드" class="post_submit_button" type="submit" style="cursor: pointer" />
       </form>
     </div>
