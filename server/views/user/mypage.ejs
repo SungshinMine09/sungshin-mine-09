@@ -66,7 +66,7 @@
                                 <span>내가 참여한 공구방</span>
                                 <span class="purpleLetters">(<%=numOfMyParticipations%>)</span>
                             </div>
-                            <ul>
+                            <ul class="ulBox">
                                 <% Array.from(myParticipations).forEach(myParticipation => { %>
                                     <li class="flex myPageLi">
                                         <div><img src="imageExample.png" width="60px" height="60px"></div>
@@ -120,7 +120,7 @@
                                 <span>내가 주최한 공구방</span>
                                 <span class="purpleLetters">(<%=numOfMyHosts%>)</span>
                             </div>
-                            <ul>
+                            <ul class="ulBox">
                                 <% Array.from(myHosts).forEach(myHost => { %>
                                     <li class="flex myPageLi">
                                         <div><img src="imageExample.png" width="60px" height="60px"></div>
@@ -170,9 +170,7 @@
                             </ul>
                         </div>   
                     </div>
-                    <div id="moreButton" class="fontSize16 center flex">
-                        더보기
-                    </div>
+
                 </div>
             </div>
         </div>
