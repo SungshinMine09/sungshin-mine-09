@@ -15,8 +15,8 @@
   <body>
     <div id="wrap">
       <header class="container">
-        <h1><button>✨성신마인 09번지🔮</button></h1>
-        <h3><button>💜 수정이들만을 위한 공동구매 웹서비스 💜</button></h3>
+        <h1><button onClick="location.href='/'">✨성신마인 09번지🔮</button></h1>
+        <h3><button onClick="location.href='/'">💜 수정이들만을 위한 공동구매 웹서비스 💜</button></h3>
         <nav>
           <ul>
             <li><button onClick="location.href='/index'" style='cursor:pointer'>홈</button></li>
@@ -25,7 +25,14 @@
             </li>
             <li><button style='cursor:pointer'>FAQ</button></li>
             <li class="navbutton">
-              <button onClick="location.href='/user/Login'" style='cursor:pointer'>로그인/회원가입</button>
+              <!--<button onClick="location.href='/user/Login'" style='cursor:pointer'>로그인/회원가입</button>-->
+              <% if (isLoggedin) { %>
+                <button id="alarm" onClick="location.href='/user/alarmPage'" style='cursor:pointer'>🔔</button>
+                <button onClick="location.href='/user/myPage'" style='cursor:pointer'>마이페이지</button>
+                <button onClick="location.href='/user/Logout'" style='cursor:pointer'>로그아웃</button>
+              <% } else { %>
+                <button onClick="location.href='/user/Login'" style='cursor:pointer'>로그인/회원가입</button>
+              <% } %>           
             </li>
           </ul>
         </nav>
