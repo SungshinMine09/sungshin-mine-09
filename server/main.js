@@ -77,6 +77,16 @@ app.use(
 app.use(express.json());
 app.use(cookieParser());
 
+//로그인 여부에 따른 버튼 전환
+app.use (function(req, res, next) {
+  if(req.cookies['userToken'] != null) {
+    res.locals.isLoggedin = true;
+  } else {
+    res.locals.isLoggedin = false;
+  }
+  next();
+});
+
 // ------------------------## route ##---------------------------
 app.use("/", homeRouter);
 app.use("/index", homeRouter);
@@ -85,12 +95,15 @@ app.use("/user", userRouter);
 
 app.use("/CoBuyRoom", CoBuyRoomRouter);
 
+app.use("/CoBuyForm", formRouter);
+
 //등록되지 않은 path에 대한 페이지 오류
 app.all("*", function (req, res) {
   res.status(404).send("<h3>ERROR 404 - 페이지를 찾을 수 없습니다.</h3>");
 });
 
-app.use("/CoBuyForm", formRouter);
+//app.use("/CoBuyForm", formRouter);
+
 
 //app.get("*", checkAuth);
 

@@ -13,12 +13,7 @@ module.exports = {
         'SELECT A.*, B.id, B.url, replace(B.url, "../public", "") AS real_url, b.createdAt, b.updatedAt FROM (SELECT A.*, B.name FROM (SELECT A.product_id, A.cobuying_room_id, B.title, A.current_demand FROM sell AS A LEFT JOIN cobuying_room AS B ON A.cobuying_room_id=B.id) AS A LEFT JOIN product AS B ON A.product_id=B.id) AS A LEFT JOIN image AS B ON A.product_id=B.product_id;'
       );
       const cntTotal = await CobuyingRoom.count();
-      if (req.cookies["userToken"] == null) {
-        //토큰이 없다면
-        res.render("CoBuyRoom/totalGonggu", { totalGonggus: totalGonggus[0], count: cntTotal, isLoggedin: false });
-      } else {
-        res.render("CoBuyRoom/totalGonggu", { totalGonggus: totalGonggus[0], count: cntTotal, isLoggedin: true });
-      }
+      res.render("CoBuyRoom/totalGonggu", { totalGonggus: totalGonggus[0], count: cntTotal });
     } catch (error) {
       console.log(error);
     }
@@ -33,12 +28,7 @@ module.exports = {
           state: "demand",
         },
       });
-      if (req.cookies["userToken"] == null) {
-        //토큰이 없다면
-        res.render("CoBuyRoom/totalGonggu", { totalGonggus: totalGonggus[0], count: cntTotal, isLoggedin: false });
-      } else {
-        res.render("CoBuyRoom/ingSuyo", { ingSuyos: ingSuyos[0], count: cntingSuyo, isLoggedin: true });
-      }
+      res.render("CoBuyRoom/totalGonggu", { totalGonggus: totalGonggus[0], count: cntTotal });
     } catch (error) {
       console.log(error);
     }
@@ -53,12 +43,7 @@ module.exports = {
           state: "deposit",
         },
       });
-      if (req.cookies["userToken"] == null) {
-        //토큰이 없다면
-        res.render("CoBuyRoom/totalGonggu", { totalGonggus: totalGonggus[0], count: cntTotal, isLoggedin: false });
-      } else {
-        res.render("CoBuyRoom/soonEnd", { soonEnds: soonEnds[0], count: cntsoonEnd, isLoggedin: true });
-      }
+      res.render("CoBuyRoom/totalGonggu", { totalGonggus: totalGonggus[0], count: cntTotal });
     } catch (error) {
       console.log(error);
     }
@@ -70,36 +55,35 @@ module.exports = {
         'SELECT A.*, B.*, replace(B.url, "../public", "") AS real_url FROM (SELECT A.*, B.`name` FROM (SELECT A.`product_id`, A.`cobuying_room_id`, B.`title`, A.`current_demand`, A.`min_demand` FROM sell AS A LEFT JOIN cobuying_room AS B ON A.`cobuying_room_id`=B.`id`) AS A LEFT JOIN product AS B ON A.`product_id`=B.`id`) AS A LEFT JOIN image AS B ON A.product_id=B.product_id;'
       );
       const suyoStat = suyoStats[0].filter((it) => it.cobuying_room_id == CobuyroomID);
-      if (req.cookies["userToken"] != null) {
-        res.render("CoBuyRoom/suyoStat", { suyoStats: suyoStat, isLoggedin: true });
-      }
+      res.render("CoBuyRoom/suyoStat", { suyoStats: suyoStat });
     } catch (error) {
       console.log(error);
     }
   },
   newPost: (req, res) => {
-    res.render("CoBuyRoom/newpost", { isLoggedin: true });
+    res.render("CoBuyRoom/newpost");
   },
   detail: async (req, res) => {
     try {
       const CobuyroomID = req.params.id;
       const details = await db.sequelize.query(
-        'SELECT A.*, B.end_at FROM (SELECT A.*, B.id, B.url, B.createdAt, B.updatedAt, replace(B.url, "../public", "") AS real_url FROM (SELECT A.*, B.name FROM (SELECT A.product_id, A.cobuying_room_id, A.price, A.current_demand, B.state, B.description, B.title FROM sell AS A LEFT JOIN cobuying_room AS B ON A.cobuying_room_id=B.id) AS A LEFT JOIN product AS B ON A.product_id=B.id) AS A LEFT JOIN image AS B ON A.product_id=B.product_id) AS A LEFT JOIN deposit_form AS B ON A.cobuying_room_id=B.cobuying_room_id;'
+        'SELECT A.*, B.end_at FROM (SELECT A.*, B.id, B.url, B.createdAt, B.updatedAt, replace(B.url, "../public", "") AS real_url FROM (SELECT A.*, B.name FROM (SELECT A.product_id, A.cobuying_room_id, A.price, A.current_demand, B.state, B.description, B.title FROM sell AS A LEFT JOIN cobuying_room AS B ON A.cobuying_room_id=B.id) AS A LEFT JOIN product AS B ON A.product_id=B.id) AS A LEFT JOIN image AS B ON A.product_id=B.product_id) AS A LEFT JOIN deposit_form AS B ON A.cobuying_room_id=B.id;'
       );
       const detail = details[0].filter((it) => it.cobuying_room_id == CobuyroomID);
       if (req.cookies["userToken"] != null) {
-        res.render("CoBuyRoom/detail", { details: detail, isLoggedin: true });
+        res.render("CoBuyRoom/detail", { details: detail });
       }
     } catch (error) {
-      res.render("CoBuyRoom/errorCobuyroom", { isLoggedin: true });
+      console.log(error);
+      // res.render("CoBuyRoom/errorCobuyroom");
     }
   },
   createNewPost: (req, res) => {
-    res.render("CoBuyRoom/createPost", { isLoggedin: true });
+    res.render("CoBuyRoom/createPost");
   },
   // get
   createCoBuyRoomPage: (req, res) => {
-    res.render("CoBuyRoom/CreateBuyingPage", { isLoggedin: true });
+    res.render("CoBuyRoom/CreateBuyingPage");
   },
   // post
   createCoBuyRoom: async (req, res) => {
@@ -138,18 +122,18 @@ module.exports = {
   },
 
   chatting: (req, res) => {
-    res.render("CoBuyRoom/chatting", { isLoggedin: true });
+    res.render("CoBuyRoom/chatting");
   },
   fillDepositForm: (req, res) => {
-    res.render("CoBuyForm/DepositFormPage", { isLoggedin: true });
+    res.render("CoBuyForm/DepositFormPage");
   },
   submitDepositForm: (req, res) => {
-    res.render("CoBuyForm/DepositFormSubmitPage", { isLoggedin: true });
+    res.render("CoBuyForm/DepositFormSubmitPage");
   },
   showAccount: (req, res) => {
-    res.render("CoBuyForm/ShowAccountPage", { isLoggedin: true });
+    res.render("CoBuyForm/ShowAccountPage");
   },
   depositResult: (req, res) => {
-    res.render("CoBuyForm/DepositFormResultPage", { isLoggedin: true });
+    res.render("CoBuyForm/DepositFormResultPage");
   },
 };
