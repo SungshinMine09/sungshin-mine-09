@@ -5,7 +5,7 @@ const router = require("express").Router(),
   CoBuyRoomDetailController = require("../controllers/coBuyRoomDetailController"), // 상의 후 다현님 코드와 합치거나 할 것
   NewpostController = require("../controllers/newpostController"),
   CreatePostController = require("../controllers/createPostController"),
-  ChatController = require("../controllers/chatController");
+  ChatController = require("../controllers/chattingController");
 
 router.get("/totalGonggu", CoBuyRoomController.totalGonggu);
 router.get("/ingSuyo", CoBuyRoomController.ingSuyo);

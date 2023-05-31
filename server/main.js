@@ -56,6 +56,8 @@ const server = app.listen(app.get("port"), () => {
   console.log(`Server running at http://localhost:${app.get("port")}`);
 });
 
+module.exports = server;
+
 // socket 서버 실행
 const io = socketIO(server, { path: "/socket.io" });
 io.on("connection", function (socket) {

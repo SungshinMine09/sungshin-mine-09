@@ -7,6 +7,8 @@ socket.on("connect", function () {
 // 서버에서 데이터 받기
 socket.on("update", function (data) {
   // 데이터를 받을 때마다 메세지 생성
+  const currentTime = new Date();
+  console.log(currentTime, typeof currentTime);
   let chattingBox = document.getElementById("chattingBox");
 
   let chattingFromYou = document.createElement("div");
