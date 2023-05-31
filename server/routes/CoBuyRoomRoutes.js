@@ -39,7 +39,7 @@ router.get("/:id", verifyAuthController.checkAuth, CoBuyRoomController.detail); 
 
 // 기연 할일: 위 코드에서 detail, totalgonguid 다시 확인할 것
 // 상세페이지
-// router.get("/:id/detail", CoBuyRoomDetailController.index, CoBuyRoomDetailController.indexView); // 상의후 다현님 코드와 합치거나 할 것
+router.get("/:id/detail", CoBuyRoomDetailController.index, CoBuyRoomDetailController.indexView); // 상의후 다현님 코드와 합치거나 할 것
 router.get("/:id/chatting", CoBuyRoomDetailController.chatting);
 
 router.get("/:id/updateCurrentDemand", CoBuyRoomDetailController.updateCurrentDemand, CoBuyRoomDetailController.redirectView);
