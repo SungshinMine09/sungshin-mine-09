@@ -13,9 +13,6 @@ router.get("/:form_id/writeForm", CoBuyFormController.writeForm);
 // TODO: get current USER
 router.get("/:form_id/showAccount", CoBuyFormController.showAccount);
 router.post("/:form_id/submit/:user_id", CoBuyFormController.submit);
-router.get(
-  "/:form_id/depositFormResult",
-  CoBuyFormController.depositFormResult
-);
+router.get("/:form_id/depositFormResult", CoBuyFormController.depositFormResult);
 
 module.exports = router;

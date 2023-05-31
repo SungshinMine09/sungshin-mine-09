@@ -6,33 +6,30 @@
     <link rel="stylesheet" href="/css/index.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&display=swap" rel="stylesheet" />
   </head>
 
   <body>
     <div id="wrap">
       <header class="container">
-        <h1><button onClick="location.href='/'">✨성신마인 09번지🔮</button></h1>
-        <h3><button onClick="location.href='/'">💜 수정이들만을 위한 공동구매 웹서비스 💜</button></h3>
+        <h1><button onClick="location.href='/'" style="cursor: pointer">✨성신마인 09번지🔮</button></h1>
+        <h3><button onClick="location.href='/'" style="cursor: pointer">💜 수정이들만을 위한 공동구매 웹서비스 💜</button></h3>
         <!--<%- include("partials/navigation") %>-->
         <nav>
           <ul>
-            <li><button onClick="location.href='/index'" style='cursor:pointer'>홈</button></li>
+            <li><button onClick="location.href='/index'" style="cursor: pointer">홈</button></li>
             <li>
-              <button onClick="location.href='/CoBuyRoom/totalGonggu'" style='cursor:pointer'>공구방</button>
+              <button onClick="location.href='/CoBuyRoom/totalGonggu'" style="cursor: pointer">공구방</button>
             </li>
-            <li><button style='cursor:pointer'>FAQ</button></li>
+            <li><button style="cursor: pointer">FAQ</button></li>
             <li class="navbutton">
               <% if (isLoggedin) { %>
-                <button id="alarm" onClick="location.href='/user/alarmPage'" style='cursor:pointer'>🔔</button>
-                <button onClick="location.href='/user/myPage'" style='cursor:pointer'>마이페이지</button>
-                <button onClick="location.href='/user/Logout'" style='cursor:pointer'>로그아웃</button>
+              <button id="alarm" onClick="location.href='/user/alarmPage'" style="cursor: pointer">🔔</button>
+              <button onClick="location.href='/user/myPage'" style="cursor: pointer">마이페이지</button>
+              <button onClick="location.href='/user/Logout'" style="cursor: pointer">로그아웃</button>
               <% } else { %>
-                <button onClick="location.href='/user/Login'" style='cursor:pointer'>로그인/회원가입</button>
-              <% } %>       
+              <button onClick="location.href='/user/Login'" style="cursor: pointer">로그인/회원가입</button>
+              <% } %>
             </li>
           </ul>
         </nav>
@@ -44,9 +41,9 @@
   <footer>
     <nav>
       <ul>
-        <li><button style='cursor:pointer'>공지사항</button></li>
-        <li><button style='cursor:pointer'>이용안내</button></li>
-        <li><button style='cursor:pointer'>정책</button></li>
+        <li><button style="cursor: pointer">공지사항</button></li>
+        <li><button style="cursor: pointer">이용안내</button></li>
+        <li><button style="cursor: pointer">정책</button></li>
         <li class="contact">문의 (10:00 ~ 17:00)<br />📞 000 - 0000 - 0000</li>
       </ul>
     </nav>

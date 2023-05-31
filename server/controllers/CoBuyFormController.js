@@ -54,9 +54,7 @@ module.exports = {
       }
       const new_value = req.body.question;
       if (deposit_form && new_value) {
-        const new_key = deposit_form
-          .getDataValue("next_questions_num")
-          .toString();
+        const new_key = deposit_form.getDataValue("next_questions_num").toString();
 
         const new_questions = {
           ...deposit_form.questions,
@@ -236,7 +234,7 @@ module.exports = {
       const deposit_form = await DepositForm.findOne({
         where: { id: form_id },
       });
-      res.render("CoBuyForm/showAccount", { deposit_form: deposit_form});
+      res.render("CoBuyForm/showAccount", { deposit_form: deposit_form });
     } catch (error) {
       console.log(error);
       res.redirect(`/CoBuyRoom/${form_id}/newPost`);
