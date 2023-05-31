@@ -6,12 +6,7 @@ const env = process.env.NODE_ENV || "development";
 const config = require(__dirname + "/../config/config.js")[env];
 const db = {};
 
-let sequelize = new Sequelize(
-  config.database,
-  config.username,
-  config.password,
-  config
-);
+let sequelize = new Sequelize(config.database, config.username, config.password, config);
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
@@ -57,21 +52,21 @@ db.sell.belongsTo(db.cobuying_room, {
 /* sell & product */
 // 1:N 하나의 상품에 대해 하나의 판매를 진행할 수 있다
 db.product.hasMany(db.sell, {
-  foreignKey: "id",
+  foreignKey: "product_id",
   sourceKey: "id",
 });
 db.sell.belongsTo(db.product, {
-  foreignKey: "id",
+  foreignKey: "product_id",
   sourceKey: "id",
 });
 /* product & image */
 // 1:1 하나의 상품에 대해 여러개의 이미지를 업로드 할 수 있다
 db.product.hasOne(db.image, {
-  foreignKey: "id",
+  foreignKey: "product_id",
   sourceKey: "id",
 });
 db.image.belongsTo(db.product, {
-  foreignKey: "id",
+  foreignKey: "product_id",
   sourceKey: "id",
 });
 /* form_user & notification */
