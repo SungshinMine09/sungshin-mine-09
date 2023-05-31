@@ -11,46 +11,46 @@ const morgan = require("morgan"); // npm i morgan
 
 app.use(morgan("dev")); // log every request to the console
 
-async function createAndLogUser() {
-  const user = await db.user.create({
-    login_id: "twenty",
-    password: "twenty",
-    student_number: "20202020",
-    phone_number: "010-7641-4328",
-  });
-  console.log(user);
-}
+// async function createAndLogUser() {
+//   const user = await db.user.create({
+//     login_id: "twenty",
+//     password: "twenty",
+//     student_number: "20202020",
+//     phone_number: "010-7641-4328",
+//   });
+//   console.log(user);
+// }
 
-async function createAndLogRoom() {
-  const newRoom = await db.cobuying_room.create({
-    id: 1,
-    title: "test",
-    state: "deposit",
-    description: "더미데이터입니다",
-    host_id: 1,
-  });
-  console.log(newRoom);
-}
+// async function createAndLogRoom() {
+//   const newRoom = await db.cobuying_room.create({
+//     id: 1,
+//     title: "test",
+//     state: "deposit",
+//     description: "더미데이터입니다",
+//     host_id: 1,
+//   });
+//   console.log(newRoom);
+// }
 
-async function createAndForm() {
-  const newForm = await db.deposit_form.create({
-    id: 1,
-    description: "폼 설명 더미 데이터",
-    next_questions_num: 3,
-    questions: {
-      1: "배송 받을 장소를 선택해주세요(현장수령/택배배송)",
-      2: "현장수령이 아닐경우 배송받을 장소(주소, 우편번호, 전화번호)를 입력해주세요",
-    },
-    account: "국민 09-sungshim_mine",
-  });
-  console.log(newForm);
-}
+// async function createAndForm() {
+//   const newForm = await db.deposit_form.create({
+//     id: 1,
+//     description: "폼 설명 더미 데이터",
+//     next_questions_num: 3,
+//     questions: {
+//       1: "배송 받을 장소를 선택해주세요(현장수령/택배배송)",
+//       2: "현장수령이 아닐경우 배송받을 장소(주소, 우편번호, 전화번호)를 입력해주세요",
+//     },
+//     account: "국민 09-sungshim_mine",
+//   });
+//   console.log(newForm);
+// }
 
 db.sequelize
   .sync({ force: true })
   .then(() => console.log("Database OK"))
-  .then(createAndLogUser)
-  .then(createAndLogRoom)
+//   .then(createAndLogUser)
+//   .then(createAndLogRoom)
   .catch((error) => console.error(error));
 
 const homeRouter = require("./routes/homeRoutes");
