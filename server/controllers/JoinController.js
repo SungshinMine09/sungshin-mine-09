@@ -158,7 +158,7 @@ async function LoginController(req, res) {
     } 
     else if (findUser) {
         if(bcrypt.compareSync(input_password, findUser['password'])) {
-            const token = jwt.sign({ login_id: input_ID }, secretObj.secret);
+            const token = jwt.sign({ login_id: input_ID, db_id: findUser.id }, secretObj.secret);
             res.cookie('userToken', token, { httpOnly: true, secure: true, expires: new Date(Date.now() + 3600000) }); //1시간 후에 만료
             //res.cookie('isLoggedin', 'true', {expires: new Date(Date.now() + 3600000)});
 
