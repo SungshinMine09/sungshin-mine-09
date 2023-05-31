@@ -22,7 +22,7 @@ module.exports = {
     alarmPage: async(req, res) => {
       try {
         notificationsJoinCobuyingRooms1 = await db.sequelize.query(
-          'SELECT * FROM notifications as a JOIN cobuying_room as b ON a.`cobuying_room_id`=b.`id` WHERE receiver_id=2 or host_id=2 ORDER BY a.id  DESC;'
+          'SELECT a.id as notificationId, a.receiver_id, a.cobuying_room_id, a.content, a.read_or_not, a.type2, a.url, a.createdAt, a.updatedAt, b.title, b.state, b.host_id FROM notifications as a JOIN cobuying_room as b ON a.`cobuying_room_id`=b.`id` WHERE receiver_id=2 or host_id=2 ORDER BY a.id  DESC;'
         );
         notificationsJoinCobuyingRoom1 = notificationsJoinCobuyingRooms1[0];
         console.log(notificationsJoinCobuyingRoom1);
