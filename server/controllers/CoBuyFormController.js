@@ -68,10 +68,13 @@ module.exports = {
         deposit_form.setDataValue("next_questions_num", Number(new_key) + 1);
         await deposit_form.save();
       }
-      res.render("CoBuyForm/depositFormMaker", {
-        deposit_form: deposit_form,
-        cobuying_room: cobuying_room,
-      });
+      // res.render("CoBuyForm/depositFormMaker", {
+      //   deposit_form: deposit_form,
+      //   cobuying_room: cobuying_room,
+      // });
+      res.locals.deposit_form = deposit_form;
+      res.locals.cobuying_room = cobuying_room;
+      return res.redirect("depositFormMaker");
     } catch (error) {
       console.log(error);
       res.redirect("/");
@@ -103,10 +106,13 @@ module.exports = {
       new_questions[key] = value;
       deposit_form.setDataValue("questions", new_questions);
       await deposit_form.save();
-      res.render("CoBuyForm/depositFormMaker", {
-        deposit_form: deposit_form,
-        cobuying_room: cobuying_room,
-      });
+      // res.render("CoBuyForm/depositFormMaker", {
+      //   deposit_form: deposit_form,
+      //   cobuying_room: cobuying_room,
+      // });
+      res.locals.deposit_form = deposit_form;
+      res.locals.cobuying_room = cobuying_room;
+      return res.redirect("depositFormMaker");
     } catch (error) {
       console.log(error);
     }
@@ -140,10 +146,13 @@ module.exports = {
       await deposit_form.update({ questions: new_questions });
       deposit_form.setDataValue("next_questions_num", new_next_questions_num);
       await deposit_form.save();
-      return res.render("CoBuyForm/depositFormMaker", {
-        deposit_form: deposit_form,
-        cobuying_room: cobuying_room,
-      });
+      // return res.render("CoBuyForm/depositFormMaker", {
+      //   deposit_form: deposit_form,
+      //   cobuying_room: cobuying_room,
+      // });
+      res.locals.deposit_form = deposit_form;
+      res.locals.cobuying_room = cobuying_room;
+      return res.redirect("depositFormMaker");
     } catch (error) {
       console.log(error);
       return res.status(500).send("❌ DELETE error");
