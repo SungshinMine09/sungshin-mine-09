@@ -15,9 +15,14 @@
   </head>
   <body>
     <div class="container">
-      <div class="wrapper">
+      <form
+        id="roomForm"
+        action="/CoBuyRoom/createCoBuyRoom"
+        method="post"
+        enctype="multipart/form-data"
+      >
         <div class="left">
-          <div class="title"><p>공구방 시작하기</p></div>
+          <div class="title"><p>공동구매방 만들기</p></div>
           <div class="smallText">
             수정이들과 함께하고 싶은 공동구매를 직접 열어보세요!
           </div>
@@ -25,14 +30,14 @@
           <div class="smallText">이 이름이 곧 공구방의 이름이 될 거예요!</div>
           <div>
             <label for="inputName"></label>
-            <input type="text" id="inputName" />
+            <input type="text" id="inputName" name="title" required />
           </div>
           <div class="questionText">② 공동구매할 상품의 가격을 알려주세요.</div>
           <div>
             <label for="inputCost"></label>
             <p>
               1개당
-              <input type="number" id="inputCost" />
+              <input type="number" id="inputCost" name="price" required />
               원
             </p>
           </div>
@@ -44,14 +49,24 @@
             <label for="inputMinQty">
               <p>
                 최소 수요 수량:
-                <input type="number" id="inputMinQty" />
+                <input
+                  type="number"
+                  id="inputMinQty"
+                  name="min_demand"
+                  required
+                />
                 개
               </p>
             </label>
             <label for="inputMaxQty">
               <p>
                 최대 수량:
-                <input type="number" id="inputMaxQty" />
+                <input
+                  type="number"
+                  id="inputMaxQty"
+                  name="max_quantity"
+                  required
+                />
                 개
               </p>
             </label>
@@ -63,15 +78,29 @@
           <div class="smallText">
             참여자들에게 나의 공동구매를 어필해보세요!
           </div>
+          <div class="custom-inputImage">
+            <input
+              type="file"
+              name="roomImg"
+              id="inputImage"
+              accept="image/*"
+              required
+            />
+          </div>
           <div>
             <label for="inputIntroduce"></label>
-            <input type="text" id="inputIntroduce" />
-          </div>
-          <div>
-            <button id="createBtn">공동구매 시작하기</button>
+            <textarea
+              type="text"
+              id="inputIntroduce"
+              name="description"
+              required
+            ></textarea>
           </div>
         </div>
-      </div>
+      </form>
+      <button type="submit" id="createBtn" form="roomForm">
+        공동구매 시작하기
+      </button>
     </div>
   </body>
 </html>

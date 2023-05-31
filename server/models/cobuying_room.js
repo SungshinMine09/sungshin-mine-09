@@ -4,7 +4,6 @@ module.exports = (sequelize, Sequelize) => {
     {
       id: {
         type: Sequelize.INTEGER,
-        // allowNull: false,
         primaryKey: true,
         autoIncrement: true,
         unique: true,
@@ -21,13 +20,15 @@ module.exports = (sequelize, Sequelize) => {
           "delivery",
           "complete"
         ),
-        allowNull: false,
         defaultValue: "demand",
         comment: "수요조사, 입금중, 준비중, 배송중, 공동구매 완료만 허용",
       },
       description: {
         type: Sequelize.STRING(1000),
         allowNull: false,
+      },
+      host_id: {
+        type: Sequelize.INTEGER,
       },
     },
     {
