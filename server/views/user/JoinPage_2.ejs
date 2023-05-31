@@ -19,7 +19,7 @@
       <span class="Join_Step"
         >1. 학교 이메일 인증 > <b>2. 정보입력</b> > 3. 가입완료</span
       >
-      <form method="post" action="/Join_enterInfo" id="JoinForm3">
+      <form method="post" action="/user/Join_enterInfo" id="JoinForm3">
         <!--action에는 사용자가 입력한 데이터를 처리할 파일의 경로가 들어감. 백엔드 언어로 작성됨.-->
         <span class="id_label">아이디</span>
         <span class="id_requireInfo">영문소문자/숫자, 4~16자</span>
@@ -31,9 +31,9 @@
           pattern="[a-z0-9]{4,16}"
           required
         />
-        <button class="IDduplicateCheckBtn" type="button" onclick="">
+       <!-- <button class="IDduplicateCheckBtn" type="submit" onclick="findSameUser()">
           중복 확인
-        </button>
+        </button>-->
 
         <span class="pw_label">비밀번호</span>
         <span class="pw_requireInfo"
@@ -57,7 +57,7 @@
           pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*~_-+=]).{10,16}"
           required
         />
-        <button class="pwCheckBtn" type="button" onclick="">확인</button>
+        <!--<button class="pwCheckBtn" type="submit" onclick="comparePassword()">확인</button>-->
 
         <span class="phone_number">전화번호</span>
         <input
@@ -69,10 +69,10 @@
           required
         />
 
-        <input type="submit" value="입력 완료" />
+        <input type="submit" value="가입 완료" />
       </form>
       <a href="/" class="Join_cancel_btn">취소</a>
-      <a href="JoinStep3" class="Join_complete_btn">가입 완료하기</a>
+      <!--<a href="JoinStep3" class="Join_complete_btn">가입 완료하기</a>-->
     </div>
   </body>
 </html>

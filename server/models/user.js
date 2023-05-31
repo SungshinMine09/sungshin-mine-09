@@ -5,7 +5,7 @@ module.exports = (sequelize, Sequelize) => {
     "user",
     {
       id: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.BIGINT,
         autoIncrement: true,
         // unique: true,
         primaryKey: true,
@@ -24,7 +24,7 @@ module.exports = (sequelize, Sequelize) => {
       },
       student_number: {
         type: Sequelize.STRING(8),
-        allowNULL: false,
+        allowNull: false,
         unique: true,
       },
       phone_number: {

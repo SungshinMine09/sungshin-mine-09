@@ -2,12 +2,14 @@
 const express = require("express"),
   db = require("./models/index"),
   { sequelize } = require("./models"),
+  cookieParser = require("cookie-parser"),
   app = express(),
   layouts = require("express-ejs-layouts"),
   socketIO = require("socket.io");
 
 db.sequelize
-  .sync() // 테이블이 없으면 테이블 생성, 있으면 nothing { alter: true }
+  .sync() // 테이블이 없으면 테이블 생성, 있으면 nothing
+  //.sync({force: true}) //초기화
   .then(() => console.log("Database OK"))
   .catch((error) => console.error(error));
 
@@ -27,6 +29,7 @@ app.use(
   })
 );
 app.use(express.json());
+app.use(cookieParser());
 
 // ------------------------## route ##---------------------------
 app.use("/", homeRouter);
