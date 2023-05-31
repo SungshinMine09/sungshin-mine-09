@@ -4,7 +4,8 @@ const express = require("express"),
   { sequelize } = require("./models"),
   cookieParser = require("cookie-parser"),
   app = express(),
-  layouts = require("express-ejs-layouts");
+  layouts = require("express-ejs-layouts"),
+  socketIO = require("socket.io");
 
 const bodyParser = require("body-parser");
 const morgan = require("morgan"); // npm i morgan
@@ -51,7 +52,7 @@ db.sequelize
   .sync({ force: true })
   .then(() => console.log("Database OK"))
   .then(createAndLogUser)
-//   .then(createAndLogRoom)
+  //   .then(createAndLogRoom)
   .catch((error) => console.error(error));
 
 const homeRouter = require("./routes/homeRoutes");
@@ -82,6 +83,11 @@ app.use("/user", userRouter);
 
 app.use("/CoBuyRoom", CoBuyRoomRouter);
 
+//등록되지 않은 path에 대한 페이지 오류
+app.all("*", function (req, res) {
+  res.status(404).send("<h3>ERROR 404 - 페이지를 찾을 수 없습니다.</h3>");
+});
+
 app.use("/CoBuyForm", formRouter);
 /* ##가이드
 1. 코드 흐름: main.js -> routes -> controller -> ...
@@ -94,6 +100,29 @@ app.use("/CoBuyForm", formRouter);
 
 // --------------------------------------------------------------
 
-app.listen(app.get("port"), () => {
+const server = app.listen(app.get("port"), () => {
   console.log(`Server running at http://localhost:${app.get("port")}`);
+});
+
+// socket 서버 실행
+const io = socketIO(server, { path: "/socket.io" });
+io.on("connection", function (socket) {
+  // 새로운 유저 접속을 서버에게 알림
+  socket.on("newUser", function () {
+    // socket.name = name;
+    console.log("유저 접속");
+  });
+
+  // 클라이언트가 서버로 메세지 전송
+  socket.on("message", function (data) {
+    data.name = socket.name;
+    console.log(data);
+
+    socket.broadcast.emit("update", data);
+  });
+
+  // user connection lost
+  socket.on("disconnect", function () {
+    console.log(socket.name, "접속 종료");
+  });
 });

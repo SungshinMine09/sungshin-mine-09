@@ -13,13 +13,7 @@ module.exports = (sequelize, Sequelize) => {
         allowNull: false,
       },
       state: {
-        type: Sequelize.ENUM(
-          "demand",
-          "deposit",
-          "ready",
-          "delivery",
-          "complete"
-        ),
+        type: Sequelize.ENUM("demand", "deposit", "ready", "delivery", "complete"),
         defaultValue: "demand",
         comment: "수요조사, 입금중, 준비중, 배송중, 공동구매 완료만 허용",
       },
@@ -28,7 +22,7 @@ module.exports = (sequelize, Sequelize) => {
         allowNull: false,
       },
       host_id: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.BIGINT,
       },
     },
     {

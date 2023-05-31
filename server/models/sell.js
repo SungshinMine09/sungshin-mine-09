@@ -2,7 +2,7 @@ module.exports = (sequelize, Sequelize) => {
   const sell = sequelize.define(
     "sell",
     {
-      id: {
+      product_id: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
         primaryKey: true,
@@ -43,9 +43,7 @@ module.exports = (sequelize, Sequelize) => {
           min: 0,
           isLessThanMaxQuantity(value) {
             if (value > this.max_quantity) {
-              throw new Error(
-                `Current quantity (${value}) cannot be greater than max quantity (${this.max_quantity})`
-              );
+              throw new Error(`Current quantity (${value}) cannot be greater than max quantity (${this.max_quantity})`);
             }
           },
         },
