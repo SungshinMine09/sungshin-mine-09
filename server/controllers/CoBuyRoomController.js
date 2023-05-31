@@ -9,10 +9,10 @@ const Image = db.image;
 module.exports = {
   totalGonggu: async (req, res) => {
     try {
-      totalGonggus = await db.sequelize.query(
+      const totalGonggus = await db.sequelize.query(
         'SELECT A.*, B.id, B.url, replace(B.url, "../public", "") AS real_url, b.createdAt, b.updatedAt FROM (SELECT A.*, B.name FROM (SELECT A.product_id, A.cobuying_room_id, B.title, A.current_demand FROM sell AS A LEFT JOIN cobuying_room AS B ON A.cobuying_room_id=B.id) AS A LEFT JOIN product AS B ON A.product_id=B.id) AS A LEFT JOIN image AS B ON A.product_id=B.product_id;'
       );
-      cntTotal = await CoBuyRoom.count();
+      const cntTotal = await CobuyingRoom.count();
 
       if (req.cookies["userToken"] == null) {
         res.render("CoBuyRoom/totalGonggu", { totalGonggus: totalGonggus[0], count: cntTotal, isLoggedin: false });
@@ -25,10 +25,10 @@ module.exports = {
   },
   ingSuyo: async (req, res) => {
     try {
-      ingSuyos = await db.sequelize.query(
+      const ingSuyos = await db.sequelize.query(
         'SELECT A.*, B.id, B.url, replace(B.url, "../public", "") AS real_url, b.createdAt, b.updatedAt FROM (SELECT A.*, B.name FROM (SELECT A.product_id, A.cobuying_room_id, B.title, A.current_demand FROM sell AS A LEFT JOIN cobuying_room AS B ON A.cobuying_room_id=B.id WHERE B.state="demand") AS A LEFT JOIN product AS B ON A.product_id=B.id) AS A LEFT JOIN image AS B ON A.product_id=B.product_id;'
       );
-      cntingSuyo = await CoBuyRoom.count({
+      const cntingSuyo = await CobuyingRoom.count({
         where: {
           state: "demand",
         },
@@ -44,10 +44,10 @@ module.exports = {
   },
   soonEnd: async (req, res) => {
     try {
-      soonEnds = await db.sequelize.query(
+      const soonEnds = await db.sequelize.query(
         'SELECT A.*, B.id, B.url, replace(B.url, "../public", "") AS real_url, b.createdAt, b.updatedAt FROM (SELECT A.*, B.name FROM (SELECT A.product_id, A.cobuying_room_id, B.title, A.current_demand FROM sell AS A LEFT JOIN cobuying_room AS B ON A.cobuying_room_id=B.id WHERE B.state="deposit") AS A LEFT JOIN product AS B ON A.product_id=B.id) AS A LEFT JOIN image AS B ON A.product_id=B.product_id;'
       );
-      cntsoonEnd = await CoBuyRoom.count({
+      const cntsoonEnd = await CobuyingRoom.count({
         where: {
           state: "deposit",
         },
