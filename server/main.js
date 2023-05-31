@@ -11,15 +11,16 @@ const morgan = require("morgan"); // npm i morgan
 
 app.use(morgan("dev")); // log every request to the console
 
-// async function createAndLogUser() {
-//   const user = await db.user.create({
-//     login_id: "twenty",
-//     password: "twenty",
-//     student_number: "20202020",
-//     phone_number: "010-7641-4328",
-//   });
-//   console.log(user);
-// }
+async function createAndLogUser() {
+  const user = await db.user.create({
+    id: 1,
+    login_id: "twenty",
+    password: "twenty",
+    student_number: "20202020",
+    phone_number: "010-7641-4328",
+  });
+  console.log(user);
+}
 
 // async function createAndLogRoom() {
 //   const newRoom = await db.cobuying_room.create({
@@ -49,7 +50,7 @@ app.use(morgan("dev")); // log every request to the console
 db.sequelize
   .sync({ force: true })
   .then(() => console.log("Database OK"))
-//   .then(createAndLogUser)
+  .then(createAndLogUser)
 //   .then(createAndLogRoom)
   .catch((error) => console.error(error));
 
