@@ -13,11 +13,10 @@ module.exports = {
         'SELECT A.*, B.id, B.url, replace(B.url, "../public", "") AS real_url, b.createdAt, b.updatedAt FROM (SELECT A.*, B.name FROM (SELECT A.product_id, A.cobuying_room_id, B.title, A.current_demand FROM sell AS A LEFT JOIN cobuying_room AS B ON A.cobuying_room_id=B.id) AS A LEFT JOIN product AS B ON A.product_id=B.id) AS A LEFT JOIN image AS B ON A.product_id=B.product_id;'
       );
       const cntTotal = await CobuyingRoom.count();
-
-      if (req.cookies["userToken"] == null) {
-        res.render("CoBuyRoom/totalGonggu", { totalGonggus: totalGonggus[0], count: cntTotal, isLoggedin: false });
+      if (req.cookies['userToken'] == null) { //토큰이 없다면
+      res.render("CoBuyRoom/totalGonggu", { totalGonggus: totalGonggus[0], count: cntTotal, isLoggedin: false});
       } else {
-        res.render("CoBuyRoom/totalGonggu", { totalGonggus: totalGonggus[0], count: cntTotal, isLoggedin: true });
+        res.render("CoBuyRoom/totalGonggu", { totalGonggus: totalGonggus[0], count: cntTotal, isLoggedin: true});
       }
     } catch (error) {
       console.log(error);
@@ -33,10 +32,10 @@ module.exports = {
           state: "demand",
         },
       });
-      if (req.cookies["userToken"] == null) {
-        res.render("CoBuyRoom/ingSuyo", { ingSuyos: ingSuyos[0], count: cntingSuyo, isLoggedin: false });
+      if (req.cookies['userToken'] == null) { //토큰이 없다면
+        res.render("CoBuyRoom/totalGonggu", { totalGonggus: totalGonggus[0], count: cntTotal, isLoggedin: false});
       } else {
-        res.render("CoBuyRoom/ingSuyo", { ingSuyos: ingSuyos[0], count: cntingSuyo, isLoggedin: true });
+        res.render("CoBuyRoom/ingSuyo", { ingSuyos: ingSuyos[0], count: cntingSuyo, isLoggedin: true});
       }
     } catch (error) {
       console.log(error);
@@ -52,10 +51,10 @@ module.exports = {
           state: "deposit",
         },
       });
-      if (req.cookies["userToken"] == null) {
-        res.render("CoBuyRoom/soonEnd", { soonEnds: soonEnds[0], count: cntsoonEnd, isLoggedin: false });
+      if (req.cookies['userToken'] == null) { //토큰이 없다면
+        res.render("CoBuyRoom/totalGonggu", { totalGonggus: totalGonggus[0], count: cntTotal, isLoggedin: false});
       } else {
-        res.render("CoBuyRoom/soonEnd", { soonEnds: soonEnds[0], count: cntsoonEnd, isLoggedin: true });
+      res.render("CoBuyRoom/soonEnd", { soonEnds: soonEnds[0], count: cntsoonEnd, isLoggedin: true});
       }
     } catch (error) {
       console.log(error);
@@ -68,15 +67,13 @@ module.exports = {
         'SELECT A.*, B.*, replace(B.url, "../public", "") AS real_url FROM (SELECT A.*, B.`name` FROM (SELECT A.`product_id`, A.`cobuying_room_id`, B.`title`, A.`current_demand`, A.`min_demand` FROM sell AS A LEFT JOIN cobuying_room AS B ON A.`cobuying_room_id`=B.`id`) AS A LEFT JOIN product AS B ON A.`product_id`=B.`id`) AS A LEFT JOIN image AS B ON A.product_id=B.product_id;'
       );
       suyoStat = suyoStats[0].filter((it) => it.cobuying_room_id == CobuyroomID);
-      if (req.cookies["userToken"] != null) {
-        res.render("CoBuyRoom/suyoStat", { suyoStats: suyoStat, isLoggedin: true });
-      }
+      res.render("CoBuyRoom/suyoStat", {suyoStats: suyoStat, isLoggedin: true});
     } catch (error) {
       console.log(error);
     }
   },
   newPost: (req, res) => {
-    res.render("CoBuyRoom/newpost", { isLoggedin: true });
+    res.render("CoBuyRoom/newpost", {isLoggedin: true});
   },
   detail: async (req, res) => {
     try {
@@ -86,19 +83,17 @@ module.exports = {
       );
       detail = details[0].filter((it) => it.cobuying_room_id == CobuyroomID);
       console.log(detail);
-      if (req.cookies["userToken"] != null) {
-        res.render("CoBuyRoom/detail", { details: detail, isLoggedin: true });
-      }
+        res.render("CoBuyRoom/detail", { details: detail, isLoggedin: true});
     } catch (error) {
-      res.render("CoBuyRoom/errorCobuyroom");
+      res.render("CoBuyRoom/errorCobuyroom", {isLoggedin: true});
     }
   },
   createNewPost: (req, res) => {
-    res.render("CoBuyRoom/createPost");
+    res.render("CoBuyRoom/createPost", {isLoggedin: true});
   },
   // get
   createCoBuyRoomPage: (req, res) => {
-    res.render("CoBuyRoom/CreateBuyingPage");
+    res.render("CoBuyRoom/CreateBuyingPage", {isLoggedin: true});
   },
   // post
   createCoBuyRoom: async (req, res) => {
@@ -137,18 +132,18 @@ module.exports = {
   },
 
   chatting: (req, res) => {
-    res.render("CoBuyRoom/chatting");
+    res.render("CoBuyRoom/chatting",  {isLoggedin: true});
   },
   fillDepositForm: (req, res) => {
-    res.render("CoBuyForm/DepositFormPage");
+    res.render("CoBuyForm/DepositFormPage", {isLoggedin: true});
   },
   submitDepositForm: (req, res) => {
-    res.render("CoBuyForm/DepositFormSubmitPage");
+    res.render("CoBuyForm/DepositFormSubmitPage", {isLoggedin: true});
   },
   showAccount: (req, res) => {
-    res.render("CoBuyForm/ShowAccountPage");
+    res.render("CoBuyForm/ShowAccountPage", {isLoggedin: true});
   },
   depositResult: (req, res) => {
-    res.render("CoBuyForm/DepositFormResultPage");
+    res.render("CoBuyForm/DepositFormResultPage", {isLoggedin: true});
   },
 };

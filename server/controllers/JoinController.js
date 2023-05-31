@@ -160,6 +160,7 @@ async function LoginController(req, res) {
         if(bcrypt.compareSync(input_password, findUser['password'])) {
             const token = jwt.sign({ login_id: input_ID }, secretObj.secret);
             res.cookie('userToken', token, { httpOnly: true, secure: true, expires: new Date(Date.now() + 3600000) }); //1시간 후에 만료
+            //res.cookie('isLoggedin', 'true', {expires: new Date(Date.now() + 3600000)});
 
             return res.send("<script>alert('로그인 완료!'); location.href='/'; </script>");
         } else {
@@ -170,7 +171,8 @@ async function LoginController(req, res) {
 
 async function LogoutController(req, res) {
     res.clearCookie('userToken');
-    res.send("<script>alert('로그아웃 완료!'); location.href='/'; </script>");
+    //await res.clearCookie('isLoggedin');
+    await res.send("<script>alert('로그아웃 완료!'); location.href='/'; </script>");
 }
 
 module.exports = { generateEmailController, verifyCodeController, registerController, LoginController, LogoutController };

@@ -31,12 +31,13 @@ module.exports = {
       where: { id: req.params.room_id },
     });
     if (!cobuying_room) {
-      res.render("CoBuyRoom/createCoBuyRoom");
+      res.render("CoBuyRoom/createCoBuyRoom", {isLoggedin: true});
     }
     console.log(`room:::${cobuying_room.id}`);
     res.render("CoBuyForm/depositFormMaker", {
       deposit_form: deposit_form,
       cobuying_room: cobuying_room,
+      isLoggedin: true
     });
   },
   //post
@@ -50,7 +51,7 @@ module.exports = {
         where: { id: form_id },
       });
       if (!cobuying_room) {
-        res.render("CoBuyRoom/createCoBuyRoom");
+        res.render("CoBuyRoom/createCoBuyRoom", {isLoggedin: true});
       }
       const new_value = req.body.question;
       if (deposit_form && new_value) {
@@ -93,11 +94,12 @@ module.exports = {
         where: { id: form_id },
       });
       if (!cobuying_room) {
-        res.render("CoBuyRoom/createCoBuyRoom");
+        res.render("CoBuyRoom/createCoBuyRoom", {isLoggedin: true});
       }
       if (!value) {
         res.render("CoBuyForm/depositFormMaker", {
           deposit_form: deposit_form,
+          isLoggedin: true
         });
       }
       const new_questions = {
@@ -129,7 +131,7 @@ module.exports = {
         where: { id: form_id },
       });
       if (!cobuying_room) {
-        res.render("CoBuyRoom/createCoBuyRoom");
+        res.render("CoBuyRoom/createCoBuyRoom", {isLoggedin: true});
       }
       let new_questions = {};
 
@@ -173,16 +175,17 @@ module.exports = {
         where: { id: req.params.room_id },
       });
       if (!cobuying_room) {
-        res.render("CoBuyRoom/createCoBuyRoom");
+        res.render("CoBuyRoom/createCoBuyRoom", {isLoggedin: true});
       }
       console.log(currentForm);
       res.render("CoBuyForm/depositFormMaker", {
         deposit_form: currentForm,
         cobuying_room: cobuying_room,
+        isLoggedin: true
       });
     } catch (error) {
       console.log(error);
-      res.render("/");
+      res.render("/", {isLoggedin: true});
     }
   },
   writeForm: async (req, res) => {
@@ -195,11 +198,12 @@ module.exports = {
         where: { id: form_id },
       });
       if (!cobuying_room) {
-        res.render("CoBuyRoom/createCoBuyRoom");
+        res.render("CoBuyRoom/createCoBuyRoom", {isLoggedin: true});
       }
       res.render("CoBuyForm/depositFormSubmit", {
         deposit_form: deposit_form,
         cobuying_room: cobuying_room,
+        isLoggedin: true
       });
     } catch (error) {
       console.log(error);
@@ -236,7 +240,7 @@ module.exports = {
       const deposit_form = await DepositForm.findOne({
         where: { id: form_id },
       });
-      res.render("CoBuyForm/showAccount", { deposit_form: deposit_form });
+      res.render("CoBuyForm/showAccount", { deposit_form: deposit_form, isLoggedin: true });
     } catch (error) {
       console.log(error);
       res.redirect(`/CoBuyRoom/${form_id}/newPost`);
@@ -249,7 +253,7 @@ module.exports = {
         where: { id: form_id },
       });
       if (!deposit_form) {
-        res.render(`CoBuyForm/${form_id}/depositFormMaker`);
+        res.render(`CoBuyForm/${form_id}/depositFormMaker`, {isLoggedin: true});
       }
       const answers = await Answer.findAll({
         where: {
@@ -260,6 +264,7 @@ module.exports = {
       res.render("CoBuyForm/depositFormResult", {
         deposit_form: deposit_form,
         answers: answers,
+        isLoggedin: true
       });
     } catch (error) {
       console.log(error);

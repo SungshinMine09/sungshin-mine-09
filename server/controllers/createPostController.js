@@ -17,7 +17,7 @@ module.exports = {
     }
   },
   indexView: async (req, res) => {
-    res.render("CoBuyRoom/createPost");
+    res.render("CoBuyRoom/createPost", {isLoggedin: true});
   },
   createPost: async (req, res, next) => {
     const coBuyingRoomID = req.params.id;

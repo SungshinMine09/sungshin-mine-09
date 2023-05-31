@@ -39,25 +39,25 @@ module.exports = {
     }
   },
   indexView: async (req, res) => {
-    res.render("CoBuyRoom/detail");
+    res.render("CoBuyRoom/detail", {isLoggedin: true});
   },
   newpost: (req, res) => {
-    res.render("CoBuyRoom/newpost");
+    res.render("CoBuyRoom/newpost", {isLoggedin: true});
   },
   chatting: (req, res) => {
-    res.render("CoBuyRoom/chatting");
+    res.render("CoBuyRoom/chatting", {isLoggedin: true});
   },
   fillDepositForm: (req, res) => {
-    res.render("CoBuyForm/DepositFormPage");
+    res.render("CoBuyForm/DepositFormPage", {isLoggedin: true});
   },
   submitDepositForm: (req, res) => {
-    res.render("CoBuyForm/DepositFormSubmitPage");
+    res.render("CoBuyForm/DepositFormSubmitPage", {isLoggedin: true});
   },
   showAccount: (req, res) => {
-    res.render("CoBuyForm/ShowAccountPage");
+    res.render("CoBuyForm/ShowAccountPage", {isLoggedin: true});
   },
   depositResult: (req, res) => {
-    res.render("CoBuyForm/DepositFormResultPage");
+    res.render("CoBuyForm/DepositFormResultPage", {isLoggedin: true});
   },
   updateCurrentDemand: async (req, res, next) => {
     // current_demand 업데이트
@@ -95,7 +95,7 @@ module.exports = {
     //     id: coBuyingRoomID,
     //   },
     // });
-    res.render("home/index");
+    res.render("home/index", {isLoggedin: true});
   },
   redirectView: (req, res, next) => {
     let redirectPath = res.locals.redirect;

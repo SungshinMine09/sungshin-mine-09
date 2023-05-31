@@ -12,7 +12,7 @@ const morgan = require("morgan"); // npm i morgan
 
 app.use(morgan("dev")); // log every request to the console
 
-async function createAndLogUser() {
+/*async function createAndLogUser() {
   const user = await db.user.create({
     id: 1,
     login_id: "twenty",
@@ -21,7 +21,7 @@ async function createAndLogUser() {
     phone_number: "010-7641-4328",
   });
   console.log(user);
-}
+}*/
 
 // async function createAndLogRoom() {
 //   const newRoom = await db.cobuying_room.create({
@@ -49,9 +49,10 @@ async function createAndLogUser() {
 // }
 
 db.sequelize
-  .sync({ force: true })
+  //.sync({ force: true })
+  .sync()
   .then(() => console.log("Database OK"))
-  .then(createAndLogUser)
+  //.then(createAndLogUser)
   //   .then(createAndLogRoom)
   .catch((error) => console.error(error));
 
@@ -60,6 +61,7 @@ const userRouter = require("./routes/userRoutes");
 const CoBuyRoomRouter = require("./routes/CoBuyRoomRoutes");
 const formRouter = require("./routes/CoBuyFormRoutes");
 const errorRouter = require("./routes/errorRoutes");
+const { checkAuth } = require("./controllers/verifyAuthController");
 
 app.set("port", process.env.PORT || 80);
 app.set("view engine", "ejs");
@@ -89,6 +91,9 @@ app.all("*", function (req, res) {
 });
 
 app.use("/CoBuyForm", formRouter);
+
+//app.get("*", checkAuth);
+
 /* ##가이드
 1. 코드 흐름: main.js -> routes -> controller -> ...
 2. 코드 통일을 위해 router 반드시 거칠 것! main에서 controller 직접 사용하지 말 것!(불가피한 경우, 팀과 논의)
