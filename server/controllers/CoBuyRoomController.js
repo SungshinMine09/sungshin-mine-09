@@ -1,8 +1,10 @@
-const db = require("../models/index"),
-  CoBuyRoom = db.cobuying_room,
-  Sell = db.sell,
-  Product = db.product,
-  Image = db.image;
+"use strict";
+
+const db = require("../models/index");
+const CobuyingRoom = db.cobuying_room;
+const Sell = db.sell;
+const Product = db.product;
+const Image = db.image;
 
 module.exports = {
   totalGonggu: async (req, res) => {
@@ -92,24 +94,61 @@ module.exports = {
     }
   },
   createNewPost: (req, res) => {
-    res.render("CoBuyRoom/createPost", { isLoggedin: true });
+    res.render("CoBuyRoom/createPost");
   },
-  createCoBuyRoom: (req, res) => {
-    res.render("CoBuyRoom/CreateBuyingPage", { isLoggedin: true });
+  // get
+  createCoBuyRoomPage: (req, res) => {
+    res.render("CoBuyRoom/CreateBuyingPage");
   },
+  // post
+  createCoBuyRoom: async (req, res) => {
+    // console.log(req.body);
+    try {
+      const newRoom = await CobuyingRoom.create({
+        title: req.body.title,
+        description: req.body.description,
+        host_id: 1,
+      });
+
+      const newProduct = await Product.create({
+        name: req.body.title,
+      });
+
+      const newSell = await Sell.create({
+        id: newProduct.id,
+        cobuying_room_id: newRoom.id,
+        price: req.body.price,
+        min_quantity: req.body.min_demand,
+        max_quantity: req.body.max_quantity,
+        min_demand: req.body.min_demand,
+      });
+      // imageUrl
+      // console.log(`${req.file.path}`);
+      const newImage = await Image.create({
+        url: req.file.path,
+        product_id: newProduct.id,
+      });
+      req.url = `/CoBuyRoom/${newRoom.id}/newPost`;
+      res.redirect(req.url);
+    } catch (error) {
+      console.log(error);
+      res.redirect("/");
+    }
+  },
+
   chatting: (req, res) => {
-    res.render("CoBuyRoom/chatting", { isLoggedin: true });
+    res.render("CoBuyRoom/chatting");
   },
   fillDepositForm: (req, res) => {
-    res.render("CoBuyForm/DepositFormPage", { isLoggedin: true });
+    res.render("CoBuyForm/DepositFormPage");
   },
   submitDepositForm: (req, res) => {
-    res.render("CoBuyForm/DepositFormSubmitPage", { isLoggedin: true });
+    res.render("CoBuyForm/DepositFormSubmitPage");
   },
   showAccount: (req, res) => {
-    res.render("CoBuyForm/ShowAccountPage", { isLoggedin: true });
+    res.render("CoBuyForm/ShowAccountPage");
   },
   depositResult: (req, res) => {
-    res.render("CoBuyForm/DepositFormResultPage", { isLoggedin: true });
+    res.render("CoBuyForm/DepositFormResultPage");
   },
 };

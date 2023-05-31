@@ -1,5 +1,3 @@
-// const { sequelize, Sequelize } = require(".");
-
 module.exports = (sequelize, Sequelize) => {
   const image = sequelize.define(
     "image",
@@ -25,5 +23,22 @@ module.exports = (sequelize, Sequelize) => {
       timestamp: false,
     }
   );
+
+  image.getUrlByProductId = async (product_id) => {
+    try {
+      const image = await this.findOne({
+        where: {
+          product_id: product_id
+        },
+      });
+      if (!image) {
+        throw new Error(`${product_id} Image NOT EXISTS `);
+      }
+    } catch(error) {
+      console.log(error);
+    }
+    return image.url;
+  };
+
   return image;
 };

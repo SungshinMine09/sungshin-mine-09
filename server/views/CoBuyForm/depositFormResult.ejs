@@ -4,11 +4,14 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/css/DepositFormSubmit.css" />
-    <link rel="stylesheet" href="/css/DepositForm.css" />
+    <link rel="stylesheet" href="/css/depositFormResult.css" />
+    <link rel="stylesheet" href="/css/depositFormMaker.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Tilt+Neon&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Tilt+Neon&display=swap"
+      rel="stylesheet"
+    />
     <title>Document</title>
   </head>
   <body>
@@ -24,24 +27,28 @@
           <li class="adminBtn">입금폼 양식 작성</li>
           <li class="adminBtn">입금폼 통계</li>
         </ul>
-        <div class="resultbox">
-          <div>
-            <div class="Question">
-              <p>Q1.</p>
-              학번을 입력해주세요 (예시: 20211234)
-            </div>
-          </div>
-          <label for="Answer"></label>
-          <input type="text" id="Answer" />
-          <div class="Question">
-            <p>Q2.</p>
-            이름을 입력해주세요 (예시: 김수룡)
-          </div>
-          <label for="Answer"></label>
-          <input type="text" id="Answer" />
-        </div>
-        <button class="submitBtn">제출</button>
       </nav>
+      <div class="container">
+        <div class="resultbox">
+          <div class="Question">
+            <table>
+              <% for (var key in deposit_form.questions) { %>
+              <tr>
+                <td class="question">
+                  <%= key %>. <%= deposit_form.questions[key] %>
+                </td>
+              </tr>
+              <% for (let answer of answers) { %>
+              <tr>
+                <td class="answer">
+                  <%= answer.user_id %> : <%= answer.answers[key] %>
+                </td>
+              </tr>
+              <% } %> <% } %>
+            </table>
+          </div>
+        </div>
+      </div>
     </div>
   </body>
 </html>

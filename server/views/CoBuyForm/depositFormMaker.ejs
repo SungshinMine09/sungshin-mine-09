@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/depositFormMaker.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Tilt+Neon&display=swap"
+      rel="stylesheet"
+    />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="banner"><p><%= cobuying_room.title %></p></div>
+      <nav class="navs">
+        <ul class="nav-left">
+          <li class="pageBtn">새소식</li>
+          <li class="pageBtn">채팅</li>
+        </ul>
+        <ul class="nav-right">
+          <li class="adminBtn">수요조사통계</li>
+          <li class="adminBtn">입금폼 양식 작성</li>
+          <li class="adminBtn">입금폼 통계</li>
+        </ul>
+      </nav>
+      <div class="accountBanner">
+        <form
+          id="accountForm"
+          action="/CoBuyForm/<%= deposit_form.id %>/saveAccount"
+          method="post"
+        >
+          <label for="inputAccount">표시될 계좌를 입력해주세요</label>
+          <input
+            type="text"
+            id="inputAccount"
+            name="account"
+            placeholder="<%= deposit_form.account %>"
+            required
+          />
+          <button
+            type="submit"
+            id="accountSaveBtn"
+            form="accountForm"
+            style="font-size: 20px"
+          >
+            제출
+          </button>
+        </form>
+      </div>
+      <div class="show">
+        <% for(var key in deposit_form.questions) { %>
+        <div style="margin-top: 10px">
+          <form
+            action="/CoBuyForm/<%= deposit_form.id %>/edit?key=<%= key %>"
+            method="POST"
+          >
+            <span style="padding-left: 20px"><%= key %>.</span>
+            <input
+              id="newQuestion"
+              placeholder="<%= deposit_form.questions[key] %>"
+              name="value"
+            />
+
+            <button id="edit" type="submit">수정</button>
+          </form>
+          <form
+            action="/CoBuyForm/<%= deposit_form.id %>/delete?key=<%= key %>"
+            method="POST"
+          >
+            <button type="submit" id="delete">삭제</button>
+          </form>
+        </div>
+        <% } %>
+      </div>
+      <div class="formUnit">
+        <div class="formContainer">
+          <form
+            id="question-form"
+            action="/CoBuyForm/<%= deposit_form.id %>/add"
+            method="post"
+          >
+            <input
+              type="text"
+              id="question-input"
+              name="question"
+              placeholder="질문을 입력해주세요"
+              required
+            />
+            <button type="submit" class="plusBtn" form="question-form">
+              +
+            </button>
+          </form>
+        </div>
+      </div>
+      <div style="text-align: center">
+        <button
+          id="completeBtn"
+          onclick="location.href='/CoBuyRoom/<%= deposit_form.id %>/newPost'"
+        >
+          입금폼 작성완료
+        </button>
+      </div>
+    </div>
+  </body>
+</html>
