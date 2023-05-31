@@ -1,17 +1,24 @@
+const db = require("../models/index"),
+    User = db.user;
 
 let jwt = require("jsonwebtoken");
 let secretObj = require("../config/jwtConfig");
 
 
-function checkAuth (req, res, next) {
+async function checkAuth (req, res, next) {
     const validToken = req.cookies['userToken'];
     if (validToken == null) {
+        //res.locals.user = null;
         return res.send("<script>alert('권한이 없습니다. 로그인해주세요.'); location.href='/user/Login'; </script>");
     } else {
         let decoded = jwt.verify(validToken, secretObj.secret);
         if(decoded) {
+          //  let user = await User.findOne({where : {login_id: decoded.login_id}});
+            //res.locals.user = user;
+            //res.cookie('isLoggedin', 'true', {expires: new Date(Date.now() + 3600000)});
             next();
         } else { 
+            //res.locals.user = null;
             res.send("<script>alert('인증 실패. 로그인해주세요.'); location.href='/user/Login'; </script>"); 
         }
     }

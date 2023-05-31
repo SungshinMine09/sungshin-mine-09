@@ -26,6 +26,6 @@ module.exports = {
     }
   },
   indexView: async (req, res) => {
-    res.render("CoBuyRoom/newpost");
+    res.render("CoBuyRoom/newpost", { isLoggedin: true });
   },
 };
