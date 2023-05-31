@@ -32,10 +32,10 @@ module.exports = {
       }
     },
     myPage: (req, res) => {
-        res.render("user/mypage", {isLoggedin: true});
+        res.render("user/mypage");
     },
     alarmPage: (req, res) => {
-        res.render("user/alarmPage", {isLoggedin: true}); 
+        res.render("user/alarmPage"); 
     },
   };
   

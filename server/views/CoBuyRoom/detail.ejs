@@ -19,12 +19,13 @@
         onclick="event.stopPropagation(); confirmDeleteCobuyRoom(); checkDeleteCobuyroomAvaility();
         location.href='/CoBuyRoom/<%= cobuyroom.id %>/deleteCoBuyRoom';">
         공동구매방 삭제하기</button>
-    <!-- <% Array.from(details).forEach( detail => { %>
+    <!--<% Array.from(details).forEach(detail => { %>
     <div class="gonggu_header">
       <div>
         <p> <%= detail.title %> </p>
-        <button class="gonggu_delete_button">공동구매방 삭제하기</button> -->
-      </div>
+        <% }) %>
+        <button class="gonggu_delete_button">공동구매방 삭제하기</button>
+      </div>-->
     </div>
 
       <div class="gonggu_nav">
@@ -61,15 +62,15 @@
           onclick="location.href='/CoBuyRoom/<%= cobuyroom.id %>/updateCurrentDemand';">
           살래요👍</button> <br>
           <!-- 위쪽 코드가 기본임! 수정 필요할 때 아래 코드 참고하고 추후 삭제 예정  -->
-          <!-- <span class="fontSize15">
+          <!--<span class="fontSize15">
           현재 <%= sell.current_demand %>명의 수정이들이 이 제품을 갖고 싶어해요!
             <span class="fontSize18"><%= detail.name %> 1개당&nbsp;&nbsp;&nbsp;</span>
             <span class="fontSize36 fontBold"> <%= detail.price %>원 </span> <br>
           <button class="wantBtn BackgroundColorPurple ColorLightPurple" type="button">
-          살래요👍</button> <br> -->
+          살래요👍</button> <br>-->
           
           <span class="fontSize15">
-          현재 <%=detail.current_demand%>명의 수정이들이 이 제품을 갖고 싶어해요!
+          현재 <%= detail.current_demand %>명의 수정이들이 이 제품을 갖고 싶어해요!
           </span>
         </div>
       </div>
