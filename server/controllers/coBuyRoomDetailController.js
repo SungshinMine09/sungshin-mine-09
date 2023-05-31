@@ -22,16 +22,22 @@ module.exports = {
           id: sell.product_id,
         },
       });
-      const depositForm = await DepositForm.findOne({
+      const image = await Image.findOne({
         where: {
-          cobuying_room_id: coBuyingRoomID,
+          product_id: product.id,
         },
       });
+      // const depositForm = await DepositForm.findOne({
+      //   where: {
+      //     cobuying_room_id: coBuyingRoomID,
+      //   },
+      // });
 
       res.locals.cobuyroom = cobuyroom;
       res.locals.sell = sell;
       res.locals.product = product;
-      res.locals.depositForm = depositForm;
+      res.locals.image = image;
+      // res.locals.depositForm = depositForm;
       next();
     } catch (error) {
       console.log(`Error fetching coBuyroomDetail: ${error.message}`);
@@ -57,7 +63,7 @@ module.exports = {
     res.render("CoBuyForm/ShowAccountPage");
   },
   depositResult: (req, res) => {
-    res.render("CoBuyForm/DepositFormResultPage");
+    res.locals.redirect = `/CoBuyForm/:form_id/depositFormResult`;
   },
   updateCurrentDemand: async (req, res, next) => {
     // current_demand 업데이트

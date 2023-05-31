@@ -60,9 +60,6 @@ module.exports = {
       console.log(error);
     }
   },
-  newPost: (req, res) => {
-    res.render("CoBuyRoom/newpost");
-  },
   detail: async (req, res) => {
     try {
       const CobuyroomID = req.params.id;
@@ -113,7 +110,7 @@ module.exports = {
         url: req.file.path,
         product_id: newProduct.id,
       });
-      req.url = `/CoBuyRoom/${newRoom.id}/newPost`;
+      req.url = `/CoBuyRoom/${newRoom.id}/newpost`;
       res.redirect(req.url);
     } catch (error) {
       console.log(error);
