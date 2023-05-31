@@ -141,4 +141,10 @@ dist
 # SvelteKit build / generate output
 .svelte-kit
 
+# admin email and password
+senderInfo.json
+
+#jwt secret
+jwtConfig.js
+
 # End of https://www.toptal.com/developers/gitignore/api/node

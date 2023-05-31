@@ -2,6 +2,7 @@
 const express = require("express"),
   db = require("./models/index"),
   { sequelize } = require("./models"),
+  cookieParser = require("cookie-parser"),
   app = express(),
   layouts = require("express-ejs-layouts");
 
@@ -70,6 +71,7 @@ app.use(
   })
 );
 app.use(express.json());
+app.use(cookieParser());
 
 // ------------------------## route ##---------------------------
 app.use("/", homeRouter);
