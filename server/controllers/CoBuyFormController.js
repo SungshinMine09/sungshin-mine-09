@@ -31,13 +31,13 @@ module.exports = {
       where: { id: req.params.room_id },
     });
     if (!cobuying_room) {
-      res.render("CoBuyRoom/createCoBuyRoom", {isLoggedin: true});
+      res.render("CoBuyRoom/createCoBuyRoom", { isLoggedin: true });
     }
     console.log(`room:::${cobuying_room.id}`);
     res.render("CoBuyForm/depositFormMaker", {
       deposit_form: deposit_form,
       cobuying_room: cobuying_room,
-      isLoggedin: true
+      isLoggedin: true,
     });
   },
   //post
@@ -51,13 +51,11 @@ module.exports = {
         where: { id: form_id },
       });
       if (!cobuying_room) {
-        res.render("CoBuyRoom/createCoBuyRoom", {isLoggedin: true});
+        res.render("CoBuyRoom/createCoBuyRoom", { isLoggedin: true });
       }
       const new_value = req.body.question;
       if (deposit_form && new_value) {
-        const new_key = deposit_form
-          .getDataValue("next_questions_num")
-          .toString();
+        const new_key = deposit_form.getDataValue("next_questions_num").toString();
 
         const new_questions = {
           ...deposit_form.questions,
@@ -94,12 +92,12 @@ module.exports = {
         where: { id: form_id },
       });
       if (!cobuying_room) {
-        res.render("CoBuyRoom/createCoBuyRoom", {isLoggedin: true});
+        res.render("CoBuyRoom/createCoBuyRoom", { isLoggedin: true });
       }
       if (!value) {
         res.render("CoBuyForm/depositFormMaker", {
           deposit_form: deposit_form,
-          isLoggedin: true
+          isLoggedin: true,
         });
       }
       const new_questions = {
@@ -131,7 +129,7 @@ module.exports = {
         where: { id: form_id },
       });
       if (!cobuying_room) {
-        res.render("CoBuyRoom/createCoBuyRoom", {isLoggedin: true});
+        res.render("CoBuyRoom/createCoBuyRoom", { isLoggedin: true });
       }
       let new_questions = {};
 
@@ -175,17 +173,17 @@ module.exports = {
         where: { id: req.params.room_id },
       });
       if (!cobuying_room) {
-        res.render("CoBuyRoom/createCoBuyRoom", {isLoggedin: true});
+        res.render("CoBuyRoom/createCoBuyRoom", { isLoggedin: true });
       }
       console.log(currentForm);
       res.render("CoBuyForm/depositFormMaker", {
         deposit_form: currentForm,
         cobuying_room: cobuying_room,
-        isLoggedin: true
+        isLoggedin: true,
       });
     } catch (error) {
       console.log(error);
-      res.render("/", {isLoggedin: true});
+      res.render("/", { isLoggedin: true });
     }
   },
   writeForm: async (req, res) => {
@@ -198,12 +196,12 @@ module.exports = {
         where: { id: form_id },
       });
       if (!cobuying_room) {
-        res.render("CoBuyRoom/createCoBuyRoom", {isLoggedin: true});
+        res.render("CoBuyRoom/createCoBuyRoom", { isLoggedin: true });
       }
       res.render("CoBuyForm/depositFormSubmit", {
         deposit_form: deposit_form,
         cobuying_room: cobuying_room,
-        isLoggedin: true
+        isLoggedin: true,
       });
     } catch (error) {
       console.log(error);
@@ -253,7 +251,7 @@ module.exports = {
         where: { id: form_id },
       });
       if (!deposit_form) {
-        res.render(`CoBuyForm/${form_id}/depositFormMaker`, {isLoggedin: true});
+        res.render(`CoBuyForm/${form_id}/depositFormMaker`, { isLoggedin: true });
       }
       const answers = await Answer.findAll({
         where: {
@@ -264,7 +262,7 @@ module.exports = {
       res.render("CoBuyForm/depositFormResult", {
         deposit_form: deposit_form,
         answers: answers,
-        isLoggedin: true
+        isLoggedin: true,
       });
     } catch (error) {
       console.log(error);
