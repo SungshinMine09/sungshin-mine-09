@@ -8,8 +8,8 @@
 #alarmPageUl{
     width: 1024px;
     height: 520px;
-    overflow: scroll;
-    overflow-x: hidden;
+    overflow: auto;
+    /*overflow-x: hidden;*/
     padding: 0;
 }
 

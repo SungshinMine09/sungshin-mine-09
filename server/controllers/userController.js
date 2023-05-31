@@ -31,7 +31,6 @@ module.exports = {
        console.log(error);
      }  
    },
-
     coBuyRoomAlarm: async(req, res) => {
       try {
         notificationsJoinCobuyingRooms2 = await db.sequelize.query(
@@ -43,7 +42,6 @@ module.exports = {
         console.log(error);
       }
     },
-    
     chattingAlarm: async(req, res) => {
       try {
         notificationsJoinCobuyingRooms3 = await db.sequelize.query(
