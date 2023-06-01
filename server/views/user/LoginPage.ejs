@@ -16,7 +16,7 @@
   <body>
     <div class="Login_Wrapper">
       <h2 class="Login_Title">로그인</h2>
-      <form method="post" action="" id="LoginForm">
+      <form method="post" action="/user/Login" id="LoginForm">
         <!--action에는 사용자가 입력한 데이터를 처리할 파일의 경로가 들어감. 백엔드 언어로 작성됨.-->
         <input type="text" name="userID" placeholder="아이디" />
         <input type="password" name="userPassword" placeholder="비밀번호" />
@@ -24,7 +24,7 @@
         <input type="submit" value="로그인" />
       </form>
       <a href="JoinStep1" class="gotoJoinpage1_btn">회원가입</a>
-      <a href="ChangeIdPw" class="change_id_pw_btn">아이디/비밀번호 찾기</a>
+      <!--<a href="ChangeIdPw" class="change_id_pw_btn">아이디/비밀번호 찾기</a>-->
     </div>
   </body>
 </html>

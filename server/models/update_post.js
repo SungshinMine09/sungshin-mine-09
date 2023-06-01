@@ -10,11 +10,6 @@ module.exports = (sequelize, Sequelize) => {
         autoIncrement: true,
         primaryKey: true,
       },
-      cobuying_id: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        primaryKey: true,
-      },
       title: {
         type: Sequelize.STRING(20),
         allowNull: false,
@@ -23,16 +18,12 @@ module.exports = (sequelize, Sequelize) => {
         type: Sequelize.STRING(1000),
         allowNull: false,
       },
-      title: {
-        type: Sequelize.DATE,
-        allowNull: false,
-      },
     },
     {
       tableName: "update_post",
       timestamp: false,
-      charset: 'utf8',
-      collate: 'utf8_general_ci'
+      charset: "utf8",
+      collate: "utf8_general_ci",
     }
   );
   return update_post;

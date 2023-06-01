@@ -9,22 +9,24 @@
     <link rel="stylesheet" href="/css/style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com/" />
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Tilt+Neon&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Tilt+Neon&display=swap" rel="stylesheet" />
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/js/chatting.js"></script>
   </head>
   <body>
+    <div class="gonggu_header">
+      <div>
+        <p><%= cobuyroom.title %></p>
+      </div>
+    </div>
     <main>
       <div>
         <div class="fontSize16 marginTop20" id="chattingBox">
           <div class="chattingFromMe flex">
             <div><img src="profileImageExample.png" /></div>
             <div>
-              <div class="messageBox">
-                안녕하세요 총대님! 뽀룡이 학잠에 왼쪽 수정구 사이즈가 어떻게
-                되나요?
-              </div>
+              <div class="messageBox">안녕하세요 총대님! 뽀룡이 학잠에 왼쪽 수정구 사이즈가 어떻게 되나요?</div>
               <div class="date">2023.04.11 12:17:08</div>
             </div>
           </div>
@@ -32,65 +34,18 @@
             <div><img src="profileImageExample.png" /></div>
             <div>
               <div class="messageBox">
-                안녕하세요~ 아직 정해지진 않았지만 20cm*20cm 정도로 예상하고
-                있습니다. 안녕하세요~ 아직 정해지진 않았지만 20cm*20cm 정도로
-                예상하고 있습니다. 안녕하세요~ 아직 정해지진 않았지만 20cm*20cm
-                정도로 예상하고 있습니다.
-              </div>
-              <div class="date">2023.04.11 14:24:35</div>
-            </div>
-          </div>
-          <div class="chattingFromMe flex">
-            <div><img src="profileImageExample.png" /></div>
-            <div>
-              <div class="messageBox">
-                안녕하세요 총대님! 뽀룡이 학잠에 왼쪽 수정구 사이즈가 어떻게
-                되나요?
-              </div>
-              <div class="date">2023.04.11 12:17:08</div>
-            </div>
-          </div>
-          <div class="chattingFromYou flex">
-            <div><img src="profileImageExample.png" /></div>
-            <div>
-              <div class="messageBox">
-                안녕하세요~ 아직 정해지진 않았지만 20cm*20cm 정도로 예상하고
-                있습니다.
-              </div>
-              <div class="date">2023.04.11 14:24:35</div>
-            </div>
-          </div>
-          <div class="chattingFromMe flex">
-            <div><img src="profileImageExample.png" /></div>
-            <div>
-              <div class="messageBox">
-                안녕하세요 총대님! 뽀룡이 학잠에 왼쪽 수정구 사이즈가 어떻게
-                되나요?
-              </div>
-              <div class="date">2023.04.11 12:17:08</div>
-            </div>
-          </div>
-          <div class="chattingFromYou flex">
-            <div><img src="profileImageExample.png" /></div>
-            <div>
-              <div class="messageBox">
-                안녕하세요~ 아직 정해지진 않았지만 20cm*20cm 정도로 예상하고
-                있습니다.
+                안녕하세요~ 아직 정해지진 않았지만 20cm*20cm 정도로 예상하고 있습니다. 안녕하세요~ 아직 정해지진 않았지만 20cm*20cm 정도로 예상하고 있습니다. 안녕하세요~ 아직 정해지진 않았지만
+                20cm*20cm 정도로 예상하고 있습니다.
               </div>
               <div class="date">2023.04.11 14:24:35</div>
             </div>
           </div>
         </div>
         <div class="marginTop30">
-          <form>
-            <input
-              class="fontSize14"
-              type="text"
-              id="message"
-              placeholder="채팅 메시지를 입력해주세요."
-            />
-            <input id="sendButton" type="submit" value="전송" />
-          </form>
+          <div>
+            <input class="fontSize14" type="text" id="message" placeholder="채팅 메시지를 입력해주세요." />
+            <button id="sendButton" onclick="send()" style="cursor: pointer">전송</button>
+          </div>
         </div>
       </div>
     </main>

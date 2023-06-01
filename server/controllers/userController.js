@@ -3,23 +3,43 @@ const jwt = require("jsonwebtoken");
 
 const db=require("../models/index"),
     Notification = db.notification;
+/*const db = require("../models/index"),
+  User = db.user;*/
+//const bcrypt = require("bcrypt");
 
 module.exports = {
-    Login: (req, res) => {
-      res.render("user/LoginPage");
+    openLoginPage: (req, res) => {
+      if (req.cookies['userToken'] == null) { //토큰이 없다면
+        res.render("user/LoginPage", { isLoggedin: false }); 
+      } else {
+        res.render("home/index", { isLoggedin: true}); 
+      }
     },
     JoinStep1: (req, res) => {
-      res.render("user/JoinPage_1");
+      if (req.cookies['userToken'] == null) { //토큰이 없다면
+        res.render("user/JoinPage_1", { isLoggedin: false }); 
+      } else {
+        res.render("home/index", { isLoggedin: true}); 
+      }
     },
     JoinStep2: (req, res) => {
-      res.render("user/JoinPage_2");
+      if (req.cookies['userToken'] == null) { //토큰이 없다면
+        res.render("user/JoinPage_2", { isLoggedin: false }); 
+      } else {
+        res.render("home/index", { isLoggedin: true}); 
+      }
     },
     JoinStep3: (req, res) => {
-      res.render("user/JoinPage_3");
+      if (req.cookies['userToken'] == null) { //토큰이 없다면
+        res.render("user/JoinPage_3", { isLoggedin: false }); 
+      } else {
+        res.render("home/index", { isLoggedin: true}); 
+      }
     },
     myPage: (req, res) => {
-      res.render("user/mypage");
+        res.render("user/mypage");
     },
+
     alarmPage: async(req, res) => {
       try {
         notificationsJoinCobuyingRooms1 = await db.sequelize.query(
