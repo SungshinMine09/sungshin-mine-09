@@ -19,7 +19,7 @@ module.exports = (sequelize, Sequelize) => {
       description: {
         type: Sequelize.STRING(500),
         allowNull: false,
-
+      },
       questions: {
         type: Sequelize.JSON,
       },
@@ -31,19 +31,14 @@ module.exports = (sequelize, Sequelize) => {
         type: Sequelize.DATE,
         defaultValue: new Date(),
         get: function () {
-          return moment(this.getDataValue("created_at")).format(
-            "DD/MM/YYYY h:mm:ss"
-          );
+          return moment(this.getDataValue("created_at")).format("DD/MM/YYYY h:mm:ss");
         },
-
       },
       end_at: {
         type: Sequelize.DATE,
         defaultValue: new Date(Date.now() + 14 * 24 * 60 * 60 * 1000),
         get: function () {
-          return moment(this.getDataValue("end_at")).format(
-            "DD/MM/YYYY h:mm:ss"
-          );
+          return moment(this.getDataValue("end_at")).format("DD/MM/YYYY h:mm:ss");
         },
       },
     },
