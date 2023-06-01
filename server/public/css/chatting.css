@@ -36,6 +36,15 @@ main > div:first-child {
 
 #chattingBox {
   height: 272px;
+  overflow: scroll;
+  overflow-x: hidden;
+  background-color: rgb(240, 240, 240);
+  padding: 30px 40px 40px 40px;
+  box-shadow: 5px 5px 5px rgb(220, 220, 220);
+}
+
+#chattingBox2 {
+  height: 272px;
   width: 730px;
   overflow: scroll;
   overflow-x: hidden;
@@ -43,9 +52,18 @@ main > div:first-child {
   padding: 30px 40px 40px 40px;
   box-shadow: 5px 5px 5px rgb(220, 220, 220);
   float: left;
+  margin-top: 0px;
+  margin-bottom: 20px;
 }
 
 #chattingBox > div > div:first-child {
+  width: 60px;
+  height: 60px;
+  border-radius: 100%;
+  overflow: hidden;
+}
+
+#chattingBox2 > div > div:first-child {
   width: 60px;
   height: 60px;
   border-radius: 100%;
@@ -59,7 +77,8 @@ main > div:first-child {
   background-color: rgb(240, 240, 240);
   box-shadow: 5px 5px 5px rgb(220, 220, 220);
   float: right;
-  margin-top: 20px;
+  margin-top: 0px;
+  margin-bottom: 20px;
   padding: 30px 40px 40px 40px;
 }
 
