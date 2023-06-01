@@ -5,6 +5,10 @@ const CobuyingRoom = db.cobuying_room;
 const Sell = db.sell;
 const Product = db.product;
 const Image = db.image;
+const User = db.user;
+
+let jwt = require("jsonwebtoken");
+let secretObj = require("../config/jwtConfig");
 
 module.exports = {
   totalGonggu: async (req, res) => {
@@ -85,11 +89,17 @@ module.exports = {
   // post
   createCoBuyRoom: async (req, res) => {
     // console.log(req.body);
+
     try {
+      const userToken = req.cookies['userToken'];
+      let decodedToken = jwt.verify(userToken, secretObj.secret);
+        if(decodedToken) {
+        let currentUserID = decodedToken.db_id;
+
       const newRoom = await CobuyingRoom.create({
         title: req.body.title,
         description: req.body.description,
-        host_id: 1,
+        host_id: currentUserID,
       });
 
       const newProduct = await Product.create({
@@ -112,6 +122,7 @@ module.exports = {
       });
       req.url = `/CoBuyRoom/${newRoom.id}/newpost`;
       res.redirect(req.url);
+    }
     } catch (error) {
       console.log(error);
       res.redirect("/");
