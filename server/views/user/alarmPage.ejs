@@ -31,14 +31,14 @@
               <a href="<%=notification.url%>">
                 <div class="image"><img src="imageExample.png" /></div>
                 <div class="textBox">
-                <% if (notification.host_id == 2) {%>
+                <% if (notification.host_id == userID) {%>
                   <div class="fontSize18">
                     <span style="color: rgb(192, 57, 43); font-weight: bold;">주최</span>
                     <span>하신 </span>
                     <span style="font-weight: bold;"><%= notification.title %></span>  
                     <span>공구방의 새소식을 업데이트하였습니다.</span>
                 <%};%>
-                <% if (notification.host_id != 2) {%>
+                <% if (notification.host_id != userID) {%>
                   <div class="fontSize18">
                     <span style="color: rgb(142, 68, 173); font-weight: bold;">참여</span>
                     <span>하신 </span>
