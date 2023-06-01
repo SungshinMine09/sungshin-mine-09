@@ -15,6 +15,11 @@ module.exports = (sequelize, Sequelize) => {
         type: Sequelize.INTEGER,
         defaultValue: 1,
       },
+
+      description: {
+        type: Sequelize.STRING(500),
+        allowNull: false,
+
       questions: {
         type: Sequelize.JSON,
       },
@@ -30,6 +35,7 @@ module.exports = (sequelize, Sequelize) => {
             "DD/MM/YYYY h:mm:ss"
           );
         },
+
       },
       end_at: {
         type: Sequelize.DATE,

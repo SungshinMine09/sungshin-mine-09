@@ -12,10 +12,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Tilt+Neon&display=swap" rel="stylesheet" />
 </head>
 <body>
-    <!--header 부분-->
-    <header></header>
-
-    <!--마이페이지 부분-->
     <main>
         <div>
             <div id="myPageTitleBox">
@@ -24,29 +20,37 @@
             <div class="flex marginLeft10">
                 <div class="flexDirectionColumn" id="leftContainer">
                     <h2>계정 설정</h2>
-                    <div class="marginTop30">
-                        <div class="purpleLetters fontSize18">이메일</div>
-                        <div class="fontSize16">20190913@sungshin.ac.kr</div>
-                        <div class="purpleLetters fontSize15" id="certifiedEmail">인증된 이메일입니다.</div>
-                    </div>
-                    <div class="marginTop30">
-                        <div class="purpleLetters fontSize18">아이디</div>
-                        <div class="fontSize16">linason7</div>
-                    </div>
-                    <div class="marginTop30">
-                        <div class="flex">
-                            <span class="purpleLetters marginRight30 fontSize18">비밀번호</span>
-                            <button class="fontSize15 grayButton changeButton center flex">변경</button>
-                        </div>
-                        <div class="fontSize16">*********</div>
-                    </div>
-                    <div class="marginTop30">
-                        <div class="flex">
-                            <span class="purpleLetters marginRight30 fontSize18">전화번호</span>
-                            <button class="fontSize15 grayButton changeButton center flex">변경</button>
-                        </div>
-                        <div class="fontSize16">010-0000-0000</div>
-                    </div>
+                    <% Array.from(userInfos).forEach(userInfo => { %>
+                        <%if (userInfo.id == 2) {%>
+                            <div class="marginTop30">
+                                <div class="purpleLetters fontSize18">이메일</div>
+                                <div class="fontSize16"><%=userInfo.student_number%>@sungshin.ac.kr</div>
+                                <div class="purpleLetters fontSize15" id="certifiedEmail">인증된 이메일입니다.</div>
+                            </div>
+                            <div class="marginTop30">
+                                <div class="purpleLetters fontSize18">아이디</div>
+                                <div class="fontSize16"><%=userInfo.login_id%></div>
+                            </div>
+                            <div class="marginTop30">
+                                <div class="flex">
+                                    <span class="purpleLetters marginRight30 fontSize18">비밀번호</span>
+                                    <button class="fontSize15 grayButton changeButton center flex">변경</button>
+                                </div>
+                                <div class="fontSize16">
+                                    <% for (var i = 0; i < userInfo.password.length; i++) { %>
+                                        <span>*</span>
+                                    <%}%>
+                                </div>
+                            </div>
+                            <div class="marginTop30">
+                                <div class="flex">
+                                    <span class="purpleLetters marginRight30 fontSize18">전화번호</span>
+                                    <button class="fontSize15 grayButton changeButton center flex">변경</button>
+                                </div>
+                                <div class="fontSize16"><%=userInfo.phone_number%></div>
+                            </div>
+                        <%}%>
+                    <%})%>
                 </div>
                 <div id="rightContainer">
                     <h2>공동구매 현황</h2>
@@ -60,85 +64,113 @@
                         <div>
                             <div class="fontSize18" id="listTitle">
                                 <span>내가 참여한 공구방</span>
-                                <span class="purpleLetters">(5)</span>
+                                <span class="purpleLetters">(<%=numOfMyParticipations%>)</span>
                             </div>
-                            <ul>
-                                <li class="flex myPageLi">
-                                    <div><img src="imageExample.png" width="60px" height="60px"></div>
-                                    <div class="productInfo">
-                                        <div class="fontSize14">공동구매번호 000000</div>
-                                        <div class="productName">A 수정구 학잠</div>
-                                        <div class="statusLetters fontSize14">상태: 수요조사 중</div>
-                                    </div>
-                                </li>
-                                <li class="flex myPageLi">
-                                    <div><img src="imageExample.png" width="60px" height="60px"></div>
-                                    <div class="productInfo">
-                                        <div class="fontSize14">공동구매번호 000000</div>
-                                        <div class="productName">A 수정구 학잠</div>
-                                        <div class="statusLetters fontSize14">상태: 수요조사 중</div>
-                                    </div>
-                                </li>
-                                <li class="flex myPageLi">
-                                    <div><img src="imageExample.png" width="60px" height="60px"></div>
-                                    <div class="productInfo">
-                                        <div class="fontSize14">공동구매번호 000000</div>
-                                        <div class="productName">A 수정구 학잠</div>
-                                        <div class="statusLetters fontSize14">상태: 수요조사 중</div>
-                                    </div>
-                                </li>
-                                <li class="flex myPageLi">
-                                    <div><img src="imageExample.png" width="60px" height="60px"></div>
-                                    <div class="productInfo">
-                                        <div class="fontSize14">공동구매번호 000000</div>
-                                        <div class="productName">A 수정구 학잠</div>
-                                        <div class="statusLetters fontSize14">상태: 수요조사 중</div>
-                                    </div>
-                                </li>
+                            <ul class="ulBox">
+                                <% Array.from(myParticipations).forEach(myParticipation => { %>
+                                    <li class="flex myPageLi">
+                                        <div><img src="imageExample.png" width="60px" height="60px"></div>
+                                        <div class="productInfo">
+                                            <div class="fontSize14">공동구매번호 
+                                                <%if (myParticipation.cobuying_room_id >=0 & myParticipation.cobuying_room_id< 10) {%>
+                                                    <span>00000<%=myParticipation.cobuying_room_id%></span>
+                                                <%}%>
+                                                <%if (myParticipation.cobuying_room_id >=10 & myParticipation.cobuying_room_id < 100) {%>
+                                                    <span>0000<%=myParticipation.cobuying_room_id%></span>
+                                                <%}%>
+                                                <%if (myParticipation.cobuying_room_id >=100 & myParticipation.cobuying_room_id < 1000) {%>
+                                                    <span>000<%=myParticipation.cobuying_room_id%></span>
+                                                <%}%>
+                                                <%if (myParticipation.cobuying_room_id >=1000 & myParticipation.cobuying_room_id < 10000) {%>
+                                                    <span>00<%=myParticipation.cobuying_room_id%></span>
+                                                <%}%>
+                                                <%if (myParticipation.cobuying_room_id >=10000 & myParticipation.cobuying_room_id < 100000) {%>
+                                                    <span>0<%=myParticipation.cobuying_room_id%></span>
+                                                <%}%> 
+                                                <%if (myParticipation.cobuying_room_id >=100000 & myParticipation.cobuying_room_id < 1000000) {%>
+                                                    <span><%=myParticipation.cobuying_room_id%></span>
+                                                <%}%> 
+                                            </div>
+                                            <div class="productName"><%= myParticipation.title %></div>
+                                            <div class="statusLetters fontSize14">
+                                                <span>상태: </span>
+                                                <%if (myParticipation.state == 'demand') { %>
+                                                    <span>수요조사 중</span>
+                                                <% } %>
+                                                <%if (myParticipation.state == 'deposit') { %>
+                                                    <span>입금 중(입금폼 제출 마감일 <%= myParticipation.end_at %>)</span>
+                                                <%}%>
+                                                <%if (myParticipation.state == 'ready') {%>
+                                                    <span>배송 준비 중</span>
+                                                <%}%>
+                                                <%if (myParticipation.state == 'delivery') {%>
+                                                    <span>배송 중</span>
+                                                <%}%>
+                                                <%if (myParticipation.state == 'complete') {%>
+                                                    <span>배송 완료</span>
+                                                <%}%>
+                                            </div>
+                                        </div>
+                                    </li>
+                                <% }) %>
                             </ul>
                         </div>
                         <div>
                             <div class="fontSize18" id="listTitle">
                                 <span>내가 주최한 공구방</span>
-                                <span class="purpleLetters">(5)</span>
+                                <span class="purpleLetters">(<%=numOfMyHosts%>)</span>
                             </div>
-                            <ul>
-                                <li class="flex myPageLi">
-                                    <div><img src="imageExample.png" width="60px" height="60px"></div>
-                                    <div class="productInfo">
-                                        <div class="fontSize14">공동구매번호 000000</div>
-                                        <div class="productName">B 수정구 학잠</div>
-                                        <div class="statusLetters fontSize14">상태: 수요조사 중</div>
-                                    </div>
-                                </li>
-                                <li class="flex myPageLi">
-                                    <div><img src="imageExample.png" width="60px" height="60px"></div>
-                                    <div class="productInfo">
-                                        <div class="fontSize14">공동구매번호 000000</div>
-                                        <div class="productName">B 수정구 학잠</div>
-                                        <div class="statusLetters fontSize14">상태: 수요조사 중</div>
-                                    </div>
-                                </li>
-                                <li class="flex myPageLi">
-                                    <div><img src="imageExample.png" width="60px" height="60px"></div>
-                                    <div class="productInfo">
-                                        <div class="fontSize14">공동구매번호 000000</div>
-                                        <div class="productName">A 수정구 학잠</div>
-                                        <div class="statusLetters fontSize14">상태: 수요조사 중</div>
-                                    </div>
-                                </li>
-                                <li class="flex myPageLi">
-                                    <div><img src="imageExample.png" width="60px" height="60px"></div>
-                                    <div class="productInfo">
-                                        <div class="fontSize14">공동구매번호 000000</div>
-                                        <div class="productName">A 수정구 학잠</div>
-                                        <div class="statusLetters fontSize14">상태: 수요조사 중</div>
-                                    </div>
-                                </li>
+                            <ul class="ulBox">
+                                <% Array.from(myHosts).forEach(myHost => { %>
+                                    <li class="flex myPageLi">
+                                        <div><img src="imageExample.png" width="60px" height="60px"></div>
+                                        <div class="productInfo">
+                                            <div class="fontSize14">공동구매번호 
+                                                <%if (myHost.cobuying_room_id >=0 & myHost.cobuying_room_id< 10) {%>
+                                                    <span>00000<%=myHost.cobuying_room_id%></span>
+                                                <%}%>
+                                                <%if (myHost.cobuying_room_id >=10 & myHost.cobuying_room_id < 100) {%>
+                                                    <span>0000<%=myHost.cobuying_room_id%></span>
+                                                <%}%>
+                                                <%if (myHost.cobuying_room_id >=100 & myHost.cobuying_room_id < 1000) {%>
+                                                    <span>000<%=myHost.cobuying_room_id%></span>
+                                                <%}%>
+                                                <%if (myHost.cobuying_room_id >=1000 & myHost.cobuying_room_id < 10000) {%>
+                                                    <span>00<%=myHost.cobuying_room_id%></span>
+                                                <%}%>
+                                                <%if (myHost.cobuying_room_id >=10000 & myHost.cobuying_room_id < 100000) {%>
+                                                    <span>0<%=myHost.cobuying_room_id%></span>
+                                                <%}%> 
+                                                <%if (myHost.cobuying_room_id >=100000 & myHost.cobuying_room_id < 1000000) {%>
+                                                    <span><%=myHost.cobuying_room_id%></span>
+                                                <%}%> 
+                                            </div>
+                                            <div class="productName"><%= myHost.title %></div>
+                                            <div class="statusLetters fontSize14">
+                                                <span>상태: </span>
+                                                <%if (myHost.state == 'demand') { %>
+                                                    <span>수요조사 중</span>
+                                                <% } %>
+                                                <%if (myHost.state == 'deposit') { %>
+                                                    <span>입금 중(입금폼 제출 마감일 <%= myHost.end_at %>)</span>
+                                                <%}%>
+                                                <%if (myHost.state == 'ready') {%>
+                                                    <span>배송 준비 중</span>
+                                                <%}%>
+                                                <%if (myHost.state == 'delivery') {%>
+                                                    <span>배송 중</span>
+                                                <%}%>
+                                                <%if (myHost.state == 'complete') {%>
+                                                    <span>배송 완료</span>
+                                                <%}%>
+                                            </div>
+                                        </div>
+                                    </li>
+                                <% }) %>
                             </ul>
                         </div>   
                     </div>
-                    <div id="moreButton" class="fontSize16 center flex">더보기</div>
+
                 </div>
             </div>
         </div>

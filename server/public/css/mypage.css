@@ -78,6 +78,8 @@ img {
 
 .ulBoxes ul {
     padding-left: 0;
+    height: 384px;
+    overflow: auto;
 }
 
 .myPageLi {
@@ -123,11 +125,12 @@ input[type=radio] {
     display: block;
 }
 
-#moreButton {
+/*#moreButton {
     width: 100px; height: 40px;
     background-color: rgb(94, 94, 94);
     color: rgb(255, 255, 255);
     border-radius: 5px;
     margin: 18px auto 0 auto;
-}
+    cursor: pointer;
+}*/
 
