@@ -1,5 +1,3 @@
-// const { sequelize, Sequelize } = require("./index");
-
 module.exports = (sequelize, Sequelize) => {
   const user = sequelize.define(
     "user",
@@ -7,7 +5,6 @@ module.exports = (sequelize, Sequelize) => {
       id: {
         type: Sequelize.BIGINT,
         autoIncrement: true,
-        // unique: true,
         primaryKey: true,
         allowNULL: true,
         comment: "DB에서 사용할 아이디",

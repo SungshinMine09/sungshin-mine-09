@@ -4,6 +4,8 @@ const CoBuyRoom = db.cobuying_room;
 const DepositForm = db.deposit_form;
 const Answer = db.answer;
 
+const verifyAuthController = require("./verifyAuthController");
+
 const initForm = async (req, res) => {
   const newFormId = req.params.room_id;
   try {
@@ -34,7 +36,7 @@ module.exports = {
     if (!cobuying_room) {
       res.render("CoBuyRoom/createCoBuyRoom");
     }
-    console.log(`room:::${cobuying_room.id}`);
+
     res.render("CoBuyForm/depositFormMaker", {
       deposit_form: deposit_form,
       cobuying_room: cobuying_room,
@@ -55,7 +57,9 @@ module.exports = {
       }
       const new_value = req.body.question;
       if (deposit_form && new_value) {
-        const new_key = deposit_form.getDataValue("next_questions_num").toString();
+        const new_key = deposit_form
+          .getDataValue("next_questions_num")
+          .toString();
 
         const new_questions = {
           ...deposit_form.questions,
@@ -184,6 +188,7 @@ module.exports = {
       res.render("/");
     }
   },
+
   writeForm: async (req, res) => {
     const form_id = req.params.form_id;
     try {
@@ -194,7 +199,17 @@ module.exports = {
         where: { id: form_id },
       });
       if (!cobuying_room) {
-        res.render("CoBuyRoom/createCoBuyRoom");
+        res.redirect("/CoBuyRoom/createCoBuyRoom");
+      }
+      if (!deposit_form) {
+        const user_id = await verifyAuthController.checkID(req);
+        if (user_id.id === cobuying_room.host_id) {
+          return res.redirect(`/CoBuyForm/${form_id}/depositFormMaker`);
+        } else {
+          return res.send(
+            "<script>alert('공동구매 입금폼이 존재하지 않습니다'); location.href='/CoBuyRoom/totalGonggu'; </script>"
+          );
+        }
       }
       res.render("CoBuyForm/depositFormSubmit", {
         deposit_form: deposit_form,
@@ -205,13 +220,17 @@ module.exports = {
       res.redirect(`/CoBuyRoom/${form_id}/newPost`);
     }
   },
-  // TODO: get current USER
+
   submit: async (req, res) => {
     const form_id = req.params.form_id;
-    const user_id = req.params.user_id;
     const answerJSON = req.body;
 
     try {
+      const user_id = await verifyAuthController.checkID(req);
+      if (!user_id) {
+        console.log("current user is null");
+        return res.redirect("/");
+      }
       const deposit_form = await DepositForm.findOne({
         where: { id: form_id },
       });
