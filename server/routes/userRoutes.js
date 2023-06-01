@@ -14,10 +14,12 @@ router.get("/JoinStep2", userController.JoinStep2);
 router.post("/Join_enterInfo", JoinController.registerController);
 
 router.get("/JoinStep3", userController.JoinStep3);
+
 //router.post("/Logout", JoinController.LogoutController);
 router.get("/Logout", JoinController.LogoutController);
-
 router.get("/myPage", verifyAuthController.checkAuth, userController.myPage);
 router.get("/alarmPage", verifyAuthController.checkAuth, userController.alarmPage);
+router.get("/chattingAlarm", userController.chattingAlarm);
+router.get("/coBuyRoomAlarm",userController.coBuyRoomAlarm);
 
 module.exports = router;
