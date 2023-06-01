@@ -28,7 +28,7 @@ module.exports = {
           state: "demand",
         },
       });
-      res.render("CoBuyRoom/totalGonggu", { totalGonggus: totalGonggus[0], count: cntTotal });
+      res.render("CoBuyRoom/ingSuyo", { ingSuyos: ingSuyos[0], count: cntingSuyo });
     } catch (error) {
       console.log(error);
     }
@@ -43,7 +43,7 @@ module.exports = {
           state: "deposit",
         },
       });
-      res.render("CoBuyRoom/totalGonggu", { totalGonggus: totalGonggus[0], count: cntTotal });
+      res.render("CoBuyRoom/soonEnd", { soonEnds: soonEnds[0], count: cntsoonEnd });
     } catch (error) {
       console.log(error);
     }
