@@ -2,11 +2,6 @@ module.exports = (sequelize, Sequelize) => {
   const deposit_form = sequelize.define(
     "deposit_form",
     {
-      // id: {
-      //   type: Sequelize.INTEGER,
-      //   allowNull: false,
-      //   primaryKey: true,
-      // },
       id: {
         type: Sequelize.INTEGER,
         allowNull: false,
@@ -31,14 +26,18 @@ module.exports = (sequelize, Sequelize) => {
         type: Sequelize.DATE,
         defaultValue: new Date(),
         get: function () {
-          return moment(this.getDataValue("created_at")).format("DD/MM/YYYY h:mm:ss");
+          return moment(this.getDataValue("created_at")).format(
+            "DD/MM/YYYY h:mm:ss"
+          );
         },
       },
       end_at: {
         type: Sequelize.DATE,
         defaultValue: new Date(Date.now() + 14 * 24 * 60 * 60 * 1000),
         get: function () {
-          return moment(this.getDataValue("end_at")).format("DD/MM/YYYY h:mm:ss");
+          return moment(this.getDataValue("end_at")).format(
+            "DD/MM/YYYY h:mm:ss"
+          );
         },
       },
     },
@@ -53,7 +52,7 @@ module.exports = (sequelize, Sequelize) => {
       charset: "utf8mb4",
       collate: "utf8mb4_unicode_ci",
       // charset: "utf8",
-      // collate: "utf8_unicode_ci",
+      // collate: "utf8_unicode_ci", -> that not working
     }
   );
   return deposit_form;

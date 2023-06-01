@@ -1,5 +1,3 @@
-// const { sequelize, Sequelize } = require(".");
-
 module.exports = (sequelize, Sequelize) => {
   const answer = sequelize.define(
     "answer",

@@ -10,9 +10,12 @@ router.post("/:room_id/saveAccount", CoBuyFormController.saveAccount);
 
 /* 입금폼 작성 페이지 */
 router.get("/:form_id/writeForm", CoBuyFormController.writeForm);
-// TODO: get current USER
+
 router.get("/:form_id/showAccount", CoBuyFormController.showAccount);
-router.post("/:form_id/submit/:user_id", CoBuyFormController.submit);
-router.get("/:form_id/depositFormResult", CoBuyFormController.depositFormResult);
+router.post("/:form_id/submit", CoBuyFormController.submit);
+router.get(
+  "/:form_id/depositFormResult",
+  CoBuyFormController.depositFormResult
+);
 
 module.exports = router;
