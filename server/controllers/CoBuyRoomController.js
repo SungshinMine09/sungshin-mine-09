@@ -5,6 +5,10 @@ const CobuyingRoom = db.cobuying_room;
 const Sell = db.sell;
 const Product = db.product;
 const Image = db.image;
+const User = db.user;
+
+let jwt = require("jsonwebtoken");
+let secretObj = require("../config/jwtConfig");
 
 const verifyAuthController = require("./verifyAuthController");
 
@@ -100,6 +104,7 @@ module.exports = {
 
   createCoBuyRoom: async (req, res) => {
     // console.log(req.body);
+
     try {
       // 현재유저 식별
       const user_id = await verifyAuthController.checkID(req);
