@@ -11,55 +11,86 @@
   </head>
 
   <body>
-    <div class="gonggu_header">
+    <div class="gonggu_header" style="cursor: pointer;" 
+    onclick="location.href='/CoBuyRoom/<%= cobuyroom.id %>/detail';">
       <div>
-        <p> <%= detail.title %> </p>
-        <button class="gonggu_delete_button">공동구매방 삭제하기</button>
-      </div>
+        <p> <%= cobuyroom.title %> </p>
+        <button class="gonggu_delete_button" style="cursor: pointer;"
+        onclick="event.stopPropagation(); confirmDeleteCobuyRoom(); checkDeleteCobuyroomAvaility();
+        location.href='/CoBuyRoom/<%= cobuyroom.id %>/deleteCoBuyRoom';">
+        공동구매방 삭제하기</button>
     </div>
-
+    </div>
 
       <div class="gonggu_nav">
         <div>
           <nav>
             <ul>
-              <li><button class="message_type_button">새소식</button></li>
-              <li><button class="message_type_button">채팅</button></li>
-              <li style="float: right;"><button class="grey_s_button" style="margin-left: 5px;">수요조사 통계</button></li>
-              <li style="float: right;"><button class="grey_s_button" style="margin-left: 5px;">입금폼 양식 작성</button></li>
-              <li style="float: right;"><button class="grey_s_button" style="margin-left: 5px;">입금폼 통계</button></li>
+              <li><button class="message_type_button" style="cursor: pointer;"onclick="location.href='/CoBuyRoom/<%= cobuyroom.id %>/newpost';">
+                새소식</button></li>
+              <li><button class="message_type_button" style="cursor: pointer;"onclick="location.href='/CoBuyRoom/<%= cobuyroom.id %>/chat/1';">
+              채팅</button></li>
+              <li style="float: right;">
+                <button class="grey_s_button" style="margin-left: 5px; cursor: pointer;"
+                onclick="location.href='/CoBuyRoom/<%= cobuyroom.id %>/suyoStat';">
+                수요조사 통계</button></li>
+              <li style="float: right;"><button class="grey_s_button" style="margin-left: 5px; cursor: pointer;"
+                onclick="location.href='/CoBuyRoom/<%= cobuyroom.id %>/CoBuyForm/fillDepositForm';">입금폼 양식 작성</button></li>
+              <li style="float: right;">
+                <button class="grey_s_button" style="margin-left: 5px; cursor: pointer;"
+                onclick="location.href='/CoBuyRoom/<%= cobuyroom.id %>/CoBuyForm/depositResult';">
+              입금폼 통계</button></li>
             </ul>
           </nav>
         </div>
       </div>
-      <% Array.from(details).forEach( detail => { %>
+      
       <div class="room_detail">
         <div class="overview">
-          <img src="<%= `${detail.real_url}` %>" class="product_img" width="406" height="314">
+          <img src="<%= `${image.real_url}` %>" class="product_img" width="406" height="314">
           <br>
           <div>
-            <span class="fontSize18"><%= detail.name %> 1개당&nbsp;&nbsp;&nbsp;</span>
-            <span class="fontSize36 fontBold"> <%= detail.price %>원 </span> <br>
-          <button class="wantBtn BackgroundColorPurple ColorLightPurple" type="button">
+            <span class="fontSize18"><%= product.name %> 1개당&nbsp;</span>
+            <span class="fontSize36 fontBold"> <%= sell.price %>원 </span> <br>
+          <button class="wantBtn BackgroundColorPurple ColorLightPurple" type="button" style="cursor: pointer;"
+          onclick="location.href='/CoBuyRoom/<%= cobuyroom.id %>/updateCurrentDemand';">
           살래요👍</button> <br>
-          
           <span class="fontSize15">
-          현재 <%=detail.current_demand%>명의 수정이들이 이 제품을 갖고 싶어해요!
-          </span>
+          현재 <%= sell.current_demand %>명의 수정이들이 이 제품을 갖고 싶어해요!
         </div>
       </div>
 
       <div class="product_detail">
         <p class="fontSize24 fontBold">상품 소개</p>
         <div class="product_content">
-          <%= detail.description %>
+          <%= cobuyroom.description %>
         </div>
         <div class="textCenter">
-          <button class="createDepositFormBtn" type="button">입금폼 작성하기</button>
+          <button class="createDepositFormBtn" type="button" style="cursor: pointer;"
+          onclick="location.href='/CoBuyRoom/<%= cobuyroom.id %>/CoBuyForm/submitDepositForm';">
+          입금폼 작성하기</button>
           <br>
-          <span class="fontSize15">입금폼 제출 마감일까지 2일 남았어요!</span>
+          <span class="fontSize15">입금폼 제출 마감일까지
+            <!-- deposit ejs 여기에 -->
+            n일 남았어요!</span>
         </div>
       </div>
-      <% }); %>
+
+      <!-- <%-'<script>'%>
+        let cobuyroomStatus = <%= cobuyroom.status %>;
+      <%-'</script>'%> -->
+
+      <script>
+        function confirmDeleteCobuyRoom() {   // 취소->아무 이벤트 없음, 확인->다음 이벤트로 넘어감
+          if(confirm("공구방을 정말 삭제하시겠습니까?")) {
+          } else {
+            let e = window.event();
+            e.preventDefault();
+          }
+        }
+        function checkDeleteCobuyroomAvaility() {
+          // 삭제해도 괜찮은 공구방인지 체크해야 
+        }
+      </script>
   </body>
 </html>

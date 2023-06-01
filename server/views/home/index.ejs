@@ -35,7 +35,7 @@
 
           <% Array.from(newGonggus).forEach( newGonggu => { %>
           <div>
-            <a href="<%= `/CoBuyRoom/totalGonggu/${newGonggu.id}` %>" style="text-decoration: none;">
+            <a href="<%= `/CoBuyRoom/${newGonggu.id}` %>" style="text-decoration: none;">
               <img src="<%= `${newGonggu.real_url}` %>"/>
               <p> <%= newGonggu.title %> </p>
             </a>
@@ -48,7 +48,7 @@
 
           <% Array.from(hotGonggus).forEach( hotGonggu => { %>
           <div>
-            <a href="<%= `/CoBuyRoom/totalGonggu/${hotGonggu.id}` %>" style="text-decoration: none;">
+            <a href="<%= `/CoBuyRoom/${hotGonggu.id}` %>" style="text-decoration: none;">
               <img src="<%= `${hotGonggu.real_url}` %>"/>     
               <p> <%= hotGonggu.title %> </p>
             </a>

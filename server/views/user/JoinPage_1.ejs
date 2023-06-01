@@ -19,17 +19,14 @@
       <span class="Join_Step"
         ><b>1. 학교 이메일 인증</b> > 2. 정보입력 > 3. 가입완료</span
       >
-      <form method="post" action="" id="JoinForm1">
+      <form method="post" action="JoinStep1" id="JoinForm1">
         <!--action에는 사용자가 입력한 데이터를 처리할 파일의 경로가 들어감. 백엔드 언어로 작성됨.-->
-        <span class="school_id_label">학번</span>
-        <!--학번에 id 부여한 다음, 학번 입력받고 변수에 저장한 후, 
-                    span에 id 부여한 다음, js 함수 짜서 getelementbyid로 span에 저장된 내용 갖고 와서 변수에 저장한 후,
-                둘이 합친 걸 저장할 변수를 또 하나 만들어주고, 합친 후, readonly로 사용자에게 보여줌.
-                그리고 submit()으로 제출-->
-        <span id="email_label">@sungshin.ac.kr</span>
+        <span class="school_id_label">성신 지메일</span>
+        <span id="email_symbol">@</span>
+        <input type="text" id="email_domain" name="email_domain" placeholder="sungshin.ac.kr" required/>
         <input
           type="text"
-          name="email_IDnumber"
+          name="student_number"
           id="email_IDnumber"
           placeholder="학번"
           pattern="[0-9]{8}"
@@ -39,7 +36,7 @@
         <!--<input type="text" id="email" name="email" placeholder="학번" pattern="[0-9]{8}@sungshin\.ac.kr" required>-->
         <input type="submit" value="인증번호 전송" />
       </form>
-      <form method="post" action="/Join_emailAuth" id="JoinForm2">
+      <form method="post" action="Join_emailAuth" id="JoinForm2">
         <!--action에는 사용자가 입력한 데이터를 처리할 파일의 경로가 들어감. 백엔드 언어로 작성됨.-->
         <span class="code_label">인증번호</span>
         <input
@@ -51,7 +48,7 @@
         />
         <input type="submit" value="확인" />
       </form>
-      <a href="JoinStep2" class="gotoJoinpage2_btn">다음 단계로 →</a>
+      <!--<a href="JoinStep2" class="gotoJoinpage2_btn">다음 단계로 →</a>-->
     </div>
   </body>
 </html>

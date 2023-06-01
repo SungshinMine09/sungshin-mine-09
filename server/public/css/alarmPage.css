@@ -8,8 +8,8 @@
 #alarmPageUl{
     width: 1024px;
     height: 520px;
-    overflow: scroll;
-    overflow-x: hidden;
+    overflow: auto;
+    /*overflow-x: hidden;*/
     padding: 0;
 }
 
@@ -25,12 +25,20 @@ main>div:first-child {
     width: 1024px;
 }
 
-li>div:first-child {
+.image {
     width: 73px; height: 73px;
     border-radius: 100%;
     margin: 24px 20px 28px 10px;
     overflow: hidden;
-   
+}
+
+li a {
+    display: block;
+    text-decoration: none;
+}
+
+a:link, :visited, :hover, :active {
+    color : black;
 }
 
 img {
@@ -53,6 +61,10 @@ img {
     display: -webkit-box; 
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
+}
+
+h2 {
+    cursor: pointer;
 }
 
 

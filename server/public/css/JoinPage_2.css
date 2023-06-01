@@ -74,8 +74,8 @@
   width: 40px;
   height: 20px;
   position: relative;
-  left: 0px;
-  top: 20px;
+  left: 90px;
+  top: 10px;
   padding-top: 10px;
   padding-bottom: 10px;
   padding-left: 30px;
@@ -102,8 +102,8 @@
   width: 100px;
   height: 20px;
   position: relative;
-  left: 95px;
-  bottom: 0px;
+  left: 90px;
+  bottom: 5px;
   padding-top: 10px;
   padding-bottom: 10px;
   padding-left: 15px;
@@ -134,7 +134,7 @@
   width: 40px;
   height: 20px;
   position: relative;
-  left: 30px;
+  left: 90px;
   bottom: 20px;
   padding-top: 10px;
   padding-bottom: 10px;
@@ -167,7 +167,7 @@
   height: 35px;
   position: relative;
   left: 230px;
-  bottom: 52px;
+  bottom: 50px;
   display: flex;
   flex-direction: column;
   margin-top: 15px;
@@ -183,7 +183,7 @@
   height: 35px;
   position: relative;
   left: 230px;
-  bottom: 45px;
+  bottom: 46px;
   display: flex;
   flex-direction: column;
   margin-top: 15px;
@@ -199,7 +199,7 @@
   height: 35px;
   position: relative;
   left: 230px;
-  bottom: 75px;
+  bottom: 63px;
   display: flex;
   flex-direction: column;
   margin-top: 15px;
@@ -215,18 +215,19 @@
 }
 
 #JoinForm3 > input[type="submit"] {
-  background-color: rgb(239, 220, 255);
-  color: rgb(119, 35, 155);
+  background-color: rgb(119, 35, 155);
+  color: rgb(239, 220, 255);
   justify-content: center;
-  width: 170px;
-  height: 30px;
+  width: 190px;
+  height: 40px;
   position: relative;
-  left: 230px;
-  bottom: 60px;
+  left: 210px;
+  bottom: 50px;
   padding-left: 50px;
   padding-right: 50px;
   padding-top: 5px;
-  padding-bottom: 10px;
+  padding-bottom: 5px;
+  font-size: 16px;
   margin-top: 15px;
   border-radius: 5px;
   border-color: transparent;
@@ -236,11 +237,11 @@ a.Join_cancel_btn {
   background-color: rgb(224, 224, 224);
   color: black;
   font-size: 16px;
-  width: 190px;
+  width: 210px;
   height: 30px;
   position: relative;
-  left: 150px;
-  bottom: 40px;
+  left: 225px;
+  bottom: 55px;
   padding-left: 65px;
   padding-right: 65px;
   padding-top: 10px;

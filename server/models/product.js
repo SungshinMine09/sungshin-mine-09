@@ -4,7 +4,7 @@ module.exports = (sequelize, Sequelize) => {
     {
       id: {
         type: Sequelize.INTEGER,
-        allowNull: false,
+        autoIncrement: true,
         primaryKey: true,
       },
       name: {
@@ -15,8 +15,8 @@ module.exports = (sequelize, Sequelize) => {
     {
       tableName: "product",
       timestamp: false,
-      charset: 'utf8',
-      collate: 'utf8_general_ci',
+      charset: "utf8",
+      collate: "utf8_general_ci",
     }
   );
   return product;

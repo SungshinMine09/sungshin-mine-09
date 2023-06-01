@@ -1,8 +1,11 @@
 * {
   font-family: "Tilt Neon";
 }
+.container {
+  margin: 0 auto;
+}
 
-.resultbox {
+.form_container {
   /* display: flex; */
   width: 1035px;
   height: 400px;
@@ -10,31 +13,12 @@
   /* background-color: lightyellow; */
   background-color: rgb(250, 250, 250);
 
-  /* margin: 75px auto 0 auto; */
+  margin: 0 auto;
   padding-left: 80px;
   padding-top: 10px;
 }
 
-#Answer {
-  /* color: olive; */
-  margin-top: 5px;
-  width: 700px;
-  height: 32px;
-  font-size: 20px;
-}
-
-.Question {
-  /* display: inline-block; */
-  font-size: 20px;
-  margin-top: 10px;
-}
-
-.Question p {
-  display: inline-block;
-  font-size: 24px;
-}
-
-.submitBtn {
+#submitBtn {
   width: 100px;
   height: 40px;
 

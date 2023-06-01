@@ -33,21 +33,21 @@
   bottom: 0px;
   padding-top: 10px;
   padding-bottom: 10px;
-  padding-left: 30px;
-  padding-right: 30px;
+  padding-left: 20px;
+  padding-right: 20px;
   border-radius: 5px;
   border-color: rgb(190, 153, 250);
   justify-content: center;
   font-size: 16px;
 }
 
-#email_label {
+#email_symbol {
   font-size: 17px;
   position: relative;
-  left: 310px;
+  left: 300px;
 }
 
-#JoinForm1 > input[type="text"] {
+#JoinForm1 > input[id="email_IDnumber"] {
   width: 165px;
   height: 40px;
   margin-bottom: 15px;
@@ -55,7 +55,22 @@
   font-size: 16px;
   border-radius: 5px;
   border-color: rgb(189, 189, 189);
+  position: relative;
+  right: 60px;
 }
+
+#JoinForm1 > input[id="email_domain"] {
+  width: 165px;
+  height: 40px;
+  margin-bottom: 15px;
+  text-align: center;
+  font-size: 16px;
+  border-radius: 5px;
+  border-color: rgb(189, 189, 189);
+  position: relative;
+  left: 300px;
+}
+
 
 /*#JoinForm1 > input[id="email_IDnumber"] {
   border-radius: 5px;
@@ -79,8 +94,8 @@
   width: 130px;
   height: 40px;
   position: relative;
-  left: 150px;
-  bottom: 0px;
+  left: 465px;
+  bottom: 10px;
   margin-top: 15px;
   padding-left: 10px;
   padding-right: 10px;
@@ -88,6 +103,7 @@
   border-color: transparent;
   font-size: 16px;
 }
+
 
 .code_label {
   background-color: rgb(190, 153, 250);

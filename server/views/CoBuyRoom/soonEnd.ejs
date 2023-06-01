@@ -27,7 +27,7 @@
 
         <% Array.from(soonEnds).forEach( soonEnd => { %>
         <div>
-          <a href="<%= `/CoBuyRoom/totalGonggu/${soonEnd.id}` %>" style="text-decoration: none;">
+          <a href="<%= `/CoBuyRoom/${soonEnd.id}` %>" style="text-decoration: none;">
             <img class="product_img" src="<%= `${soonEnd.real_url}` %>">
             <p><%= soonEnd.title %></p>
           </a>
