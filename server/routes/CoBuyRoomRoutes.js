@@ -28,8 +28,8 @@ router.get("/totalGonggu", CoBuyRoomController.totalGonggu);
 router.get("/ingSuyo", CoBuyRoomController.ingSuyo);
 router.get("/soonEnd", CoBuyRoomController.soonEnd);
 router.get("/totalGonggu/:id", verifyAuthController.checkAuth, CoBuyRoomDetailController.index, CoBuyRoomDetailController.indexView); // 공구방 상세페이지
-router.get("/:id/suyoStat", verifyAuthController.checkAuth, CoBuyRoomController.suyoStat); // 수요조사 통계
-router.get("/suyoStat", verifyAuthController.checkAuth, CoBuyRoomController.suyoStat);
+router.get("/:id/suyoStat", verifyAuthController.checkAuth, verifyAuthController.checkSeller, CoBuyRoomController.suyoStat); // 수요조사 통계
+router.get("/suyoStat", verifyAuthController.checkAuth, verifyAuthController.checkSeller, CoBuyRoomController.suyoStat);
 router.get("/createNewPost", verifyAuthController.checkAuth, verifyAuthController.checkSeller, CoBuyRoomController.createNewPost);
 router.get("/createCoBuyRoom", verifyAuthController.checkAuth, CoBuyRoomController.createCoBuyRoomPage);
 router.post("/createCoBuyRoom", upload.single("roomImg"), verifyAuthController.checkAuth, CoBuyRoomController.createCoBuyRoom);

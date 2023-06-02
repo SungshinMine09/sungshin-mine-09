@@ -14,6 +14,6 @@ router.get("/:form_id/writeForm", verifyAuthController.checkAuth, CoBuyFormContr
 
 router.get("/:form_id/showAccount", verifyAuthController.checkAuth, CoBuyFormController.showAccount);
 router.post("/:form_id/submit", verifyAuthController.checkAuth, CoBuyFormController.submit);
-router.get("/:form_id/depositFormResult", verifyAuthController.checkAuth,  verifyAuthController.checkSeller, CoBuyFormController.depositFormResult);
+router.get("/:form_id/depositFormResult", verifyAuthController.checkAuth, verifyAuthController.checkSeller, CoBuyFormController.depositFormResult);
 
 module.exports = router;
