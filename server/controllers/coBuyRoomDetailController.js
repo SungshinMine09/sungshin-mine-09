@@ -1,4 +1,5 @@
 const db = require("../models/index"),
+  moment = require("moment"),
   CoBuyingRoom = db.cobuying_room,
   Sell = db.sell,
   Product = db.product,
@@ -56,6 +57,11 @@ module.exports = {
       const user = await User.findByPk(cobuyroom.host_id);
       host_user_id = user.login_id;
 
+      // 날짜 처리
+      let now = moment();
+      let end_at = moment(depositForm.end_at);
+      remaining_days = end_at.diff(now, "days");
+
       res.locals.cobuyroom = cobuyroom;
       res.locals.cobuyroom_description = cobuyroom_description;
       res.locals.sell = sell;
@@ -64,6 +70,7 @@ module.exports = {
       res.locals.depositForm = depositForm;
       res.locals.current_user_id = current_user_id;
       res.locals.host_user_id = host_user_id;
+      res.locals.remaining_days = remaining_days;
       next();
     } catch (error) {
       console.log(`Error fetching coBuyroomDetail: ${error.message}`);

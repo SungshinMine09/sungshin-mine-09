@@ -37,17 +37,17 @@
     <div class="post_board">
       <% if(newposts.length==0) { %>
       <div class="no_content">아직 새로운 소식이 없어요!</div>
-      <% } %> <% newposts.forEach(post => { %>
+      <% } %> <% for(var i = 0; i < newposts.length; i++) { %> <% post = newposts[i]; %>
       <div class="post">
         <div class="post_header">
           <span class="title"><%= post.title %></span>
-          <span class="created_at"><%= post.createdAt %></span>
+          <span class="created_at"><%= dates[i] %></span>
         </div>
         <div class="post_body">
           <div class="post_text"><%- post.content %></div>
         </div>
       </div>
-      <% }); %>
+      <% }; %>
     </div>
   </body>
 </html>

@@ -76,8 +76,7 @@
           입금폼 작성하기</button>
           <br>
           <span class="fontSize15">입금폼 제출 마감일까지
-            <!-- deposit ejs 여기에 -->
-            n일 남았어요!</span>
+            <%= remaining_days %>일 남았어요!</span>
         </div>
       </div>
 
@@ -86,6 +85,7 @@
 
       <script>
         // data_div에서 전달받은 변수로 아이디 비교 후 버튼 비활성화 
+        // 공구방 주최자는 살래요 버튼, 입금폼 작성하기 버튼을 클릭할 수 없음!
         let data_div = document.getElementsByClassName('data_div').item(0);
         let current_user_id = data_div.dataset.current_user_id;
         let host_user_id = data_div.dataset.host_user_id;
