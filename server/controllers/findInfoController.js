@@ -110,7 +110,7 @@ async function getIDbyEmailController (req, res) {
             res.status(500).json({ message: '아이디 이메일 전송에 실패했습니다.'});
         } else {
             console.log("아이디 이메일 전송 성공: ", verificationCode);
-            res.send("<script>alert('아이디 이메일 전송 완료'); history.back();</script>");
+            res.send("<script>alert('아이디 이메일 전송 완료'); location.href='/user/Login'; </script>");
         }
         transporter.close();
     })
@@ -123,18 +123,21 @@ async function newPasswordController(req, res) {
             where: {login_id: req.body.ID},
         });
         if (!findUser) {
-            return res.send("<script>alert('아이디가 일치하지 않습니다.'); history.back();</script>");
+            return res.send("<script>alert('입력하신 아이디가 기존 아이디와 일치하지 않습니다.'); history.back();</script>");
         }
 
         if (req.body.newPassword && (req.body.confirm_newPW !== req.body.newPassword)) {
             return res.send("<script>alert('입력하신 새 비밀번호가 일치하지 않습니다. 다시 입력해주세요.'); history.back(); </script>");
-        } 
+        }
+            
         const newHashPassword = await bcrypt.hash(req.body.newPassword, 10);
 
+            
         await User.update({
             password: newHashPassword,
         }, { where: {login_id: req.body.ID}});
-        res.send("<script>alert('새 비밀번호 저장 성공'); history.back(); </script>");
+        res.send("<script>alert('새 비밀번호 저장 성공'); location.href='/user/Login'; </script>");
+
     } catch (err) {
         console.log(err);
         res.send("<script>alert('새 비밀번호 저장 실패. 다시 시도해주세요.'); history.back(); </script>");
@@ -158,6 +161,9 @@ async function changePasswordController(req, res) {
         }*/
 
         if(bcrypt.compareSync(input_oldPassword, findUser['password'])) {
+            if(req.body.newPassword && (input_oldPassword === req.body.newPassword) || req.body.confirm_newPW && (input_oldPassword === req.body.confirm_newPW)) {
+                return res.send("<script>alert('입력하신 새 비밀번호가 기존 비밀번호와 같습니다. 다시 입력해주세요.'); history.back(); </script>");
+            }
             if (req.body.newPassword && (req.body.confirm_newPW !== req.body.newPassword)) {
                 return res.send("<script>alert('입력하신 새 비밀번호가 일치하지 않습니다. 다시 입력해주세요.'); history.back(); </script>");
             } else {
