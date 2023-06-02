@@ -30,11 +30,12 @@
                             <div class="marginTop30">
                                 <div class="purpleLetters fontSize18">아이디</div>
                                 <div class="fontSize16"><%=userInfo.login_id%></div>
+                                <button id="changeIDbtn" onClick="location.href='/user/myPage/changeID'" class="fontSize15 grayButton changeButton center flex">변경</button>
                             </div>
                             <div class="marginTop30">
                                 <div class="flex">
                                     <span class="purpleLetters marginRight30 fontSize18">비밀번호</span>
-                                    <button class="fontSize15 grayButton changeButton center flex">변경</button>
+                                    <button onClick="location.href='/user/myPage/changePW'" class="fontSize15 grayButton changeButton center flex">변경</button>
                                 </div>
                                 <div class="fontSize16">
                                     <span>********</span>
@@ -43,7 +44,7 @@
                             <div class="marginTop30">
                                 <div class="flex">
                                     <span class="purpleLetters marginRight30 fontSize18">전화번호</span>
-                                    <button class="fontSize15 grayButton changeButton center flex">변경</button>
+                                    <!--<button class="fontSize15 grayButton changeButton center flex">변경</button>-->
                                 </div>
                                 <div class="fontSize16"><%=userInfo.phone_number%></div>
                             </div>

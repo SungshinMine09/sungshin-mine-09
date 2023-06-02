@@ -1,5 +1,6 @@
 const notification = require("../models/notification");
 const jwt = require("jsonwebtoken");
+const secretObj = require("../config/jwtConfig");
 
 const db=require("../models/index"),
     Notification = db.notification, 
@@ -34,6 +35,50 @@ module.exports = {
         res.render("user/JoinPage_3", { isLoggedin: false }); 
       } else {
         res.render("home/index", { isLoggedin: true}); 
+      }
+    },
+    
+    findID: (req, res) => {
+      if (req.cookies['userToken'] == null) { //토큰이 없다면
+        res.render("user/findID", { isLoggedin: false }); 
+      } else {
+        res.render("home/index", { isLoggedin: true}); 
+      }
+    },
+
+    findPW: (req, res) => {
+      if (req.cookies['userToken'] == null) { //토큰이 없다면
+        res.render("user/findPW", { isLoggedin: false }); 
+      } else {
+        res.render("home/index", { isLoggedin: true}); 
+      }
+    },
+
+    getIDbyEmail: (req, res) => {
+      if (req.cookies['userToken'] == null) { //토큰이 없다면
+        res.render("user/getIDbyEmail", { isLoggedin: false }); 
+      } else {
+        res.render("home/index", { isLoggedin: true}); 
+      }
+    },
+
+    newPW: (req, res) => {
+      if (req.cookies['userToken'] == null) { //토큰이 없다면
+        res.render("user/newPW", { isLoggedin: false }); 
+      } else {
+        res.render("home/index", { isLoggedin: true}); 
+      }
+    },
+
+    changePW: (req, res) => {
+      if (req.cookies['userToken'] != null) { //토큰이 있다면
+        res.render("user/changePW", { isLoggedin: true });
+      }
+    },
+
+    changeID: (req, res) => {
+      if (req.cookies['userToken'] != null) { //토큰이 있다면
+        res.render("user/changeID", { isLoggedin: true });
       }
     },
 

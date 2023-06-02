@@ -1,0 +1,42 @@
+.getIDbyEmail_Wrapper {
+    width: 550px;
+    height: 200px;
+    padding: 40px;
+    position: relative;
+    left: 200px;
+    top: 0px;
+  }
+  
+  #getIDbyEmail_Form > .getIDbyEmail_Title {
+    font-size: 38px;
+    color: rgb(119, 35, 155);
+    position: relative;
+    left: 250px;
+    padding-bottom: 25px;
+  }
+  
+  #getIDbyEmail_Form > .getIDbyEmail_Step {
+    font-size: 16px;
+    position: relative;
+    left: 165px;
+    bottom: 30px;
+  }
+  
+  #getIDbyEmail_Form > input[type="submit"] {
+    background-color: rgb(239, 220, 255);
+    border-color:rgb(239, 220, 255);
+    color: rgb(119, 35, 155);
+    font-size: 16px;
+    width: 200px;
+    height: 45px;
+    position: relative;
+    left: 240px;
+    top: 100px;
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-decoration: none;
+    border-radius: 5px;
+  }
+  
