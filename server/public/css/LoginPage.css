@@ -62,14 +62,31 @@ a.gotoJoinpage1_btn {
   text-decoration: none;
 }
 
-a.change_id_pw_btn {
+a.change_id_btn {
   background-color: rgb(219, 217, 217);
   color: black;
   font-size: 12px;
   width: 220px;
   height: 25px;
   position: relative;
-  left: 200px;
+  left: 145px;
+  bottom: 20px;
+  padding-left: 50px;
+  padding-right: 50px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+a.change_pw_btn {
+  background-color: rgb(219, 217, 217);
+  color: black;
+  font-size: 12px;
+  width: 220px;
+  height: 25px;
+  position: relative;
+  left: 145px;
   bottom: 20px;
   padding-left: 50px;
   padding-right: 50px;
