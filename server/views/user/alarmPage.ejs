@@ -27,6 +27,7 @@
         </div>
         <ul class="marginTop30" id="alarmPageUl">
           <% Array.from(notifications).forEach(notification => { %>
+            <%if (notification.host_id == userID or notification.receiver_id == userID) {%>
             <li class="flex">
               <a href="<%=notification.url%>">
                 <div class="image"><img src="imageExample.png" /></div>
@@ -38,7 +39,7 @@
                     <span style="font-weight: bold;"><%= notification.title %></span>  
                     <span>공구방의 새소식을 업데이트하였습니다.</span>
                 <%};%>
-                <% if (notification.host_id != userID) {%>
+                <% if (notification.receiver_id == userID) {%>
                   <div class="fontSize18">
                     <span style="color: rgb(142, 68, 173); font-weight: bold;">참여</span>
                     <span>하신 </span>
@@ -58,6 +59,7 @@
                 </div>
               </a>
             </li>
+            <%}%>
           <%});%>
         </ul>
       </div>
