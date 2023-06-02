@@ -11,7 +11,7 @@ module.exports = (sequelize, Sequelize) => {
         autoIncrement: true,
       },
       receiver_id: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.BIGINT,
         allowNull: false,
       },
       cobuying_room_id: {
@@ -32,7 +32,7 @@ module.exports = (sequelize, Sequelize) => {
       //   allowNull: false,
       // },
       type2: {
-        type: Sequelize.ENUM("sell, deposit_form, update_post, chat"),
+        type: Sequelize.ENUM("sell", "deposit_form", "update_post", "chat"),
         allowNull: false,
         comment: "판매, 입금폼, 새소식, 채팅만 허용",
       },
@@ -44,8 +44,8 @@ module.exports = (sequelize, Sequelize) => {
     {
       timestamps: true,
       tableName: "notifications",
-      charset: 'utf8',
-      collate: 'utf8_general_ci'
+      charset: "utf8",
+      collate: "utf8_general_ci",
     }
   );
   return notification;

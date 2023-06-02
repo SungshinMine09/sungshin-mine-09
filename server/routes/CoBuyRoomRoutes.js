@@ -36,16 +36,13 @@ router.post("/createCoBuyRoom", upload.single("roomImg"), verifyAuthController.c
 router.get("/chatting", verifyAuthController.checkAuth, CoBuyRoomController.chatting);
 router.get("/:id", verifyAuthController.checkAuth, CoBuyRoomDetailController.index, CoBuyRoomDetailController.indexView); // 공구방 상세페이지
 
-// 기연 할일: 위 코드에서 detail, totalgonguid 다시 확인할 것
 // 상세페이지
 router.get("/:id/detail", verifyAuthController.checkAuth, CoBuyRoomDetailController.index, CoBuyRoomDetailController.indexView); // 상의후 다현님 코드와 합치거나 할 것
 router.get("/:id/chatting", CoBuyRoomDetailController.chatting);
+router.get("/:id/chat/:chatId", ChatController.index, ChatController.indexView);
 
 router.get("/:id/updateCurrentDemand", CoBuyRoomDetailController.updateCurrentDemand, CoBuyRoomDetailController.redirectView);
 router.get("/:id/deleteCoBuyRoom", CoBuyRoomDetailController.deleteCoBuyRoom);
-
-router.get("/:id/CoBuyForm/fillDepositForm", CoBuyRoomDetailController.fillDepositForm);
-router.get("/:id/CoBuyForm/submitDepositForm", CoBuyRoomDetailController.submitDepositForm);
 
 // newpost
 router.get("/:id/newpost", verifyAuthController.checkAuth, NewpostController.index, NewpostController.indexView);
@@ -55,6 +52,5 @@ router.get("/:id/createPost", CreatePostController.index, CreatePostController.i
 router.post("/:id/createPost/create", CreatePostController.createPost, CreatePostController.redirectView);
 
 // chatting
-router.get("/:id/chat/:chatId", ChatController.index, ChatController.indexView);
 
 module.exports = router;

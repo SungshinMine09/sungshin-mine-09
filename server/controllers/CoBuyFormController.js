@@ -11,6 +11,7 @@ const initForm = async (req, res) => {
   try {
     await DepositForm.create({
       id: newFormId,
+      description: "dummy data",
       next_questions_num: 3,
       questions: {
         1: "배송 받을 장소를 선택해주세요(현장수령/택배배송)",
