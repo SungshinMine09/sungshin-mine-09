@@ -9,25 +9,20 @@
     <link rel="stylesheet" href="/css/style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com/" />
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Tilt+Neon&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Tilt+Neon&display=swap" rel="stylesheet"/>
   </head>
   <body>
     <main>
       <div>
-        <div>
-          <h1 id="alarmTitleBox" class="center flex">알림</h1>
-        </div>
+        <div><h1 id="alarmTitleBox" class="center flex">알림</h1></div>
         <div class="flex marginTop30 marginLeft10">
           <h2 class="marginRight30" onClick="location.href='/user/alarmPage'" style="color: rgb(142, 68, 173)">전체</h2>
-          <h2 class="marginRight30" onClick="location.href='/user/coBuyRoomAlarm'">공구방</h2>
-          <h2 onClick="location.href='/user/chattingAlarm'">채팅</h2>
+          <h2 class="marginRight30" onClick="location.href='/user/coBuyRoomAlarm'" style="color:black">공구방</h2>
+          <h2 onClick="location.href='/user/chattingAlarm'" style="color: black">채팅</h2>
         </div>
         <ul class="marginTop30" id="alarmPageUl">
           <% Array.from(notifications).forEach(notification => { %>
-            <%if (notification.host_id == userID or notification.receiver_id == userID) {%>
+            <%if (notification.host_id == userID || notification.receiver_id == userID) {%>
             <li class="flex">
               <a href="<%=notification.url%>">
                 <div class="image"><img src="imageExample.png" /></div>

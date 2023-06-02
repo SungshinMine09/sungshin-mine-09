@@ -3,7 +3,7 @@ const { sequelize } = require("../models");
 const CoBuyRoom = db.cobuying_room;
 const DepositForm = db.deposit_form;
 const Answer = db.answer;
-const Notification = db.notification;
+const Notification = db.notifications;
 
 const verifyAuthController = require("./verifyAuthController");
 
