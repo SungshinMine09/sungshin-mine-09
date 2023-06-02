@@ -61,7 +61,6 @@ const userRouter = require("./routes/userRoutes");
 const CoBuyRoomRouter = require("./routes/CoBuyRoomRoutes");
 const formRouter = require("./routes/CoBuyFormRoutes");
 const errorRouter = require("./routes/errorRoutes");
-const { checkAuth } = require("./controllers/verifyAuthController");
 
 app.set("port", process.env.PORT || 80);
 app.set("view engine", "ejs");
@@ -102,9 +101,6 @@ app.all("*", function (req, res) {
   res.status(404).send("<h3>ERROR 404 - 페이지를 찾을 수 없습니다.</h3>");
 });
 
-//app.use("/CoBuyForm", formRouter);
-
-//app.get("*", checkAuth);
 
 /* ##가이드
 1. 코드 흐름: main.js -> routes -> controller -> ...
