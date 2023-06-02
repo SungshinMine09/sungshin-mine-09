@@ -1,3 +1,5 @@
+const moment = require("moment");
+
 module.exports = (sequelize, Sequelize) => {
   const deposit_form = sequelize.define(
     "deposit_form",
@@ -30,16 +32,16 @@ module.exports = (sequelize, Sequelize) => {
       created_at: {
         type: Sequelize.DATE,
         defaultValue: new Date(),
-        get: function () {
-          return moment(this.getDataValue("created_at")).format("DD/MM/YYYY h:mm:ss");
-        },
+        // get: function () {
+        //   return moment(this.getDataValue("created_at")).format("YYYY/MM/DD h:mm:ss");
+        // },
       },
       end_at: {
         type: Sequelize.DATE,
         defaultValue: new Date(Date.now() + 14 * 24 * 60 * 60 * 1000),
-        get: function () {
-          return moment(this.getDataValue("end_at")).format("DD/MM/YYYY h:mm:ss");
-        },
+        // get: function () {
+        //   return moment(this.getDataValue("end_at")).format("YYYY/MM/DD h:mm:ss");
+        // },
       },
     },
     {

@@ -1,4 +1,5 @@
 const db = require("../models/index"),
+  moment = require("moment"),
   CoBuyingRoom = db.cobuying_room,
   NewPost = db.update_post;
 
@@ -16,8 +17,15 @@ module.exports = {
         order: [["id", "DESC"]],
       });
 
+      // 날짜 처리
+      dates = [];
+      newposts.forEach((post) => {
+        dates.push(moment(post.createdAt).format("YY/MM/DD HH:MM"));
+      });
+
       res.locals.cobuyroom = cobuyroom;
       res.locals.newposts = newposts;
+      res.locals.dates = dates;
 
       next();
     } catch (error) {
