@@ -249,7 +249,7 @@ module.exports = {
       let new_answer;
       if (deposit_form && answerJSON) {
         new_answer = await Answer.create({
-          user_id: user_id,
+          user_id: user_id.id,
           id: form_id,
           answers: answerJSON,
         });
