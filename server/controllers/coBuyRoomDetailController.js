@@ -58,9 +58,15 @@ module.exports = {
       host_user_id = user.login_id;
 
       // 날짜 처리
-      let now = moment();
-      let end_at = moment(depositForm.end_at);
-      remaining_days = end_at.diff(now, "days");
+      let now, end_at, remaining_days;
+
+      if (depositForm != null) {
+        now = moment();
+        end_at = moment(depositForm.end_at);
+        remaining_days = end_at.diff(now, "days");
+      } else {
+        remaining_days = -1;
+      }
 
       res.locals.cobuyroom = cobuyroom;
       res.locals.cobuyroom_description = cobuyroom_description;

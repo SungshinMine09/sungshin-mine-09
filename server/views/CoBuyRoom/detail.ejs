@@ -75,8 +75,12 @@
           onclick="location.href='/CoBuyForm/<%= form_id %>/writeForm';">
           입금폼 작성하기</button>
           <br>
+          <% if (remaining_days >= 0) { %>
           <span class="fontSize15">입금폼 제출 마감일까지
             <%= remaining_days %>일 남았어요!</span>
+            <% } else { %>
+              <span class="fontSize15">아직 수요조사 중이에요!</span>
+              <% } %>
         </div>
       </div>
 

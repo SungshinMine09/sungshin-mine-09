@@ -41,7 +41,6 @@ module.exports = {
     // 알림 생성
     types = Notification.getAttributes().type2.values;
 
-    console.log("결과", types[2]);
     Notification.create({
       receiver_id: user_id,
       cobuying_room_id: coBuyingRoomID,
