@@ -22,7 +22,6 @@ const initForm = async (req, res) => {
   }
 };
 
-
 module.exports = {
   //get
   depositFormMaker: async (req, res) => {
@@ -57,9 +56,7 @@ module.exports = {
       }
       const new_value = req.body.question;
       if (deposit_form && new_value) {
-        const new_key = deposit_form
-          .getDataValue("next_questions_num")
-          .toString();
+        const new_key = deposit_form.getDataValue("next_questions_num").toString();
 
         const new_questions = {
           ...deposit_form.questions,
@@ -206,9 +203,7 @@ module.exports = {
         if (user_id.id === cobuying_room.host_id) {
           return res.redirect(`/CoBuyForm/${form_id}/depositFormMaker`);
         } else {
-          return res.send(
-            "<script>alert('공동구매 입금폼이 존재하지 않습니다'); location.href='/CoBuyRoom/totalGonggu'; </script>"
-          );
+          return res.send("<script>alert('공동구매 입금폼이 존재하지 않습니다'); location.href='/CoBuyRoom/totalGonggu'; </script>");
         }
       }
       res.render("CoBuyForm/depositFormSubmit", {

@@ -18,7 +18,7 @@
   font-weight: bold;
   text-align: center;
 }
-.gonggu_header div p{
+.gonggu_header div p {
   padding-top: 39.7px;
   margin: 0px;
 }
@@ -34,12 +34,11 @@
   border: 0px;
 }
 
-
 .gonggu_nav {
   width: 1200px;
   margin: auto;
 }
-.gonggu_nav div{
+.gonggu_nav div {
   width: 1119px;
   margin: auto;
 }
@@ -50,7 +49,6 @@
 .gonggu_nav div nav ul li {
   display: inline-block;
 }
-
 
 .message_type_button {
   width: 97px;
@@ -63,7 +61,6 @@
   border: 0px;
 }
 
-
 .grey_s_button {
   width: 137px;
   height: 35px;
@@ -75,7 +72,6 @@
   border: 0px;
 }
 
-
 .gonggu_suyo_stat {
   width: 1200px;
   margin: auto;
@@ -86,17 +82,16 @@
   text-align: center;
 }
 
-
 .image_text {
   position: relative;
   overflow: hidden;
 }
-.image_text img{
+.image_text img {
   width: 337px;
   height: 230px;
-  object-fit: cover;
+  object-fit: contain;
 }
-.image_text p{
+.image_text p {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -109,16 +104,16 @@
   height: 67px;
   line-height: 67px;
 }
-.gonggu_suyo_stat div ul{
+.gonggu_suyo_stat div ul {
   list-style: none;
   text-align: center;
   padding: 0px;
 }
-.gonggu_suyo_stat div ul li{
+.gonggu_suyo_stat div ul li {
   font-size: 24px;
   font-weight: bold;
 }
-.gonggu_suyo_stat div ul li p{
+.gonggu_suyo_stat div ul li p {
   display: inline-block;
   font-size: 24px;
   font-weight: normal;

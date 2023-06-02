@@ -49,7 +49,7 @@ app.use(morgan("dev")); // log every request to the console
 // }
 
 db.sequelize
-  //.sync({ force: true })
+  // .sync({ alter: true })
   .sync()
   .then(() => console.log("Database OK"))
   //.then(createAndLogUser)
@@ -78,8 +78,8 @@ app.use(express.json());
 app.use(cookieParser());
 
 //로그인 여부에 따른 버튼 전환
-app.use (function(req, res, next) {
-  if(req.cookies['userToken'] != null) {
+app.use(function (req, res, next) {
+  if (req.cookies["userToken"] != null) {
     res.locals.isLoggedin = true;
   } else {
     res.locals.isLoggedin = false;
@@ -103,7 +103,6 @@ app.all("*", function (req, res) {
 });
 
 //app.use("/CoBuyForm", formRouter);
-
 
 //app.get("*", checkAuth);
 

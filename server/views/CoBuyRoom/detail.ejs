@@ -15,10 +15,12 @@
     onclick="location.href='/CoBuyRoom/<%= cobuyroom.id %>/detail';">
       <div>
         <p> <%= cobuyroom.title %> </p>
+        <% if(current_user_id == host_user_id) { %>
         <button class="gonggu_delete_button" style="cursor: pointer;"
         onclick="event.stopPropagation(); confirmDeleteCobuyRoom(); checkDeleteCobuyroomAvaility();
         location.href='/CoBuyRoom/<%= cobuyroom.id %>/deleteCoBuyRoom';">
         공동구매방 삭제하기</button>
+        <% } %>
     </div>
     </div>
 
@@ -30,6 +32,7 @@
                 새소식</button></li>
               <li><button class="message_type_button" style="cursor: pointer;"onclick="location.href='/CoBuyRoom/<%= cobuyroom.id %>/chat/1';">
               채팅</button></li>
+              <% if(current_user_id == host_user_id) { %>
               <li style="float: right;">
                 <button class="grey_s_button" style="margin-left: 5px; cursor: pointer;"
                 onclick="location.href='/CoBuyRoom/<%= cobuyroom.id %>/suyoStat';">
@@ -40,6 +43,7 @@
                 <button class="grey_s_button" style="margin-left: 5px; cursor: pointer;"
                 onclick="location.href='/CoBuyRoom/<%= cobuyroom.id %>/CoBuyForm/depositResult';">
               입금폼 통계</button></li>
+              <% } %>
             </ul>
           </nav>
         </div>
@@ -47,7 +51,7 @@
       
       <div class="room_detail">
         <div class="overview">
-          <img src="<%= `${image.real_url}` %>" class="product_img" width="406" height="314">
+          <img src="<%= imgURL %>" class="product_img_big">
           <br>
           <div>
             <span class="fontSize18"><%= product.name %> 1개당&nbsp;</span>
@@ -63,11 +67,11 @@
       <div class="product_detail">
         <p class="fontSize24 fontBold">상품 소개</p>
         <div class="product_content">
-          <%= cobuyroom.description %>
+          <%- cobuyroom_description %>
         </div>
         <div class="textCenter">
           <button class="createDepositFormBtn" type="button" style="cursor: pointer;"
-          onclick="location.href='/CoBuyRoom/<%= cobuyroom.id %>/CoBuyForm/submitDepositForm';">
+          onclick="location.href='/CoBuyForm/<%= cobuyroom.id %>/depositFormMaker';">
           입금폼 작성하기</button>
           <br>
           <span class="fontSize15">입금폼 제출 마감일까지
@@ -76,11 +80,33 @@
         </div>
       </div>
 
-      <!-- <%-'<script>'%>
-        let cobuyroomStatus = <%= cobuyroom.status %>;
-      <%-'</script>'%> -->
+      <!-- ejs 변수를 script에 전달하는 용도 -->
+      <div class="data_div" data-current_user_id="<%= current_user_id %>" data-host_user_id="<%= host_user_id %>"></div>
 
       <script>
+        // data_div에서 전달받은 변수로 아이디 비교 후 버튼 비활성화 
+        let data_div = document.getElementsByClassName('data_div').item(0);
+        let current_user_id = data_div.dataset.current_user_id;
+        let host_user_id = data_div.dataset.host_user_id;
+        console.log(host_user_id);
+        console.log(current_user_id);
+
+        let wantBtn = document.getElementsByClassName("wantBtn").item(0);
+        let createDepositFormBtn = document.getElementsByClassName("createDepositFormBtn").item(0);
+
+        if(current_user_id==host_user_id) {
+            // wantBtn.disabled = true;
+            // createDepositFormBtn.disabled = true;
+            // wantBtn.style.backgroundColor='Grey';
+            // createDepositFormBtn.style.backgroundColor='Grey';
+        } else {
+          wantBtn.disabled = false;
+            createDepositFormBtn.disabled = false;
+            wantBtn.style.removeProperty(backgroundColor);
+            createDepositFormBtn.style.backgroundColor='rgb(239, 220, 255)';
+        }
+
+        // 함수들
         function confirmDeleteCobuyRoom() {   // 취소->아무 이벤트 없음, 확인->다음 이벤트로 넘어감
           if(confirm("공구방을 정말 삭제하시겠습니까?")) {
           } else {
