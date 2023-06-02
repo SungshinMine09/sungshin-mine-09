@@ -19,7 +19,7 @@ module.exports = (sequelize, Sequelize) => {
       description: {
         type: Sequelize.STRING(500),
         allowNull: false,
-
+      },
       questions: {
         type: Sequelize.JSON,
       },

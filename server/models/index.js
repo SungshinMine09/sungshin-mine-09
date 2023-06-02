@@ -32,6 +32,18 @@ db.image = require("./image")(sequelize, Sequelize);
 db.user.hasMany(db.cobuying_room, { foreignKey: "host_id", sourceKey: "id" });
 db.cobuying_room.belongsTo(db.user, { foreignKey: "host_id", sourceKey: "id" });
 
+// N:M 2가지, demand_user	
+db.user.belongsToMany(db.cobuying_room, {	
+  through: "demand_user",	
+  targetKey: "id",	
+  foreignKey: "user_id",	
+});	
+db.cobuying_room.belongsToMany(db.user, {	
+  through: "demand_user",	
+  targetKey: "id",	
+  foreignKey: "cobuying_room_id",	
+});
+
 /* cobuying_room & sell */
 // 1:N 한개의 공동구매방에서는 여러개의 상품을 판매할 수 있다
 db.cobuying_room.hasMany(db.sell, {

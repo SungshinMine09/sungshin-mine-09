@@ -141,6 +141,15 @@ module.exports = {
         max_quantity: max_quantity,
       });
 
+   /*   const newSellNotification = await Notifications.create({
+        receiver_id:,
+        cobuying_room_id: newRoom.id,
+        content: ,
+        read_or_not: 0,
+        type2: 'sell',
+
+      })
+*/
       const newImage = await Image.create({
         url: req.file.path,
         product_id: newProduct.id,

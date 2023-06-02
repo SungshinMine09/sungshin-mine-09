@@ -39,17 +39,28 @@ module.exports = {
 
     myPage: async(req, res) => {
       try {
+        const cobuyingRoomId = req.params.id;
+        const userToken = req.cookies['userToken'];
+        let secretObj = require("../config/jwtConfig");
+        let decodedToken = jwt.verify(userToken,secretObj.secret);
         userInfos = await User.findAll();
-        myParticipations = await db.sequelize.query("SELECT  b.cobuying_room_id, a.title, a.state, a.description, a.host_id, b.user_id, c.descriription, date_format(c.end_at, '%y-%m-%d') AS 'end_at' FROM cobuying_room as a JOIN demand_user as b JOIN deposit_form as c ON (a.`id` = b.`cobuying_room_id`) and (b.`cobuying_room_id` = c.`cobuying_room_id`);");
+        myParticipations = await db.sequelize.query("SELECT a.*, date_format(e.end_at, '%y-%m-%d') AS 'end_at',  c.url, replace(c.url, 'public\', '') AS real_url  FROM cobuying_room as a LEFT JOIN sell as b ON a.id=b.cobuying_room_id LEFT JOIN image as c ON b.product_id=c.product_id LEFT JOIN demand_user as d ON a.id=d.cobuying_room_id LEFT JOIN deposit_form as e ON a.id=e.id;");
+        numOfMyParticipations = await db.sequelize.query("SELECT  b.cobuying_room_id, a.title, a.state, a.description, a.host_id, b.user_id, c.description, date_format(c.end_at, '%y-%m-%d') AS 'end_at' FROM cobuying_room as a JOIN demand_user as b ON a.id=b.cobuying_room_id JOIN deposit_form as c ON b.cobuying_room_id = c.id;")
+      //  myParticipations = await db.sequelize.query("SELECT  e.url, replace(e.url, 'public\', '') AS real_url a.id, a.title, a.state, a.description, a.host_id, b.user_id, date_format(c.end_at, '%y-%m-%d') AS 'end_at' FROM cobuying_room as a JOIN demand_user as b ON a.id=b.cobuying_room_id JOIN deposit_form as c ON a.id = c.id JOIN sell as d ON b.cobuying_room_id=d.cobuying_room_id JOIN image as e ON d.product_id=e.product_id;");
+     /*   productImg = await db.sequelize.query( 'SELECT A.*, B.*, replace(B.url, "public\", "") AS real_url FROM (SELECT A.*, B.`name` FROM (SELECT A.`product_id`, A.`cobuying_room_id`, B.`title`, A.`current_demand`, A.`min_demand` FROM sell AS A LEFT JOIN cobuying_room AS B ON A.`cobuying_room_id`=B.`id`) AS A LEFT JOIN product AS B ON A.`product_id`=B.`id`) AS A LEFT JOIN image AS B ON A.product_id=B.product_id;'
+        ); */
+      /*  myParticipationsImg = await db.sequelize.query('SELECT * FROM (SELECT a.*, b.cobuying_room_id FROM (SELECT a.id as productId, a.name, a.createdAt, a.updatedAt, b.url, replace(b.url, “public\”, “”) AS url, b.id FROM product AS a, image AS b ON a.id = b.product_id) AS a, sell AS b ON a.productId=b.product_id) AS a, cobuying_room AS b ON a.cobuying_room_id=b.id;'); */
+        /*productImg = productImg[0].filter((it)=>it.cobuying_room_id == cobuyingRoomId);*/
         myParticipations=myParticipations[0];
-        //console.log(myParticipations);
-        numOfMyParticipations = myParticipations.length;
-
-        myHosts = await db.sequelize.query("SELECT a.id as cobuying_room_id, a.title, a.state, a.description, a.host_id, date_format(b.end_at, '%y-%m-%d') AS 'end_at' FROM cobuying_room AS a LEFT JOIN deposit_form AS b ON (a.`id` = b.`cobuying_room_id`) WHERE a.host_id = 2;");
+        //console.log(numOfMyParticipations);
+        numOfMyParticipations = numOfMyParticipations[0].length;
+        //console.log(numOfMyParticipations);
+        myHosts = await db.sequelize.query("SELECT a.*, date_format(d.end_at, '%y-%m-%d') AS 'end_at', c.url, replace(c.url, 'public\', '') AS real_url FROM cobuying_room AS a LEFT JOIN sell AS b ON a.id=b.cobuying_room_id LEFT JOIN image as c ON b.product_id=c.product_id LEFT JOIN deposit_form as d ON a.id=d.id;");
         myHosts=myHosts[0];
-        //console.log(myHost);
         numOfMyHosts = myHosts.length;
-        res.render("user/mypage", {userInfos: userInfos, myParticipations: myParticipations, myHosts: myHosts, numOfMyParticipations: numOfMyParticipations, numOfMyHosts: numOfMyHosts});
+        if(decodedToken) {
+          res.render("user/mypage", {userInfos: userInfos, myParticipations: myParticipations, myHosts: myHosts, numOfMyParticipations: numOfMyParticipations, numOfMyHosts: numOfMyHosts, userID: decodedToken.db_id});
+        }
       } catch (error) {
         console.log(error);
       }
@@ -57,10 +68,10 @@ module.exports = {
 
     alarmPage: async(req, res) => {
       try {
-        notificationsJoinCobuyingRooms1 = await db.sequelize.query(
-          'SELECT a.id as notificationId, a.receiver_id, a.cobuying_room_id, a.content, a.read_or_not, a.type2, a.url, a.createdAt, a.updatedAt, b.title, b.state, b.host_id FROM notifications as a JOIN cobuying_room as b ON a.`cobuying_room_id`=b.`id` WHERE receiver_id=2 or host_id=2 ORDER BY a.id  DESC;'
-        );
+        notificationsJoinCobuyingRooms1 = await db.sequelize.query('SELECT a.id as notificationId, a.receiver_id, a.cobuying_room_id, a.content, a.read_or_not, a.type2, a.url, a.createdAt, a.updatedAt, b.title, b.state, b.host_id FROM notifications as a JOIN cobuying_room as b ON a.`cobuying_room_id`=b.`id` WHERE receiver_id=2 or host_id=2 ORDER BY a.id  DESC;'
+        );	       
         const userToken = req.cookies['userToken'];
+        let secretObj = require("../config/jwtConfig");
         let decodedToken = jwt.verify(userToken,secretObj.secret);
         notificationsJoinCobuyingRoom1 = notificationsJoinCobuyingRooms1[0];
         // console.log(notificationsJoinCobuyingRoom1);
@@ -77,10 +88,11 @@ module.exports = {
           "SELECT * FROM notifications as a JOIN cobuying_room as b ON a.`cobuying_room_id`=b.`id` WHERE (receiver_id=2 or host_id=2) and type2 != 'chat' ORDER BY a.id DESC;"
         );
         const userToken = req.cookies['userToken'];
+        let secretObj = require("../config/jwtConfig");
         let decodedToken = jwt.verify(userToken,secretObj.secret);
         notificationsJoinCobuyingRoom2 = notificationsJoinCobuyingRooms2[0];
         if(decodedToken) {
-          res.render("user/alarmPage", {notifications: notificationsJoinCobuyingRoom1, userID: decodedToken.db_id});
+          res.render("user/alarmPage", {notifications: notificationsJoinCobuyingRoom2, userID: decodedToken.db_id});
         }
         res.render("user/coBuyRoomAlarm", {coBuyRoomNotifications: notificationsJoinCobuyingRoom2});
       } catch(error) {
@@ -93,10 +105,11 @@ module.exports = {
           "SELECT * FROM notifications as a JOIN cobuying_room as b ON a.`cobuying_room_id`=b.`id` WHERE (receiver_id=2 or host_id=2) and type2 = 'chat' ORDER BY a.id DESC;"
         );
         const userToken = req.cookies['userToken'];
+        let secretObj = require("../config/jwtConfig");
         let decodedToken = jwt.verify(userToken,secretObj.secret);
         notificationsJoinCobuyingRoom3 = notificationsJoinCobuyingRooms3[0];
         if(decodedToken) {
-          res.render("user/alarmPage", {notifications: notificationsJoinCobuyingRoom1, userID: decodedToken.db_id});
+          res.render("user/alarmPage", {notifications: notificationsJoinCobuyingRoom2, userID: decodedToken.db_id});
         }
         res.render("user/chattingAlarm", {chattingNotifications: notificationsJoinCobuyingRoom3});
       } catch(error) {
