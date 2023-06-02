@@ -44,8 +44,10 @@ module.exports = {
         let secretObj = require("../config/jwtConfig");
         let decodedToken = jwt.verify(userToken,secretObj.secret);
         userInfos = await User.findAll();
-        myParticipations = await db.sequelize.query("SELECT a.*, date_format(e.end_at, '%y-%m-%d') AS 'end_at',  c.url, replace(c.url, 'public\', '') AS real_url  FROM cobuying_room as a LEFT JOIN sell as b ON a.id=b.cobuying_room_id LEFT JOIN image as c ON b.product_id=c.product_id LEFT JOIN demand_user as d ON a.id=d.cobuying_room_id LEFT JOIN deposit_form as e ON a.id=e.id;");
-        numOfMyParticipations = await db.sequelize.query("SELECT  b.cobuying_room_id, a.title, a.state, a.description, a.host_id, b.user_id, c.description, date_format(c.end_at, '%y-%m-%d') AS 'end_at' FROM cobuying_room as a JOIN demand_user as b ON a.id=b.cobuying_room_id JOIN deposit_form as c ON b.cobuying_room_id = c.id;")
+        myParticipations = await db.sequelize.query("SELECT a.*, date_format(e.end_at, '%y-%m-%d') AS 'end_at', d.user_id, c.url, replace(c.url, 'public\', '') AS real_url  FROM cobuying_room as a JOIN sell as b ON a.id=b.cobuying_room_id JOIN image as c ON b.product_id=c.product_id JOIN demand_user as d ON a.id=d.cobuying_room_id LEFT JOIN deposit_form as e ON d.cobuying_room_id=e.id;");
+        //myParticipations = await db.sequelize.query("SELECT a.*, date_format(e.end_at, '%y-%m-%d') AS 'end_at',  c.url, replace(c.url, 'public\', '') AS real_url  FROM cobuying_room as a LEFT JOIN sell as b ON a.id=b.cobuying_room_id LEFT JOIN image as c ON b.product_id=c.product_id LEFT JOIN demand_user as d ON a.id=d.cobuying_room_id LEFT JOIN deposit_form as e ON a.id=e.id;");
+        //얘numOfMyParticipations = await db.sequelize.query("SELECT  b.cobuying_room_id, a.title, a.state, a.description, a.host_id, b.user_id, c.description, date_format(c.end_at, '%y-%m-%d') AS 'end_at' FROM cobuying_room as a JOIN demand_user as b ON a.id=b.cobuying_room_id LEFT JOIN deposit_form as c ON b.cobuying_room_id = c.id;");
+        //numOfMyParticipations = await db.sequelize.query("SELECT  b.cobuying_room_id, a.title, a.state, a.description, a.host_id, b.user_id, c.description, date_format(c.end_at, '%y-%m-%d') AS 'end_at' FROM cobuying_room as a JOIN demand_user as b ON a.id=b.cobuying_room_id JOIN deposit_form as c ON b.cobuying_room_id = c.id;");
       //  myParticipations = await db.sequelize.query("SELECT  e.url, replace(e.url, 'public\', '') AS real_url a.id, a.title, a.state, a.description, a.host_id, b.user_id, date_format(c.end_at, '%y-%m-%d') AS 'end_at' FROM cobuying_room as a JOIN demand_user as b ON a.id=b.cobuying_room_id JOIN deposit_form as c ON a.id = c.id JOIN sell as d ON b.cobuying_room_id=d.cobuying_room_id JOIN image as e ON d.product_id=e.product_id;");
      /*   productImg = await db.sequelize.query( 'SELECT A.*, B.*, replace(B.url, "public\", "") AS real_url FROM (SELECT A.*, B.`name` FROM (SELECT A.`product_id`, A.`cobuying_room_id`, B.`title`, A.`current_demand`, A.`min_demand` FROM sell AS A LEFT JOIN cobuying_room AS B ON A.`cobuying_room_id`=B.`id`) AS A LEFT JOIN product AS B ON A.`product_id`=B.`id`) AS A LEFT JOIN image AS B ON A.product_id=B.product_id;'
         ); */
@@ -53,7 +55,8 @@ module.exports = {
         /*productImg = productImg[0].filter((it)=>it.cobuying_room_id == cobuyingRoomId);*/
         myParticipations=myParticipations[0];
         //console.log(numOfMyParticipations);
-        numOfMyParticipations = numOfMyParticipations[0].length;
+        numOfMyParticipations = myParticipations.length;
+        //얘numOfMyParticipations = numOfMyParticipations[0].length;
         //console.log(numOfMyParticipations);
         myHosts = await db.sequelize.query("SELECT a.*, date_format(d.end_at, '%y-%m-%d') AS 'end_at', c.url, replace(c.url, 'public\', '') AS real_url FROM cobuying_room AS a LEFT JOIN sell AS b ON a.id=b.cobuying_room_id LEFT JOIN image as c ON b.product_id=c.product_id LEFT JOIN deposit_form as d ON a.id=d.id;");
         myHosts=myHosts[0];
