@@ -73,24 +73,10 @@ module.exports = {
   indexView: async (req, res) => {
     res.render("CoBuyRoom/detail");
   },
-  newpost: (req, res) => {
-    res.render("CoBuyRoom/newpost");
-  },
   chatting: (req, res) => {
     res.render("CoBuyRoom/chatting");
   },
-  fillDepositForm: (req, res) => {
-    res.render("CoBuyForm/DepositFormPage");
-  },
-  submitDepositForm: (req, res) => {
-    res.locals.redirect = `CoBuyForm/:id/CoBuyForm/submitDepositForm`;
-  },
-  showAccount: (req, res) => {
-    res.render("CoBuyForm/ShowAccountPage");
-  },
-  depositResult: (req, res) => {
-    res.locals.redirect = `/CoBuyForm/:form_id/depositFormResult`;
-  },
+  // 살래요 버튼 클릭시
   updateCurrentDemand: async (req, res, next) => {
     // current_demand 업데이트
     const coBuyingRoomID = req.params.id;
