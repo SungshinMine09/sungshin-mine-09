@@ -6,6 +6,7 @@ const Sell = db.sell;
 const Product = db.product;
 const Image = db.image;
 const User = db.user;
+const Notification = db.notification;
 
 let jwt = require("jsonwebtoken");
 let secretObj = require("../config/jwtConfig");
@@ -16,7 +17,7 @@ module.exports = {
   totalGonggu: async (req, res) => {
     try {
       const totalGonggus = await db.sequelize.query(
-        'SELECT A.*, B.id, B.url, replace(B.url, "public\", "") AS real_url, b.createdAt, b.updatedAt FROM (SELECT A.*, B.name FROM (SELECT A.product_id, A.cobuying_room_id, B.title, A.current_demand FROM sell AS A LEFT JOIN cobuying_room AS B ON A.cobuying_room_id=B.id) AS A LEFT JOIN product AS B ON A.product_id=B.id) AS A LEFT JOIN image AS B ON A.product_id=B.product_id;'
+        'SELECT A.*, B.id, B.url, replace(B.url, "public", "") AS real_url, b.createdAt, b.updatedAt FROM (SELECT A.*, B.name FROM (SELECT A.product_id, A.cobuying_room_id, B.title, A.current_demand FROM sell AS A LEFT JOIN cobuying_room AS B ON A.cobuying_room_id=B.id) AS A LEFT JOIN product AS B ON A.product_id=B.id) AS A LEFT JOIN image AS B ON A.product_id=B.product_id;'
       );
       const cntTotal = await CobuyingRoom.count();
       res.render("CoBuyRoom/totalGonggu", {
@@ -30,7 +31,7 @@ module.exports = {
   ingSuyo: async (req, res) => {
     try {
       const ingSuyos = await db.sequelize.query(
-        'SELECT A.*, B.id, B.url, replace(B.url, "public\", "") AS real_url, b.createdAt, b.updatedAt FROM (SELECT A.*, B.name FROM (SELECT A.product_id, A.cobuying_room_id, B.title, A.current_demand FROM sell AS A LEFT JOIN cobuying_room AS B ON A.cobuying_room_id=B.id WHERE B.state="demand") AS A LEFT JOIN product AS B ON A.product_id=B.id) AS A LEFT JOIN image AS B ON A.product_id=B.product_id;'
+        'SELECT A.*, B.id, B.url, replace(B.url, "public", "") AS real_url, b.createdAt, b.updatedAt FROM (SELECT A.*, B.name FROM (SELECT A.product_id, A.cobuying_room_id, B.title, A.current_demand FROM sell AS A LEFT JOIN cobuying_room AS B ON A.cobuying_room_id=B.id WHERE B.state="demand") AS A LEFT JOIN product AS B ON A.product_id=B.id) AS A LEFT JOIN image AS B ON A.product_id=B.product_id;'
       );
       const cntingSuyo = await CobuyingRoom.count({
         where: {
@@ -48,7 +49,7 @@ module.exports = {
   soonEnd: async (req, res) => {
     try {
       const soonEnds = await db.sequelize.query(
-        'SELECT A.*, B.id, B.url, replace(B.url, "public\", "") AS real_url, b.createdAt, b.updatedAt FROM (SELECT A.*, B.name FROM (SELECT A.product_id, A.cobuying_room_id, B.title, A.current_demand FROM sell AS A LEFT JOIN cobuying_room AS B ON A.cobuying_room_id=B.id WHERE B.state="deposit") AS A LEFT JOIN product AS B ON A.product_id=B.id) AS A LEFT JOIN image AS B ON A.product_id=B.product_id;'
+        'SELECT A.*, B.id, B.url, replace(B.url, "public", "") AS real_url, b.createdAt, b.updatedAt FROM (SELECT A.*, B.name FROM (SELECT A.product_id, A.cobuying_room_id, B.title, A.current_demand FROM sell AS A LEFT JOIN cobuying_room AS B ON A.cobuying_room_id=B.id WHERE B.state="deposit") AS A LEFT JOIN product AS B ON A.product_id=B.id) AS A LEFT JOIN image AS B ON A.product_id=B.product_id;'
       );
       const cntsoonEnd = await CobuyingRoom.count({
         where: {
@@ -67,11 +68,9 @@ module.exports = {
     try {
       const CobuyroomID = req.params.id;
       const suyoStats = await db.sequelize.query(
-        'SELECT A.*, B.*, replace(B.url, "public\", "") AS real_url FROM (SELECT A.*, B.`name` FROM (SELECT A.`product_id`, A.`cobuying_room_id`, B.`title`, A.`current_demand`, A.`min_demand` FROM sell AS A LEFT JOIN cobuying_room AS B ON A.`cobuying_room_id`=B.`id`) AS A LEFT JOIN product AS B ON A.`product_id`=B.`id`) AS A LEFT JOIN image AS B ON A.product_id=B.product_id;'
+        'SELECT A.*, B.*, replace(B.url, "public", "") AS real_url FROM (SELECT A.*, B.`name` FROM (SELECT A.`product_id`, A.`cobuying_room_id`, B.`title`, A.`current_demand`, A.`min_demand` FROM sell AS A LEFT JOIN cobuying_room AS B ON A.`cobuying_room_id`=B.`id`) AS A LEFT JOIN product AS B ON A.`product_id`=B.`id`) AS A LEFT JOIN image AS B ON A.product_id=B.product_id;'
       );
-      const suyoStat = suyoStats[0].filter(
-        (it) => it.cobuying_room_id == CobuyroomID
-      );
+      const suyoStat = suyoStats[0].filter((it) => it.cobuying_room_id == CobuyroomID);
       res.render("CoBuyRoom/suyoStat", { suyoStats: suyoStat });
     } catch (error) {
       console.log(error);
@@ -83,9 +82,7 @@ module.exports = {
       const details = await db.sequelize.query(
         'SELECT A.*, B.end_at FROM (SELECT A.*, B.id, B.url, B.createdAt, B.updatedAt, replace(B.url, "../public", "") AS real_url FROM (SELECT A.*, B.name FROM (SELECT A.product_id, A.cobuying_room_id, A.price, A.current_demand, B.state, B.description, B.title FROM sell AS A LEFT JOIN cobuying_room AS B ON A.cobuying_room_id=B.id) AS A LEFT JOIN product AS B ON A.product_id=B.id) AS A LEFT JOIN image AS B ON A.product_id=B.product_id) AS A LEFT JOIN deposit_form AS B ON A.cobuying_room_id=B.id;'
       );
-      const detail = details[0].filter(
-        (it) => it.cobuying_room_id == CobuyroomID
-      );
+      const detail = details[0].filter((it) => it.cobuying_room_id == CobuyroomID);
       if (req.cookies["userToken"] != null) {
         res.render("CoBuyRoom/detail", { details: detail });
       }
@@ -118,9 +115,7 @@ module.exports = {
       console.log(max_quantity);
       console.log(min_quantity);
       if (max_quantity < min_quantity) {
-        return res.send(
-          "<script>alert('최소수량은 최대수량보다 클 수 없습니다.'); location.href='/CoBuyRoom/createCoBuyRoom'; </script>"
-        );
+        return res.send("<script>alert('최소수량은 최대수량보다 클 수 없습니다.'); location.href='/CoBuyRoom/createCoBuyRoom'; </script>");
       }
       const newRoom = await CobuyingRoom.create({
         title: req.body.title,

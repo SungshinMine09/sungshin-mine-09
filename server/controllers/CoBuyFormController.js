@@ -3,6 +3,7 @@ const { sequelize } = require("../models");
 const CoBuyRoom = db.cobuying_room;
 const DepositForm = db.deposit_form;
 const Answer = db.answer;
+const Notification = db.notification;
 
 const verifyAuthController = require("./verifyAuthController");
 
@@ -11,17 +12,31 @@ const initForm = async (req, res) => {
   try {
     await DepositForm.create({
       id: newFormId,
+      description: "dummy data",
       next_questions_num: 3,
       questions: {
         1: "배송 받을 장소를 선택해주세요(현장수령/택배배송)",
         2: "현장수령이 아닐경우 배송받을 장소(주소, 우편번호, 전화번호)를 입력해주세요",
       },
     });
+
+    // create notification
+    types = Notification.getAttributes().type2.values;
+    user = await verifyAuthController.checkID(req);
+    user_id = user.dataValues.id;
+    console.log(types);
+
+    Notification.create({
+      receiver_id: user_id,
+      cobuying_room_id: req.params.room_id,
+      content: "입금폼이 생성되었습니다.",
+      type2: types[1],
+      url: `/CoBuyRoom/${req.params.room_id}/`,
+    });
   } catch (error) {
     console.log(error);
   }
 };
-
 
 module.exports = {
   //get
@@ -33,6 +48,7 @@ module.exports = {
     const cobuying_room = await CoBuyRoom.findOne({
       where: { id: req.params.room_id },
     });
+
     if (!cobuying_room) {
       res.render("CoBuyRoom/createCoBuyRoom");
     }
@@ -57,9 +73,7 @@ module.exports = {
       }
       const new_value = req.body.question;
       if (deposit_form && new_value) {
-        const new_key = deposit_form
-          .getDataValue("next_questions_num")
-          .toString();
+        const new_key = deposit_form.getDataValue("next_questions_num").toString();
 
         const new_questions = {
           ...deposit_form.questions,
@@ -206,9 +220,7 @@ module.exports = {
         if (user_id.id === cobuying_room.host_id) {
           return res.redirect(`/CoBuyForm/${form_id}/depositFormMaker`);
         } else {
-          return res.send(
-            "<script>alert('공동구매 입금폼이 존재하지 않습니다'); location.href='/CoBuyRoom/totalGonggu'; </script>"
-          );
+          return res.send("<script>alert('공동구매 입금폼이 존재하지 않습니다'); location.href='/CoBuyRoom/totalGonggu'; </script>");
         }
       }
       res.render("CoBuyForm/depositFormSubmit", {

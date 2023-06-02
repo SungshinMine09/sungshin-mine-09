@@ -6,12 +6,7 @@ const env = process.env.NODE_ENV || "development";
 const config = require(__dirname + "/../config/config.js")[env];
 const db = {};
 
-let sequelize = new Sequelize(
-  config.database,
-  config.username,
-  config.password,
-  config
-);
+let sequelize = new Sequelize(config.database, config.username, config.password, config);
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
@@ -27,6 +22,7 @@ db.chatroom = require("./chatroom")(sequelize, Sequelize);
 db.chat_message = require("./chat_message")(sequelize, Sequelize);
 db.product = require("./product")(sequelize, Sequelize);
 db.image = require("./image")(sequelize, Sequelize);
+db.demand_user = require("./demand_user")(sequelize, Sequelize);
 /* user & cobuying_room */
 // 1:N 한명의 회원은 여러개의 공동구매의 주최자가 될 수 있다.
 db.user.hasMany(db.cobuying_room, { foreignKey: "host_id", sourceKey: "id" });

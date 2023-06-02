@@ -1,3 +1,7 @@
+/* ----------------------전체 페이지 적용--------------------- */
+.data_div {
+  display: none;
+}
 /* ----------------------공구방 메뉴 시작--------------------- */
 .gonggu_header {
   width: 1200px;
@@ -88,7 +92,7 @@ button {
 }
 
 .overview img {
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .room_detail .product_detail {
@@ -99,6 +103,10 @@ button {
   padding-left: 50px;
   padding-right: 100px;
   vertical-align: top;
+}
+
+.product_detail .product_content {
+  min-height: 250px;
 }
 
 .wantBtn {
