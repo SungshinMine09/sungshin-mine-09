@@ -76,6 +76,12 @@ module.exports = {
       }
     },
 
+    changeID: (req, res) => {
+      if (req.cookies['userToken'] != null) { //토큰이 있다면
+        res.render("user/changeID", { isLoggedin: true });
+      }
+    },
+
     myPage: async(req, res) => {
       try {
         const cobuyingRoomId = req.params.id;

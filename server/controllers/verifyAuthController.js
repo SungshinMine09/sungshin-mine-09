@@ -5,6 +5,7 @@ const db = require("../models/index"),
 let jwt = require("jsonwebtoken");
 let secretObj = require("../config/jwtConfig");
 
+
 function checkAuth(req, res, next) {
   const validToken = req.cookies["userToken"];
   if (validToken == null) {

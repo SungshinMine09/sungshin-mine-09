@@ -43,8 +43,11 @@ router.get("/alarmPage", verifyAuthController.checkAuth, userController.alarmPag
 router.get("/chattingAlarm", verifyAuthController.checkAuth, userController.chattingAlarm);
 router.get("/coBuyRoomAlarm", verifyAuthController.checkAuth, userController.coBuyRoomAlarm);
 
-//비밀번호 변경 라우팅
+//아이디 및 비밀번호 변경 라우팅
+router.get("/myPage/changeID", verifyAuthController.checkAuth, userController.changeID);
+router.post("/myPage/changeID", verifyAuthController.checkAuth, findInfoController.changeIDController);
+
 router.get("/myPage/changePW", verifyAuthController.checkAuth, userController.changePW);
-router.post("/myPage/changePW", findInfoController.changePasswordController);
+router.post("/myPage/changePW", verifyAuthController.checkAuth, findInfoController.changePasswordController);
 
 module.exports = router;

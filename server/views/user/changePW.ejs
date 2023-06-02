@@ -19,17 +19,28 @@
     </div>
     <div class="newPW_box" id="newPW_box">
       <h2 class="newPW_Title">비밀번호 변경</h2>
-      <span class="newPW_Step">본인의 학번과, 새 비밀번호를 입력해주세요.</span>
+      <span class="newPW_Step">기존 비밀번호와 새 비밀번호를 입력해주세요.</span>
       <form method="post" action="/user/myPage/changePW" id="newPW_Form">
         <!--action에는 사용자가 입력한 데이터를 처리할 파일의 경로가 들어감. 백엔드 언어로 작성됨.-->
-        <span class="school_id_label">가입된 학번</span>
+        <!--<span class="old_id_label">기존 아이디</span>
+        <span class="id_requireInfo">영문소문자/숫자, 4~16자</span>
+        <input
+          type="text"
+          id="old_ID"
+          name="old_ID"
+          placeholder="기존 아이디"
+          pattern="[a-z0-9]{4,16}"
+          required
+        />-->
+
+        <span class="old_pw_label">기존 비밀번호</span>
         <!--<span class="id_requireInfo">영문소문자/숫자, 4~16자</span>-->
         <input
-        type="text"
-        name="student_number"
-        id="student_number"
-        placeholder="가입된 학번"
-        pattern="[0-9]{8}"
+        type="password"
+        name="old_pw"
+        id="old_pw"
+        placeholder="기존 비밀번호"
+        pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*~_+=]).{10,16}"
         required
         />
        <!-- <button class="IDduplicateCheckBtn" type="submit" onclick="findSameUser()">

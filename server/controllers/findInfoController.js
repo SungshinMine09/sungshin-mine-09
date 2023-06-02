@@ -7,6 +7,11 @@ const senderInfo = require("../config/senderInfo.json");
 const verificationCode = Math.floor(100000 + Math.random() * 900000); //랜덤으로 6자리 인증번호 생성
 const bcrypt = require("bcrypt"); //비밀번호 암호화. 단방향 암호화. 복호화 불가능. 값 비교만 가능.
 
+let jwt = require("jsonwebtoken");
+let secretObj = require("../config/jwtConfig");
+
+
+
 function generateEmail(student_number) {
         return student_number + "@" + "sungshin.ac.kr";
 }
@@ -139,28 +144,70 @@ async function newPasswordController(req, res) {
 async function changePasswordController(req, res) {
     try {
         console.log(req.body);
+        input_oldPassword = req.body.old_pw;
+
+        const userToken = req.cookies["userToken"];
+        let decodedToken = jwt.verify(userToken, secretObj.secret);
+        if (decodedToken) {
         const findUser = await User.findOne({
-            where: {student_number: req.body.student_number},
+            where: {login_id: decodedToken.login_id},
         });
-        if (!findUser) {
-            return res.send("<script>alert('아이디가 일치하지 않습니다.'); history.back();</script>");
+
+        /*if (!findUser) {
+            return res.send("<script>alert('기존 아이디가 일치하지 않습니다.'); history.back();</script>");
+        }*/
+
+        if(bcrypt.compareSync(input_oldPassword, findUser['password'])) {
+            if (req.body.newPassword && (req.body.confirm_newPW !== req.body.newPassword)) {
+                return res.send("<script>alert('입력하신 새 비밀번호가 일치하지 않습니다. 다시 입력해주세요.'); history.back(); </script>");
+            } else {
+                const newHashPassword = await bcrypt.hash(req.body.newPassword, 10);
+                await User.update({
+                    password: newHashPassword,
+                    }, { where: {login_id: decodedToken.login_id}});
+                res.send("<script>alert('비밀번호 변경 성공. 로그아웃 될 예정이니 새 비밀번호로 다시 로그인해주세요.'); location.href='/user/Logout'; </script>");
+            }
+        } else {
+            return res.send("<script>alert('기존 비밀번호가 일치하지 않습니다.'); history.back();</script>");
         }
-
-        if (req.body.newPassword && (req.body.confirm_newPW !== req.body.newPassword)) {
-            return res.send("<script>alert('입력하신 새 비밀번호가 일치하지 않습니다. 다시 입력해주세요.'); history.back(); </script>");
-        } 
-        const newHashPassword = await bcrypt.hash(req.body.newPassword, 10);
-
-        await User.update({
-            password: newHashPassword,
-        }, { where: {student_number: req.body.student_number}});
-        res.send("<script>alert('비밀번호 변경 성공. 로그아웃 될 예정이니 새 비밀번호로 다시 로그인해주세요.'); location.href='/user/Logout'; </script>");
-    } catch (err) {
+    } else {
+        res.send("<script>alert('인증 실패. 다시 로그인해주세요.'); location.href='/user/Login'; </script>");
+    }
+        } catch (err) {
         console.log(err);
         res.send("<script>alert('비밀번호 변경 실패. 다시 시도해주세요.'); history.back(); </script>");
     }
 }
 
+async function changeIDController(req, res) {
+    try {
+        console.log(req.body);
 
+        const userToken = req.cookies["userToken"];
+        let decodedToken = jwt.verify(userToken, secretObj.secret);
 
-module.exports = { generateEmailController, verifyCodeController_ID, getIDbyEmailController, verifyCodeController_PW, newPasswordController, changePasswordController };
+        if (decodedToken) {
+            const sameUser = await User.findOne({
+                where: {login_id: req.body.newID},
+            });
+            if (sameUser) {
+                return res.send("<script>alert('이미 존재하는 아이디입니다.'); history.back();</script>");
+            } else {
+                const new_ID = req.body.newID;
+                await User.update({
+                    login_id: new_ID,
+                }, { where: {login_id: decodedToken.login_id}});
+                res.send("<script>alert('아이디 변경 성공. 로그아웃 될 예정이니 새 아이디로 다시 로그인해주세요.'); location.href='/user/Logout'; </script>");
+            }
+        
+        } else {
+            res.send("<script>alert('인증 실패. 다시 로그인해주세요.'); location.href='/user/Login'; </script>");
+        }
+    }
+    catch (err) {
+        console.log(err);
+        res.send("<script>alert('비밀번호 변경 실패. 다시 시도해주세요.'); history.back(); </script>");
+    }
+}
+
+module.exports = { generateEmailController, verifyCodeController_ID, getIDbyEmailController, verifyCodeController_PW, newPasswordController, changePasswordController, changeIDController};

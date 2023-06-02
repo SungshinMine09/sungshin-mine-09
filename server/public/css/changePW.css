@@ -40,7 +40,7 @@ h1 {
     bottom: 30px;
   }
   
-  .school_id_label {
+  .old_id_label {
     background-color: rgb(190, 153, 250);
     color: white;
     width: 40px;
@@ -52,6 +52,24 @@ h1 {
     padding-bottom: 10px;
     padding-left: 25px;
     padding-right: 25px;
+    border-radius: 5px;
+    border-color: rgb(190, 153, 250);
+    justify-content: center;
+    font-size: 16px;
+  }
+
+  .old_pw_label {
+    background-color: rgb(190, 153, 250);
+    color: white;
+    width: 40px;
+    height: 20px;
+    position: relative;
+    left: 120px;
+    top: 31px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 23px;
+    padding-right: 23px;
     border-radius: 5px;
     border-color: rgb(190, 153, 250);
     justify-content: center;
@@ -104,7 +122,23 @@ h1 {
     font-size: 15px;
   }
 
-  #newPW_Form > input[id="student_number"] {
+  #newPW_Form > input[id="old_ID"] {
+    width: 165px;
+    height: 35px;
+    position: relative;
+    left: 280px;
+    bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border-color: rgb(189, 189, 189);
+    text-align: center;
+    font-size: 16px;
+  }
+
+  #newPW_Form > input[id="old_pw"] {
     width: 165px;
     height: 35px;
     position: relative;
