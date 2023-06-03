@@ -17,7 +17,7 @@ module.exports = {
   totalGonggu: async (req, res) => {
     try {
       const totalGonggus = await db.sequelize.query(
-        'SELECT A.*, B.id, B.url, replace(B.url, "public", "") AS real_url, b.createdAt, b.updatedAt FROM (SELECT A.*, B.name FROM (SELECT A.product_id, A.cobuying_room_id, B.title, A.current_demand FROM sell AS A LEFT JOIN cobuying_room AS B ON A.cobuying_room_id=B.id) AS A LEFT JOIN product AS B ON A.product_id=B.id) AS A LEFT JOIN image AS B ON A.product_id=B.product_id;'
+        'SELECT A.*, B.id, B.url, replace(B.url, "public", "") AS real_url, B.createdAt, B.updatedAt FROM (SELECT A.*, B.name FROM (SELECT A.product_id, A.cobuying_room_id, B.title, A.current_demand FROM sell AS A LEFT JOIN cobuying_room AS B ON A.cobuying_room_id=B.id) AS A LEFT JOIN product AS B ON A.product_id=B.id) AS A LEFT JOIN image AS B ON A.product_id=B.product_id;'
       );
       const cntTotal = await CobuyingRoom.count();
       res.render("CoBuyRoom/totalGonggu", {
@@ -31,7 +31,7 @@ module.exports = {
   ingSuyo: async (req, res) => {
     try {
       const ingSuyos = await db.sequelize.query(
-        'SELECT A.*, B.id, B.url, replace(B.url, "public", "") AS real_url, b.createdAt, b.updatedAt FROM (SELECT A.*, B.name FROM (SELECT A.product_id, A.cobuying_room_id, B.title, A.current_demand FROM sell AS A LEFT JOIN cobuying_room AS B ON A.cobuying_room_id=B.id WHERE B.state="demand") AS A LEFT JOIN product AS B ON A.product_id=B.id) AS A LEFT JOIN image AS B ON A.product_id=B.product_id;'
+        'SELECT A.*, B.id, B.url, replace(B.url, "public", "") AS real_url, B.createdAt, B.updatedAt FROM (SELECT A.*, B.name FROM (SELECT A.product_id, A.cobuying_room_id, B.title, A.current_demand FROM sell AS A LEFT JOIN cobuying_room AS B ON A.cobuying_room_id=B.id WHERE B.state="demand") AS A LEFT JOIN product AS B ON A.product_id=B.id) AS A LEFT JOIN image AS B ON A.product_id=B.product_id;'
       );
       const cntingSuyo = await CobuyingRoom.count({
         where: {
@@ -49,7 +49,7 @@ module.exports = {
   soonEnd: async (req, res) => {
     try {
       const soonEnds = await db.sequelize.query(
-        'SELECT A.*, B.id, B.url, replace(B.url, "public", "") AS real_url, b.createdAt, b.updatedAt FROM (SELECT A.*, B.name FROM (SELECT A.product_id, A.cobuying_room_id, B.title, A.current_demand FROM sell AS A LEFT JOIN cobuying_room AS B ON A.cobuying_room_id=B.id WHERE B.state="deposit") AS A LEFT JOIN product AS B ON A.product_id=B.id) AS A LEFT JOIN image AS B ON A.product_id=B.product_id;'
+        'SELECT A.*, B.id, B.url, replace(B.url, "public", "") AS real_url, B.createdAt, B.updatedAt FROM (SELECT A.*, B.name FROM (SELECT A.product_id, A.cobuying_room_id, B.title, A.current_demand FROM sell AS A LEFT JOIN cobuying_room AS B ON A.cobuying_room_id=B.id WHERE B.state="deposit") AS A LEFT JOIN product AS B ON A.product_id=B.id) AS A LEFT JOIN image AS B ON A.product_id=B.product_id;'
       );
       const cntsoonEnd = await CobuyingRoom.count({
         where: {
