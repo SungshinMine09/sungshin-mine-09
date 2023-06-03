@@ -45,7 +45,7 @@ module.exports = {
       receiver_id: user_id,
       cobuying_room_id: coBuyingRoomID,
       content: content,
-      type2: types[2],
+      type2: types[1],
       url: `/CoBuyRoom/${coBuyingRoomID}/newpost/`,
     })
       .then(() => {
