@@ -1,7 +1,8 @@
 const db = require("../models/index"),
   CoBuyingRoom = db.cobuying_room,
-  NewPost = db.update_post;
-Notification = db.notification;
+  NewPost = db.update_post,
+  Notification = db.notification,
+  DemandUser = db.demand_user;
 
 const verifyAuthController = require("./verifyAuthController");
 
@@ -23,6 +24,7 @@ module.exports = {
     res.render("CoBuyRoom/createPost");
   },
   createPost: async (req, res, next) => {
+    try {
     const coBuyingRoomID = req.params.id;
     user = await verifyAuthController.checkID(req);
     user_id = user.dataValues.id;
@@ -32,7 +34,7 @@ module.exports = {
     content = content.replace(/\n/g, "<br>");
 
     // 새소식 생성
-    NewPost.create({
+    await NewPost.create({
       title: req.body.title,
       content: content,
       cobuying_room_id: coBuyingRoomID,
@@ -40,23 +42,43 @@ module.exports = {
 
     // 알림 생성
     types = Notification.getAttributes().type2.values;
-
+    const demandUsesrRows = await DemandUser.findAll({
+      where: {
+        cobuying_room_id: coBuyingRoomID,
+      },
+    });
+    const cobuyingRoomRows = await CoBuyingRoom.findOne({
+      where: {
+        id: coBuyingRoomID,
+      }
+    })
+    if (demandUsesrRows.length != 0) {
+      await Promise.all(
+        demandUsesrRows.map(async (demandUser) => {
+          await Notification.create({
+            receiver_id: demandUser.user_id,
+            cobuying_room_id: coBuyingRoomID,
+            content: content,
+            type2: types[1],
+            url: `/CoBuyRoom/${coBuyingRoomID}/newpost/`,
+          });
+        })
+      );
+    }
     Notification.create({
-      receiver_id: user_id,
+      receiver_id: cobuyingRoomRows.host_id,
       cobuying_room_id: coBuyingRoomID,
       content: content,
       type2: types[1],
       url: `/CoBuyRoom/${coBuyingRoomID}/newpost/`,
     })
-      .then(() => {
-        // 새소식 페이지로 리다이렉트
-        res.locals.redirect = `/CoBuyRoom/${coBuyingRoomID}/newpost/`;
-        next();
-      })
-      .catch((error) => {
-        console.log(`Error fetching coBuyroomCreatePost: ${error.message}`);
-        next(error);
-      });
+    // 새소식 페이지로 리다이렉트
+    res.locals.redirect = `/CoBuyRoom/${coBuyingRoomID}/newpost/`;
+     next();
+    } catch(error) {
+      console.log(`Error fetching coBuyroomCreatePost: ${error.message}`);
+      next(error);
+    }
   },
   redirectView: (req, res, next) => {
     let redirectPath = res.locals.redirect;

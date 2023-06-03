@@ -111,7 +111,7 @@ module.exports = {
     /* 알림 페이지 */
     alarmPage: async(req, res) => {
       try {
-        notificationsJoinCobuyingRooms1 = await db.sequelize.query("SELECT a.*, b.*, d.url, replace(d.url, 'public\', '') AS real_url  FROM notifications as a LEFT JOIN cobuying_room as b ON a.cobuying_room_id=b.id LEFT JOIN sell as c ON b.id=c.cobuying_room_id LEFT JOIN image as d ON c.product_id=d.product_id ORDER BY a.id DESC;")
+        notificationsJoinCobuyingRooms1 = await db.sequelize.query("SELECT a.*, b.*, e.user_id as demand_user_id, d.url, replace(d.url, 'public\', '') AS real_url  FROM notifications as a LEFT JOIN cobuying_room as b ON a.cobuying_room_id=b.id LEFT JOIN sell as c ON b.id=c.cobuying_room_id LEFT JOIN image as d ON c.product_id=d.product_id LEFT JOIN demand_user as e ON b.id=e.cobuying_room_id ORDER BY a.id DESC;")
         const userToken = req.cookies['userToken'];
         let secretObj = require("../config/jwtConfig");
         let decodedToken = jwt.verify(userToken,secretObj.secret);
@@ -128,7 +128,7 @@ module.exports = {
     coBuyRoomAlarm: async(req, res) => {
       try {
         notificationsJoinCobuyingRooms2 = await db.sequelize.query(
-          "SELECT a.*, b.*, d.url, replace(d.url, 'public\', '') AS real_url  FROM notifications as a LEFT JOIN cobuying_room as b ON a.cobuying_room_id=b.id LEFT JOIN sell as c ON b.id=c.cobuying_room_id LEFT JOIN image as d ON c.product_id=d.product_id WHERE type2 != 'chat' ORDER BY a.id DESC;"
+          "SELECT a.*, b.*, e.user_id as demand_user_id, d.url, replace(d.url, 'public\', '') AS real_url  FROM notifications as a LEFT JOIN cobuying_room as b ON a.cobuying_room_id=b.id LEFT JOIN sell as c ON b.id=c.cobuying_room_id LEFT JOIN image as d ON c.product_id=d.product_id LEFT JOIN demand_user as e ON b.id=e.cobuying_room_id  WHERE type2 != 'chat' ORDER BY a.id DESC;"
         );
         const userToken = req.cookies['userToken'];
         let secretObj = require("../config/jwtConfig");
@@ -145,7 +145,7 @@ module.exports = {
     chattingAlarm: async(req, res) => {
       try {
         notificationsJoinCobuyingRooms3 = await db.sequelize.query(
-          "SELECT a.*, b.*, d.url, replace(d.url, 'public\', '') AS real_url  FROM notifications as a LEFT JOIN cobuying_room as b ON a.cobuying_room_id=b.id LEFT JOIN sell as c ON b.id=c.cobuying_room_id LEFT JOIN image as d ON c.product_id=d.product_id WHERE type2 = 'chat' ORDER BY a.id DESC;"
+          "SELECT a.*, b.*, e.user_id as demand_user_id, d.url, replace(d.url, 'public\', '') AS real_url  FROM notifications as a LEFT JOIN cobuying_room as b ON a.cobuying_room_id=b.id LEFT JOIN sell as c ON b.id=c.cobuying_room_id LEFT JOIN image as d ON c.product_id=d.product_id LEFT JOIN demand_user as e ON b.id=e.cobuying_room_id WHERE type2 = 'chat' ORDER BY a.id DESC;"
         );
         const userToken = req.cookies['userToken'];
         let secretObj = require("../config/jwtConfig");

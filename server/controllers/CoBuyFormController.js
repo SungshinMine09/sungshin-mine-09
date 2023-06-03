@@ -30,7 +30,7 @@ const initForm = async (req, res) => {
       receiver_id: user_id,
       cobuying_room_id: req.params.room_id,
       content: "입금폼이 생성되었습니다.",
-      type2: types[1],
+      type2: types[0],
       url: `/CoBuyRoom/${req.params.room_id}`,
     });
     

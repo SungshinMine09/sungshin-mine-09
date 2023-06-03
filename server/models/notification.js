@@ -22,11 +22,6 @@ module.exports = (sequelize, Sequelize) => {
         type: Sequelize.STRING(100),
         allowNull: false,
       },
-      read_or_not: {
-        type: Sequelize.BOOLEAN,
-        allowNull: false,
-        defaultValue: false,
-      },
       // created_at: {
       //   type: Sequelize.DATE,
       //   allowNull: false,
