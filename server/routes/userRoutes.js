@@ -34,9 +34,6 @@ router.post("/Join_enterInfo", JoinController.registerController);
 
 router.get("/JoinStep3", userController.JoinStep3);
 
-//로그아웃 라우팅
-router.get("/Logout", JoinController.LogoutController);
-
 //마이페이지, 알림페이지 라우팅
 router.get("/myPage", verifyAuthController.checkAuth, userController.myPage);
 router.get("/alarmPage", verifyAuthController.checkAuth, userController.alarmPage);
@@ -49,5 +46,8 @@ router.post("/myPage/changeID", verifyAuthController.checkAuth, findInfoControll
 
 router.get("/myPage/changePW", verifyAuthController.checkAuth, userController.changePW);
 router.post("/myPage/changePW", verifyAuthController.checkAuth, findInfoController.changePasswordController);
+
+//로그아웃 라우팅
+router.get("/Logout", JoinController.LogoutController);
 
 module.exports = router;
