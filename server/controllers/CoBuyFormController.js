@@ -30,9 +30,16 @@ const initForm = async (req, res) => {
       receiver_id: user_id,
       cobuying_room_id: req.params.room_id,
       content: "입금폼이 생성되었습니다.",
-      type2: types[1],
-      url: `/CoBuyRoom/${req.params.room_id}/`,
+      type2: types[0],
+      url: `/CoBuyRoom/${req.params.room_id}`,
     });
+
+    await CoBuyRoom.update(
+      {
+        state: "deposit",
+      },
+      { where: { id: req.params.room_id } }
+    );
   } catch (error) {
     console.log(error);
   }
@@ -249,7 +256,7 @@ module.exports = {
       let new_answer;
       if (deposit_form && answerJSON) {
         new_answer = await Answer.create({
-          user_id: user_id,
+          user_id: user_id.id,
           id: form_id,
           answers: answerJSON,
         });

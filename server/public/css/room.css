@@ -93,6 +93,8 @@ button {
 
 .overview img {
   object-fit: contain;
+  max-width: 406px;
+  max-height: 314px;
 }
 
 .room_detail .product_detail {

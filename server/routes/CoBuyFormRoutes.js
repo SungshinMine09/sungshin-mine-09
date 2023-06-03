@@ -1,18 +1,19 @@
 const router = require("express").Router(),
-  CoBuyFormController = require("../controllers/CoBuyFormController");
+  CoBuyFormController = require("../controllers/CoBuyFormController"),
+  verifyAuthController = require("../controllers/verifyAuthController");
 
 /* 입금폼 생성 페이지 */
-router.get("/:room_id/depositFormMaker", CoBuyFormController.depositFormMaker);
-router.post("/:form_id/edit", CoBuyFormController.edit);
-router.post("/:form_id/add", CoBuyFormController.add);
-router.post("/:form_id/delete", CoBuyFormController.delete);
-router.post("/:room_id/saveAccount", CoBuyFormController.saveAccount);
+router.get("/:room_id/depositFormMaker", verifyAuthController.checkAuth, verifyAuthController.checkSeller, CoBuyFormController.depositFormMaker);
+router.post("/:form_id/edit", verifyAuthController.checkAuth, verifyAuthController.checkSeller, CoBuyFormController.edit);
+router.post("/:form_id/add", verifyAuthController.checkAuth, verifyAuthController.checkSeller, CoBuyFormController.add);
+router.post("/:form_id/delete", verifyAuthController.checkAuth, verifyAuthController.checkSeller, CoBuyFormController.delete);
+router.post("/:room_id/saveAccount", verifyAuthController.checkAuth, verifyAuthController.checkSeller, CoBuyFormController.saveAccount);
 
 /* 입금폼 작성 페이지 */
-router.get("/:form_id/writeForm", CoBuyFormController.writeForm);
+router.get("/:form_id/writeForm", verifyAuthController.checkAuth, CoBuyFormController.writeForm);
 
-router.get("/:form_id/showAccount", CoBuyFormController.showAccount);
-router.post("/:form_id/submit", CoBuyFormController.submit);
-router.get("/:form_id/depositFormResult", CoBuyFormController.depositFormResult);
+router.get("/:form_id/showAccount", verifyAuthController.checkAuth, CoBuyFormController.showAccount);
+router.post("/:form_id/submit", verifyAuthController.checkAuth, CoBuyFormController.submit);
+router.get("/:form_id/depositFormResult", verifyAuthController.checkAuth, verifyAuthController.checkSeller, CoBuyFormController.depositFormResult);
 
 module.exports = router;

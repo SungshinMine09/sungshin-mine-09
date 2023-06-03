@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SungshinMine09</title>
     <link rel="stylesheet" href="/css/style.css" />
-    <link rel="stylesheet" href="/css/JoinPage_1.css" />
+    <link rel="stylesheet" href="/css/findPW.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com/" />
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
     <link
@@ -14,12 +14,10 @@
     />
   </head>
   <body>
-    <div class="id_box" id="id_box">
-      <h2 class="Join_Title">회원가입</h2>
-      <span class="Join_Step"
-        ><b>1. 성신 지메일 인증</b> > 2. 정보입력 > 3. 가입완료</span
-      >
-      <form method="post" action="JoinStep1" id="JoinForm1">
+    <div class="findPW_box" id="findPW_box">
+      <h2 class="findPW_Title">비밀번호 찾기</h2>
+      <span class="findPW_Step"><b>1. 성신 지메일 인증 </b> > 2. 새 비밀번호 입력</span>
+      <form method="post" action="findPW" id="findPW_form">
         <!--action에는 사용자가 입력한 데이터를 처리할 파일의 경로가 들어감. 백엔드 언어로 작성됨.-->
         <span class="school_id_label">학번</span>
         <span id="email_symbol">@</span>
@@ -34,7 +32,7 @@
         />
         <input type="submit" value="인증번호 전송" />
       </form>
-      <form method="post" action="Join_emailAuth" id="JoinForm2">
+      <form method="post" action="findPW_emailAuth" id="findPW_form2">
         <!--action에는 사용자가 입력한 데이터를 처리할 파일의 경로가 들어감. 백엔드 언어로 작성됨.-->
         <span class="code_label">인증번호</span>
         <input

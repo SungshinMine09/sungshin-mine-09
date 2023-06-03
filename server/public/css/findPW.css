@@ -1,0 +1,136 @@
+.findPW_box {
+    width: 550px;
+    height: 410px;
+    padding: 40px;
+    position: relative;
+    left: 200px;
+    top: 0px;
+  }
+  
+  #findPW_box > .findPW_Title {
+    font-size: 38px;
+    color: rgb(119, 35, 155);
+    position: relative;
+    left: 250px;
+    padding-bottom: 25px;
+  }
+  
+  #findPW_box > .findPW_Step {
+    font-size: 16px;
+    position: relative;
+    left: 230px;
+    bottom: 30px;
+  }
+  
+  .school_id_label {
+    background-color: rgb(190, 153, 250);
+    color: white;
+    width: 100px;
+    height: 20px;
+    position: relative;
+    left: 100px;
+    bottom: 0px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+    border-radius: 5px;
+    border-color: rgb(190, 153, 250);
+    justify-content: center;
+    font-size: 16px;
+  }
+  
+  #email_symbol {
+    font-size: 17px;
+    position: relative;
+    left: 300px;
+  }
+  
+  #findPW_form > input[id="email_IDnumber"] {
+    width: 165px;
+    height: 40px;
+    margin-bottom: 15px;
+    text-align: center;
+    font-size: 16px;
+    border-radius: 5px;
+    border-color: rgb(189, 189, 189);
+    position: relative;
+    right: 0px;
+  }
+  
+  #email_domain {
+    font-size: 16px;
+    border-radius: 5px;
+    border-color: rgb(189, 189, 189);
+    position: relative;
+    left: 300px;
+  }
+  
+  #findPW_form > input::placeholder {
+    padding-left: 0px;
+  }
+  
+  #findPW_form > input[type="submit"] {
+    background-color: rgb(119, 35, 155);
+    color: rgb(239, 220, 255);
+    width: 130px;
+    height: 40px;
+    position: relative;
+    left: 150px;
+    bottom: 0px;
+    margin-top: 15px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 5px;
+    border-color: transparent;
+    font-size: 16px;
+  }
+  
+  
+  .code_label {
+    background-color: rgb(190, 153, 250);
+    color: white;
+    width: 40px;
+    height: 20px;
+    position: relative;
+    left: 100px;
+    top: 30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-radius: 5px;
+    border-color: rgb(190, 153, 250);
+    justify-content: center;
+    font-size: 16px;
+  }
+  
+  #findPW_form2 > input {
+    width: 165px;
+    height: 40px;
+    position: relative;
+    left: 125px;
+    top: 30px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border-color: rgb(189, 189, 189);
+    text-align: center;
+    font-size: 16px;
+  }
+  
+  #findPW_form2 > input::placeholder {
+    padding-left: 0px;
+  }
+  
+  #findPW_form2 > input[type="submit"] {
+    background-color: rgb(119, 35, 155);
+    color: rgb(239, 220, 255);
+    width: 60px;
+    height: 40px;
+    position: relative;
+    left: 150px;
+    top: 30px;
+    margin-top: 15px;
+    border-radius: 5px;
+    border-color: transparent;
+  }

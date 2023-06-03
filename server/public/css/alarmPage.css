@@ -32,7 +32,7 @@ main>div:first-child {
     overflow: hidden;
 }
 
-li a {
+#alarmPageUl a {
     display: block;
     text-decoration: none;
 }

@@ -9,55 +9,60 @@
     <link rel="stylesheet" href="/css/style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com/" />
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Tilt+Neon&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Tilt+Neon&display=swap" rel="stylesheet"/>
   </head>
   <body>
     <main>
       <div>
-        <div>
-          <h1 id="alarmTitleBox" class="center flex">알림</h1>
-        </div>
+        <div><h1 id="alarmTitleBox" class="center flex">알림</h1></div>
         <div class="flex marginTop30 marginLeft10">
           <h2 class="marginRight30" onClick="location.href='/user/alarmPage'" style="color: rgb(142, 68, 173)">전체</h2>
-          <h2 class="marginRight30" onClick="location.href='/user/coBuyRoomAlarm'">공구방</h2>
-          <h2 onClick="location.href='/user/chattingAlarm'">채팅</h2>
+          <h2 class="marginRight30" onClick="location.href='/user/coBuyRoomAlarm'" style="color:black">공구방</h2>
+          <h2 onClick="location.href='/user/chattingAlarm'" style="color: black">채팅</h2>
         </div>
         <ul class="marginTop30" id="alarmPageUl">
           <% Array.from(notifications).forEach(notification => { %>
-            <li class="flex">
-              <a href="<%=notification.url%>">
-                <div class="image"><img src="imageExample.png" /></div>
-                <div class="textBox">
-                <% if (notification.host_id == userID) {%>
-                  <div class="fontSize18">
-                    <span style="color: rgb(192, 57, 43); font-weight: bold;">주최</span>
-                    <span>하신 </span>
-                    <span style="font-weight: bold;"><%= notification.title %></span>  
-                    <span>공구방의 새소식을 업데이트하였습니다.</span>
-                <%};%>
-                <% if (notification.host_id != userID) {%>
-                  <div class="fontSize18">
-                    <span style="color: rgb(142, 68, 173); font-weight: bold;">참여</span>
-                    <span>하신 </span>
-                    <span style="font-weight: bold;"><%= notification.title %></span>  
-                    <span>공구방의 
-                    <% if (notification.type2 == 'chat') {%>
-                      <span>채팅</span>
-                    <%}%>
-                    <%if (notification.type2 != 'chat') {%>
-                      <span>새소식</span>
-                    <%}%>
-                    <span>을 알려드립니다.</span>
+            <%if (notification.receiver_id == userID) {%>
+              <%if (notification.demand_user_id == notification.receiver_id) {%>
+                <li class="flex" onClick="location.href='/CoBuyRoom/<%=notification.cobuying_room_id%>'" style="cursor: pointer">
+                  <div class="image"><img src="<%=`${notification.real_url}`%>" /></div>
+                  <div class="textBox">
+                    <div class="fontSize18">
+                      <span style="color: rgb(142, 68, 173); font-weight: bold;">참여</span>
+                      <span>하신 </span>
+                      <span style="font-weight: bold;"><%= notification.title %></span>  
+                      <span>공구방의 </span>
+                      <% if (notification.type2 == 'chat') {%>
+                        <span>채팅</span>
+                      <%}%>
+                      <%if (notification.type2 != 'chat') {%>
+                        <span>새소식</span>
+                      <%}%>
+                      <span>을 알려드립니다.</span>
+                    </div>
+                    <div class="fontSize14 marginTop20 textBoxContent">
+                      <%= notification.content %>
+                    </div>
                   </div>
-                <%};%>
-                <div class="fontSize14 marginTop20 textBoxContent">
-                  <%= notification.content %>
-                </div>
-              </a>
-            </li>
+                </li>
+              <%}else%>
+              <%if (notification.host_id == notification.receiver_id) {%>
+                <li class="flex" onClick="location.href='/CoBuyRoom/<%=notification.cobuying_room_id%>'" style="cursor: pointer">
+                  <div class="image"><img src="<%=`${notification.real_url}`%>" /></div>
+                  <div class="textBox">
+                    <div class="fontSize18">
+                      <span style="color: rgb(192, 57, 43); font-weight: bold;">주최</span>
+                      <span>하신 </span>
+                      <span style="font-weight: bold;"><%= notification.title %></span>  
+                      <span>공구방의 새소식을 업데이트하였습니다.</span>
+                    </div>
+                    <div class="fontSize14 marginTop20 textBoxContent">
+                      <%= notification.content %>
+                    </div>
+                  </div>
+                </li>
+              <%}%>
+            <%}%>
           <%});%>
         </ul>
       </div>
