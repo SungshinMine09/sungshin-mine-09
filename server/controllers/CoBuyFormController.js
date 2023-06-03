@@ -3,7 +3,7 @@ const { sequelize } = require("../models");
 const CoBuyRoom = db.cobuying_room;
 const DepositForm = db.deposit_form;
 const Answer = db.answer;
-const Notification = db.notifications;
+const Notification = db.notification;
 
 const verifyAuthController = require("./verifyAuthController");
 
@@ -31,8 +31,13 @@ const initForm = async (req, res) => {
       cobuying_room_id: req.params.room_id,
       content: "입금폼이 생성되었습니다.",
       type2: types[1],
-      url: `/CoBuyRoom/${req.params.room_id}/`,
+      url: `/CoBuyRoom/${req.params.room_id}`,
     });
+    
+    await CoBuyRoom.update({
+      state: 'deposit'},
+      {where: {id: req.params.room_id}}
+    );
   } catch (error) {
     console.log(error);
   }

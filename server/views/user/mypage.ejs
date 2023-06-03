@@ -68,7 +68,7 @@
                             <ul class="ulBox">
                                 <% Array.from(myParticipations).forEach(myParticipation=> { %>
                                     <%if (myParticipation.user_id==userID) {%>
-                                        <li class="flex myPageLi">
+                                        <li class="flex myPageLi" onclick="location.href='/CoBuyRoom/<%=myParticipation.id%>'" style="cursor: pointer">
                                             <div><img src="<%=`${myParticipation.real_url}`%>" width="60px" height="60px"></div>
                                             <div class="productInfo">
                                                 <div class="fontSize14">공동구매번호
@@ -124,7 +124,7 @@
                             <ul class="ulBox">
                                 <% Array.from(myHosts).forEach(myHost=> { %>
                                     <%if (myHost.host_id==userID) {%>
-                                        <li class="flex myPageLi">
+                                        <li class="flex myPageLi" onclick="location.href='/CoBuyRoom/<%=myHost.id%>'" style="cursor: pointer">
                                             <div><img src="<%=`${myHost.real_url}`%>" width="60px" height="60px"></div>
                                             <div class="productInfo">
                                                 <div class="fontSize14">공동구매번호

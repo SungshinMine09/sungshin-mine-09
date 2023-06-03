@@ -28,7 +28,7 @@
         <ul class="marginTop30" id="alarmPageUl">
           <% Array.from(coBuyRoomNotifications).forEach(notification => { %>
             <%if (notification.host_id == userID) {%>
-              <li class="flex" onClick="location.href='<%=notification.url%>'" style="cursor: pointer">
+              <li class="flex" onClick="location.href='/CoBuyRoom/<%=notification.cobuying_room_id%>'" style="cursor: pointer">
                 <div class="image"><img src="<%=`${notification.real_url}`%>" /></div>
                 <div class="textBox">
                   <div class="fontSize18">
@@ -44,7 +44,7 @@
               </li>
             <%}%>
             <%if (notification.receiver_id == userID) {%>
-              <li class="flex" onClick="location.href='<%=notification.url%>'" style="cursor: pointer">
+              <li class="flex" onClick="location.href='/CoBuyRoom/<%=notification.cobuying_room_id%>'" style="cursor: pointer">
                 <div class="image"><img src="<%=`${notification.real_url}`%>" /></div>
                 <div class="textBox">
                   <div class="fontSize18">
