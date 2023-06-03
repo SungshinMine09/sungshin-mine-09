@@ -11,15 +11,14 @@ let jwt = require("jsonwebtoken");
 let secretObj = require("../config/jwtConfig");
 
 
-
+/* 성신 지메일 주소 생성 함수 */
 function generateEmail(student_number) {
         return student_number + "@" + "sungshin.ac.kr";
 }
 
+/* 생성된 성신 지메일 주소로 인증번호 이메일을 보내주는 함수 */
 async function generateEmailController(req, res) {
     const student_number = req.body.student_number;
-    //const email_domain = req.body.email_domain; //사용자가 입력한 form 데이터에서 학번과 학교 이메일 도메인 추출
-    //const email = generateEmail(student_number, email_domain); //추출 후 합쳐서 이메일 주소 생성
     const email = generateEmail(student_number);
 
     await res.cookie('student_number', req.body.student_number, { expires: new Date(Date.now() + 300000) });//5분 동안 유효
@@ -32,13 +31,11 @@ async function generateEmailController(req, res) {
         }
     });
 
-   // let fieldheader = `인증번호는: ` + verificationCode + `<br> ※인증과 회원가입 유효 시간은 5분입니다.※ <br>`
     const mailOptions = {
         from: senderInfo.user,
         to: email,
         subject: "성신마인 09번지_ 인증번호 메일",
         text: "인증번호는: " + verificationCode + "입니다.",
-        //html: fieldheader
     };
 
     await transporter.sendMail(mailOptions, (error, info) => {
@@ -53,35 +50,37 @@ async function generateEmailController(req, res) {
     })
 }
 
+/* 아이디 찾기 페이지 - 인증번호 일치 여부를 확인하는 함수 */
 function verifyCodeController_ID(req, res) {
     const inputCode = req.body.authNumber; //사용자가 입력한 인증번호 (text라서 문자열(string) 타입)
     const verifyCode = verificationCode; //메일로 보낸 인증번호 (math함수를 써서 숫자(num)타입)
 
 
     if (String(verifyCode) && (inputCode === String(verifyCode))) { //string으로 똑같이 타입 맞춰준 후 서로 같은지 비교하기
+        //인증번호가 일치하면 아이디를 이메일로 받는 단계로 이동
         res.send("<script>alert('인증 성공'); location.href='/user/getIDbyEmail';</script>");
     } else {
         res.status(400).json({message: "인증 실패"});
     }
 }
 
+/* 비밀번호 찾기 페이지 - 인증번호 일치 여부를 확인하는 함수 */
 function verifyCodeController_PW(req, res) {
     const inputCode = req.body.authNumber; //사용자가 입력한 인증번호 (text라서 문자열(string) 타입)
     const verifyCode = verificationCode; //메일로 보낸 인증번호 (math함수를 써서 숫자(num)타입)
 
 
     if (String(verifyCode) && (inputCode === String(verifyCode))) { //string으로 똑같이 타입 맞춰준 후 서로 같은지 비교하기
+        //인증번호가 일치하면 비밀번호 재설정 단계로 이동
         res.send("<script>alert('인증 성공'); location.href='/user/newPW';</script>");
     } else {
         res.status(400).json({message: "인증 실패"});
     }
 }
 
-
+/* 아이디 찾기 페이지 - 유저의 (로그인)아이디를 이메일로 보내주는 함수 */
 async function getIDbyEmailController (req, res) {
     const student_number = req.cookies['student_number'];
-    //const email_domain = req.body.email_domain; //사용자가 입력한 form 데이터에서 학번과 학교 이메일 도메인 추출
-    //const email = generateEmail(student_number, email_domain); //추출 후 합쳐서 이메일 주소 생성
     const email = generateEmail(student_number);
 
     const findUser = await User.findOne({
@@ -101,7 +100,6 @@ async function getIDbyEmailController (req, res) {
         to: email,
         subject: "성신마인 09번지_ 아이디 찾기",
         text: "귀하의 아이디는: " + findUser.login_id + "입니다.",
-        //html: fieldheader
     };
 
     await transporter.sendMail(mailOptions, (error, info) => {
@@ -116,6 +114,7 @@ async function getIDbyEmailController (req, res) {
     })
 }
 
+/* 비밀번호 찾기 페이지 - 비밀번호 재설정 함수 */
 async function newPasswordController(req, res) {
     try {
         console.log(req.body);
@@ -144,6 +143,7 @@ async function newPasswordController(req, res) {
     }
 }
 
+/* 마이페이지 - 비밀번호 변경 함수 */
 async function changePasswordController(req, res) {
     try {
         console.log(req.body);
@@ -155,10 +155,6 @@ async function changePasswordController(req, res) {
         const findUser = await User.findOne({
             where: {login_id: decodedToken.login_id},
         });
-
-        /*if (!findUser) {
-            return res.send("<script>alert('기존 아이디가 일치하지 않습니다.'); history.back();</script>");
-        }*/
 
         if(bcrypt.compareSync(input_oldPassword, findUser['password'])) {
             if(req.body.newPassword && (input_oldPassword === req.body.newPassword) || req.body.confirm_newPW && (input_oldPassword === req.body.confirm_newPW)) {
@@ -185,6 +181,7 @@ async function changePasswordController(req, res) {
     }
 }
 
+/* 마이페이지 - 아이디 변경 함수 */
 async function changeIDController(req, res) {
     try {
         console.log(req.body);
@@ -212,7 +209,7 @@ async function changeIDController(req, res) {
     }
     catch (err) {
         console.log(err);
-        res.send("<script>alert('비밀번호 변경 실패. 다시 시도해주세요.'); history.back(); </script>");
+        res.send("<script>alert('아이디 변경 실패. 다시 시도해주세요.'); history.back(); </script>");
     }
 }
 

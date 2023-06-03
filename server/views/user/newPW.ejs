@@ -20,7 +20,6 @@
       <form method="post" action="/user/newPW" id="newPW_Form">
         <!--action에는 사용자가 입력한 데이터를 처리할 파일의 경로가 들어감. 백엔드 언어로 작성됨.-->
         <span class="id_label">가입된 아이디</span>
-        <!--<span class="id_requireInfo">영문소문자/숫자, 4~16자</span>-->
         <input
           type="text"
           id="ID"
@@ -29,9 +28,6 @@
           pattern="[a-z0-9]{4,16}"
           required
         />
-       <!-- <button class="IDduplicateCheckBtn" type="submit" onclick="findSameUser()">
-          중복 확인
-        </button>-->
 
         <span class="newPW_label">새 비밀번호</span>
         <span class="newPW_requireInfo"
@@ -59,7 +55,6 @@
         <input type="submit" value="새 비밀번호 저장" />
       </form>
       <a href="/user/findID" class="gotofindIDpage_btn">아이디를 잊으셨나요?</a>
-      <a href="/user/Login" class="gotoLoginpage_btn">로그인하러 가기</a>
     </div>
   </body>
 </html>
