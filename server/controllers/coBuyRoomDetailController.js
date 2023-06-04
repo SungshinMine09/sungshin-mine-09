@@ -150,8 +150,6 @@ module.exports = {
       }
     });
     const productID = Object.values(productIDobject);
-    console.log(productID);
-    console.log("Hello");
 
     await Notification.destroy({
       where: {
@@ -178,8 +176,6 @@ module.exports = {
         cobuying_room_id: coBuyingRoomID
       }
     });
-    // product id 구해야함.
-    // 여기서부터 delete제대로 안됨
     await Image.destroy({
       where: {
         product_id: productID
