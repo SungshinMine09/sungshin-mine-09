@@ -1,4 +1,5 @@
 const db = require("../models/index"),
+  Sequelize = require("sequelize"),
   moment = require("moment"),
   CoBuyingRoom = db.cobuying_room,
   ChatRoom = db.chatroom,
@@ -43,6 +44,19 @@ module.exports = {
       // 주최자 로그인 아이디 가져오기
       const creator = await User.findByPk(cobuyroom.host_id);
 
+      // ---------------접속유저가 주최자인 경우---------------------
+      // 해당 공구방의 모든 채팅방 불러오기
+      if (is_room_creater) {
+        chatrooms = await ChatRoom.findAll({
+          where: {
+            cobuying_room_id: coBuyingRoomID,
+          },
+          order: [["id", "desc"]],
+        });
+        chatroom_using = chatrooms[0]; // 최상위 공구방 보여주기
+      }
+
+      // -----------------------------------------------------------
       // 채팅 메세지 내역 가져오기
       messages = await ChatMessage.findAll({
         where: {
@@ -55,19 +69,10 @@ module.exports = {
         dates.push(moment(message.createdAt).format("YY/MM/DD HH:MM"));
       });
 
-      // 유저 아이디
-      // const chatUsers = await ChatRoom.findAll({
-      //   attributes: ["guest_id"],
-      //   where: {
-      //     cobuying_room_id: coBuyingRoomID,
-      //   },
-      // });
-      // const chatUserLoginIds = await User.findAll({
-      //   attributes: ["login_id"],
-      //   where: {
-      //     id: chatUsers,
-      //   },
-      // });
+      // 유저 아이디 목록
+      const query = "SELECT user.login_id FROM chatroom JOIN user ON chatroom.guest_id=user.id WHERE chatroom.cobuying_room_id=" + coBuyingRoomID;
+      const chatUserLoginIds = await db.sequelize.query(query, { type: Sequelize.QueryTypes.SELECT });
+      console.log(chatUserLoginIds);
 
       res.locals.cobuyroom = cobuyroom;
       res.locals.chatroom_using = chatroom_using;
@@ -77,6 +82,7 @@ module.exports = {
       res.locals.creator = creator;
       res.locals.messages = messages;
       res.locals.dates = dates;
+      res.locals.chat_user_login_ids = chatUserLoginIds;
 
       next();
     } catch (error) {

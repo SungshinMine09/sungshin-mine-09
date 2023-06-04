@@ -48,9 +48,9 @@
           <p style="cursor: pointer"><%= creator.login_id %> (공동구매 주최자)</p>
           <% } %>
           <!-- 공동구매 주최자일 경우 -->
-          <% if(is_room_creater) { %> <% chatrooms.forEach(chatroom=> { %>
-          <p style="cursor: pointer"><%= chatroom.guest_id %></p>
-          <% }) %> <% } %>
+          <% if(is_room_creater) { %> <% for(id of chat_user_login_ids) { %>
+          <p style="cursor: pointer"><%= id.login_id %></p>
+          <% } %> <% } %>
         </div>
 
         <div class="marginTop30">

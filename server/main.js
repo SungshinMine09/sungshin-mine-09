@@ -131,7 +131,7 @@ io.on("connection", function (socket) {
     data.name = socket.name;
     console.log(data);
 
-    // 메세지를 보낼때마다 db에 저장
+    // 메세지를 받을때마다 db에 저장
     ChatMessage.create({
       chatroom_id: data.chatroom_id,
       cobuying_room_id: data.cobuying_room_id,
