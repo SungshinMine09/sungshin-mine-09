@@ -31,7 +31,7 @@
             <ul>
               <li><button class="message_type_button" style="cursor: pointer;"onclick="location.href='/CoBuyRoom/<%= cobuyroom.id %>/newpost';">
                 새소식</button></li>
-              <li><button class="message_type_button" style="cursor: pointer;"onclick="location.href='/CoBuyRoom/<%= cobuyroom.id %>/chat/1';">
+              <li><button class="message_type_button" style="cursor: pointer;"onclick="location.href='/CoBuyRoom/<%= cobuyroom.id %>/chatting';">
               채팅</button></li>
               <% if(current_user_id == host_user_id) { %>
               <li style="float: right;">
@@ -100,10 +100,10 @@
         let createDepositFormBtn = document.getElementsByClassName("createDepositFormBtn").item(0);
 
         if(current_user_id==host_user_id) {
-            // wantBtn.disabled = true;
-            // createDepositFormBtn.disabled = true;
-            // wantBtn.style.backgroundColor='Grey';
-            // createDepositFormBtn.style.backgroundColor='Grey';
+            wantBtn.disabled = true;
+            createDepositFormBtn.disabled = true;
+            wantBtn.style.backgroundColor='Grey';
+            createDepositFormBtn.style.backgroundColor='Grey';
         } else {
           wantBtn.disabled = false;
             createDepositFormBtn.disabled = false;

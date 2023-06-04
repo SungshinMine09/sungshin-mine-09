@@ -25,58 +25,71 @@ module.exports = {
   },
   createPost: async (req, res, next) => {
     try {
-    const coBuyingRoomID = req.params.id;
-    user = await verifyAuthController.checkID(req);
-    user_id = user.dataValues.id;
+      const coBuyingRoomID = req.params.id;
+      user = await verifyAuthController.checkID(req);
+      user_id = user.dataValues.id;
 
-    // textarea의 개행 문자를 div의 개행문자로 변환하여 저장
-    content = req.body.content;
-    content = content.replace(/\n/g, "<br>");
+      // textarea의 개행 문자를 div의 개행문자로 변환하여 저장
+      content = req.body.content;
+      content = content.replace(/\n/g, "<br>");
 
-    // 새소식 생성
-    await NewPost.create({
-      title: req.body.title,
-      content: content,
-      cobuying_room_id: coBuyingRoomID,
-    });
-
-    // 알림 생성
-    types = Notification.getAttributes().type2.values;
-    const demandUsesrRows = await DemandUser.findAll({
-      where: {
-        cobuying_room_id: coBuyingRoomID,
-      },
-    });
-    const cobuyingRoomRows = await CoBuyingRoom.findOne({
-      where: {
-        id: coBuyingRoomID,
-      }
-    })
-    if (demandUsesrRows.length != 0) {
-      await Promise.all(
-        demandUsesrRows.map(async (demandUser) => {
-          await Notification.create({
-            receiver_id: demandUser.user_id,
-            cobuying_room_id: coBuyingRoomID,
-            content: content,
-            type2: types[1],
-            url: `/CoBuyRoom/${coBuyingRoomID}/newpost/`,
-          });
-        })
-      );
-    } else {
-      Notification.create({
-        receiver_id: cobuyingRoomRows.host_id,
-        cobuying_room_id: coBuyingRoomID,
+      // 새소식 생성
+      await NewPost.create({
+        title: req.body.title,
         content: content,
-        type2: types[1],
-        url: `/CoBuyRoom/${coBuyingRoomID}/newpost/`,
-      })
-    }
-    // 새소식 페이지로 리다이렉트
-    res.locals.redirect = `/CoBuyRoom/${coBuyingRoomID}/newpost/`;
-     next();
-    } catch(error) {
+        cobuying_room_id: coBuyingRoomID,
+      });
+
+      // 알림 생성
+      types = Notification.getAttributes().type2.values;
+      const demandUsesrRows = await DemandUser.findAll({
+        where: {
+          cobuying_room_id: coBuyingRoomID,
+        },
+      });
+      const cobuyingRoomRows = await CoBuyingRoom.findOne({
+        where: {
+          id: coBuyingRoomID,
+        },
+      });
+      if (demandUsesrRows.length != 0) {
+        await Promise.all(
+          demandUsesrRows.map(async (demandUser) => {
+            await Notification.create({
+              receiver_id: demandUser.user_id,
+              cobuying_room_id: coBuyingRoomID,
+              content: content,
+              type2: types[1],
+              url: `/CoBuyRoom/${coBuyingRoomID}/newpost/`,
+            });
+          })
+        );
+      }
+      if (demandUsesrRows.length != 0) {
+        await Promise.all(
+          demandUsesrRows.map(async (demandUser) => {
+            await Notification.create({
+              receiver_id: demandUser.user_id,
+              cobuying_room_id: coBuyingRoomID,
+              content: content,
+              type2: types[1],
+              url: `/CoBuyRoom/${coBuyingRoomID}/newpost/`,
+            });
+          })
+        );
+      } else {
+        Notification.create({
+          receiver_id: cobuyingRoomRows.host_id,
+          cobuying_room_id: coBuyingRoomID,
+          content: content,
+          type2: types[1],
+          url: `/CoBuyRoom/${coBuyingRoomID}/newpost/`,
+        });
+      }
+      // 새소식 페이지로 리다이렉트
+      res.locals.redirect = `/CoBuyRoom/${coBuyingRoomID}/newpost/`;
+      next();
+    } catch (error) {
       console.log(`Error fetching coBuyroomCreatePost: ${error.message}`);
       next(error);
     }

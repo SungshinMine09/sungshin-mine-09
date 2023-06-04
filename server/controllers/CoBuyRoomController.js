@@ -136,7 +136,7 @@ module.exports = {
         max_quantity: max_quantity,
       });
 
-   /*   const newSellNotification = await Notifications.create({
+      /*   const newSellNotification = await Notifications.create({
         receiver_id:,
         cobuying_room_id: newRoom.id,
         content: ,

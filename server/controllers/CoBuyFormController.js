@@ -33,10 +33,12 @@ const initForm = async (req, res) => {
       type2: types[0],
       url: `/CoBuyRoom/${req.params.room_id}`,
     });
-    
-    await CoBuyRoom.update({
-      state: 'deposit'},
-      {where: {id: req.params.room_id}}
+
+    await CoBuyRoom.update(
+      {
+        state: "deposit",
+      },
+      { where: { id: req.params.room_id } }
     );
   } catch (error) {
     console.log(error);

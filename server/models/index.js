@@ -28,16 +28,16 @@ db.demand_user = require("./demand_user")(sequelize, Sequelize);
 db.user.hasMany(db.cobuying_room, { foreignKey: "host_id", sourceKey: "id" });
 db.cobuying_room.belongsTo(db.user, { foreignKey: "host_id", sourceKey: "id" });
 
-// N:M 2가지, demand_user	
-db.user.belongsToMany(db.cobuying_room, {	
-  through: "demand_user",	
-  targetKey: "id",	
-  foreignKey: "user_id",	
-});	
-db.cobuying_room.belongsToMany(db.user, {	
-  through: "demand_user",	
-  targetKey: "id",	
-  foreignKey: "cobuying_room_id",	
+// N:M 2가지, demand_user
+db.user.belongsToMany(db.cobuying_room, {
+  through: "demand_user",
+  targetKey: "id",
+  foreignKey: "user_id",
+});
+db.cobuying_room.belongsToMany(db.user, {
+  through: "demand_user",
+  targetKey: "id",
+  foreignKey: "cobuying_room_id",
 });
 
 /* cobuying_room & sell */
@@ -138,7 +138,7 @@ db.chatroom.hasMany(db.chat_message, {
 });
 db.chatroom.hasMany(db.chat_message, {
   foreignKey: "chatroom_id",
-  sourceKe: "id",
+  sourceKey: "id",
 });
 db.chat_message.belongsTo(db.chatroom, {
   foreignKey: "cobuying_room_id",
@@ -146,7 +146,7 @@ db.chat_message.belongsTo(db.chatroom, {
 });
 db.chat_message.belongsTo(db.chatroom, {
   foreignKey: "chatroom_id",
-  sourceKe: "id",
+  sourceKey: "id",
 });
 
 module.exports = db;
