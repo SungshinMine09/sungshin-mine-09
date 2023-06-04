@@ -38,8 +38,7 @@ router.get("/:id", verifyAuthController.checkAuth, CoBuyRoomDetailController.ind
 
 // 상세페이지
 router.get("/:id/detail", verifyAuthController.checkAuth, CoBuyRoomDetailController.index, CoBuyRoomDetailController.indexView); // 상의후 다현님 코드와 합치거나 할 것
-router.get("/:id/chatting", verifyAuthController.checkAuth, CoBuyRoomDetailController.chatting);
-router.get("/:id/chat/:chatId", verifyAuthController.checkAuth, ChatController.index, ChatController.indexView);
+router.get("/:id/chatting", verifyAuthController.checkAuth, ChatController.index, ChatController.indexView);
 
 router.get("/:id/updateCurrentDemand", verifyAuthController.checkAuth, verifyAuthController.checkSeller, CoBuyRoomDetailController.updateCurrentDemand, CoBuyRoomDetailController.redirectView);
 router.get("/:id/deleteCoBuyRoom", verifyAuthController.checkAuth, verifyAuthController.checkSeller, CoBuyRoomDetailController.deleteCoBuyRoom);
@@ -49,7 +48,7 @@ router.get("/:id/newpost", verifyAuthController.checkAuth, NewpostController.ind
 
 // createPost
 router.get("/:id/createPost", verifyAuthController.checkAuth, verifyAuthController.checkSeller, CreatePostController.index, CreatePostController.indexView);
-router.post("/:id/createPost/create",verifyAuthController.checkAuth, verifyAuthController.checkSeller, CreatePostController.createPost, CreatePostController.redirectView);
+router.post("/:id/createPost/create", verifyAuthController.checkAuth, verifyAuthController.checkSeller, CreatePostController.createPost, CreatePostController.redirectView);
 
 // chatting
 

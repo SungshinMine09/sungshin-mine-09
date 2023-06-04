@@ -17,11 +17,11 @@ module.exports = (sequelize, Sequelize) => {
         primaryKey: true,
       },
       host_id: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.BIGINT,
         allowNull: false,
       },
       guest_id: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.BIGINT,
         allowNull: false,
       },
     },

@@ -36,15 +36,6 @@ main > div:first-child {
 
 #chattingBox {
   height: 272px;
-  overflow: scroll;
-  overflow-x: hidden;
-  background-color: rgb(240, 240, 240);
-  padding: 30px 40px 40px 40px;
-  box-shadow: 5px 5px 5px rgb(220, 220, 220);
-}
-
-#chattingBox2 {
-  height: 272px;
   width: 730px;
   overflow: scroll;
   overflow-x: hidden;
@@ -54,6 +45,15 @@ main > div:first-child {
   float: left;
   margin-top: 0px;
   margin-bottom: 20px;
+}
+
+#chattingBox2 {
+  height: 272px;
+  overflow: scroll;
+  overflow-x: hidden;
+  background-color: rgb(240, 240, 240);
+  padding: 30px 40px 40px 40px;
+  box-shadow: 5px 5px 5px rgb(220, 220, 220);
 }
 
 #chattingBox > div > div:first-child {

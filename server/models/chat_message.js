@@ -8,6 +8,10 @@ module.exports = (sequelize, Sequelize) => {
         autoIncrement: true,
         primaryKey: true,
       },
+      user_id: {
+        type: Sequelize.BIGINT,
+        allowNull: false,
+      },
       chatroom_id: {
         type: Sequelize.INTEGER,
         allowNull: false,

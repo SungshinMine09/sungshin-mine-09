@@ -17,41 +17,40 @@
   <body>
     <div class="gonggu_header">
       <div>
-        <p> cobuyroom.title </p>
+        <p><%= cobuyroom.title %></p>
       </div>
     </div>
     <main>
       <div>
-        <div class="fontSize16 marginTop20" id="chattingBox2">
+        <div class="fontSize16 marginTop20" id="chattingBox">
+          <% for(var i = 0; i < messages.length; i++) { %> <% if(messages[i].user_id == user_id){ %>
           <div class="chattingFromMe flex">
             <div><img src="profileImageExample.png" /></div>
             <div>
-              <div class="messageBox">안녕하세요 총대님! 뽀룡이 학잠에 왼쪽 수정구 사이즈가 어떻게 되나요?</div>
-              <div class="date">2023.04.11 12:17:08</div>
+              <div class="messageBox"><%= messages[i].chat_message %></div>
+              <div class="date"><%= dates[i] %></div>
             </div>
           </div>
+          <% } %> <% if(messages[i].user_id != user_id){ %>
           <div class="chattingFromYou flex">
             <div><img src="profileImageExample.png" /></div>
             <div>
-              <div class="messageBox">
-                안녕하세요~ 아직 정해지진 않았지만 20cm*20cm 정도로 예상하고 있습니다. 안녕하세요~ 아직 정해지진 않았지만 20cm*20cm 정도로 예상하고 있습니다. 안녕하세요~ 아직 정해지진 않았지만
-                20cm*20cm 정도로 예상하고 있습니다.
-              </div>
-              <div class="date">2023.04.11 14:24:35</div>
+              <div class="messageBox"><%= messages[i].chat_message %></div>
+              <div class="date"><%= dates[i] %></div>
             </div>
           </div>
+          <% } %> <% }; %>
         </div>
 
         <div class="participantBox">
-          <p>ssm09님</p>
-          <p>gonggu님</p>
-          <p>helloworld님</p>
-          <p>gonggugonggu님</p>
-          <p>sungshin님</p>
-          <p>nanhyang님</p>
-          <p>sujeong님</p>
-          <p>suryong님</p>
-          <p>chonghak님</p>
+          <!-- 일반 유저(주최자 아님)일 경우 -->
+          <% if(!is_room_creater) { %>
+          <p style="cursor: pointer"><%= creator.login_id %> (공동구매 주최자)</p>
+          <% } %>
+          <!-- 공동구매 주최자일 경우 -->
+          <% if(is_room_creater) { %> <% chatrooms.forEach(chatroom=> { %>
+          <p style="cursor: pointer"><%= chatroom.guest_id %></p>
+          <% }) %> <% } %>
         </div>
 
         <div class="marginTop30">
@@ -62,5 +61,7 @@
         </div>
       </div>
     </main>
+    <!-- script로의 변수 전달 용도 -->
+    <div class="data_div" data-chatroom_id="<%= chatroom_using.id %>" data-cobuying_room_id="<%= cobuyroom.id %>" data-user_id="<%=user_id %>"></div>
   </body>
 </html>

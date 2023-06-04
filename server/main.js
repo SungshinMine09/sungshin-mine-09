@@ -49,7 +49,7 @@ app.use(morgan("dev")); // log every request to the console
 // }
 
 db.sequelize
-  //.sync({ alter: true })
+  // .sync({ alter: true })
   .sync()
   .then(() => console.log("Database OK"))
   //.then(createAndLogUser)
@@ -101,7 +101,6 @@ app.all("*", function (req, res) {
   res.status(404).send("<h3>ERROR 404 - 페이지를 찾을 수 없습니다.</h3>");
 });
 
-
 /* ##가이드
 1. 코드 흐름: main.js -> routes -> controller -> ...
 2. 코드 통일을 위해 router 반드시 거칠 것! main에서 controller 직접 사용하지 말 것!(불가피한 경우, 팀과 논의)
@@ -116,6 +115,7 @@ app.all("*", function (req, res) {
 const server = app.listen(app.get("port"), () => {
   console.log(`Server running at http://localhost:${app.get("port")}`);
 });
+const ChatMessage = db.chat_message;
 
 // socket 서버 실행
 const io = socketIO(server, { path: "/socket.io" });
@@ -130,6 +130,14 @@ io.on("connection", function (socket) {
   socket.on("message", function (data) {
     data.name = socket.name;
     console.log(data);
+
+    // 메세지를 보낼때마다 db에 저장
+    ChatMessage.create({
+      chatroom_id: data.chatroom_id,
+      cobuying_room_id: data.cobuying_room_id,
+      chat_message: data.message,
+      user_id: data.user_id,
+    });
 
     socket.broadcast.emit("update", data);
   });
