@@ -26,7 +26,7 @@
           <h2 onClick="location.href='/user/chattingAlarm'">채팅</h2>
         </div>
         <ul class="marginTop30" id="alarmPageUl">
-          <% Array.from(notifications).forEach(notification => { %>
+          <% Array.from(coBuyRoomNotifications).forEach(notification => { %>
             <%if (notification.receiver_id == userID) {%>
               <%if (notification.demand_user_id == notification.receiver_id) {%>
                 <li class="flex" onClick="location.href='/CoBuyRoom/<%=notification.cobuying_room_id%>'" style="cursor: pointer">
