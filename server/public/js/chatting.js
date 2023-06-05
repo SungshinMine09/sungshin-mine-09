@@ -34,6 +34,11 @@ socket.on("update", function (data) {
   msgDiv.appendChild(date);
   messageBox.appendChild(msgNode);
   date.appendChild(dateNode);
+
+  let data_div = document.getElementsByClassName("data_div").item(0);
+  let received_id = data_div.dataset.user_id;
+
+  socket.emit("notification", { type: "notification", message: data.message, cobuying_room_id: data.cobuying_room_id, received_id: received_id });
 });
 
 function send() {
