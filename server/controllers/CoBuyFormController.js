@@ -49,6 +49,7 @@ module.exports = {
   //get
   depositFormMaker: async (req, res) => {
     await initForm(req, res);
+    const form_id = req.params.form_id;
     const deposit_form = await DepositForm.findOne({
       where: { id: req.params.room_id },
     });
@@ -63,6 +64,7 @@ module.exports = {
     res.render("CoBuyForm/depositFormMaker", {
       deposit_form: deposit_form,
       cobuying_room: cobuying_room,
+      form_id: form_id,
     });
   },
   //post
@@ -280,9 +282,16 @@ module.exports = {
     }
   },
   depositFormResult: async (req, res) => {
-    const form_id = req.params.form_id;
     try {
+      const form_id = req.params.form_id;
       const deposit_form = await DepositForm.findOne({
+        where: { id: form_id },
+      });
+      console.log(form_id);
+ //     const deposit_form = await DepositForm.findOne({
+   //     where: { id: req.params.room_id },
+     // });
+      const cobuying_room = await CoBuyRoom.findOne({
         where: { id: form_id },
       });
       if (!deposit_form) {
@@ -297,6 +306,8 @@ module.exports = {
       res.render("CoBuyForm/depositFormResult", {
         deposit_form: deposit_form,
         answers: answers,
+        cobuying_room: cobuying_room,
+        form_id: form_id,
       });
     } catch (error) {
       console.log(error);
