@@ -30,11 +30,11 @@
   - 성신여자대학교 재학생들을 위한 공동구매 웹서비스. 우리 학교 학생들이 진행하는 공동구매 절차가 여러 SNS에 퍼져있다는 불편함을 개선하기 위해 이러한 서비스를 만들게 되었다.
 
 ## 💜팀원 소개
-- 👑배기연(정보시스템공학과) - 상품소개, 새소식, 채팅 기능 구현
-- 탁유제(컴퓨터공학과) - DB 생성, 공동구매방 생성, 입금폼 전과정(제작, 계좌 노출, 제출, 통계) 구현
-- 권형미(통계학과) - 마이페이지, 알림페이지 기능 구현
-- 손승현(융합보안공학과) - 기본 라우팅, 이메일 인증, 회원가입, 로그인+로그아웃, 아이디 찾기+비밀번호 재설정, 아이디/비밀번호 변경 기능 구현
-- 김다현(통계학과) - 홈 화면, 전체 공구방, 수요조사 통계, 공동구매방 삭제 기능 구현
+- 👑배기연(정보시스템공학과) - 플로우차트 / 상품소개, 새소식, 채팅 기능 구현
+- 탁유제(컴퓨터공학과) - 플로우차트 / DB 생성, 공동구매방 생성, 입금폼 전과정(제작, 계좌 노출, 제출, 통계) 구현
+- 권형미(통계학과) - 플로우차트 / 마이페이지, 알림페이지 기능 구현
+- 손승현(융합보안공학과) - 와이어프레임 / 기본 라우팅, 이메일 인증, 회원가입, 로그인+로그아웃, 아이디 찾기+비밀번호 재설정, 아이디/비밀번호 변경 기능 구현
+- 김다현(통계학과) - 와이어프레임 / 홈 화면, 전체 공구방, 수요조사 통계, 공동구매방 삭제 기능 구현
 
 ## ✨배포 주소
 > http:
@@ -51,4 +51,29 @@
 ### 설치 및 실행 방법
 
 ## 🛠️기술 스택
+<div align=center><h2>개발</h2></div>
+<div align=center>
+<img src="https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white">
+<img src="https://img.shields.io/badge/css-1572B6?style=for-the-badge&logo=css3&logoColor=white">
+<img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black">
+<img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=Node.js&logoColor=white">
+<img src="https://img.shields.io/badge/express-000000?style=for-the-badge&logo=express&logoColor=white">
+<img src="https://img.shields.io/badge/ejs-EE1095?style=for-the-badge&logo=ejs&logoColor=white">
+<br>
+<img src="https://img.shields.io/badge/Google Cloud-4285F4?style=for-the-badge&logo=Google Cloud&logoColor=white">
+<img src="https://img.shields.io/badge/mysql-4479A1?style=for-the-badge&logo=mysql&logoColor=white">
+<img src="https://img.shields.io/badge/Sequelize-52B0E7?style=for-the-badge&logo=Sequelize&logoColor=white">
+<img src="https://img.shields.io/badge/Socket.io-010101?style=for-the-badge&logo=Socket.io&logoColor=white">
+<img src="https://img.shields.io/badge/JSON Web Tokens-000000?style=for-the-badge&logo=JSON Web Tokens&logoColor=white">
+</div>
+
+<div align=center><h2>협업</h2></div>
+<div align=center>
+<img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white">
+<img src="https://img.shields.io/badge/git-F05032?style=for-the-badge&logo=git&logoColor=white">
+<img src="https://img.shields.io/badge/Visual Studio Code-007ACC?style=for-the-badge&logo=Visual Studio Code&logoColor=white">
+<img src="https://img.shields.io/badge/Discord-5865F2?style=for-the-badge&logo=Discord&logoColor=white">
+<img src="https://img.shields.io/badge/Notion-000000?style=for-the-badge&logo=Notion&logoColor=white">
+</div>
+
 
