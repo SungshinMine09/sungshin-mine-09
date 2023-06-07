@@ -96,10 +96,20 @@ module.exports = {
         userInfos = await User.findAll();
         myParticipations = await db.sequelize.query("SELECT a.*, date_format(e.end_at, '%y-%m-%d') AS 'end_at', d.user_id, c.url, replace(c.url, 'public\', '') AS real_url  FROM cobuying_room as a JOIN sell as b ON a.id=b.cobuying_room_id JOIN image as c ON b.product_id=c.product_id JOIN demand_user as d ON a.id=d.cobuying_room_id LEFT JOIN deposit_form as e ON d.cobuying_room_id=e.id ORDER BY a.id  DESC;");
         myParticipations=myParticipations[0];
-        numOfMyParticipations = myParticipations.length;
-        myHosts = await db.sequelize.query("SELECT a.*, date_format(d.end_at, '%y-%m-%d') AS 'end_at', c.url, replace(c.url, 'public\', '') AS real_url FROM cobuying_room AS a LEFT JOIN sell AS b ON a.id=b.cobuying_room_id LEFT JOIN image as c ON b.product_id=c.product_id LEFT JOIN deposit_form as d ON a.id=d.id ORDER BY a.id  DESC;");
+        var numOfMyParticipations=0;
+        for (var i=0; i < myParticipations.length; i++) {
+          if (decodedToken.db_id==myParticipations[i].user_id) {
+            numOfMyParticipations++;
+          }
+        }
+        myHosts = await db.sequelize.query("SELECT a.*, date_format(d.end_at, '%y-%m-%d') AS 'end_at', c.url, a.host_id, replace(c.url, 'public\', '') AS real_url FROM cobuying_room AS a LEFT JOIN sell AS b ON a.id=b.cobuying_room_id LEFT JOIN image as c ON b.product_id=c.product_id LEFT JOIN deposit_form as d ON a.id=d.id ORDER BY a.id  DESC;");
         myHosts=myHosts[0];
-        numOfMyHosts = myHosts.length;
+        var numOfMyHosts=0;
+        for (var i=0; i<myHosts.length; i++) {
+          if (decodedToken.db_id==myHosts[i].host_id) {
+            numOfMyHosts++;
+          }
+        }
         if(decodedToken) {
           res.render("user/mypage", {userInfos: userInfos, myParticipations: myParticipations, myHosts: myHosts, numOfMyParticipations: numOfMyParticipations, numOfMyHosts: numOfMyHosts, userID: decodedToken.db_id});
         }

@@ -64,19 +64,6 @@ module.exports = {
             });
           })
         );
-      }
-      if (demandUsesrRows.length != 0) {
-        await Promise.all(
-          demandUsesrRows.map(async (demandUser) => {
-            await Notification.create({
-              receiver_id: demandUser.user_id,
-              cobuying_room_id: coBuyingRoomID,
-              content: content,
-              type2: types[1],
-              url: `/CoBuyRoom/${coBuyingRoomID}/newpost/`,
-            });
-          })
-        );
       } else {
         Notification.create({
           receiver_id: cobuyingRoomRows.host_id,
