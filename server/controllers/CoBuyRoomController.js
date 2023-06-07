@@ -7,6 +7,7 @@ const Product = db.product;
 const Image = db.image;
 const User = db.user;
 const Notification = db.notification;
+const DepositForm = db.deposit_form;
 
 let jwt = require("jsonwebtoken");
 let secretObj = require("../config/jwtConfig");
@@ -66,13 +67,17 @@ module.exports = {
   },
   suyoStat: async (req, res) => {
     try {
-      const form_id = req.params.form_id;
       const CobuyroomID = req.params.id;
       const cobuyroom = await CobuyingRoom.findByPk(CobuyroomID);
       const suyoStats = await db.sequelize.query(
         'SELECT A.*, B.*, replace(B.url, "public", "") AS real_url FROM (SELECT A.*, B.`name` FROM (SELECT A.`product_id`, A.`cobuying_room_id`, B.`title`, A.`current_demand`, A.`min_demand` FROM sell AS A LEFT JOIN cobuying_room AS B ON A.`cobuying_room_id`=B.`id`) AS A LEFT JOIN product AS B ON A.`product_id`=B.`id`) AS A LEFT JOIN image AS B ON A.product_id=B.product_id;'
       );
       const suyoStat = suyoStats[0].filter((it) => it.cobuying_room_id == CobuyroomID);
+      const form_id = await DepositForm.findOne({
+        where: {
+          id: cobuyroom.id,
+        },
+      });
       res.render("CoBuyRoom/suyoStat", { suyoStats: suyoStat, cobuyroom: cobuyroom, form_id: form_id });
     } catch (error) {
       console.log(error);
