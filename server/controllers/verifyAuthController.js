@@ -38,8 +38,9 @@ async function checkID(req, res, next) {
 async function checkSeller(req, res, next) {
   const userToken = req.cookies["userToken"];
   let decodedToken = jwt.verify(userToken, secretObj.secret);
+  
   if (decodedToken) {
-    const isSeller = await Cobuying_room.findOne({
+      const isSeller = await Cobuying_room.findOne({
       //만약 현재 로그인한 유저의 토큰의 payload에 저장된 db_id가 공동구매방의 주최자 id인 host_id에 있다면 
       where: { host_id: decodedToken.db_id },
     });
@@ -51,4 +52,52 @@ async function checkSeller(req, res, next) {
   }
 }
 
-module.exports = { checkAuth, checkID, checkSeller };
+async function checkSellerbyID(req, res, next) {
+  const userToken = req.cookies["userToken"];
+  let decodedToken = jwt.verify(userToken, secretObj.secret);
+  
+  if (decodedToken) {
+    const CoBuyingRoomID = req.params.id;
+    const CoBuyRoom = await Cobuying_room.findByPk(CoBuyingRoomID);
+
+    if(CoBuyRoom.host_id == decodedToken.db_id) {
+      next();
+    } else {
+      res.send("<script>alert('잘못된 접근입니다.'); history.back(); </script>");
+    }
+  }
+}
+
+async function checkSellerbyRoomID (req, res, next) {
+  const userToken = req.cookies["userToken"];
+  let decodedToken = jwt.verify(userToken, secretObj.secret);
+  
+  if (decodedToken) {
+    const coBuyingRoomID = req.params.room_id;
+    const cobuyroom = await Cobuying_room.findByPk(coBuyingRoomID);
+
+    if(cobuyroom.host_id == decodedToken.db_id) {
+    next();
+    } else {
+      res.send("<script>alert('잘못된 접근입니다.'); history.back(); </script>");
+    } 
+  }
+}
+
+async function checkSellerbyFormID (req, res, next) {
+  const userToken = req.cookies["userToken"];
+  let decodedToken = jwt.verify(userToken, secretObj.secret);
+  
+  if (decodedToken) {
+    const coBuyingFormID = req.params.form_id;
+    const cobuy_room = await Cobuying_room.findByPk(coBuyingFormID);
+
+    if(cobuy_room.host_id == decodedToken.db_id) {
+      next();
+    } else {
+      res.send("<script>alert('잘못된 접근입니다.'); history.back(); </script>");
+    }
+  }
+}
+
+module.exports = { checkAuth, checkID, checkSeller, checkSellerbyID, checkSellerbyRoomID, checkSellerbyFormID };
