@@ -76,7 +76,7 @@ https://drive.google.com/file/d/1VHoCAJBAXntbcAifg9qwJr0Vd6IUeABR/view?usp=shari
 - 홈화면, 공동구매방 생성 및 삭제(삭제는 ⭐), 공동구매 상품 상세정보 조회, 모든 공동구매 조회(=전체 공구방), <br>수요조사/마감임박 단계 상품 조회, 수요조사 참여💟, 수요조사 통계⭐, <br>새소식 생성⭐, 새소식 확인, 채팅방 생성💟, 채팅 메세지 조회 및 전송 
 
 ### 3️⃣입금폼
-- 입금폼 양식 생성⭐, 입금폼 작성💟, 입금폼 제출💟, 입금계좌 확인💟, 입금폼 전체결과 조회⭐
+- 입금폼 양식 생성⭐, 입금폼 작성, 입금폼 제출, 입금계좌 확인, 입금폼 전체결과 조회⭐
 
 
 <p align="center">
@@ -86,7 +86,7 @@ https://drive.google.com/file/d/1VHoCAJBAXntbcAifg9qwJr0Vd6IUeABR/view?usp=shari
 
 ## 💻화면 구성
 ### 1️⃣회원
-| 회원가입 (이메일 인증)  |  회원가입 (정보 입력) | 회원가입 완료 |  로그인  | 마이페이지 | 
+| 회원가입<br>(이메일 인증)  |  회원가입<br>(정보 입력) | 회원가입 완료 |  로그인  | 마이페이지 | 
 | :-------------------------------------------: | :------------: | :---------: | :------------: | :------------: |
 |  <img width="600px; height: 550px" src="https://github.com/SungshinMine09/sungshin-mine-09/assets/67824465/2d0dd688-1f30-468e-b555-8dec9030f7f9"/> |  <img width="600px; height: 550px" src="https://github.com/SungshinMine09/sungshin-mine-09/assets/67824465/e8b970e0-f0e2-4d19-9be4-a414fd280ab3"/>|  <img width="600px; height: 550px" src="https://github.com/SungshinMine09/sungshin-mine-09/assets/67824465/bd60fe6a-282d-41b0-acf7-0c37be7f384c"/> | <img width="600px; height: 550px" src="https://github.com/SungshinMine09/sungshin-mine-09/assets/67824465/4885f5d2-cc70-4f7d-8fce-e894298d5fda"/> | <img width="600px; height: 550px" src="https://github.com/SungshinMine09/sungshin-mine-09/assets/67824465/caab0f58-f891-447e-add1-b262ca88cc16"/> |
 | 아이디 찾기 | 비밀번호 재설정 | 아이디 변경  |  비밀번호 변경  | 새소식 알림 |
@@ -106,7 +106,7 @@ https://drive.google.com/file/d/1VHoCAJBAXntbcAifg9qwJr0Vd6IUeABR/view?usp=shari
 
 
 ### 3️⃣입금폼
-| 입금폼 양식 생성⭐ | 입금폼 작성 및 제출💟  | 입금계좌 확인💟 | 입금폼 전체결과 조회⭐ |
+| 입금폼 양식 생성⭐ | 입금폼 작성 및 제출  | 입금계좌 확인 | 입금폼 전체결과 조회⭐ |
 | :-------------------------------------------: | :------------: | :---------: | :------------: |
 |  <img width="600px; height: 550px" src="https://github.com/SungshinMine09/sungshin-mine-09/assets/67824465/39cdaef2-4edd-41f3-b84a-b8cdf8759ed9"/> |  <img width="600px; height: 550px" src="https://github.com/SungshinMine09/sungshin-mine-09/assets/67824465/0c177313-4a73-43c5-a260-2566e1bf22c2"/>|  <img width="600px; height: 550px" src="https://github.com/SungshinMine09/sungshin-mine-09/assets/67824465/8b3d59f9-0c98-427e-aeb2-51a3f7b586dc"/> | <img width="600px; height: 550px" src="https://github.com/SungshinMine09/sungshin-mine-09/assets/67824465/8b4df0ee-2ebd-4e50-a768-847949f380ee"/> |
 
