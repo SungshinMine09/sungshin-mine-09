@@ -4,6 +4,7 @@ const CoBuyRoom = db.cobuying_room;
 const DepositForm = db.deposit_form;
 const Answer = db.answer;
 const Notification = db.notification;
+const User = db.user;
 
 const verifyAuthController = require("./verifyAuthController");
 
@@ -215,26 +216,33 @@ module.exports = {
   writeForm: async (req, res) => {
     const form_id = req.params.form_id;
     try {
+      let isUserHost = false;
+      const user_id = await verifyAuthController.checkID(req);
+
       const deposit_form = await DepositForm.findOne({
         where: { id: form_id },
       });
       const cobuying_room = await CoBuyRoom.findOne({
         where: { id: form_id },
       });
+      if (user_id === cobuying_room.host_id) {
+        isUserHost = true;
+      }
       if (!cobuying_room) {
         res.redirect("/CoBuyRoom/createCoBuyRoom");
       }
       if (!deposit_form) {
-        const user_id = await verifyAuthController.checkID(req);
         if (user_id.id === cobuying_room.host_id) {
           return res.redirect(`/CoBuyForm/${form_id}/depositFormMaker`);
         } else {
           return res.send("<script>alert('공동구매 입금폼이 존재하지 않습니다'); location.href='/CoBuyRoom/totalGonggu'; </script>");
         }
       }
+
       res.render("CoBuyForm/depositFormSubmit", {
         deposit_form: deposit_form,
         cobuying_room: cobuying_room,
+        is_user_host: isUserHost,
       });
     } catch (error) {
       console.log(error);
