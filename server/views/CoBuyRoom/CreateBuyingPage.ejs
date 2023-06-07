@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="/css/CreateBuyingPage.css" />
+    <link rel="stylesheet" href="/css/style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -26,13 +27,13 @@
           <div class="smallText">
             수정이들과 함께하고 싶은 공동구매를 직접 열어보세요!
           </div>
-          <div class="questionText">① 공동구매의 제목을 알려주세요.</div>
-          <div class="smallText">이 이름이 곧 공구방의 이름이 될 거예요!</div>
+          <div class="questionText">① 공동구매의 <span class="purpleText">제목</span>을 알려주세요.</div>
+          <div class="smallText" style="margin-bottom: 15px;">이 이름이 곧 공구방의 이름이 될 거예요!</div>
           <div>
             <label for="inputName"></label>
             <input type="text" id="inputName" name="title" required />
           </div>
-          <div class="questionText">② 공동구매할 상품의 가격을 알려주세요.</div>
+          <div class="questionText">② 공동구매할 상품의 <span class="purpleText">가격</span>을 알려주세요.</div>
           <div>
             <label for="inputCost"></label>
             <p>
@@ -42,8 +43,7 @@
             </p>
           </div>
           <div class="questionText">
-            ③ 공동구매할 상품의 최소 수요 수량과 주문받을 최대 수량을
-            알려주세요.
+            ③ 공동구매할 상품의 <span class="purpleText">최소 수요 수량</span>과 <br>주문받을 <span class="purpleText">최대 수량</span>을 알려주세요.
           </div>
           <div>
             <label for="inputMinQty">
@@ -74,7 +74,7 @@
         </div>
         <div class="verticalLine"></div>
         <div class="right">
-          <div class="questionText">④ 공동구매할 상품에 대해 소개해주세요.</div>
+          <div class="questionText">④ 공동구매할 상품에 대해 <span class="purpleText">소개</span>해주세요.</div>
           <div class="smallText">
             참여자들에게 나의 공동구매를 어필해보세요!
           </div>
@@ -98,7 +98,7 @@
           </div>
         </div>
       </form>
-      <button type="submit" id="createBtn" form="roomForm">
+      <button type="submit" id="createBtn" form="roomForm" style="cursor:pointer">
         공동구매 시작하기
       </button>
     </div>
