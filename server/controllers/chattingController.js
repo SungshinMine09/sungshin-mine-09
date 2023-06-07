@@ -4,7 +4,8 @@ const db = require("../models/index"),
   CoBuyingRoom = db.cobuying_room,
   ChatRoom = db.chatroom,
   ChatMessage = db.chat_message,
-  User = db.user;
+  User = db.user,
+  Notification = db.notification;;
 
 const verifyAuthController = require("./verifyAuthController");
 
@@ -83,7 +84,7 @@ module.exports = {
       res.locals.messages = messages;
       res.locals.dates = dates;
       res.locals.chat_user_login_ids = chatUserLoginIds;
-
+      console.log(Notification);
       next();
     } catch (error) {
       console.log(`Error fetching Chatting: ${error.message}`);

@@ -12,7 +12,7 @@ const initForm = async (req, res) => {
   try {
     await DepositForm.create({
       id: newFormId,
-      description: "dummy data",
+      description: "아직 입금 계좌가 등록되기 전입니다.",
       next_questions_num: 3,
       questions: {
         1: "배송 받을 장소를 선택해주세요(현장수령/택배배송)",
@@ -40,6 +40,7 @@ const initForm = async (req, res) => {
       },
       { where: { id: req.params.room_id } }
     );
+    
   } catch (error) {
     console.log(error);
   }

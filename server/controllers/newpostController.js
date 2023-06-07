@@ -34,6 +34,7 @@ module.exports = {
     }
   },
   indexView: async (req, res) => {
-    res.render("CoBuyRoom/newpost");
+    const form_id = req.params.form_id;
+    res.render("CoBuyRoom/newpost", {form_id: form_id});
   },
 };
