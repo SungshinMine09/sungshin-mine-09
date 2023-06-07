@@ -3,7 +3,7 @@
  </p>
  
 # 🔮성신마인 09번지✨ (Sungshin_Mine_09)
-2023-1학기 성신여자대학교 컴퓨터공학과 서버시스템구축실습 팀프로젝트 4조 (팀명: <b>이거사조</b>)
+2023-1학기 성신여자대학교 컴퓨터공학과 서버시스템구축실습(심화전공) 팀프로젝트 4조 (팀명: <b>이거사조</b>)
 
 
 >🛠️개발기간 : 
@@ -23,16 +23,21 @@
 
 ### 🤔성신마인 09번지란?
 - 서비스명 소개
-  - <b>성신여자대학교 ***재학생***들이 우리가 만든 웹사이트를 통해서 자신의 마음에 딱 드는 공동구매를 찾았으면(캐냈으면) 하는 마음으로 지은 이름</b>이다. 그래서 광산과, 내꺼라는 의미를 둘 다 가진 <b>'Mine'</b> 이라는 단어가 떠올랐고, 성신여자대학교 재학생들만 참여할 수 있는 특수성을 고려하여, <b>‘성신마인(Sungshin Mine)'</b>이라고 지었다. <br>뒤에 <b>‘09번지’</b>에서 <b>‘09’</b>는 학우들 사이에서 공동구매라는 단어를 줄여서 은어로 '공구'라고도 부르기도 해서 그 부분에서 발음의 유사성을 가지고 온 것이다. 그리고 학우들이 우리가 만든 하나의 웹사이트에 모두 모여 공동구매를 진행하거나 참여하는 것이니까, 우리의 웹사이트가 학우들에게는 장소처럼 느껴질 수도 있겠다는 생각에 <b>'번지'</b>라는 말도 붙여주었다. <br>그래서 <b>'성신마인 09번지'</b>라고 서비스 이름을 지었다.
+  - <b>성신여자대학교 "***재학생***"들이 우리가 만든 웹사이트를 통해서 자신의 마음에 딱 드는 공동구매를 찾았으면(캐냈으면) 하는 마음으로 지은 이름</b>이다. 그래서 광산과, 내꺼라는 의미를 둘 다 가진 <b>'Mine'</b> 이라는 단어가 떠올랐고, 성신여자대학교 재학생들만 참여할 수 있는 특수성을 고려하여, <b>‘성신마인(Sungshin Mine)'</b>이라고 지었다. <br>뒤에 <b>‘09번지’</b>에서 <b>‘09’</b>는 학우들 사이에서 공동구매라는 단어를 줄여서 은어로 '공구'라고도 부르기도 해서 그 부분에서 발음의 유사성을 가지고 온 것이다. 그리고 학우들이 우리가 만든 하나의 웹사이트에 모두 모여 공동구매를 진행하거나 참여하는 것이니까, 우리의 웹사이트가 학우들에게는 장소처럼 느껴질 수도 있겠다는 생각에 <b>'번지'</b>라는 말도 붙여주었다. <br>그래서 <b>'성신마인 09번지'</b>라고 서비스 이름을 지었다.
 - 서비스의 목적
-  - <b>성신여자대학교 ***재학생***들을 위한 공동구매 웹서비스.</b> <br>학우들이 진행하는 공동구매 절차가 여러 플랫폼에 퍼져있다는 불편함을 개선하기 위해 이러한 서비스를 만들게 되었다.
+  - <b>성신여자대학교 "***재학생***"들을 위한 공동구매 웹서비스.</b> <br>학우들이 진행하는 공동구매 절차가 여러 플랫폼에 퍼져있다는 불편함을 개선하기 위해 이러한 서비스를 만들게 되었다.
 
 ## 💜팀원 소개
-- <b>👑배기연</b>(정보시스템공학과) - 플로우차트 / <b>상품 소개, 수요조사 참여, 새소식 생성 및 확인, 채팅 관련 모든</b> 기능 구현 / QA
-- <b>탁유제</b>(컴퓨터공학과) - 플로우차트 / <b>DB 생성, 공동구매방 생성, 입금폼 전과정(제작, 작성, 제출, 계좌 확인, 전체결과 통계)</b> 기능 구현 / 최종발표
-- <b>권형미</b>(컴퓨터공학과) - 플로우차트 / <b>마이페이지, 알림페이지</b> 기능 구현 / QA
-- <b>손승현</b>(융합보안공학과) - 와이어프레임 / <b>기본 라우팅, 이메일 인증, 회원가입, 로그인+로그아웃, 아이디 찾기+비밀번호 재설정, 아이디/비밀번호 변경</b> 기능 구현 / README 작성 / 배포
-- <b>김다현</b>(통계학과) - 와이어프레임 / <b>홈화면, 모든 공동구매 조회(=전체 공구방), 수요조사/마감임박 단계 상품 조회, 수요조사 통계, 공동구매방 삭제</b> 기능 구현 / QA
+- <b>👑배기연</b>(정보시스템공학과) 
+  - 플로우차트 / <b>공동구매 상품 상세페이지, 수요조사 참여, 새소식 생성 및 확인, 채팅 관련 모든</b> 기능 구현 / QA
+- <b>탁유제</b>(컴퓨터공학과) 
+  - 플로우차트 / <b>DB 생성, 공동구매방 생성, 입금폼 전과정(제작, 작성, 제출, 계좌 확인, 결과 통계)</b> 기능 구현 / 최종발표
+- <b>권형미</b>(컴퓨터공학과) 
+  - 플로우차트 / <b>마이페이지, 알림페이지</b> 기능 구현 / QA
+- <b>손승현</b>(융합보안공학과) 
+  - 와이어프레임 / <b>기본 라우팅, 이메일 인증, 회원가입, 로그인+로그아웃, 아이디 찾기+비밀번호 재설정, 아이디/비밀번호 변경</b> 기능 구현 / README 작성 / 배포
+- <b>김다현</b>(통계학과) 
+  - 와이어프레임 / <b>홈화면, 모든 공동구매 조회(=전체 공구방), 수요조사/마감임박 단계 상품 조회, 수요조사 결과 통계, 공동구매방 삭제</b> 기능 구현 / 중간발표 / QA
 
 ⚡프로젝트 계획, 요구사항 분석, 데이터베이스 설계 : ***모든 팀원 참여***
 
@@ -61,12 +66,17 @@ https://drive.google.com/file/d/1VHoCAJBAXntbcAifg9qwJr0Vd6IUeABR/view?usp=shari
 <br>본 서비스는 진행 중인 공동구매를 한곳에 모아주고, 학우들에게 공동구매 주최 및 참여에 대한 편의를 제공하는 것을 목적으로 한다.</b>
 
 ## 👩🏻‍💻주요 기능
-### 회원
-- 회원가입, 로그인, 아이디 찾기, 비밀번호 재설정, 아이디/비밀번호 변경, 마이페이지, 새소식 알림
-### 공동구매방
-- 홈화면, 공동구매방 생성 및 삭제(삭제는 only 주최자), 공동구매 상품 상세정보 조회, 모든 공동구매 조회(=전체 공구방), <br>수요조사/마감임박 단계 상품 조회, 수요조사 참여(only 참여자), 수요조사 통계(only 주최자), <br>새소식 생성(only 주최자), 새소식 확인, 채팅방 생성(only 참여자), 채팅 메세지 조회 및 전송 
-### 입금폼
-- 입금폼 양식 생성(only 주최자), 입금폼 작성(only 참여자), 입금폼 제출(only 참여자), 입금계좌 확인(only 참여자), 입금폼 전체결과 조회(only 주최자)
+<h4>💟 : only 참여자, ⭐: only 주최자</h4>
+
+
+### 1️⃣회원
+- 이메일 인증+회원가입, 로그인, 아이디 찾기, 비밀번호 재설정, 아이디/비밀번호 변경, 마이페이지, 새소식 알림
+
+### 2️⃣공동구매방
+- 홈화면, 공동구매방 생성 및 삭제(삭제는 ⭐), 공동구매 상품 상세정보 조회, 모든 공동구매 조회(=전체 공구방), <br>수요조사/마감임박 단계 상품 조회, 수요조사 참여💟, 수요조사 통계⭐, <br>새소식 생성⭐, 새소식 확인, 채팅방 생성💟, 채팅 메세지 조회 및 전송 
+
+### 3️⃣입금폼
+- 입금폼 양식 생성⭐, 입금폼 작성, 입금폼 제출, 입금계좌 확인, 입금폼 전체결과 조회⭐
 
 
 <p align="center">
@@ -75,6 +85,30 @@ https://drive.google.com/file/d/1VHoCAJBAXntbcAifg9qwJr0Vd6IUeABR/view?usp=shari
 </p>
 
 ## 💻화면 구성
+### 1️⃣회원
+| 회원가입<br>(이메일 인증)  |  회원가입<br>(정보 입력) | 회원가입 완료 |  로그인  | 마이페이지 | 
+| :-------------------------------------------: | :------------: | :---------: | :------------: | :------------: |
+|  <img width="600px; height: 550px" src="https://github.com/SungshinMine09/sungshin-mine-09/assets/67824465/2d0dd688-1f30-468e-b555-8dec9030f7f9"/> |  <img width="600px; height: 550px" src="https://github.com/SungshinMine09/sungshin-mine-09/assets/67824465/e8b970e0-f0e2-4d19-9be4-a414fd280ab3"/>|  <img width="600px; height: 550px" src="https://github.com/SungshinMine09/sungshin-mine-09/assets/67824465/bd60fe6a-282d-41b0-acf7-0c37be7f384c"/> | <img width="600px; height: 550px" src="https://github.com/SungshinMine09/sungshin-mine-09/assets/67824465/4885f5d2-cc70-4f7d-8fce-e894298d5fda"/> | <img width="600px; height: 550px" src="https://github.com/SungshinMine09/sungshin-mine-09/assets/67824465/caab0f58-f891-447e-add1-b262ca88cc16"/> |
+| 아이디 찾기 | 비밀번호 재설정 | 아이디 변경  |  비밀번호 변경  | 새소식 알림 |
+| <img width="600px; height: 550px" src="https://github.com/SungshinMine09/sungshin-mine-09/assets/67824465/00a4cd06-12bb-480f-8978-592525f7cf55"/>   |  <img width="600px; height: 550px" src="https://github.com/SungshinMine09/sungshin-mine-09/assets/67824465/8c62d93f-442c-4346-ab00-f19472a8431a"/>     | <img width="600px; height: 550px" src="https://github.com/SungshinMine09/sungshin-mine-09/assets/67824465/ad0ae3af-3cf3-4d78-badf-0ec5947051be"/> | <img width="600px; height: 550px" src="https://github.com/SungshinMine09/sungshin-mine-09/assets/67824465/4bf6fadc-967c-4e34-86d0-14b212949aac"/> | <img width="600px; height: 550px" src="https://github.com/SungshinMine09/sungshin-mine-09/assets/67824465/f7e5dad2-dc65-476f-9266-41590936dfa2"/> |
+
+
+### 2️⃣공동구매방
+💟 : only 참여자, ⭐: only 주최자
+
+| 홈화면  |  공동구매방 생성  | 공동구매방 삭제⭐ | 상품 상세정보(⭐+💟)<br>+수요조사 참여💟 |
+| :-------------------------------------------: | :------------: | :---------: | :------------: |
+|  <img width="600px; height: 550px" src="https://github.com/SungshinMine09/sungshin-mine-09/assets/67824465/7fdd9a08-68ee-41b8-9e6f-c3b718f01c18"/> |  <img width="600px; height: 550px" src="https://github.com/SungshinMine09/sungshin-mine-09/assets/67824465/df8c435f-58a9-48f4-93be-bb3df4523817"/>|  <img width="600px; height: 550px" src="https://github.com/SungshinMine09/sungshin-mine-09/assets/67824465/a05e6c57-1588-4069-8ca9-c9bf85dedbc4"/> | <img width="600px; height: 550px" src="https://github.com/SungshinMine09/sungshin-mine-09/assets/67824465/5dedcb6c-2890-46c6-8a11-899d90b97703"/> |
+| 모든 공동구매 조회  |  수요조사 단계 상품 조회  | 마감임박 단계 상품 조회 | 수요조사 통계⭐ |
+| <img width="600px; height: 550px" src="https://github.com/SungshinMine09/sungshin-mine-09/assets/67824465/6fe7db47-c35b-45fb-a3a5-c73713914a48"/>   |  <img width="600px; height: 550px" src="https://github.com/SungshinMine09/sungshin-mine-09/assets/67824465/dcc3f442-0ad0-4b57-a93f-aafabf0f3e18"/>     | <img width="600px; height: 550px" src="https://github.com/SungshinMine09/sungshin-mine-09/assets/67824465/dd6e7b94-bb82-44da-82b4-6ee457173923"/> | <img width="600px; height: 550px" src="https://github.com/SungshinMine09/sungshin-mine-09/assets/67824465/0f10d3ca-4cd6-4207-a761-13f143ce650b"/> |
+| 새소식 생성⭐ |  새소식 확인  | 채팅방 생성💟 | 채팅 메세지 조회 및 전송 |
+| <img width="600px; height: 550px" src="https://github.com/SungshinMine09/sungshin-mine-09/assets/67824465/ccf0eb95-50f5-4997-bea9-c8318c196237"/>   |  <img width="600px; height: 550px" src="https://github.com/SungshinMine09/sungshin-mine-09/assets/67824465/69576a57-ca9d-4a8e-a36a-866dd9af4682"/>     | <img width="600px; height: 550px" src="https://github.com/SungshinMine09/sungshin-mine-09/assets/67824465/8e4edfab-cd1a-436f-a991-f0dadf917f90"/> | <img width="600px; height: 550px" src="https://github.com/SungshinMine09/sungshin-mine-09/assets/67824465/f83ce59d-44f9-4866-93dc-c054237ca47c"/> |
+
+
+### 3️⃣입금폼
+| 입금폼 양식 생성⭐ | 입금폼 작성 및 제출  | 입금계좌 확인 | 입금폼 전체결과 조회⭐ |
+| :-------------------------------------------: | :------------: | :---------: | :------------: |
+|  <img width="600px; height: 550px" src="https://github.com/SungshinMine09/sungshin-mine-09/assets/67824465/39cdaef2-4edd-41f3-b84a-b8cdf8759ed9"/> |  <img width="600px; height: 550px" src="https://github.com/SungshinMine09/sungshin-mine-09/assets/67824465/0c177313-4a73-43c5-a260-2566e1bf22c2"/>|  <img width="600px; height: 550px" src="https://github.com/SungshinMine09/sungshin-mine-09/assets/67824465/8b3d59f9-0c98-427e-aeb2-51a3f7b586dc"/> | <img width="600px; height: 550px" src="https://github.com/SungshinMine09/sungshin-mine-09/assets/67824465/8b4df0ee-2ebd-4e50-a768-847949f380ee"/> |
 
 
 ## ⚙️시작 가이드
@@ -97,6 +131,7 @@ $ cd server
 $ npm install
 $ npm start
 ```
+
 
 ## 🛠️기술 스택
 <div align=center><h2>개발</h2></div>

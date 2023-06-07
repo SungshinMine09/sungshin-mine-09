@@ -12,7 +12,7 @@ const initForm = async (req, res) => {
   try {
     await DepositForm.create({
       id: newFormId,
-      description: "아직 입금 계좌가 등록되기 전입니다.",
+      description: "성신마인 09번지",
       next_questions_num: 3,
       questions: {
         1: "배송 받을 장소를 선택해주세요(현장수령/택배배송)",
@@ -50,7 +50,7 @@ module.exports = {
   //get
   depositFormMaker: async (req, res) => {
     await initForm(req, res);
-    const form_id = req.params.form_id;
+
     const deposit_form = await DepositForm.findOne({
       where: { id: req.params.room_id },
     });
@@ -65,7 +65,7 @@ module.exports = {
     res.render("CoBuyForm/depositFormMaker", {
       deposit_form: deposit_form,
       cobuying_room: cobuying_room,
-      form_id: form_id,
+      form_id: deposit_form.id,
     });
   },
   //post
@@ -289,9 +289,9 @@ module.exports = {
         where: { id: form_id },
       });
       console.log(form_id);
- //     const deposit_form = await DepositForm.findOne({
-   //     where: { id: req.params.room_id },
-     // });
+      //     const deposit_form = await DepositForm.findOne({
+      //     where: { id: req.params.room_id },
+      // });
       const cobuying_room = await CoBuyRoom.findOne({
         where: { id: form_id },
       });

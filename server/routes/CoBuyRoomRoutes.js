@@ -28,7 +28,7 @@ router.get("/totalGonggu", CoBuyRoomController.totalGonggu);
 router.get("/ingSuyo", CoBuyRoomController.ingSuyo);
 router.get("/soonEnd", CoBuyRoomController.soonEnd);
 router.get("/totalGonggu/:id", verifyAuthController.checkAuth, CoBuyRoomDetailController.index, CoBuyRoomDetailController.indexView); // 공구방 상세페이지
-router.get("/:id/suyoStat", verifyAuthController.checkAuth, verifyAuthController.checkSeller, CoBuyRoomController.suyoStat); // 수요조사 통계
+router.get("/:id/suyoStat", verifyAuthController.checkAuth, verifyAuthController.checkSellerbyID, CoBuyRoomController.suyoStat); // 수요조사 통계
 router.get("/suyoStat", verifyAuthController.checkAuth, verifyAuthController.checkSeller, CoBuyRoomController.suyoStat);
 router.get("/createNewPost", verifyAuthController.checkAuth, verifyAuthController.checkSeller, CoBuyRoomController.createNewPost);
 router.get("/createCoBuyRoom", verifyAuthController.checkAuth, CoBuyRoomController.createCoBuyRoomPage);
@@ -41,14 +41,14 @@ router.get("/:id/detail", verifyAuthController.checkAuth, CoBuyRoomDetailControl
 router.get("/:id/chatting", verifyAuthController.checkAuth, ChatController.index, ChatController.indexView);
 
 router.get("/:id/updateCurrentDemand", verifyAuthController.checkAuth, CoBuyRoomDetailController.updateCurrentDemand, CoBuyRoomDetailController.redirectView);
-router.get("/:id/deleteCoBuyRoom", verifyAuthController.checkAuth, verifyAuthController.checkSeller, CoBuyRoomDetailController.deleteCoBuyRoom);
+router.get("/:id/deleteCoBuyRoom", verifyAuthController.checkAuth, verifyAuthController.checkSellerbyID, CoBuyRoomDetailController.deleteCoBuyRoom);
 
 // newpost
 router.get("/:id/newpost", verifyAuthController.checkAuth, NewpostController.index, NewpostController.indexView);
 
 // createPost
-router.get("/:id/createPost", verifyAuthController.checkAuth, verifyAuthController.checkSeller, CreatePostController.index, CreatePostController.indexView);
-router.post("/:id/createPost/create", verifyAuthController.checkAuth, verifyAuthController.checkSeller, CreatePostController.createPost, CreatePostController.redirectView);
+router.get("/:id/createPost", verifyAuthController.checkAuth, verifyAuthController.checkSellerbyID, CreatePostController.index, CreatePostController.indexView);
+router.post("/:id/createPost/create", verifyAuthController.checkAuth, verifyAuthController.checkSellerbyID, CreatePostController.createPost, CreatePostController.redirectView);
 
 // chatting
 
