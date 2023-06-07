@@ -26,7 +26,7 @@
           <% Array.from(chattingNotifications).forEach(notification => { %>
             <%if (notification.receiver_id == userID) {%>
               <%if (notification.demand_user_id == notification.receiver_id) {%>
-                <li class="flex" onClick="location.href='/CoBuyRoom/<%=notification.cobuying_room_id%>'" style="cursor: pointer">
+                <li class="flex" onClick="location.href='/CoBuyRoom/<%=notification.cobuying_room_id%>/chatting'" style="cursor: pointer">
                   <div class="image"><img src="<%=`${notification.real_url}`%>" /></div>
                   <div class="textBox">
                     <div class="fontSize18">
@@ -42,7 +42,7 @@
                 </li>
               <%}else%>
               <%if (notification.host_id == userID) {%>
-                <li class="flex" onClick="location.href='/CoBuyRoom/<%=notification.cobuying_room_id%>'" style="cursor: pointer">
+                <li class="flex" onClick="location.href='/CoBuyRoom/<%=notification.cobuying_room_id%>/chatting'" style="cursor: pointer">
                   <div class="image"><img src="<%=`${notification.real_url}`%>" /></div>
                   <div class="textBox">
                     <div class="fontSize18">
