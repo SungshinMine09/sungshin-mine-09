@@ -116,6 +116,7 @@ const server = app.listen(app.get("port"), () => {
   console.log(`Server running at http://localhost:${app.get("port")}`);
 });
 const ChatMessage = db.chat_message;
+const Notification = db.notification;
 
 // socket 서버 실행
 const io = socketIO(server, { path: "/socket.io" });
@@ -140,6 +141,20 @@ io.on("connection", function (socket) {
     });
 
     socket.broadcast.emit("update", data);
+  });
+
+  socket.on("notification", function (data) {
+    console.log(data);
+
+    types = Notification.getAttributes().type2.values;
+
+    Notification.create({
+      receiver_id: data.receiver_id,
+      cobuying_room_id: data.cobuying_room_id,
+      content: data.message,
+      type2: types[3],
+      url: `/CoBuyRoom/${coBuyingRoomID}/chatting/`,
+    });
   });
 
   // user connection lost

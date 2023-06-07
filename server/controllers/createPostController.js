@@ -64,8 +64,7 @@ module.exports = {
             });
           })
         );
-      }
-       else {
+      } else {
         Notification.create({
           receiver_id: cobuyingRoomRows.host_id,
           cobuying_room_id: coBuyingRoomID,
