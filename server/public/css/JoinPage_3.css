@@ -1,0 +1,53 @@
+/* 회원가입 화면3 - 가입완료 */
+.Join_Complete_Wrapper {
+  width: 500px;
+  height: 350px;
+  padding: 40px;
+  position: relative;
+  left: 250px;
+  top: 0px;
+}
+
+.Join_Complete_Wrapper > .Join_Title {
+  font-size: 38px;
+  color: rgb(119, 35, 155);
+  position: relative;
+  left: 250px;
+  padding-bottom: 25px;
+}
+
+.Join_Complete_Wrapper > .Join_Step {
+  font-size: 16px;
+  position: relative;
+  bottom: 0px;
+  left: 165px;
+  bottom: 30px;
+}
+
+.Join_complete_msg {
+  position: relative;
+  left: 150px;
+}
+
+.Join_complete_msg2 {
+  position: relative;
+  left: 115px;
+  top: 0px;
+}
+
+a.gotoLoginpage_btn {
+  background-color: rgb(239, 220, 255);
+  color: rgb(119, 35, 155);
+  font-size: 16px;
+  width: 200px;
+  height: 45px;
+  position: relative;
+  left: 240px;
+  top: 100px;
+  padding-left: 50px;
+  padding-right: 50px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-decoration: none;
+  border-radius: 5px;
+}

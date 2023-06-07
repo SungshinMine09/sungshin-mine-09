@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SungshinMine09</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/changePW.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com/" />
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Tilt+Neon&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="myPageTitleBox">
+        <h1 class="center flex">마이페이지</h1>
+    </div>
+    <div class="newPW_box" id="newPW_box">
+      <h2 class="newPW_Title">비밀번호 변경</h2>
+      <span class="newPW_Step">기존 비밀번호와 새 비밀번호를 입력해주세요.</span>
+      <form method="post" action="/user/myPage/changePW" id="newPW_Form">
+        <span class="old_pw_label">기존 비밀번호</span>
+        <input
+        type="password"
+        name="old_pw"
+        id="old_pw"
+        placeholder="기존 비밀번호"
+        pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*~_+=]).{10,16}"
+        required
+        />
+
+        <span class="newPW_label">새 비밀번호</span>
+        <span class="newPW_requireInfo"
+          >영문 대문자/소문자/숫자/특수문자 모두 최소 1개 이상, 10자~16자</span
+        >
+        <input
+          type="password"
+          id="newPassword"
+          name="newPassword"
+          placeholder="새 비밀번호"
+          pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*~_+=]).{10,16}"
+          required
+        />
+
+        <span class="newPW_confirm_label">새 비밀번호 확인</span>
+        <input
+          type="password"
+          id="confirm_newPW"
+          name="confirm_newPW"
+          placeholder="새 비밀번호 확인"
+          pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*~_+=]).{10,16}"
+          required
+        />
+
+        <input type="submit" value="새 비밀번호로 변경하기" style="cursor: pointer"/>
+      </form>
+    </div>
+  </body>
+</html>

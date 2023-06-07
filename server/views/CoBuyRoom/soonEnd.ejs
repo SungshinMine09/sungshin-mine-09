@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>✨성신마인 09번지🔮</title>
+    <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="stylesheet" href="/css/totalGonggu.css"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&display=swap" rel="stylesheet">
+  </head>
+
+  <body>
+    <div class="totalgonggu_container">
+      <div>
+        <ul>
+          <li><button class="greybutton" onClick="location.href='/CoBuyRoom/ingSuyo'" class="ttg_prple_btn" style='cursor:pointer'>수요조사중</button></li>
+          <li><button class="greybutton" onClick="location.href='/CoBuyRoom/soonEnd'" class="ttg_prple_btn" style="background-color: rgb(142, 68, 173); color: rgb(239, 220, 255); cursor:pointer">마감임박</button></li>
+          <li style="float: right;"><button  onClick="location.href='/CoBuyRoom/createCoBuyRoom'" class="ttg_prple_btn" style='cursor:pointer'>공구방 시작하기</button></li>
+          <br><li style="margin-top: 10px;">현재 <%= count %>개의 공구가 진행 중입니다 💜</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="product_list">
+      <div>
+
+        <% Array.from(soonEnds).forEach( soonEnd => { %>
+        <div>
+          <a href="<%= `/CoBuyRoom/${soonEnd.id}` %>" style="text-decoration: none;">
+            <img class="product_img" src="<%= `${soonEnd.real_url}` %>">
+            <p><%= soonEnd.title %></p>
+          </a>
+        </div>
+        <% }); %>  
+        
+      </div>
+    </div>
+
+  
+  </body>
+
+  
+</html>

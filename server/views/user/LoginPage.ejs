@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SungshinMine09</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/LoginPage.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com/" />
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Tilt+Neon&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="Login_Wrapper">
+      <h2 class="Login_Title">로그인</h2>
+      <form method="post" action="/user/Login" id="LoginForm">
+        <!--action에는 사용자가 입력한 데이터를 처리할 파일의 경로가 들어감. 백엔드 언어로 작성됨.-->
+        <input type="text" name="userID" placeholder="아이디" />
+        <input type="password" name="userPassword" placeholder="비밀번호" />
+        <!--form의 input type에서 name을 써야 서버로 전달됨-->
+        <input type="submit" value="로그인" style="cursor: pointer"/>
+      </form>
+      <a href="JoinStep1" class="gotoJoinpage1_btn" style="cursor: pointer">회원가입</a>
+      <a href="findID" class="change_id_btn" style="cursor: pointer">아이디 찾기</a>
+      <a href="findPW" class="change_pw_btn" style="cursor: pointer">비밀번호 찾기</a>
+    </div>
+  </body>
+</html>

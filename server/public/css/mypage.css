@@ -1,0 +1,142 @@
+main>div {
+    width: 1119px;
+}
+
+h1 {
+    font-size: 36px;
+    color: rgb(119, 35, 155);
+    font-weight: bold;
+    margin: 42px 0 0 0;
+}
+
+h2 {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+#myPageTitleBox {
+    width: 197px; height: 54px;
+    background-color: rgb(239, 220, 255);
+}
+
+#leftContainer {
+    width: 500px;
+}
+
+#leftContainer>div {
+    line-height: 160%;
+} 
+
+.purpleLetters {
+    color: rgb(142, 68, 173);
+    font-weight: 700;
+}
+
+#certifiedEmail {
+    font-size: 15px;
+    font-weight: 400;
+}
+
+.productTitle {
+    font-size: 17px;
+    font-weight: bold;
+ }
+
+.grayButton {
+    background-color: rgb(224, 224, 224);
+    color: rgb(64, 64, 64);
+    font-weight: 600;
+    border-radius: 5px;
+    border: transparent;
+    width: 85px;
+    height: 38px;
+    cursor: pointer;
+}
+
+.changeButton {
+    width: 59px;
+    height: 28px;
+}
+
+.statusLetters {
+    color: rgb(192, 57, 43);
+}
+
+#rightContainer {
+    width: 555px;
+    border-left: rgb(200, 200, 200) 2px solid;
+    padding-left: 20px;
+}
+
+#listTitle {
+    margin-bottom: 15px;
+}
+
+img {
+    margin: 18px 20px 18px 12px;
+}
+
+.ulBoxes ul {
+    padding-left: 0;
+    height: 384px;
+    overflow: auto;
+}
+
+.myPageLi {
+    height: 96px;
+    border-bottom: rgb(200, 200, 200) 2px solid; 
+}
+
+.myPageLi:first-child {
+    border-top: rgb(200, 200, 200) 2px solid;
+}
+
+.productInfo {
+    align-items: center;
+    margin:12px 0;
+}
+
+.productName {
+    margin: 5px 0 8px 0;
+    font-weight: bold;
+}
+
+#twoButtonsBox {
+    margin: 24px 0 8px 0;
+}
+
+#changeIDbtn {
+    position: relative;
+    left: 100px;
+    bottom: 50px;
+}
+
+input[type=radio] {
+	display: none;
+}
+
+#participation:checked ~ #twoButtonsBox label:nth-child(1), 
+#host:checked ~ #twoButtonsBox label:nth-child(2) {
+    background-color: rgb(142, 68, 173);
+    color: rgb(239, 220, 255);
+    box-shadow: none;
+}
+
+.ulBoxes > div {
+    display: none;
+}
+
+#participation:checked ~ .ulBoxes div:nth-child(1),
+#host:checked ~ .ulBoxes div:nth-child(2) {
+    display: block;
+}
+
+/*#moreButton {
+    width: 100px; height: 40px;
+    background-color: rgb(94, 94, 94);
+    color: rgb(255, 255, 255);
+    border-radius: 5px;
+    margin: 18px auto 0 auto;
+    cursor: pointer;
+}*/
+

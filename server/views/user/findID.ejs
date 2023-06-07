@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SungshinMine09</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/findID.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com/" />
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Tilt+Neon&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="findID_box" id="findID_box">
+      <h2 class="findID_Title">아이디 찾기</h2>
+      <span class="findID_Step">성신 지메일 인증 후, 아이디를 성신 지메일로 보내드리겠습니다.</span>
+      <form method="post" action="findID" id="findID_form">
+        <!--action에는 사용자가 입력한 데이터를 처리할 파일의 경로가 들어감. 백엔드 언어로 작성됨.-->
+        <span class="school_id_label">학번</span>
+        <span id="email_symbol">@</span>
+        <span id="email_domain">sungshin.ac.kr</span>
+        <input
+          type="text"
+          name="student_number"
+          id="email_IDnumber"
+          placeholder="학번"
+          pattern="[0-9]{8}"
+          required
+        />
+        <input type="submit" value="인증번호 전송" />
+      </form>
+      <form method="post" action="findID_emailAuth" id="findID_form2">
+        <!--action에는 사용자가 입력한 데이터를 처리할 파일의 경로가 들어감. 백엔드 언어로 작성됨.-->
+        <span class="code_label">인증번호</span>
+        <input
+          type="text"
+          name="authNumber"
+          placeholder="인증번호"
+          pattern="[0-9]{6}"
+          required
+        />
+        <input type="submit" value="확인" />
+      </form>
+    </div>
+  </body>
+</html>

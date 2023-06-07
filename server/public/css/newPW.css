@@ -1,0 +1,208 @@
+.newPW_box {
+    width: 515px;
+    height: 540px;
+    padding: 40px;
+    position: relative;
+    left: 250px;
+    bottom: 70px;
+    margin: 30px;
+    margin-bottom: 0px;
+  }
+  
+  #newPW_box > .newPW_Title {
+    font-size: 38px;
+    color: rgb(119, 35, 155);
+    position: relative;
+    left: 170px;
+    padding-bottom: 25px;
+  }
+  
+  #newPW_box > .newPW_Step {
+    font-size: 16px;
+    position: relative;
+    bottom: 0px;
+    left: 165px;
+    bottom: 30px;
+  }
+  
+  .id_label {
+    background-color: rgb(190, 153, 250);
+    color: white;
+    width: 40px;
+    height: 20px;
+    position: relative;
+    left: 120px;
+    top: 31px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 23px;
+    padding-right: 23px;
+    border-radius: 5px;
+    border-color: rgb(190, 153, 250);
+    justify-content: center;
+    font-size: 16px;
+  }
+  
+  .id_requireInfo {
+    font-size: 13px;
+    color: red;
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    left: 270px;
+    top: 50px;
+  }
+  
+  .newPW_label {
+    background-color: rgb(190, 153, 250);
+    color: white;
+    width: 40px;
+    height: 20px;
+    position: relative;
+    left: 120px;
+    top: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+    border-radius: 5px;
+    border-color: rgb(190, 153, 250);
+    justify-content: center;
+    font-size: 16px;
+  }
+  
+  .newPW_requireInfo {
+    font-size: 13px;
+    color: red;
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    top: 30px;
+    left: 280px;
+  }
+  
+  .newPW_confirm_label {
+    background-color: rgb(190, 153, 250);
+    color: white;
+    width: 100px;
+    height: 20px;
+    position: relative;
+    left: 120px;
+    bottom: 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-radius: 5px;
+    border-color: rgb(190, 153, 250);
+    justify-content: center;
+    font-size: 15px;
+  }
+
+  #newPW_Form > input[id="ID"] {
+    width: 165px;
+    height: 35px;
+    position: relative;
+    left: 280px;
+    bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border-color: rgb(189, 189, 189);
+    text-align: center;
+    font-size: 16px;
+  }
+  
+  #newPW_Form > input[id="newPassword"] {
+    width: 165px;
+    height: 35px;
+    position: relative;
+    left: 280px;
+    bottom: 50px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border-color: rgb(189, 189, 189);
+    text-align: center;
+    font-size: 16px;
+  }
+  
+  #newPW_Form > input[id="confirm_newPW"] {
+    width: 165px;
+    height: 35px;
+    position: relative;
+    left: 280px;
+    bottom: 46px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border-color: rgb(189, 189, 189);
+    text-align: center;
+    font-size: 16px;
+  }
+
+  #newPW_Form > input::placeholder {
+    padding-left: 0px;
+  }
+  
+  #newPW_Form > input[type="submit"] {
+    background-color: rgb(119, 35, 155);
+    color: rgb(239, 220, 255);
+    justify-content: center;
+    width: 190px;
+    height: 40px;
+    position: relative;
+    left: 210px;
+    bottom: 20px;
+    padding-left: 35px;
+    padding-right: 35px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-size: 16px;
+    margin-top: 15px;
+    border-radius: 5px;
+    border-color: transparent;
+  }
+  
+  a.gotofindIDpage_btn {
+    background-color: lightgrey;
+    color: black;
+    font-size: 16px;
+    width: 200px;
+    height: 45px;
+    position: relative;
+    left: 170px;
+    top: 0px;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-decoration: none;
+    border-radius: 5px;
+  }
+
+  a.gotoLoginpage_btn {
+    background-color: rgb(239, 220, 255);
+    color: rgb(119, 35, 155);
+    font-size: 16px;
+    width: 155px;
+    height: 20px;
+    position: relative;
+    left: 170px;
+    top: 20px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-decoration: none;
+    border-radius: 5px;
+  }

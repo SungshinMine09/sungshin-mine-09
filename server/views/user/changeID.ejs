@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SungshinMine09</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/changeID.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com/" />
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Tilt+Neon&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="myPageTitleBox">
+        <h1 class="center flex">마이페이지</h1>
+    </div>
+    <div class="newID_box" id="newID_box">
+      <h2 class="newID_Title">아이디 변경</h2>
+      <span class="newID_Step">새 아이디를 입력해주세요.</span>
+      <form method="post" action="/user/myPage/changeID" id="newID_Form">
+
+        <span class="newID_label">새 아이디</span>
+        <span class="newID_requireInfo">영문소문자/숫자, 4~16자</span>
+        <input
+          type="text"
+          id="newID"
+          name="newID"
+          placeholder="새 아이디"
+          pattern="[a-z0-9]{4,16}"
+          required
+        />
+
+        <input type="submit" value="새 아이디로 변경하기" style="cursor: pointer"/>
+      </form>
+    </div>
+  </body>
+</html>

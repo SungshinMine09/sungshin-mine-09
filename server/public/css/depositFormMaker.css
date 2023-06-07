@@ -1,0 +1,212 @@
+* {
+  font-family: "Tilt Neon";
+}
+
+.container {
+  margin: 0 auto;
+}
+
+.container .navs {
+  border-top: none;
+  border-bottom: none;
+}
+
+.banner {
+  width: 1120px;
+  height: 117px;
+
+  text-align: center;
+  vertical-align: middle;
+  line-height: 117px;
+  align-items: center;
+  margin: 25px auto;
+
+  background-color: rgb(239, 220, 255);
+}
+
+.banner p {
+  font-size: 28px;
+  color: rgb(119, 35, 155);
+}
+
+.accountBanner {
+  margin: 15px auto;
+
+  width: 1024px;
+  height: 100px;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10pxs 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+
+  padding-top: 10px;
+  white-space: nowrap;
+  text-align: center;
+  align-items: center;
+}
+
+.accountBanner label {
+  position: absolute;
+  font-size: 25px;
+  padding-left: 100px;
+}
+
+#inputAccount {
+  width: 500px;
+  height: 40px;
+  font-size: 20px;
+  border: 0;
+  border-radius: 15px;
+  outline: none;
+  padding-left: 10px;
+  background-color: rgb(233, 233, 233);
+  margin-top: 50px;
+  vertical-align: middle;
+}
+
+.accountBanner button {
+  margin-top: 50px;
+  vertical-align: middle;
+  height: 40px;
+  font-size: 25px;
+}
+/* 문항 게시 */
+.show {
+  margin: 0 auto;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-right: 10px;
+  width: 1024px;
+  background-color: rgb(250, 250, 250);
+  font-size: 20px;
+}
+
+#newQuestion {
+  height: 40px;
+  width: 800px;
+
+  font-size: 15px;
+  background-color: #fcfcfc;
+  border: 0;
+  border-bottom: 2px solid lightgrey;
+  padding: 10px;
+}
+form {
+  display: inline;
+}
+#edit {
+  /* float: right; */
+  border: 2px solid lightgrey;
+  width: 50px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+#delete {
+  border: 2px solid lightgrey;
+  width: 50px;
+  /* margin-right: 40px; */
+}
+
+.navs {
+  width: 1120px;
+  height: 51px;
+
+  color: black;
+  margin: auto;
+}
+
+.nav-left {
+  display: inline-block;
+  margin-top: 0px;
+  float: left;
+  margin-bottom: 75px;
+}
+
+.nav-right {
+  display: inline-block;
+  margin-top: 8px;
+  float: right;
+  margin-bottom: 75px;
+}
+
+.pageBtn {
+  display: inline-block;
+  width: 97px;
+  height: 51px;
+
+  background-color: rgb(233, 233, 233);
+  line-height: 51px;
+  font-size: 16px;
+  text-align: center;
+}
+
+.adminBtn {
+  display: inline-block;
+  width: 137px;
+  height: 35px;
+
+  background-color: rgb(233, 233, 233);
+  line-height: 35px;
+  font-size: 16px;
+  text-align: center;
+}
+
+.plusBtn {
+  /* margin-top: 20px; */
+  width: 30px;
+  height: 30px;
+  background-color: rgb(233, 233, 233);
+  cursor: ponter;
+  border: none;
+  vertical-align: middle;
+  font-size: 28px;
+}
+
+.minusBtn {
+  width: 30px;
+  height: 30px;
+  background-color: rgb(233, 233, 233);
+  cursor: ponter;
+  border: none;
+
+  font-size: 28px;
+}
+
+.formUnit {
+  width: 1120px;
+  height: 95px;
+  margin-top: 30px;
+  margin: 0 auto;
+}
+
+.formContainer {
+  text-align: center;
+  margin: 0 auto;
+}
+
+#question-input {
+  /* margin: 8px auto; */
+  width: 864px;
+  height: 40px;
+  padding-left: 10px;
+  font-size: 20px;
+  border: 0;
+  border-radius: 15px;
+  outline: none;
+  padding-left: 10px;
+  background-color: rgb(233, 233, 233);
+  margin-top: 15px;
+  vertical-align: middle;
+}
+
+#completeBtn {
+  width: 192px;
+  height: 40px;
+
+  font-size: 15px;
+  font-weight: bold;
+
+  left: 50%;
+  background-color: rgba(119, 35, 155, 1);
+  color: rgb(239, 220, 255);
+  border-radius: 10px;
+  border-style: none;
+}
