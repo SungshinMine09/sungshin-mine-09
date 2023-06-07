@@ -102,11 +102,11 @@ module.exports = {
             numOfMyParticipations++;
           }
         }
-        myHosts = await db.sequelize.query("SELECT a.*, date_format(d.end_at, '%y-%m-%d') AS 'end_at', c.url, replace(c.url, 'public\', '') AS real_url FROM cobuying_room AS a LEFT JOIN sell AS b ON a.id=b.cobuying_room_id LEFT JOIN image as c ON b.product_id=c.product_id LEFT JOIN deposit_form as d ON a.id=d.id ORDER BY a.id  DESC;");
+        myHosts = await db.sequelize.query("SELECT a.*, date_format(d.end_at, '%y-%m-%d') AS 'end_at', c.url, a.host_id, replace(c.url, 'public\', '') AS real_url FROM cobuying_room AS a LEFT JOIN sell AS b ON a.id=b.cobuying_room_id LEFT JOIN image as c ON b.product_id=c.product_id LEFT JOIN deposit_form as d ON a.id=d.id ORDER BY a.id  DESC;");
         myHosts=myHosts[0];
         var numOfMyHosts=0;
         for (var i=0; i<myHosts.length; i++) {
-          if (decodedToken.db_id==myHosts[i].user_id) {
+          if (decodedToken.db_id==myHosts[i].host_id) {
             numOfMyHosts++;
           }
         }
