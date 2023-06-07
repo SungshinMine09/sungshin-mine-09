@@ -41,6 +41,7 @@ const initForm = async (req, res) => {
       },
       { where: { id: req.params.room_id } }
     );
+    
   } catch (error) {
     console.log(error);
   }

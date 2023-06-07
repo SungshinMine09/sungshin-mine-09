@@ -113,6 +113,32 @@ module.exports = {
         if(decodedToken) {
           res.render("user/mypage", {userInfos: userInfos, myParticipations: myParticipations, myHosts: myHosts, numOfMyParticipations: numOfMyParticipations, numOfMyHosts: numOfMyHosts, userID: decodedToken.db_id});
         }
+
+        // 채팅 관련 table 내용 notifications 테이블에 삽입
+        chatRoomJoinMessage = await db.sequelize.query(
+          "SELECT a.id as chatroomId, a.cobuying_room_id, a.host_id, a.guest_id, b.id as chatMessageId, b.user_id, b.chat_message, b.createdAt, b.updatedAt FROM chatroom as a JOIN chat_message as b ON a.id=b.chatroom_id JOIN image as c ON a.cobuying_room_id=c.id"
+        );
+        console.log(chatRoomJoinMessage)
+        types = Notification.getAttributes().type2.values;
+        chatRoomJoinMessage=chatRoomJoinMessage[0];
+        console.log(chatRoomJoinMessage);
+        for (const message of chatRoomJoinMessage) {
+          await Notification.create({
+            receiver_id: message.host_id,
+            cobuying_room_id: message.cobuying_room_id,
+            content: message.chat_message,
+            type2: types[2],
+            url: `/CoBuyRoom/${message.cobuying_room_id}/chatting`,
+          });
+          await Notification.create({
+            receiver_id: message.guest_id,
+            cobuying_room_id: message.cobuying_room_id,
+            content: message.chat_message,
+            type2: types[2],
+            url: `/CoBuyRoom/${message.cobuying_room_id}/chatting`,
+          });  
+        }
+        
       } catch (error) {
         console.log(error);
       }
