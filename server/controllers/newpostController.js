@@ -1,7 +1,10 @@
 const db = require("../models/index"),
   moment = require("moment"),
   CoBuyingRoom = db.cobuying_room,
-  NewPost = db.update_post;
+  NewPost = db.update_post,
+  User = db.user;
+
+const verifyAuthController = require("./verifyAuthController");
 
 module.exports = {
   index: async (req, res, next) => {
@@ -23,9 +26,17 @@ module.exports = {
         dates.push(moment(post.createdAt).format("YY/MM/DD HH:MM"));
       });
 
+      current_user = await verifyAuthController.checkID(req);
+      current_user_id = current_user.dataValues.login_id;
+
+      const user = await User.findByPk(cobuyroom.host_id);
+      host_user_id = user.login_id;
+
       res.locals.cobuyroom = cobuyroom;
       res.locals.newposts = newposts;
       res.locals.dates = dates;
+      res.locals.current_user_id = current_user_id;
+      res.locals.host_user_id = host_user_id;
 
       next();
     } catch (error) {
