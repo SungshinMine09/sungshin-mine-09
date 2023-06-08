@@ -51,7 +51,9 @@ function send() {
   let chatroom_id = data_div.dataset.chatroom_id;
   let cobuying_room_id = data_div.dataset.cobuying_room_id;
   let user_id = data_div.dataset.user_id;
-  let receiver_id = data_div.dataset.receiver_id;
+  let host_id = data_div.dataset.host_id;
+  let guest_id = data_div.dataset.guest_id;
+  let receiver_id = user_id == host_id ? guest_id : host_id; // 유저 아이디와 호스트 아이디를 비교하여 알림을 받아야 하는 아이디를 구분한다
 
   //   입력한 데이터로 ejs에 메세지 생성
   let chattingBox = document.getElementById("chattingBox");
