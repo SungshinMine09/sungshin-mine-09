@@ -140,21 +140,17 @@ io.on("connection", function (socket) {
       user_id: data.user_id,
     });
 
-    socket.broadcast.emit("update", data);
-  });
-
-  socket.on("notification", function (data) {
-    console.log(data);
-
     types = Notification.getAttributes().type2.values;
 
     Notification.create({
       receiver_id: data.receiver_id,
       cobuying_room_id: data.cobuying_room_id,
       content: data.message,
-      type2: types[3],
-      url: `/CoBuyRoom/${coBuyingRoomID}/chatting/`,
+      type2: types[2],
+      url: `/CoBuyRoom/${data.cobuying_room_id}/chatting/`,
     });
+
+    socket.broadcast.emit("update", data);
   });
 
   // user connection lost
