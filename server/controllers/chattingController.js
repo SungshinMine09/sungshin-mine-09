@@ -5,7 +5,7 @@ const db = require("../models/index"),
   ChatRoom = db.chatroom,
   ChatMessage = db.chat_message,
   User = db.user,
-  Notification = db.notification;;
+  Notification = db.notification;
 
 const verifyAuthController = require("./verifyAuthController");
 
@@ -59,16 +59,18 @@ module.exports = {
 
       // -----------------------------------------------------------
       // 채팅 메세지 내역 가져오기
-      messages = await ChatMessage.findAll({
-        where: {
-          chatroom_id: chatroom_using.id,
-        },
-      });
-
+      let messages;
       dates = [];
-      messages.forEach((message) => {
-        dates.push(moment(message.createdAt).format("YY/MM/DD HH:MM"));
-      });
+      if (chatroom_using) {
+        messages = await ChatMessage.findAll({
+          where: {
+            chatroom_id: chatroom_using.id,
+          },
+        });
+        messages.forEach((message) => {
+          dates.push(moment(message.createdAt).format("YY/MM/DD HH:MM"));
+        });
+      }
 
       // 유저 아이디 목록
       const query = "SELECT user.login_id FROM chatroom JOIN user ON chatroom.guest_id=user.id WHERE chatroom.cobuying_room_id=" + coBuyingRoomID;

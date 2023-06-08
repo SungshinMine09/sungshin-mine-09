@@ -21,6 +21,7 @@
       </div>
     </div>
     <main>
+      <% if (chatroom_using) { %>
       <div>
         <div class="fontSize16 marginTop20" id="chattingBox">
           <% for(var i = 0; i < messages.length; i++) { %> <% if(messages[i].user_id == user_id){ %>
@@ -60,8 +61,13 @@
           </div>
         </div>
       </div>
+      <% } else { %>
+      <p>채팅을 보낸 유저가 없습니다.</p>
+      <% } %>
     </main>
     <!-- script로의 변수 전달 용도 -->
-    <div class="data_div" data-chatroom_id="<%= chatroom_using.id %>" data-cobuying_room_id="<%= cobuyroom.id %>" data-user_id="<%=user_id %>"></div>
+    <% if(chatroom_using) { %>
+    <div class="data_div" data-chatroom_id="<%= chatroom_using.id %>" data-cobuying_room_id="<%= cobuyroom.id %>" data-user_id="<%=user_id %>" data-receiver_id="<%=chatroom_using.guest_id %>"></div>
+    <% } %>
   </body>
 </html>
