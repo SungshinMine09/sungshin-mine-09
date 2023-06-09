@@ -5,6 +5,7 @@ const DepositForm = db.deposit_form;
 const Answer = db.answer;
 const Notification = db.notification;
 const User = db.user;
+const DemandUser = db.demand_user;
 
 const verifyAuthController = require("./verifyAuthController");
 
@@ -26,13 +27,41 @@ const initForm = async (req, res) => {
     user = await verifyAuthController.checkID(req);
     user_id = user.dataValues.id;
     console.log(types);
+    coBuyingRoomID=res.params.room_id;
 
-    Notification.create({
-      receiver_id: user_id,
+    const demandUsersRows = await DemandUser.findAll({
+      where: {
+        cobuying_room_id: req.params.room_id,
+      },
+    });
+
+    console.log(demandUsersRows);
+
+    const cobuyingRoomRows = await CoBuyingRoom.findOne({
+      where: {
+        id: req.params.room_id,
+      },
+    });
+    console.log(cobuyingRoomRows);
+
+    if (demandUsersRows.length !== 0) {
+      for (const demandUser of demandUsersRows) {
+        await Notification.create({
+          receiver_id: demandUser.user_id,
+          cobuying_room_id: req.params.room_id,
+          content: "입금폼이 생성되었습니다.",
+          type2: types[1],
+          url: `/CoBuyRoom/${coBuyingRoomID}/writeForm/`,
+        });
+      }
+    }
+
+    await Notification.create({
+      receiver_id: cobuyingRoomRows.host_id,
       cobuying_room_id: req.params.room_id,
       content: "입금폼이 생성되었습니다.",
       type2: types[0],
-      url: `/CoBuyRoom/${req.params.room_id}`,
+      url: `/CoBuyRoom/${req.params.room_id}/writeForm/`,
     });
 
     await CoBuyRoom.update(
