@@ -133,20 +133,25 @@ form {
   height: 51px;
 
   background-color: rgb(233, 233, 233);
-  line-height: 51px;
+  color: rgb(64, 64, 64);
   font-size: 16px;
+  line-height: 51px;
   text-align: center;
+  border-radius: 4px;
+  border: 0px;
 }
 
 .adminBtn {
   display: inline-block;
+  font-size: 13px;
   width: 137px;
   height: 35px;
-
+  border-radius: 4px;
+  color: rgb(64, 64, 64);
   background-color: rgb(233, 233, 233);
   line-height: 35px;
-  font-size: 16px;
   text-align: center;
+  
 }
 
 .plusBtn {
