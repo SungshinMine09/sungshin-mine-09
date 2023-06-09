@@ -25,7 +25,7 @@
         <ul class="marginTop30" id="alarmPageUl">
           <% Array.from(chattingNotifications).forEach(notification => { %>
             <%if (notification.receiver_id == userID) {%>
-              <%if (notification.demand_user_id == notification.receiver_id) {%>
+              <%if (notification.host_id != notification.receiver_id) {%>
                 <li class="flex" onClick="location.href='/CoBuyRoom/<%=notification.cobuying_room_id%>/chatting'" style="cursor: pointer">
                   <div class="image"><img src="<%=`${notification.real_url}`%>" /></div>
                   <div class="textBox">
@@ -33,7 +33,9 @@
                       <span style="color: rgb(142, 68, 173); font-weight: bold;">참여</span>
                       <span>하신 </span>
                       <span style="font-weight: bold;"><%= notification.title %></span>  
-                      <span>공구방의 채팅을 알려드립니다.</span>
+                      <span>공구방의 
+                      <span style="font-weight: bold;">채팅</span>
+                      <span>을 알려드립니다.</span>
                     </div>
                     <div class="fontSize14 marginTop20 textBoxContent">
                       <%= notification.content %>
@@ -41,7 +43,7 @@
                   </div>
                 </li>
               <%}else%>
-              <%if (notification.host_id == userID) {%>
+              <%if (notification.host_id == notification.receiver_id) {%>
                 <li class="flex" onClick="location.href='/CoBuyRoom/<%=notification.cobuying_room_id%>/chatting'" style="cursor: pointer">
                   <div class="image"><img src="<%=`${notification.real_url}`%>" /></div>
                   <div class="textBox">
@@ -49,7 +51,9 @@
                       <span style="color: rgb(192, 57, 43); font-weight: bold;">주최</span>
                       <span>하신 </span>
                       <span style="font-weight: bold;"><%= notification.title %></span>  
-                      <span>공구방의 채팅을 알려드립니다.</span>
+                      <span>공구방의 
+                      <span style="font-weight: bold;">채팅</span>
+                      <span>을 알려드립니다.</span>
                     </div>
                     <div class="fontSize14 marginTop20 textBoxContent">
                       <%= notification.content %>

@@ -5,7 +5,7 @@ const db = require("../models/index"),
   ChatRoom = db.chatroom,
   ChatMessage = db.chat_message,
   User = db.user,
-  Notification = db.notification;
+  Notification = db.notifications;
 
 const verifyAuthController = require("./verifyAuthController");
 
