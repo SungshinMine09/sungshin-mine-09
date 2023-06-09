@@ -22,54 +22,7 @@ const initForm = async (req, res) => {
       },
     });
 
-    // create notification
-    types = Notification.getAttributes().type2.values;
-    user = await verifyAuthController.checkID(req);
-    user_id = user.dataValues.id;
-    console.log(types);
-    coBuyingRoomID=res.params.room_id;
 
-    const demandUsersRows = await DemandUser.findAll({
-      where: {
-        cobuying_room_id: req.params.room_id,
-      },
-    });
-
-    console.log(demandUsersRows);
-
-    const cobuyingRoomRows = await CoBuyingRoom.findOne({
-      where: {
-        id: req.params.room_id,
-      },
-    });
-    console.log(cobuyingRoomRows);
-
-    if (demandUsersRows.length !== 0) {
-      for (const demandUser of demandUsersRows) {
-        await Notification.create({
-          receiver_id: demandUser.user_id,
-          cobuying_room_id: req.params.room_id,
-          content: "입금폼이 생성되었습니다.",
-          type2: types[1],
-          url: `/CoBuyRoom/${coBuyingRoomID}/writeForm/`,
-        });
-      }
-    }
-
-    await Notification.create({
-      receiver_id: cobuyingRoomRows.host_id,
-      cobuying_room_id: req.params.room_id,
-      content: "입금폼이 생성되었습니다.",
-      type2: types[0],
-      url: `/CoBuyRoom/${req.params.room_id}/writeForm/`,
-    });
-
-    await CoBuyRoom.update(
-      {
-        state: "deposit",
-      },
-      { where: { id: req.params.room_id } }
-    );
     
   } catch (error) {
     console.log(error);
@@ -87,6 +40,31 @@ module.exports = {
     const cobuying_room = await CoBuyRoom.findOne({
       where: { id: req.params.room_id },
     });
+
+    // create notification
+    types = Notification.getAttributes().type2.values;
+    const coBuyingRoomID=req.params.room_id;
+    const demandUsersRows = await DemandUser.findAll({
+      where: {cobuying_room_id: coBuyingRoomID},
+    });
+    const cobuyingRoomRows = await CoBuyRoom.findOne({
+      where: { id: coBuyingRoomID},
+    });
+    if (demandUsersRows.length != 0) {
+      for (const demandUser of demandUsersRows) {
+        await Notification.create({
+          receiver_id: demandUser.user_id,
+          cobuying_room_id: coBuyingRoomID,
+          content: "입금폼이 생성되었습니다.",
+          type2: types[0],
+          url: `/CoBuyRoom/${coBuyingRoomID}/writeForm/`,
+        });
+      }
+    }
+    await CoBuyRoom.update(
+      {state: "deposit",},
+      { where: { id: req.params.room_id } }
+    );
 
     if (!cobuying_room) {
       res.render("CoBuyRoom/createCoBuyRoom");

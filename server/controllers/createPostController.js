@@ -1,7 +1,7 @@
 const db = require("../models/index"),
   CoBuyingRoom = db.cobuying_room,
   NewPost = db.update_post,
-  Notification = db.notifications,
+  Notification = db.notification,
   DemandUser = db.demand_user;
 
 const verifyAuthController = require("./verifyAuthController");
@@ -52,7 +52,7 @@ module.exports = {
           id: coBuyingRoomID,
         },
       });
-      if (demandUsesrRows.length != 0) {
+      if (demandUsersRows.length != 0) {
         await Promise.all(
           demandUsersRows.map(async (demandUser) => {
             await Notification.create({
