@@ -13,7 +13,7 @@
   <body>
     <div class="gonggu_header" style="cursor: pointer" onclick="location.href='/CoBuyRoom/<%= cobuyroomID %>/detail';">
       <div>
-        <p>💻컴퓨터공학과 과잠💻</p>
+        <p><%= cobuyroom.title %></p>
         <button class="gonggu_delete_button">공동구매방 삭제하기</button>
       </div>
     </div>
@@ -22,11 +22,11 @@
       <div>
         <nav>
           <ul>
-            <li><button class="message_type_button">새소식</button></li>
-            <li><button class="message_type_button">채팅</button></li>
-            <li style="float: right"><button class="grey_s_button" style="margin-left: 5px">수요조사 통계</button></li>
-            <li style="float: right"><button class="grey_s_button" style="margin-left: 5px">입금폼 양식 작성</button></li>
-            <li style="float: right"><button class="grey_s_button" style="margin-left: 5px">입금폼 통계</button></li>
+            <li><button class="message_type_button" style="cursor: pointer" onclick="location.href='/CoBuyRoom/<%= cobuyroom.id %>/newpost';">새소식</button></li>
+            <li><button class="message_type_button" style="cursor: pointer" onclick="location.href='/CoBuyRoom/<%= cobuyroom.id %>/chatting';">채팅</button></li>
+            <li style="float: right"><button class="grey_s_button" style="margin-left: 5px; cursor: pointer" onclick="location.href='/CoBuyRoom/<%=cobuyroom.id%>/suyoStat';">수요조사 통계</button></li>
+            <li style="float: right"><button class="grey_s_button" style="margin-left: 5px; cursor: pointer" onclick="location.href='/CoBuyForm/<%= cobuyroom.id %>/depositFormMaker';">입금폼 양식 작성</button></li>
+            <li style="float: right"><button class="grey_s_button" style="margin-left: 5px; cursor: pointer" onclick="location.href='/CoBuyForm/<%= cobuyroom.id %>/depositFormResult';">입금폼 통계</button></li>
           </ul>
           <ul>
             <li><button class="light_purple_s_button">새소식 글쓰기</button></li>
@@ -34,7 +34,6 @@
         </nav>
       </div>
     </div>
-
     <div class="post_form">
       <form action="./createPost/create" method="post">
         <input class="post_title" type="text" name="title" maxlength="20" placeholder="새소식 제목을 입력해주세요." /> <br />

@@ -11,9 +11,7 @@ module.exports = {
     try {
       // 쿼리스트링으로 id를 받아 해당하는 공구방 데이터를 꺼내 사용한다
       const coBuyingRoomID = req.params.id;
-
       res.locals.cobuyroomID = coBuyingRoomID;
-
       next();
     } catch (error) {
       console.log(`Error fetching coBuyRoomCreatePost: ${error.message}`);
@@ -21,7 +19,10 @@ module.exports = {
     }
   },
   indexView: async (req, res) => {
-    res.render("CoBuyRoom/createPost");
+    const form_id = req.params.form_id;
+    const coBuyingRoomID = req.params.id;
+    const cobuyroom = await CoBuyingRoom.findByPk(coBuyingRoomID);
+    res.render("CoBuyRoom/createPost", {cobuyroom: cobuyroom, form_id: form_id});
   },
   createPost: async (req, res, next) => {
     try {
