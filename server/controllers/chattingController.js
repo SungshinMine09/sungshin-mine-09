@@ -68,7 +68,7 @@ module.exports = {
           },
         });
         messages.forEach((message) => {
-          dates.push(moment(message.createdAt).format("YY/MM/DD HH:MM"));
+          dates.push(moment(message.createdAt).format("YY/MM/DD HH:mm"));
         });
       }
 

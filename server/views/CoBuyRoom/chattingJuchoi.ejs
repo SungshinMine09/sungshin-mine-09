@@ -13,13 +13,37 @@
 
     <script src="/socket.io/socket.io.js"></script>
     <script src="/js/chatting.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
   </head>
   <body>
-    <div class="gonggu_header">
+    <div class="gonggu_header" style="cursor: pointer" onclick="location.href='/CoBuyRoom/<%= cobuyroom.id %>/detail';">
       <div>
         <p><%= cobuyroom.title %></p>
       </div>
     </div>
+
+    <div class="gonggu_nav">
+      <div>
+        <nav>
+          <ul>
+            <li><button class="message_type_button" style="cursor: pointer" onclick="location.href='/CoBuyRoom/<%= cobuyroom.id %>/newpost';">새소식</button></li>
+            <li><button class="message_type_button" style="cursor: pointer" onclick="location.href='/CoBuyRoom/<%= cobuyroom.id %>/chatting';">채팅</button></li>
+            <% if(current_user_id == host_user_id) { %>
+            <li style="float: right">
+              <button class="grey_s_button" style="margin-left: 5px; cursor: pointer" onclick="location.href='/CoBuyRoom/<%=cobuyroom.id%>/suyoStat';">수요조사 통계</button>
+            </li>
+            <li style="float: right">
+              <button class="grey_s_button" style="margin-left: 5px; cursor: pointer" onclick="location.href='/CoBuyForm/<%= cobuyroom.id %>/depositFormMaker';">입금폼 양식 작성</button>
+            </li>
+            <li style="float: right">
+              <button class="grey_s_button" style="margin-left: 5px; cursor: pointer" onclick="location.href='/CoBuyForm/<%= cobuyroom.id %>/depositFormResult';">입금폼 통계</button>
+            </li>
+            <% } %>
+          </ul>
+        </nav>
+      </div>
+    </div>
+
     <main>
       <% if (chatroom_using) { %>
       <div>
@@ -62,7 +86,7 @@
         </div>
       </div>
       <% } else { %>
-      <p style="margin-left: 40.5px;">채팅을 보낸 유저가 없습니다.</p>
+      <p style="margin-left: 40.5px">채팅을 보낸 유저가 없습니다.</p>
       <% } %>
     </main>
     <!-- script로의 변수 전달 용도 -->
