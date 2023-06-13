@@ -21,9 +21,6 @@ const initForm = async (req, res) => {
         2: "현장수령이 아닐경우 배송받을 장소(주소, 우편번호, 전화번호)를 입력해주세요",
       },
     });
-
-
-    
   } catch (error) {
     console.log(error);
   }
@@ -43,12 +40,12 @@ module.exports = {
 
     // create notification
     types = Notification.getAttributes().type2.values;
-    const coBuyingRoomID=req.params.room_id;
+    const coBuyingRoomID = req.params.room_id;
     const demandUsersRows = await DemandUser.findAll({
-      where: {cobuying_room_id: coBuyingRoomID},
+      where: { cobuying_room_id: coBuyingRoomID },
     });
     const cobuyingRoomRows = await CoBuyRoom.findOne({
-      where: { id: coBuyingRoomID},
+      where: { id: coBuyingRoomID },
     });
     if (demandUsersRows.length != 0) {
       for (const demandUser of demandUsersRows) {
@@ -61,10 +58,7 @@ module.exports = {
         });
       }
     }
-    await CoBuyRoom.update(
-      {state: "deposit",},
-      { where: { id: req.params.room_id } }
-    );
+    await CoBuyRoom.update({ state: "deposit" }, { where: { id: req.params.room_id } });
 
     if (!cobuying_room) {
       res.render("CoBuyRoom/createCoBuyRoom");
@@ -310,21 +304,23 @@ module.exports = {
       const cobuying_room = await CoBuyRoom.findOne({
         where: { id: form_id },
       });
-      if (!deposit_form) {
-        res.render(`CoBuyForm/${form_id}/depositFormMaker`);
+      // 만약 입금폼이 존재한다면 결과페이지로
+      if (deposit_form) {
+        const answers = await Answer.findAll({
+          where: {
+            id: form_id,
+          },
+        });
+        console.log(answers);
+        res.render("CoBuyForm/depositFormResult", {
+          deposit_form: deposit_form,
+          answers: answers,
+          cobuying_room: cobuying_room,
+          form_id: form_id,
+        });
+      } else {
+        return res.send(`<script>alert('작성된 입금폼 양식이 존재하지 않습니다. 먼저 양식을 작성해 주세요.'); location.href='/CoBuyForm/${form_id}/depositFormMaker';</script>`);
       }
-      const answers = await Answer.findAll({
-        where: {
-          id: form_id,
-        },
-      });
-      console.log(answers);
-      res.render("CoBuyForm/depositFormResult", {
-        deposit_form: deposit_form,
-        answers: answers,
-        cobuying_room: cobuying_room,
-        form_id: form_id,
-      });
     } catch (error) {
       console.log(error);
     }
