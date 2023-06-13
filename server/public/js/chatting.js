@@ -27,7 +27,7 @@ socket.on("update", function (data) {
     chattingFromYou.classList.add("flex");
     messageBox.classList.add("messageBox");
     date.classList.add("date");
-    img.src = "profileImageExample.png";
+    img.src = "/images/profileImageExample.png";
 
     chattingBox.appendChild(chattingFromYou);
     chattingFromYou.appendChild(imgDiv);
@@ -70,7 +70,7 @@ function send() {
   chattingFromMe.classList.add("flex");
   messageBox.classList.add("messageBox");
   date.classList.add("date");
-  img.src = "profileImageExample.png";
+  img.src = "/images/profileImageExample.png";
 
   chattingBox.appendChild(chattingFromMe);
   chattingFromMe.appendChild(imgDiv);
