@@ -1,7 +1,9 @@
 let socket = io();
 
 socket.on("connect", function () {
-  socket.emit("newUser");
+  let data_div = document.getElementsByClassName("data_div").item(0);
+  let user_id = data_div.dataset.user_id;
+  socket.emit("newUser", { user_id: user_id });
 });
 
 // 서버에서 데이터 받기
@@ -43,9 +45,9 @@ socket.on("update", function (data) {
 function send() {
   let message = document.getElementById("message").value;
   document.getElementById("message").value = "";
+  let data_div = document.getElementsByClassName("data_div").item(0);
 
   // ejs에서 데이터 받아오기 (현재화면에 메세지 생성 및 서버로 전송)
-  let data_div = document.getElementsByClassName("data_div").item(0);
   let chatroom_id = data_div.dataset.chatroom_id;
   let cobuying_room_id = data_div.dataset.cobuying_room_id;
   let user_id = data_div.dataset.user_id;
@@ -83,4 +85,12 @@ function send() {
 
   // 서버로 message 이벤트 전달 + 데이터와 함께
   socket.emit("message", { type: "message", message: message, chatroom_id: chatroom_id, cobuying_room_id: cobuying_room_id, user_id: user_id, receiver_id: receiver_id, date: currentTime });
+}
+
+function changeChatroom(elem) {
+  let data_div = document.getElementsByClassName("data_div").item(0);
+  let cobuying_room_id = data_div.dataset.cobuying_room_id;
+
+  login_id = elem.innerText;
+  window.location.href = `/CoBuyRoom/${cobuying_room_id}/chatting/${login_id}`;
 }
