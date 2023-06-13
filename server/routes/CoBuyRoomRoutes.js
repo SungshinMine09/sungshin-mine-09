@@ -38,6 +38,7 @@ router.get("/:id", verifyAuthController.checkAuth, CoBuyRoomDetailController.ind
 
 // 상세페이지
 router.get("/:id/detail", verifyAuthController.checkAuth, CoBuyRoomDetailController.index, CoBuyRoomDetailController.indexView); // 상의후 다현님 코드와 합치거나 할 것
+router.get("/:id/chatting/:login_id", verifyAuthController.checkAuth, ChatController.chatRoom, ChatController.indexView);
 router.get("/:id/chatting", verifyAuthController.checkAuth, ChatController.index, ChatController.indexView);
 
 router.get("/:id/updateCurrentDemand", verifyAuthController.checkAuth, CoBuyRoomDetailController.updateCurrentDemand, CoBuyRoomDetailController.redirectView);

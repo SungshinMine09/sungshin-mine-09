@@ -49,7 +49,7 @@ app.use(morgan("dev")); // log every request to the console
 // }
 
 db.sequelize
-  //.sync({ force: true })
+  // .sync({ alter: true })
   .sync()
   .then(() => console.log("Database OK"))
   //.then(createAndLogUser)
@@ -118,13 +118,15 @@ const server = app.listen(app.get("port"), () => {
 const ChatMessage = db.chat_message;
 const Notification = db.notification;
 
+clients = [];
+
 // socket 서버 실행
 const io = socketIO(server, { path: "/socket.io" });
 io.on("connection", function (socket) {
   // 새로운 유저 접속을 서버에게 알림
-  socket.on("newUser", function () {
-    // socket.name = name;
-    console.log("유저 접속");
+  socket.on("newUser", function (data) {
+    user_id = data.user_id;
+    console.log(user_id + "유저 접속");
   });
 
   // 클라이언트가 서버로 메세지 전송
