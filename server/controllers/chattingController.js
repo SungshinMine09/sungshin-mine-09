@@ -10,6 +10,7 @@ const db = require("../models/index"),
 const verifyAuthController = require("./verifyAuthController");
 
 module.exports = {
+  // 단순 chatroom url을 받은 경우
   index: async (req, res, next) => {
     try {
       const coBuyingRoomID = req.params.id;
@@ -46,15 +47,14 @@ module.exports = {
       const creator = await User.findByPk(cobuyroom.host_id);
 
       // ---------------접속유저가 주최자인 경우---------------------
-      // 해당 공구방의 모든 채팅방 불러오기
+      // 해당 공구방의 첫번째 채팅방 불러오기
       if (is_room_creater) {
-        chatrooms = await ChatRoom.findAll({
+        chatroom_using = await ChatRoom.findOne({
           where: {
             cobuying_room_id: coBuyingRoomID,
           },
           order: [["id", "desc"]],
         });
-        chatroom_using = chatrooms[0]; // 최상위 공구방 보여주기
       }
 
       // -----------------------------------------------------------
@@ -73,7 +73,7 @@ module.exports = {
       }
 
       // 유저 아이디 목록
-      const query = "SELECT user.login_id FROM chatroom JOIN user ON chatroom.guest_id=user.id WHERE chatroom.cobuying_room_id=" + coBuyingRoomID;
+      const query = "SELECT user.login_id, user.id FROM chatroom JOIN user ON chatroom.guest_id=user.id WHERE chatroom.cobuying_room_id=" + coBuyingRoomID;
       const chatUserLoginIds = await db.sequelize.query(query, { type: Sequelize.QueryTypes.SELECT });
       console.log(chatUserLoginIds);
 
@@ -87,6 +87,65 @@ module.exports = {
       res.locals.dates = dates;
       res.locals.chat_user_login_ids = chatUserLoginIds;
       console.log(Notification);
+      next();
+    } catch (error) {
+      console.log(`Error fetching Chatting: ${error.message}`);
+      next(error);
+    }
+  },
+  // 특정한 user id 값을 받은 경우, 해당하는 채팅방으로 (주최자가 동일 공동구매방 내에서 채팅방을 바꿀 때 사용하는 미들웨어)
+  chatRoom: async (req, res, next) => {
+    try {
+      const coBuyingRoomID = req.params.id;
+      const guest_login_id = req.params.login_id;
+      const cobuyroom = await CoBuyingRoom.findByPk(coBuyingRoomID);
+
+      // 주최자/일반유저 여부 확인
+      user = await verifyAuthController.checkID(req);
+      user_id = user.dataValues.id;
+      user_login_id = user.dataValues.login_id;
+      is_room_creater = true; // 주최자 여부
+
+      // 채팅방 가져오기
+      guest = await User.findOne({
+        where: {
+          login_id: guest_login_id,
+        },
+      });
+      let chatroom_using = await ChatRoom.findOne({
+        where: {
+          cobuying_room_id: coBuyingRoomID,
+          guest_id: guest.id,
+        },
+      });
+
+      // 채팅 메세지 내역 가져오기
+      let messages;
+      dates = [];
+      if (chatroom_using) {
+        messages = await ChatMessage.findAll({
+          where: {
+            chatroom_id: chatroom_using.id,
+          },
+        });
+        messages.forEach((message) => {
+          dates.push(moment(message.createdAt).format("YY/MM/DD HH:mm"));
+        });
+      }
+
+      // 유저 아이디 목록
+      const query = "SELECT user.login_id, user.id FROM chatroom JOIN user ON chatroom.guest_id=user.id WHERE chatroom.cobuying_room_id=" + coBuyingRoomID;
+      const chatUserLoginIds = await db.sequelize.query(query, { type: Sequelize.QueryTypes.SELECT });
+      console.log(chatUserLoginIds);
+
+      res.locals.cobuyroom = cobuyroom;
+      res.locals.chatroom_using = chatroom_using;
+      res.locals.is_room_creater = is_room_creater;
+      res.locals.user_login_id = user_login_id;
+      res.locals.user_id = user_id;
+      res.locals.messages = messages;
+      res.locals.dates = dates;
+      res.locals.chat_user_login_ids = chatUserLoginIds;
       next();
     } catch (error) {
       console.log(`Error fetching Chatting: ${error.message}`);

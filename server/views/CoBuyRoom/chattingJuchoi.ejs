@@ -70,12 +70,15 @@
         <div class="participantBox">
           <!-- 일반 유저(주최자 아님)일 경우 -->
           <% if(!is_room_creater) { %>
-          <p style="cursor: pointer"><%= creator.login_id %> (공동구매 주최자)</p>
+          <p style="cursor: pointer; font-weight: bold"><%= creator.login_id %> (공동구매 주최자)</p>
           <% } %>
           <!-- 공동구매 주최자일 경우 -->
-          <% if(is_room_creater) { %> <% for(id of chat_user_login_ids) { %>
-          <p style="cursor: pointer"><%= id.login_id %></p>
-          <% } %> <% } %>
+          <!-- 채팅방이 존재하는 모든 유저 아이디를 리스팅 -> 현재 채팅방에 참여중인 유저 아이디를 볼드 표시 -->
+          <% if(is_room_creater) { %> <% for(var i=0; i< chat_user_login_ids.length ; i++) { %> <% if(chat_user_login_ids[i].id==chatroom_using.guest_id) { %>
+          <p style="cursor: pointer; font-weight: bold"><%= chat_user_login_ids[i].login_id %></p>
+          <% } else { %>
+          <p style="cursor: pointer" onclick="changeChatroom(this)"><%= chat_user_login_ids[i].login_id %></p>
+          <% }}} %>
         </div>
 
         <div class="marginTop30">
