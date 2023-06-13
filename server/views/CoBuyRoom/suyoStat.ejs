@@ -13,10 +13,10 @@
   <body>
     
     <% Array.from(suyoStats).forEach( suyoStat => { %>
-    <div class="gonggu_header">
+    <div class="gonggu_header" style="cursor: pointer;" 
+    onclick="location.href='/CoBuyRoom/<%= cobuyroom.id %>/detail';">
       <div>
         <p><%= suyoStat.title %></p>
-        <button class="gonggu_delete_button">공동구매방 삭제하기</button>
       </div>
     </div>
     <% }); %>
