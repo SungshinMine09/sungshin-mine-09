@@ -12,8 +12,6 @@ socket.on("update", function (data) {
   // 채팅이 수신되어야 하는 채팅방에만 메세지 띄워주기
   if (chatroom_id == data.chatroom_id) {
     // ejs에 메세지박스 생성
-    const currentTime = new Date();
-    console.log(currentTime, typeof currentTime);
     let chattingBox = document.getElementById("chattingBox");
 
     let chattingFromYou = document.createElement("div");
@@ -23,7 +21,7 @@ socket.on("update", function (data) {
     let messageBox = document.createElement("div");
     let date = document.createElement("div");
     let msgNode = document.createTextNode(`${data.message}`);
-    let dateNode = document.createTextNode(`날짜`);
+    let dateNode = document.createTextNode(`moment(${data.date}).format("YY/MM/DD HH:mm")`);
 
     chattingFromYou.classList.add("chattingFromYou");
     chattingFromYou.classList.add("flex");
@@ -56,6 +54,7 @@ function send() {
   let receiver_id = user_id == host_id ? guest_id : host_id; // 유저 아이디와 호스트 아이디를 비교하여 알림을 받아야 하는 아이디를 구분한다
 
   //   입력한 데이터로 ejs에 메세지 생성
+  currentTime = moment().format("YY/MM/DD HH:mm");
   let chattingBox = document.getElementById("chattingBox");
 
   let chattingFromMe = document.createElement("div");
@@ -65,7 +64,7 @@ function send() {
   let messageBox = document.createElement("div");
   let date = document.createElement("div");
   let msgNode = document.createTextNode(`${message}`);
-  let dateNode = document.createTextNode(`날짜`);
+  let dateNode = document.createTextNode(currentTime);
 
   chattingFromMe.classList.add("chattingFromMe");
   chattingFromMe.classList.add("flex");
@@ -83,5 +82,5 @@ function send() {
   date.appendChild(dateNode);
 
   // 서버로 message 이벤트 전달 + 데이터와 함께
-  socket.emit("message", { type: "message", message: message, chatroom_id: chatroom_id, cobuying_room_id: cobuying_room_id, user_id: user_id, receiver_id: receiver_id });
+  socket.emit("message", { type: "message", message: message, chatroom_id: chatroom_id, cobuying_room_id: cobuying_room_id, user_id: user_id, receiver_id: receiver_id, date: currentTime });
 }
