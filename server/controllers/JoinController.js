@@ -22,7 +22,8 @@ async function generateEmailController(req, res) {
 
     //회원가입의 정보입력 페이지에서 다른 정보들과 학번을 한꺼번에 저장시키기 위해, 잠시 쿠키에 학번 저장
     //쿠키에 저장된 학번 값은 5분 동안 유효. 즉, 5분이 지나면 쿠키에 저장된 학번이 사라져서 회원가입을 할 수 없다.
-    await res.cookie('student_number', req.body.student_number, { expires: new Date(Date.now() + 300000) });
+    const studentNumToken = jwt.sign({ stuNum: student_number }, secretObj.secret);
+    await res.cookie('student_number', studentNumToken, { httpOnly: true, expires: new Date(Date.now() + 300000) });
     
     const transporter = nodemailer.createTransport({
         service: 'gmail',
@@ -95,14 +96,22 @@ async function registerController(req, res) {
         ];
         const db_id = components.join(""); //사용자가 현재 가입한 시간을 따와서, db에서 이용할 유저아이디 생성
 
-        await User.create({ //db에 새 유저 테이블 생성(=회원가입)
-            id: db_id,
-            login_id: req.body.ID,
-            password: hashPassword,
-            student_number: req.cookies['student_number'],
-            phone_number: req.body.phone,
-        });
-        res.send("<script>alert('회원가입 성공'); location.href='/user/JoinStep3';</script>");
+        const stuNumToken = req.cookies['student_number'];
+        if(stuNumToken == null) {
+            res.send("<script>alert('유효하지 않은 접근으로 인한 회원가입 실패. 다시 시도해주세요.'); history.back(); </script>");
+        } else {
+            let decodedStuNum = jwt.verify(stuNumToken, secretObj.secret); //토큰을 secret 값으로 검증 및 해석하여 저장.
+            if (decodedStuNum) {
+                await User.create({ //db에 새 유저 테이블 생성(=회원가입)
+                    id: db_id,
+                    login_id: req.body.ID,
+                    password: hashPassword,
+                    student_number: decodedStuNum.stuNum,
+                    phone_number: req.body.phone,
+                });
+                res.send("<script>alert('회원가입 성공'); location.href='/user/JoinStep3';</script>");
+            }
+        }
     } catch (err) {
         console.log(err);
         res.send("<script>alert('회원가입 실패. 다시 시도해주세요.'); history.back(); </script>");
@@ -126,7 +135,8 @@ async function LoginController(req, res) {
             //만약 같다면, 로그인과 동시에 토큰 생성 후 쿠키에 저장
             const token = jwt.sign({ login_id: input_ID, db_id: findUser.id }, secretObj.secret);
             //토큰은 1시간 후에 만료. 즉, 1시간이 지나면 사용자는 다시 로그인을 해야한다.
-            res.cookie('userToken', token, { httpOnly: true, secure: true, expires: new Date(Date.now() + 3600000) });
+            res.cookie('userToken', token, { httpOnly: true, expires: new Date(Date.now() + 3600000) });
+            //secure 옵션은 https에만 가능하여 제외시켰다.
 
             return res.send("<script>alert('로그인 완료!'); location.href='/'; </script>");
         } else {
