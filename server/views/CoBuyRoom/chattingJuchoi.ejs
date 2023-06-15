@@ -68,6 +68,7 @@
         </div>
 
         <div class="participantBox">
+          <p align="center" font-size="15px">--채팅방 목록--</p>
           <!-- 일반 유저(주최자 아님)일 경우 -->
           <% if(!is_room_creater) { %>
           <p style="cursor: pointer; font-weight: bold"><%= creator.login_id %> (공동구매 주최자)</p>
@@ -89,7 +90,7 @@
         </div>
       </div>
       <% } else { %>
-      <p style="margin-left: 40.5px">채팅을 보낸 유저가 없습니다.</p>
+      <p class="no_content"><b>채팅을 보낸 유저가 없습니다.</b></p>
       <% } %>
     </main>
     <!-- script로의 변수 전달 용도 -->
