@@ -45,6 +45,7 @@ module.exports = {
       });
 
       let imgURL = image.url;
+      imgURL = imgURL.replace("public/", "");
       imgURL = imgURL.replace("public\\", "");
       imgURL = imgURL.replace("\\", "/");
       imgURL = "/" + imgURL;
@@ -144,67 +145,73 @@ module.exports = {
     const coBuyingRoomID = req.params.id;
     const productIDobject = await Sell.findOne({
       raw: true,
-      attributes: ['product_id'],
+      attributes: ["product_id"],
       where: {
-        cobuying_room_id: coBuyingRoomID
-      }
+        cobuying_room_id: coBuyingRoomID,
+      },
     });
     const productID = Object.values(productIDobject);
 
     await Notification.destroy({
       where: {
-        cobuying_room_id: coBuyingRoomID
-      }
+        cobuying_room_id: coBuyingRoomID,
+      },
     });
     await UpdatePost.destroy({
       where: {
-        cobuying_room_id: coBuyingRoomID
-      }
+        cobuying_room_id: coBuyingRoomID,
+      },
     });
     await ChatMessage.destroy({
       where: {
-        cobuying_room_id: coBuyingRoomID
-      }
+        cobuying_room_id: coBuyingRoomID,
+      },
     });
     await ChatRoom.destroy({
       where: {
-        cobuying_room_id: coBuyingRoomID
-      }
+        cobuying_room_id: coBuyingRoomID,
+      },
     });
     await DemandUser.destroy({
       where: {
-        cobuying_room_id: coBuyingRoomID
-      }
+        cobuying_room_id: coBuyingRoomID,
+      },
     });
     await Image.destroy({
       where: {
-        product_id: productID
-      }
+        product_id: productID,
+      },
     });
     await Product.destroy({
       where: {
-        id: productID
-      }
+        id: productID,
+      },
     });
     await CoBuyingRoom.destroy({
       where: {
-        id: coBuyingRoomID
-      }
+        id: coBuyingRoomID,
+      },
     });
     await Sell.destroy({
       where: {
         cobuying_room_id: coBuyingRoomID,
-        product_id: productID
-      }
+        product_id: productID,
+      },
     });
 
-    newGonggus = await db.sequelize.query('SELECT A.*, B.id, B.url, replace(B.url, "public\", "") AS real_url, B.createdAt, B.updatedAt FROM (SELECT A.*, B.name FROM (SELECT A.product_id, A.cobuying_room_id, B.title, A.current_demand, B.createdAt AS cobuying_room_createdAt FROM sell AS A LEFT JOIN cobuying_room AS B ON A.cobuying_room_id=B.id) AS A LEFT JOIN product AS B ON A.product_id=B.id) AS A LEFT JOIN image AS B ON A.product_id=B.product_id ORDER BY cobuying_room_createdAt DESC LIMIT 2;');
-    hotGonggus = await db.sequelize.query('SELECT A.*, B.id, B.url, replace(B.url, "public\", "") AS real_url, B.createdAt, B.updatedAt FROM (SELECT A.*, B.name FROM (SELECT A.product_id, A.cobuying_room_id, B.title, A.current_demand FROM sell AS A LEFT JOIN cobuying_room AS B ON A.cobuying_room_id=B.id) AS A LEFT JOIN product AS B ON A.product_id=B.id) AS A LEFT JOIN image AS B ON A.product_id=B.product_id ORDER BY A.current_demand DESC LIMIT 2;');
+    newGonggus = await db.sequelize.query(
+      'SELECT A.*, B.id, B.url, replace(B.url, "public", "") AS real_url, B.createdAt, B.updatedAt FROM (SELECT A.*, B.name FROM (SELECT A.product_id, A.cobuying_room_id, B.title, A.current_demand, B.createdAt AS cobuying_room_createdAt FROM sell AS A LEFT JOIN cobuying_room AS B ON A.cobuying_room_id=B.id) AS A LEFT JOIN product AS B ON A.product_id=B.id) AS A LEFT JOIN image AS B ON A.product_id=B.product_id ORDER BY cobuying_room_createdAt DESC LIMIT 2;'
+    );
+    hotGonggus = await db.sequelize.query(
+      'SELECT A.*, B.id, B.url, replace(B.url, "public", "") AS real_url, B.createdAt, B.updatedAt FROM (SELECT A.*, B.name FROM (SELECT A.product_id, A.cobuying_room_id, B.title, A.current_demand FROM sell AS A LEFT JOIN cobuying_room AS B ON A.cobuying_room_id=B.id) AS A LEFT JOIN product AS B ON A.product_id=B.id) AS A LEFT JOIN image AS B ON A.product_id=B.product_id ORDER BY A.current_demand DESC LIMIT 2;'
+    );
 
-    if (req.cookies['userToken'] == null) { //토큰이 없다면
+    if (req.cookies["userToken"] == null) {
+      //토큰이 없다면
       res.render("home/index", { newGonggus: newGonggus[0], hotGonggus: hotGonggus[0], isLoggedin: false });
-    } else { //토큰이 있다면
-      res.render("home/index", { newGonggus: newGonggus[0], hotGonggus: hotGonggus[0], isLoggedin: true});
+    } else {
+      //토큰이 있다면
+      res.render("home/index", { newGonggus: newGonggus[0], hotGonggus: hotGonggus[0], isLoggedin: true });
     }
   },
   redirectView: (req, res, next) => {
