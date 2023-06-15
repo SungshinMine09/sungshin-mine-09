@@ -47,7 +47,7 @@
   - IP를 고정시킨 뒤, 데이터베이스 서버와 웹서버를 분리하였다. <br>MySQL DB 서버 인스턴스 하나, Node.js 웹서버 인스턴스 하나. 이렇게 두 개의 VM 인스턴스를 이용하여 배포하였다.
 
 📺데모 영상 링크 :
-https://drive.google.com/file/d/1VHoCAJBAXntbcAifg9qwJr0Vd6IUeABR/view?usp=sharing
+[https://drive.google.com/file/d/1VHoCAJBAXntbcAifg9qwJr0Vd6IUeABR/view?usp=sharing](https://drive.google.com/file/d/1sud0OxtX7M0W7C47CUzCzh-i2lBpGVmC/view?usp=drive_link)
 
 ## 🔥프로젝트 소개
 새학기가 되면, 성신여자대학교의 많은 학생들은 자신이 직접 디자인한 학잠, 새내기 학생들을 위한 과잠, 수강 과목에 필요한 준비물 등을 공동으로 구매하기 위해 커뮤니티(ex. 에브리타임)에 수요조사를 올리고는 한다. 

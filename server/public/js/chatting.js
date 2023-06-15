@@ -23,7 +23,7 @@ socket.on("update", function (data) {
     let messageBox = document.createElement("div");
     let date = document.createElement("div");
     let msgNode = document.createTextNode(`${data.message}`);
-    let dateNode = document.createTextNode(`moment(${data.date}).format("YY/MM/DD HH:mm")`);
+    let dateNode = document.createTextNode(`${data.date}`);
 
     chattingFromYou.classList.add("chattingFromYou");
     chattingFromYou.classList.add("flex");

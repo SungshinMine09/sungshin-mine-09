@@ -71,7 +71,7 @@ module.exports = {
         end_at = moment(depositForm.end_at);
         remaining_days = end_at.diff(now, "days");
       } else {
-        remaining_days = -1;
+        remaining_days = null;
       }
 
       res.locals.cobuyroom = cobuyroom;
@@ -113,6 +113,7 @@ module.exports = {
         cobuying_room_id: coBuyingRoomID,
       },
     });
+    // 사용자가 수요조사에 참여하지 않은 경우에만 업데이트
     if (demand_user == null) {
       DemandUser.create({
         user_id: current_user_id,
