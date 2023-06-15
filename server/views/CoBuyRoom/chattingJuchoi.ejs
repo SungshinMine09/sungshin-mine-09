@@ -28,7 +28,7 @@
           <ul>
             <li><button class="message_type_button" style="cursor: pointer" onclick="location.href='/CoBuyRoom/<%= cobuyroom.id %>/newpost';">새소식</button></li>
             <li><button class="message_type_button" style="cursor: pointer" onclick="location.href='/CoBuyRoom/<%= cobuyroom.id %>/chatting';">채팅</button></li>
-            <% if(current_user_id == host_user_id) { %>
+            <% if(user_id == cobuyroom.host_id) { %>
             <li style="float: right">
               <button class="grey_s_button" style="margin-left: 5px; cursor: pointer" onclick="location.href='/CoBuyRoom/<%=cobuyroom.id%>/suyoStat';">수요조사 통계</button>
             </li>
