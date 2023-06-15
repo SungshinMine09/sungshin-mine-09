@@ -61,7 +61,7 @@
           onclick="location.href='/CoBuyRoom/<%= cobuyroom.id %>/updateCurrentDemand';">
           살래요👍</button> <br>
           <span class="fontSize15">
-          현재 <%= sell.current_demand %>명의 수정이들이 이 제품을 갖고 싶어해요!
+          현재 <b><%= sell.current_demand %></b>명의 수정이들이 이 제품을 갖고 싶어해요!
         </div>
       </div>
 
@@ -73,14 +73,18 @@
         <div class="textCenter">
           <button class="createDepositFormBtn" type="button" style="cursor: pointer;"
           onclick="location.href='/CoBuyForm/<%= form_id %>/writeForm';">
-          입금폼 작성하기</button>
+          <% if (remaining_days == null) { %>
+            🎈수요조사 중!🎈
+            <% } else if(remaining_days < 0) { %>
+              종료
+              <% } else { %>
+          입금폼 작성하기
+          <% } %></button>
           <br>
-          <% if (remaining_days >= 0) { %>
+          <% if (remaining_days && remaining_days >= 0) { %>
           <span class="fontSize15">입금폼 제출 마감일까지
             <%= remaining_days %>일 남았어요!</span>
-            <% } else { %>
-              <span class="fontSize15">아직 수요조사 중이에요!</span>
-              <% } %>
+            <% } %>
         </div>
       </div>
 
@@ -103,14 +107,12 @@
 
         if(current_user_id==host_user_id) {
             wantBtn.disabled = true;
+            wantBtn.style.cursor = 'default';
             createDepositFormBtn.disabled = true;
-            wantBtn.style.backgroundColor='Grey';
-            createDepositFormBtn.style.backgroundColor='Grey';
+            createDepositFormBtn.style.cursor = 'default';
         } else {
           wantBtn.disabled = false;
             createDepositFormBtn.disabled = false;
-            wantBtn.style.removeProperty(backgroundColor);
-            createDepositFormBtn.style.backgroundColor='rgb(239, 220, 255)';
         }
 
         // 함수들
