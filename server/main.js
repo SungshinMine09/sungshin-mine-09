@@ -49,7 +49,7 @@ app.use(morgan("dev")); // log every request to the console
 // }
 
 db.sequelize
-  // .sync({ alter: true })
+  //.sync({ alter: true })
   .sync()
   .then(() => console.log("Database OK"))
   //.then(createAndLogUser)
